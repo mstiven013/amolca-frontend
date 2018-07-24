@@ -1,3 +1,10 @@
+/*
+    Color azul oscuro:      #00396F
+    Color azul claro:       #55B9D4
+    Color rojo:             #E2231A
+    Color gris:             #878786
+*/
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -6,8 +13,105 @@
     padding: 0px;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 html, body {
     height: 100%;
-    overflow-x: hidden;
     width: 100%;
 }
+
+.top-bar {
+    align-items: center;
+    background-color: #55B9D4;
+    color: #fff;
+    display: flex;
+    flex-flow: row wrap;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: space-between;
+    left: 0px;
+    padding-left: 5%;
+    padding-right: 5%;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+
+#top-bar-btns {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    list-style: none;
+}
+    #top-bar-btns li a i {
+        font-size: 18px;
+        margin-top: -3px;
+        vertical-align: middle;
+    }
+    #top-bar-btns li a {
+        color: #fff;
+        display: block;
+        font-size: 16px;
+        height: 45px;
+        line-height: 45px;
+        padding-left: 15px;
+        padding-right: 15px;
+        text-decoration: none;
+    }
+
+    #top-bar-btns #login-btn {
+        background-color: #00396F;
+    }
+
+.header {
+    background-color: #fff;
+    background-image: url('../img/common/header-bg.png');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100px;
+    justify-content: space-between;
+    left: 0px;
+    padding-left: 5%;
+    padding-right: 5%;
+    position: fixed;
+    top: 45px;
+    width: 100%;
+}
+
+.header .site-logo img {
+    max-height: 90px;
+}
+
+/*Navigation menu*/
+#nav-menu ul {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    list-style: none;
+}
+    #nav-menu ul li a {
+        display: block;
+        color: #fff;
+        font-size: 20px;
+        height: 100px;
+        line-height: 100px;
+        padding-left: 35px;
+        padding-right: 35px;
+        text-decoration: none;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        -ms-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+        #nav-menu ul li:hover a,
+        #nav-menu ul li a:hover {
+            background-color: #55B9D4;
+        }
