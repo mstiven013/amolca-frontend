@@ -1,0 +1,6 @@
+<p class="title">Redes sociales</p>
+<div *ngFor="let item of social">
+  <p *ngIf="item.state === true && item.style === 'username'">
+    {{item.name}}: <a href="#" target="_blank">@{{item.user}}</a>
+  </p>
+</div>

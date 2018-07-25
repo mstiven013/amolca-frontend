@@ -1,0 +1,67 @@
+@media screen and (max-width: 992px) {
+    /*Header*/
+    .header {
+        background-position: left -170px center;
+    }
+
+    .footer .custom-row .custom-col,
+    .custom-row .custom-col#block-contact {
+        margin-bottom: 20px;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 860px) {
+
+    #nav-menu ul.hmenu.active {
+        left: 20%;
+    }
+
+    #nav-menu ul.hmenu {
+        background-color: #00396f;
+        flex-flow: column wrap;
+        justify-content: flex-start;
+        left: 100%;
+        height: -webkit-calc(100% - 140px);
+        height: -moz-calc(100% - 140px);
+        height: -ms-calc(100% - 140px);
+        height: calc(100% - 140px);
+        position: fixed;
+        top: 140px;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        -ms-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        width: 100%;
+    }
+        #nav-menu ul.hmenu li {
+            border-bottom: 1px solid #00274c;
+            width: 100%;
+        }
+            #nav-menu ul.hmenu li:before {
+                -webkit-transform: skewX(0deg);
+                -moz-transform: skewX(0deg);
+                -ms-transform: skewX(0deg);
+                transform: skewX(0deg);
+            }
+        #nav-menu ul.hmenu li a {
+            height: 60px;
+            line-height: 60px; 
+        }
+}
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 576px) {
+    .footer .custom-row .custom-col,
+    .custom-row .custom-col#block-contact {
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 20px;
+        width: 100%;
+    }
+        .footer .custom-row .custom-col:last-child {
+            border-bottom: 0px;
+        }
+}
