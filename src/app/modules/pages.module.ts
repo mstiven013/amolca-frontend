@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //Import components to declarate
+import { NotFoundComponent } from '../pages/not-found/not-found.component';
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { AuthPageComponent } from '../pages/auth-page/auth-page.component';
@@ -13,6 +14,7 @@ import { PageRoutes } from '../routes/pages.routes';
 
 @NgModule({
   declarations: [
+    NotFoundComponent,
     LoginComponent,
     RegisterComponent,
     AuthPageComponent,
