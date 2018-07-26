@@ -1,4 +1,4 @@
-<nav *ngIf="menu.length > 0" id="nav-menu">
+<div *ngIf="menu.length > 0" id="nav-menu">
 
   <!--Mobile user btn-->
   <login-btn class="login-btn" [view]="this.loginView" [class]="this.loginClass"></login-btn>
@@ -12,4 +12,4 @@
   <ul class="hmenu" id="hmenu">
     <li *ngFor="let item of menu;"><a *ngIf="item.state === true" routerLink="{{item.link}}" target="{{item.target}}">{{item.name}}</a></li>
   </ul>
-</nav>
+</div>
