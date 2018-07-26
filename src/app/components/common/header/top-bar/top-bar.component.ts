@@ -9,6 +9,12 @@ export class TopBarComponent implements OnInit {
 
   constructor() { }
 
+  //Social network's position
+  socialPosition = 'top';
+
+  //Login btn view
+  loginView = 'full';
+
   ngOnInit() {
   }
 

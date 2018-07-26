@@ -12,11 +12,21 @@ export class NavMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  //Login view
+  loginView = 'icon';
+  loginClass = 'view-mobile';
+
   //Test menu items
   menu = [
-    { name: 'Medicina', link: 'medicina', image: '', state: true, target: '_self' },
-    { name: 'Odontología', link: 'odontologia', image: '', state: true, target: '_self' },
-    { name: 'Biblioteca digital', link: 'medicina', image: '', state: true, target: '_self' },
+    { 
+      name: 'Medicina', link: 'medicina', image: '', state: true, target: '_self', submenu: []
+    },
+    {
+      name: 'Odontología', link: 'odontologia', image: '', state: true, target: '_self', submenu: []
+    },
+    { 
+      name: 'Biblioteca digital', link: 'medicina', image: '', state: true, target: '_self', submenu: []
+    },
   ]
 
   //Mobile button function

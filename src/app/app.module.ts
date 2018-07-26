@@ -22,6 +22,7 @@ import { BlockContactComponent } from './components/common/footer/block-contact/
 import { BlockAboutComponent } from './components/common/footer/block-about/block-about.component';
 import { BlockHelpComponent } from './components/common/footer/block-help/block-help.component';
 import { BlockSocialComponent } from './components/common/footer/block-social/block-social.component';
+import { LoginBtnComponent } from './components/common/login-btn/login-btn.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     BlockAboutComponent,
     BlockHelpComponent,
     BlockSocialComponent,
+    LoginBtnComponent,
   ],
   imports: [
     PagesModule,

@@ -1,3 +1,13 @@
-<p>
-  social-network works!
-</p>
+<ul class="social-networks {{class}}">
+  <li *ngFor="let item of social" (click)="changePosition(item.name)">
+    <!--Bottom 'USERNAME' view-->
+    <p *ngIf="item.bottom === true && item.style === 'username' && position === 'bottom'">
+      {{item.name}}: <a href="{{item.url}}" target="_blank">@{{item.user}}</a>
+    </p>
+
+    <!--Top bar view-->
+    <p *ngIf="item.top === true && position === 'top'">
+      <a href="{{item.url}}" target="_blank"><img src="assets\img\social\{{item.image}}.png" /></a>
+    </p>
+  </li>
+</ul>

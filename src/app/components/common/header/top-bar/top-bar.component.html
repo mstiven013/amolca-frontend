@@ -1,6 +1,6 @@
 <div class="top-bar">
   <div id="social-top-bar">
-      <social-network></social-network>
+      <social-network [position]="this.socialPosition"></social-network>
   </div>
 
   <ul id="top-bar-btns">
@@ -8,6 +8,6 @@
     <li><a href="#" id="cart-btn"><i class="material-icons">shopping_cart</i> $10.000 COP</a></li>
 
     <!--Login/Register Button-->
-    <li><a routerLink="/login" id="login-btn"><i class="material-icons">person</i> Inicar sesión</a></li>
+    <li><login-btn [view]="this.loginView"></login-btn></li>
   </ul>
 </div>

@@ -13,41 +13,74 @@
 
 @media screen and (max-width: 860px) {
 
-    #nav-menu ul.hmenu.active {
-        left: 20%;
+    /*Top bar*/
+    .top-bar #login-btn {
+        display: none;
     }
 
-    #nav-menu ul.hmenu {
-        background-color: #00396f;
-        flex-flow: column wrap;
-        justify-content: flex-start;
-        left: 100%;
-        height: -webkit-calc(100% - 140px);
-        height: -moz-calc(100% - 140px);
-        height: -ms-calc(100% - 140px);
-        height: calc(100% - 140px);
-        position: fixed;
-        top: 140px;
-        -webkit-transition: all 0.4s ease;
-        -moz-transition: all 0.4s ease;
-        -ms-transition: all 0.4s ease;
-        transition: all 0.4s ease;
-        width: 100%;
+    /*Login btn in nav menu*/
+    #login-btn.view-mobile {
+        display: block;
     }
-        #nav-menu ul.hmenu li {
-            border-bottom: 1px solid #00274c;
-            width: 100%;
+
+    /*Mobile menu btn*/
+    .mobile-btn {
+        display: inline-flex;
+    }
+
+    /*Navigation menu*/
+    #nav-menu {
+        align-items: center;
+        display: flex;
+        flex-flow: row wrap;
+    }
+        #nav-menu ul.hmenu.active {
+            left: 20%;
         }
-            #nav-menu ul.hmenu li:before {
-                -webkit-transform: skewX(0deg);
-                -moz-transform: skewX(0deg);
-                -ms-transform: skewX(0deg);
-                transform: skewX(0deg);
+        #nav-menu ul.hmenu {
+            background-color: #00396f;
+            flex-flow: column wrap;
+            justify-content: flex-start;
+            left: 100%;
+            height: -webkit-calc(100% - 140px);
+            height: -moz-calc(100% - 140px);
+            height: -ms-calc(100% - 140px);
+            height: calc(100% - 140px);
+            position: fixed;
+            top: 140px;
+            -webkit-transition: all 0.4s ease;
+            -moz-transition: all 0.4s ease;
+            -ms-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            width: 80%;
+        }
+            #nav-menu ul.hmenu li {
+                border-bottom: 1px solid #00274c;
+                width: 100%;
             }
-        #nav-menu ul.hmenu li a {
-            height: 60px;
-            line-height: 60px; 
+                #nav-menu ul.hmenu li:before {
+                    -webkit-transform: skewX(0deg);
+                    -moz-transform: skewX(0deg);
+                    -ms-transform: skewX(0deg);
+                    transform: skewX(0deg);
+                }
+            #nav-menu ul.hmenu li a {
+                font-size: 16px;
+                height: 50px;
+                line-height: 50px;
+            }
+
+    /*Bottom bar*/
+    #bottom-bar {
+        justify-content: center;
+    }
+        #bottom-bar .item {
+            padding: 10px;
         }
+            #bottom-bar .item#designed {
+                position: relative;
+                right: 0px;
+            }
 }
 
 @media screen and (max-width: 768px) {
@@ -61,7 +94,29 @@
         padding-bottom: 20px;
         width: 100%;
     }
+        .footer .custom-row .custom-col:first-child {
+            padding-left: 10px;
+        }
         .footer .custom-row .custom-col:last-child {
             border-bottom: 0px;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+            padding-right: 10px;
         }
+}
+
+@media screen and (max-width: 380px) {
+    /*Header*/
+    .header {
+        background-color: #fff;
+        background-image: none;
+    }
+    
+    /*Header btns*/
+    .mobile-btn:before, .mobile-btn span, .mobile-btn:after {
+        background-color: #00396F;
+    }
+    #login-btn.view-mobile {
+        color: #00396F;
+    }
 }

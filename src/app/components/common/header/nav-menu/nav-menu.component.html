@@ -1,5 +1,8 @@
 <nav *ngIf="menu.length > 0" id="nav-menu">
 
+  <!--Mobile user btn-->
+  <login-btn class="login-btn" [view]="this.loginView" [class]="this.loginClass"></login-btn>
+
   <!--Mobile btn menu-->
   <div class="mobile-btn" id="mobile-btn" (click)="mobileMenu()">
     <span></span>

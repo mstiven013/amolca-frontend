@@ -94,6 +94,7 @@ html {
 .mobile-btn {
     background-color: transparent;
     cursor: pointer;
+    display: none;
     height: 25px;
     position: relative;
     width: 40px;
@@ -285,7 +286,7 @@ html {
     background-color: #00396F;
     color: #fff;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     font-family: 'Tahoma';
     font-size: 14px;
     justify-content: flex-start;

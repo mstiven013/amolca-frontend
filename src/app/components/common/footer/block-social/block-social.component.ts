@@ -9,13 +9,9 @@ export class BlockSocialComponent implements OnInit {
 
   constructor() { }
 
+  socialPosition = 'bottom';
+
   ngOnInit() {
   }
-
-  social = [
-    { name: 'Facebook', user: 'AmolcaEditorial', url: '#', style: 'username', image: '', state: true },
-    { name: 'Instagram', user: 'amolcacolombia', url: '#', style: 'username', image: '', state: true },
-    { name: 'Twitter', user: 'RedesAmolca', url: '#', style: 'username', image: '', state: true }
-  ]
 
 }

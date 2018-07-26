@@ -1,0 +1,36 @@
+ul.social-networks {
+    list-style: none;
+}
+
+/*Top social network*/
+ul.social-networks.top {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+    ul.social-networks.top li {
+        position: relative;
+    }
+        ul.social-networks.top li a {
+            background-color: transparent;
+            display: flex;
+            flex-flow: column wrap;
+            height: 40px;
+            justify-content: center;
+            line-height: 40px;
+            -webkit-transition: all 0.4s ease;
+            -moz-transition: all 0.4s ease;
+            -ms-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            width: 40px;
+        }
+            ul.social-networks.top li a img {
+                display: block;
+                margin: 0px auto;
+                max-height: 35px;
+            }
+
+            ul.social-networks.top li:hover a,
+            ul.social-networks.top li a:hover {
+                background-color: #00396F;
+            }
