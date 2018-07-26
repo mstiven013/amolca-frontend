@@ -5,9 +5,9 @@
 
   <ul id="top-bar-btns">
     <!--Cart button-->
-    <li><a href="#" id="cart-btn"><i class="material-icons">shopping_cart</i> $10.000 COP</a></li>
+    <li><cart-btn [view]="this.cartBtnView"></cart-btn></li>
 
     <!--Login/Register Button-->
-    <li><login-btn [view]="this.loginView"></login-btn></li>
+    <li><login-btn [view]="this.loginBtnView"></login-btn></li>
   </ul>
 </div>

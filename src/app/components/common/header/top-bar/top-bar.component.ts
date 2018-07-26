@@ -13,7 +13,9 @@ export class TopBarComponent implements OnInit {
   socialPosition = 'top';
 
   //Login btn view
-  loginView = 'full';
+  loginBtnView = 'full';
+  //Cart btn view
+  cartBtnView = 'full';
 
   ngOnInit() {
   }

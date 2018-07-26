@@ -23,6 +23,7 @@ import { BlockAboutComponent } from './components/common/footer/block-about/bloc
 import { BlockHelpComponent } from './components/common/footer/block-help/block-help.component';
 import { BlockSocialComponent } from './components/common/footer/block-social/block-social.component';
 import { LoginBtnComponent } from './components/common/login-btn/login-btn.component';
+import { CartBtnComponent } from './components/common/cart-btn/cart-btn.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     BlockHelpComponent,
     BlockSocialComponent,
     LoginBtnComponent,
+    CartBtnComponent
   ],
   imports: [
     PagesModule,

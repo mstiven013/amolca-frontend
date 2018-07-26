@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { AuthPageComponent } from '../pages/auth-page/auth-page.component';
+import { CartPageComponent } from '../pages/cart-page/cart-page.component';
 
 //Import routes
 import { PageRoutes } from '../routes/pages.routes';
@@ -14,7 +15,8 @@ import { PageRoutes } from '../routes/pages.routes';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    AuthPageComponent
+    AuthPageComponent,
+    CartPageComponent,
   ],
   imports: [
     BrowserModule,
