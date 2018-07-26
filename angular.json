@@ -27,7 +27,9 @@
               "src/assets/css/global.css",
               "src/assets/css/responsive.css"
             ],
-            "scripts": [ ]
+            "scripts": [ 
+              "../node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -78,7 +80,9 @@
               "src/assets/css/global.css",
               "src/assets/css/responsive.css"
             ],
-            "scripts": [ ],
+            "scripts": [ 
+              "../node_modules/jquery/dist/jquery.min.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
