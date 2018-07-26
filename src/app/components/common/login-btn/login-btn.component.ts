@@ -13,7 +13,6 @@ export class LoginBtnComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.class);
   }
 
 }

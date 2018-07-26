@@ -2,15 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+//Import components to declarate
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { AuthPageComponent } from '../pages/auth-page/auth-page.component';
-import { HomeComponent } from '../pages/home-page/home-page.component';
 
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: AuthPageComponent }
-]
+//Import routes
+import { PageRoutes } from '../routes/pages.routes';
 
 @NgModule({
   declarations: [
@@ -23,7 +21,7 @@ const appRoutes: Routes = [
     RouterModule,
 
     RouterModule.forRoot(
-      appRoutes,
+      PageRoutes,
       { enableTracing: false }
     )
   ]
