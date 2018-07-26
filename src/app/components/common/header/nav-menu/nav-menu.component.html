@@ -10,6 +10,6 @@
 
   <!--Navigation menu-->
   <ul class="hmenu" id="hmenu">
-    <li *ngFor="let item of menu;"><a *ngIf="item.state === true" href="{{item.link}}" target="{{item.target}}">{{item.name}}</a></li>
+    <li *ngFor="let item of menu;"><a *ngIf="item.state === true" routerLink="{{item.link}}" target="{{item.target}}">{{item.name}}</a></li>
   </ul>
 </nav>

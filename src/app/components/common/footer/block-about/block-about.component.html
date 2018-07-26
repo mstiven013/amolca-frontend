@@ -1,4 +1,4 @@
 <p class="title">Acerca de</p>
 <div *ngFor="let item of about;">
-    <p *ngIf="item.state === true"><a href="/{{item.link}}">{{item.name}}</a></p>
+    <p *ngIf="item.state === true"><a routerLink="/{{item.link}}">{{item.name}}</a></p>
 </div>
