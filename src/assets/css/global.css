@@ -199,6 +199,13 @@ html {
     margin-top: 140px;
 }
 
+.page-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+
 /*Custom row and columns*/
 .custom-row {
     display: flex;

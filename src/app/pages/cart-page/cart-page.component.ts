@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+//Declare jQuery
+declare var jQuery: any;
+
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
