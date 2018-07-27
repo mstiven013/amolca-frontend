@@ -1,0 +1,90 @@
+/*Table styles*/
+.cart-page {
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+/*Input quantity*/
+table input {
+    text-align: center;
+}
+
+table {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/*THead styles*/
+table thead {
+    background-color: #ebebeb;
+}
+
+table thead #price,
+table thead #total {
+    width: 140px;
+}
+table thead #qty,
+table thead #actions {
+    width: 100px;
+}
+
+table thead #image {
+    width: 200px;
+}
+
+/*TBody styles*/
+table .image {
+    max-width: 200px;
+    width: 200px;
+}
+    table .image img {
+        display: block;
+        margin: 0px auto;
+        max-height: 150px;
+        max-width: 90%;
+    }
+        img.materialboxed.active {
+            max-height: none !important;
+            max-width: none !important;
+            width: auto!important;
+        }
+
+table .price {
+    font-weight: bold;
+}
+table .total {
+    color: #00396F;
+    font-weight: bold;
+}
+
+table .actions button {
+    cursor: pointer;
+}
+table .actions .delete {
+    background-color: transparent;
+    border: none;
+    color: red;
+}
+
+/*Info cart*/
+.info-cart {
+    align-items: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin-top: 40px;
+}
+
+.info-cart .related-products {
+    width: 50%;
+}
+
+/*Cart totals*/
+.cart-totals {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    font-size: 18px;
+    overflow: hidden;
+    padding: 30px 50px;
+    width: 50%;
+}

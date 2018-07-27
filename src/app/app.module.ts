@@ -2,6 +2,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+//Form
+import { FormsModule }   from '@angular/forms';
+
+//Material
 import { MatIconModule } from '@angular/material/icon';
 
 //Modules
@@ -51,12 +56,16 @@ const appRoutes: Routes = [
     BlockHelpComponent,
     BlockSocialComponent,
     LoginBtnComponent,
-    CartBtnComponent
+    CartBtnComponent,
   ],
   imports: [
+    
     PagesModule,
     BrowserModule,
     RouterModule,
+    FormsModule,
+
+    //Material
     MatIconModule,
 
     RouterModule.forRoot(
@@ -65,6 +74,7 @@ const appRoutes: Routes = [
     )
   ],
   providers: [],
+  exports: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

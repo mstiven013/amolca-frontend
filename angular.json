@@ -28,7 +28,8 @@
               "src/assets/css/responsive.css"
             ],
             "scripts": [ 
-              "../node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/hammerjs/hammer.js"
             ]
           },
           "configurations": {
@@ -81,7 +82,8 @@
               "src/assets/css/responsive.css"
             ],
             "scripts": [ 
-              "../node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/hammerjs/hammer.js"
             ],
             "assets": [
               "src/favicon.ico",

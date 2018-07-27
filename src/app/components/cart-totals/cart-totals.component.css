@@ -1,0 +1,23 @@
+/*Cart totals table*/
+td, th {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+    td {
+        text-align: right;
+    }
+    
+#total {
+    color: #00396F;
+    font-size: 25px;
+}
+    #total #price {
+        text-align: right;
+    }
+
+#actions {
+    border: 0px;
+}
+    #actions td {
+        text-align: right;
+    }

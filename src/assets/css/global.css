@@ -11,6 +11,9 @@
     Fuente titulos:                 'Coolvetica Rg'
 */
 
+/*Import Angular Material Theme*/
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -36,6 +39,7 @@ html {
     padding-right: 5%;
     position: fixed;
     top: 0px;
+    z-index: 1000;
     width: 100%;
 }
 
@@ -83,7 +87,7 @@ html {
     position: fixed;
     top: 40px;
     width: 100%;
-    z-index: 10000;
+    z-index: 1000;
 }
 
 .header .site-logo img {
@@ -196,6 +200,7 @@ html {
 
 /*Main styles*/
 .main {
+    color: #666666;
     margin-top: 140px;
 }
 
@@ -205,7 +210,31 @@ html {
     width: 90%;
 }
 
+/*Buttons*/
+.button {
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 20px;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    text-decoration: none;
+}
+    .button.primary {
+        background-color: #00396F;
+        color: #fff;
+    }
 
+/*Angular Material & Materialize css*/
+#materialbox-overlay {
+    background-color: rgba(0,0,0,0.4);
+}
+    .cart-page table .material-placeholder {
+        max-height: 150px;
+    }
 /*Custom row and columns*/
 .custom-row {
     display: flex;
