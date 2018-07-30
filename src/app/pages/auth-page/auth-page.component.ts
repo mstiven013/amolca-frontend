@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-auth-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _appComponent: AppComponent
+  ) { }
 
   ngOnInit() {
+    this._appComponent.setMetaTitle('Iniciar sesión - Editorial Amolca');
   }
 
 }

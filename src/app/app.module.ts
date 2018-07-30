@@ -1,5 +1,5 @@
 //Angular libraries and modules
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '../../node_modules/@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -114,7 +114,8 @@ const appRoutes: Routes = [
     )
   ],
   providers: [
-    CartService
+    CartService,
+    Title
   ],
   exports: [
     ReplacePipe

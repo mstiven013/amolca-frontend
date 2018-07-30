@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {TooltipPosition} from '@angular/material';
+import { TooltipPosition } from '@angular/material';
 import { CartService } from '../../services/cart/cart.service';
+import { AppComponent } from '../../app.component';
 
 //Declare jQuery
 //import jQuery from 'jquery';
@@ -14,10 +15,14 @@ declare var jQuery: any;
 export class CartPageComponent implements OnInit {
 
   constructor(
-    private _cartService: CartService
+    private _cartService: CartService,
+    private _appComponent: AppComponent
   ) { }
 
   ngOnInit() {
+
+    this._appComponent.setMetaTitle('Mi carrito de compras - Amolca');
+
     jQuery(document).ready(function() {
       jQuery('.materialboxed').materialbox();
     });
@@ -44,9 +49,10 @@ export class CartPageComponent implements OnInit {
   //Declare cart variable
   cart = { id: 0, user_id: 0, products: [] }
 
+  //Get Cart Info
   getCartInfo() {
     let cartInfo = JSON.parse(localStorage.getItem('cart'));
-    console.log(cartInfo);
+
     if(cartInfo !== null) {
       this.cart = cartInfo;
       this.changeTotalCart();
