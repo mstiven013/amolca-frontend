@@ -52,6 +52,9 @@ import { CartBtnComponent } from './components/common/cart-btn/cart-btn.componen
 //Page routes
 import { PageRoutes } from './routes/pages.routes';
 
+//Services
+import { CartService } from './services/cart/cart.service';
+
 //Routes var
 const appRoutes: Routes = [
   { path: '', component: AppComponent }
@@ -110,7 +113,9 @@ const appRoutes: Routes = [
       { enableTracing: false }
     )
   ],
-  providers: [],
+  providers: [
+    CartService
+  ],
   exports: [
     ReplacePipe
   ],

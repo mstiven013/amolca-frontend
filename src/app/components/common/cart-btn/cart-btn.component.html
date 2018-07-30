@@ -1,1 +1,1 @@
-<a routerLink="/carrito" id="cart-btn" class="waves-effect waves-light"><i class="material-icons">shopping_cart</i> <span *ngIf="view === 'full'">$10.000 COP</span></a>
+<a routerLink="/carrito" id="cart-btn" class="waves-effect waves-light"><i class="material-icons">shopping_cart</i> <span *ngIf="view === 'full'">{{value | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.'}}</span></a>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TooltipPosition} from '@angular/material';
+import { CartService } from '../../services/cart/cart.service';
 
 //Declare jQuery
 //import jQuery from 'jquery';
@@ -12,14 +13,16 @@ declare var jQuery: any;
 })
 export class CartPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _cartService: CartService
+  ) { }
 
   ngOnInit() {
     jQuery(document).ready(function() {
       jQuery('.materialboxed').materialbox();
     });
 
-    this.changeTotalCart();
+    this.getCartInfo();
   }
 
   //Declare position tooltip
@@ -39,25 +42,15 @@ export class CartPageComponent implements OnInit {
   }
 
   //Declare cart variable
-  cart = {
-    id: 1,
-    user_id: 1,
-    products: [
-      { 
-        id: 1, 
-        name: 'Serie de Interpretación de Biopsias: Jonathan I. Epstein Interpretación de Biopsias de Tumores de Tejido Blando – Segunda edición', 
-        image: 'interpretacion-de-bipsias.png', 
-        price: 250000, 
-        quantity: 1
-      },
-      { 
-        id: 2, 
-        name: 'Rehabilitación Neuro-Oclusal (RNO) Claves para el diagnóstico y el tratamiento', 
-        image: 'rehabilitacion-neuro-oclusal.png', 
-        price: 250000, 
-        quantity: 2 
-      }
-    ]
+  cart = { id: 0, user_id: 0, products: [] }
+
+  getCartInfo() {
+    let cartInfo = JSON.parse(localStorage.getItem('cart'));
+    console.log(cartInfo);
+    if(cartInfo !== null) {
+      this.cart = cartInfo;
+      this.changeTotalCart();
+    }
   }
 
   //Change product Total
@@ -92,7 +85,33 @@ export class CartPageComponent implements OnInit {
     //Change total cart
     this.totalCart = this.subtotalCart + this.shipping.price;
 
+    this._cartService.cartDataRefresh(this.cart);
+
   }
+
+  /* CART EXAMPLE */
+  /*
+  cart = {
+    id: 1,
+    user_id: 1,
+    products: [
+      { 
+        id: 1, 
+        name: 'Serie de Interpretación de Biopsias: Jonathan I. Epstein Interpretación de Biopsias de Tumores de Tejido Blando – Segunda edición', 
+        image: 'interpretacion-de-bipsias.png', 
+        price: 250000, 
+        quantity: 1
+      },
+      { 
+        id: 2, 
+        name: 'Rehabilitación Neuro-Oclusal (RNO) Claves para el diagnóstico y el tratamiento', 
+        image: 'rehabilitacion-neuro-oclusal.png', 
+        price: 250000, 
+        quantity: 2 
+      }
+    ]
+  }
+  */
 
   /*
   products = [
