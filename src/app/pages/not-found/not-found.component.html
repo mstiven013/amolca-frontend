@@ -1,3 +1,13 @@
-<p>
-  not-found works!
-</p>
+<!--Cart products not found-->
+<div *ngIf="pageType == 'cart'" class="cart-not-found">
+  <h2>No hay productos en el carrito.</h2>
+  <p><a class="button primary">Ir a la tienda</a></p>
+</div>
+
+<!--Page & Post not found-->
+<div *ngIf="pageType != 'cart'" class="page-not-found">
+  <p class="number">404</p>
+  <p class="title">La página que estás buscando no existe.</p>
+  <p><a class="button primary" routerLink="/">Ir al inicio</a></p>
+  <social-network [position]="top"></social-network>
+</div>

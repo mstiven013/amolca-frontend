@@ -1,16 +1,30 @@
 //Angular libraries and modules
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '../../node_modules/@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //Form
 import { FormsModule }   from '@angular/forms';
 
+//Pipes
+import { ReplacePipe } from './pipes/currencyFormat';
+
 //Material
+import 'hammerjs';
+import 'materialize-css';
+import { MatTooltipModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 
-//Modules
-import { PagesModule } from './modules/pages.module';
+//Pages
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AuthPageComponent } from './pages/auth-page/auth-page.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
+
+//Page Components
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { CartTotalsComponent } from './components/cart-totals/cart-totals.component';
 
 //Common components
 import { AppComponent } from './app.component';
@@ -35,6 +49,9 @@ import { BlockSocialComponent } from './components/common/footer/block-social/bl
 import { LoginBtnComponent } from './components/common/login-btn/login-btn.component';
 import { CartBtnComponent } from './components/common/cart-btn/cart-btn.component';
 
+//Page routes
+import { PageRoutes } from './routes/pages.routes';
+
 //Routes var
 const appRoutes: Routes = [
   { path: '', component: AppComponent }
@@ -43,38 +60,60 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+
+    //Common components
     TopBarComponent,
     HeaderComponent,
     NavMenuComponent,
     SocialNetworkComponent,
     LogoComponent,
-    HomeComponent,
+    LoginBtnComponent,
+    CartBtnComponent,
+
+    //Footer components
     FooterComponent,
     BottomBarComponent,
     BlockContactComponent,
     BlockAboutComponent,
     BlockHelpComponent,
     BlockSocialComponent,
-    LoginBtnComponent,
-    CartBtnComponent,
+
+    //Auth page components
+    LoginComponent,
+    RegisterComponent,
+
+    //Cart components
+    CartTotalsComponent,
+
+    //Pages
+    HomeComponent,
+    AuthPageComponent,
+    CartPageComponent,
+    NotFoundComponent,
+
+    //Pipes
+    ReplacePipe,
   ],
   imports: [
-    
-    PagesModule,
+    //Angular libraries
     BrowserModule,
     RouterModule,
     FormsModule,
 
     //Material
     MatIconModule,
+    BrowserAnimationsModule,
+    MatTooltipModule,
 
     RouterModule.forRoot(
-      appRoutes,
+      PageRoutes,
       { enableTracing: false }
     )
   ],
   providers: [],
-  exports: [ ],
+  exports: [
+    ReplacePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

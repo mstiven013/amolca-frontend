@@ -210,6 +210,14 @@ html {
     width: 90%;
 }
 
+/*Titles and subtitle*/
+.main .title {
+    font-size: 50px;
+}
+.main .subtitle {
+    font-size: 30px;
+}
+
 /*Buttons*/
 .button {
     border-radius: 5px;

@@ -1,0 +1,19 @@
+.page-not-found {
+    background-color: #A5A5A5;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    padding: 100px 5%;
+    text-align: center;
+}
+    .page-not-found .number {
+        font-size: 130px;
+        font-weight: bold;
+        line-height: 90%;
+    }
+    .page-not-found .title {
+        margin-bottom: 20px;
+    }
+    .page-not-found .button {
+        font-size: 20px;
+    }
