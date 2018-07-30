@@ -138,6 +138,20 @@
 }
 
 @media screen and (max-width: 768px) {
+
+    /*Error 404 page not found*/
+    .page-not-found img {
+        max-width: 80%;
+    }
+
+    /*Titles & subtitles*/
+    .main .title {
+        font-size: 30px;
+    }
+
+    .main .subtitle {
+        font-size: 20px;
+    }
     
 }
 
@@ -159,7 +173,7 @@
         }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 480px) {
     /*Header*/
     .header {
         background-color: #fff;
@@ -172,5 +186,13 @@
     }
     #login-btn.view-mobile {
         color: #00396F;
+    }
+
+    /*Error 404 Page not found*/
+    .page-not-found .button {
+        margin-bottom: 20px;
+    }
+    ul.social-networks.main {
+        margin-left: 0px !important;
     }
 }
