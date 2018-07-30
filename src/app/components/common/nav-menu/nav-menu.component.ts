@@ -98,8 +98,10 @@ export class NavMenuComponent implements OnInit {
 
   //Show submenu's
   showSubmenuItem(id) {
+    let windowWidth = jQuery(window).width();
     let submenuId = `#submenu-${id}`;
-    if(submenuId) {
+
+    if(submenuId && windowWidth <= 950) {
       jQuery(submenuId).slideToggle('slow');
     }
   }

@@ -11,7 +11,13 @@
     }
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (min-width: 951px) {
+    #nav-menu > ul > li > .submenu {
+        display: flex !important;
+    }
+}
+
+@media screen and (max-width: 950px) {
 
     /*Top bar*/
     .top-bar #login-btn {
