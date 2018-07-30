@@ -7,7 +7,12 @@
 
     <!--Top bar view-->
     <p *ngIf="item.top === true && position === 'top'">
-      <a href="{{item.url}}" target="_blank" class="waves-effect waves-light"><img src="assets\img\social\{{item.image}}.png" /></a>
+      <a href="{{item.url}}" target="_blank" class="waves-effect waves-light bg-{{background}}"><img src="assets\img\social\{{color}}\{{item.image}}.png" /></a>
+    </p>
+
+    <!--Top bar view-->
+    <p *ngIf="item.main === true && position === 'main'">
+      <a href="{{item.url}}" target="_blank" class="waves-effect waves-light bg-{{background}}"><img src="assets\img\social\{{color}}\{{item.image}}.png" /></a>
     </p>
   </li>
 </ul>

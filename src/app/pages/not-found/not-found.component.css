@@ -1,18 +1,25 @@
 .page-not-found {
-    background-color: #A5A5A5;
+    /*background-image: url('../../../assets/img/common/bottom-waves.png');
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100% auto;*/
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
-    padding: 100px 5%;
+    padding: 70px 10%;
+    position: relative;
     text-align: center;
+    z-index: 1;
 }
-    .page-not-found .number {
-        font-size: 130px;
-        font-weight: bold;
-        line-height: 90%;
-    }
     .page-not-found .title {
-        margin-bottom: 20px;
+        line-height: 100%;
+        margin-bottom: 40px;
+    }
+    .page-not-found .btn-contain {
+        align-items: center;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
     }
     .page-not-found .button {
         font-size: 20px;

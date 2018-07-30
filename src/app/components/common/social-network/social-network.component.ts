@@ -9,6 +9,8 @@ export class SocialNetworkComponent implements OnInit {
 
   //Position of component
   @Input() position: string;
+  @Input() background: string = 'blue';
+  @Input() color: string = 'white';
 
   //Class of component
   class: string;
@@ -20,9 +22,9 @@ export class SocialNetworkComponent implements OnInit {
   }
 
   social = [
-    { name: 'Facebook', user: 'AmolcaEditorial', url: '#', style: 'username', image: 'facebook', top: true, bottom: true },
-    { name: 'Instagram', user: 'amolcacolombia', url: '#', style: 'username', image: 'instagram', top: true, bottom: true },
-    { name: 'Twitter', user: 'RedesAmolca', url: '#', style: 'username', image: 'twitter', top: true, bottom: true }
+    { name: 'Facebook', user: 'AmolcaEditorial', url: '#', style: 'username', image: 'facebook', top: true, bottom: true, main: true},
+    { name: 'Instagram', user: 'amolcacolombia', url: '#', style: 'username', image: 'instagram', top: true, bottom: true, main: true},
+    { name: 'Twitter', user: 'RedesAmolca', url: '#', style: 'username', image: 'twitter', top: true, bottom: true, main: true }
   ]
 
 }

@@ -1,13 +1,9 @@
-<!--Cart products not found-->
-<div *ngIf="pageType == 'cart'" class="cart-not-found">
-  <h2>No hay productos en el carrito.</h2>
-  <p><a class="button primary">Ir a la tienda</a></p>
-</div>
-
 <!--Page & Post not found-->
-<div *ngIf="pageType != 'cart'" class="page-not-found">
-  <p class="number">404</p>
-  <p class="title">La página que estás buscando no existe.</p>
-  <p><a class="button primary" routerLink="/">Ir al inicio</a></p>
-  <social-network [position]="top"></social-network>
+<div class="page-not-found">
+  <p><img src="assets\img\common\404.png" alt=""></p>
+  <p class="title">{{text.title}}</p>
+  <p class="btn-contain">
+    <a class="button {{text.buttonBg}}" routerLink="/">{{text.button}}</a> 
+    <social-network class="social" [position]="socialNetworks.position" [color]="socialNetworks.color" [background]="socialNetworks.background"></social-network>
+  </p>
 </div>

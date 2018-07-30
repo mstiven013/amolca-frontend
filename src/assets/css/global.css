@@ -235,6 +235,10 @@ html {
         background-color: #00396F;
         color: #fff;
     }
+    .button.white {
+        background-color: #fff;
+        color: #00396F;
+    }
 
 /*Angular Material & Materialize css*/
 #materialbox-overlay {
