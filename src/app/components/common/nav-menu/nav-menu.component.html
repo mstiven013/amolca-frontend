@@ -10,6 +10,23 @@
 
   <!--Navigation menu-->
   <ul class="hmenu" id="hmenu">
-    <li *ngFor="let item of menu;"><a *ngIf="item.state === true" routerLink="{{item.link}}" target="{{item.target}}">{{item.name}}</a></li>
+    <li *ngFor="let item of menu; let i = index;" (click)="showSubmenuItem(item.id)">
+      <!--Sup Item-->
+      <a *ngIf="item.state === true" routerLink="{{item.link}}" target="{{item.target}}" id="menu-{{item.id}}">
+        <img *ngIf="item.image !== ''" src="assets\img\menu\{{item.image}}" alt="{{item.name}}">
+        <span>{{item.name}}</span>
+      </a>
+
+      <!--Submenu-->
+      <ul *ngIf="item.submenu.state === true && item.submenu.item.length > 0" class="submenu" id="submenu-{{item.id}}">
+        <li *ngFor="let subitem of item.submenu.item">
+          <a *ngIf="subitem.state === true" routerLink="{{subitem.link}}" (click)="hiddeSubmenu()">
+            <img *ngIf="subitem.image !== ''" src="assets\img\menu\{{subitem.image}}" alt="{{subitem.name}}">
+            <span>{{subitem.name}}</span>
+          </a>
+        </li>
+      </ul>
+
+    </li>
   </ul>
 </div>
