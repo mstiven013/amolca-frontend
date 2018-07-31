@@ -239,7 +239,7 @@ html {
             height: auto;
         }
         #nav-menu > ul > li > .submenu li {
-            margin: 10px auto;
+            margin: 10px 0;
             width: 12.5%;
         }
             #nav-menu > ul > li > .submenu li a {
@@ -289,6 +289,7 @@ html {
 
 /*Buttons*/
 .button {
+    border: 0px;
     border-radius: 5px;
     display: inline-block;
     cursor: pointer;

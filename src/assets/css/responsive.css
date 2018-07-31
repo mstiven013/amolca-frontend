@@ -90,7 +90,7 @@
                 background-color: #ffffff;
                 border-radius: 0;
                 display: none;
-                flex-flow: column wrap;
+                flex-flow: row wrap;
                 height: auto;
                 left: 0px;
                 opacity: 1;
@@ -107,14 +107,14 @@
                 #nav-menu > ul > li > .submenu li {
                     border-bottom: 1px solid #eaeaea;
                     margin: 0px;
-                    width: 100%;
+                    width: 50%;
                 }
                     #nav-menu > ul > li > .submenu li a {
                         align-items: center;
                         display: flex;
                         flex-flow: row wrap;
                         justify-content: flex-start;
-                        padding: 10px 55px;
+                        padding: 10px 20px;
                     }
                         #nav-menu > ul > li > .submenu li a img {
                             height: 40px;
@@ -162,6 +162,19 @@
 }
 
 @media screen and (max-width: 576px) {
+
+    /*Nav menu*/
+    #nav-menu > ul > li > .submenu {
+        flex-flow: column wrap;
+    }
+        #nav-menu > ul > li > .submenu li {
+            width: 100%;
+        }
+            #nav-menu > ul > li > .submenu li a {
+                padding: 10px 55px;
+            }
+
+    /*Footer*/
     .footer .custom-row .custom-col,
     .custom-row .custom-col#block-contact {
         border-bottom: 1px solid #cccccc;

@@ -59,7 +59,29 @@ export class NavMenuComponent implements OnInit {
       }
     },
     {
-      id: 72729, name: 'Odontología', link: 'odontologia', image: 'odontologia.png', state: true, target: '_self', submenu: ''
+      id: 72729,
+      name: 'Odontología',
+      link: 'odontologia',
+      image: 'odontologia.png',
+      state: true,
+      target: '_self',
+      submenu: {
+        state: true,
+        item: [
+          { id: 34321, name: 'Endodoncia', link: '/endodoncia', image: 'endodoncia.png', state: true, target: '_self' },
+          { id: 92726, name: 'Estética dental', link: '/estetica-dental', image: 'estetica-dental.png', state: true, target: '_self' },
+          { id: 24687, name: 'Odontopediatría', link: '/odontopediatria', image: 'odontopediatria.png', state: true, target: '_self' },
+          { id: 24687, name: 'Implantología', link: '/implantologia', image: 'implantologia.png', state: true, target: '_self' },
+          { id: 54221, name: 'Ortodoncia', link: '/ortodoncia', image: 'ortodoncia.png', state: true, target: '_self' },
+          { id: 32412, name: 'Periodoncia', link: '/periodoncia', image: 'periodoncia.png', state: true, target: '_self' },
+          { id: 83937, name: 'Odontología General', link: '/odontologia-general', image: 'odontologia-general.png', state: true, target: '_self' },
+          { id: 24687, name: 'Oclusión', link: '/oclusion', image: 'oclusion.png', state: true, target: '_self' },
+          { id: 56382, name: 'Cirugía Oral', link: '/cirugia-oral', image: 'cirugia-oral.png', state: true, target: '_self' },
+          { id: 19273, name: 'Laboratorio Dental', link: '/laboratorio-dental', image: 'laboratorio-dental.png', state: true, target: '_self' },
+          { id: 92837, name: 'Rehabilitación Oral', link: '/rehabilitacion-oral', image: 'rehabilitacion-oral.png', state: true, target: '_self' },
+          { id: 23859, name: 'Radiología', link: '/radiologia', image: 'radiologia.png', state: true, target: '_self' },
+        ]
+      }
     },
     { 
       id: 27263, name: 'Biblioteca digital', link: 'medicina', image: 'biblioteca-digital.png', state: true, target: '_self', submenu: ''
@@ -102,7 +124,10 @@ export class NavMenuComponent implements OnInit {
     let submenuId = `#submenu-${id}`;
 
     if(submenuId && windowWidth <= 950) {
-      jQuery(submenuId).slideToggle('slow');
+      jQuery(submenuId).slideToggle('slow', function() {
+        //Change display "block" for "flex"
+        if(jQuery(this).is(':visible')) jQuery(this).css('display', 'flex')        
+      });
     }
   }
 
