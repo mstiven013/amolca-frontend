@@ -59,6 +59,8 @@ import { PageRoutes } from './routes/pages.routes';
 
 //Services
 import { CartService } from './services/cart/cart.service';
+import { GetBookService } from './services/book/get-book.service';
+import { GetCouponService } from './services/coupons/get-coupon.service';
 
 //Routes var
 const appRoutes: Routes = [
@@ -123,6 +125,13 @@ const appRoutes: Routes = [
   ],
   providers: [
     CartService,
+
+    //Books
+    GetBookService,
+
+    //Coupons
+    GetCouponService,
+
     Title
   ],
   exports: [
