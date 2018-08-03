@@ -4,6 +4,11 @@ import { BrowserAnimationsModule } from '../../node_modules/@angular/platform-br
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule, Http, Headers, RequestOptions, URLSearchParams, Response } from '@angular/http';
+
+import 'rxjs/add/operator/map';
+
 //Form
 import { FormsModule }   from '@angular/forms';
 
@@ -107,6 +112,9 @@ const appRoutes: Routes = [
     MatIconModule,
     BrowserAnimationsModule,
     MatTooltipModule,
+
+    HttpClientModule,
+    HttpModule,
 
     RouterModule.forRoot(
       PageRoutes,

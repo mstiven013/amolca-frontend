@@ -88,3 +88,21 @@ table .actions .delete {
     padding: 30px 50px;
     width: 50%;
 }
+
+/*Cart coupons*/
+.coupon-contain {
+    margin-top: 10px;
+    text-align: right;
+}
+input#coupon {
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    width: 250px;
+}
+.coupon-contain .button {
+    padding: 15px 20px;
+}

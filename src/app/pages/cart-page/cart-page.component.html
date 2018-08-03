@@ -37,6 +37,12 @@
       </tr>
     </tbody>
   </table>
+  
+  <div class="coupon-contain">
+    <input type="text" #coupon id="coupon" maxlength="10" placeholder="Escribe aquí el código de tu cupón" (keyup)="couponError.state = false">
+    <button class="button primary" (click)="applyCoupon(coupon.value)">Aplicar cupón</button>
+    <p class="error" *ngIf="couponError.state">{{couponError.text}}</p>
+  </div>
 
   <div class="info-cart">
 

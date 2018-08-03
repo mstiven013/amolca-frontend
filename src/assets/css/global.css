@@ -279,12 +279,16 @@ html {
     width: 90%;
 }
 
-/*Titles and subtitle*/
+/*Titles, subtitle and text's*/
 .main .title {
     font-size: 50px;
 }
 .main .subtitle {
     font-size: 30px;
+}
+
+.error {
+    color: #E2231A;
 }
 
 /*Buttons*/
@@ -317,6 +321,15 @@ html {
     .cart-page table .material-placeholder {
         max-height: 150px;
     }
+
+/*Materialize toast's*/
+#toast-container {
+    bottom: 5%;
+    left: auto;
+    right: 5%;
+    top: auto;
+}
+
 /*Custom row and columns*/
 .custom-row {
     display: flex;
