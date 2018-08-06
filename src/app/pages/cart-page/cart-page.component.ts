@@ -29,13 +29,6 @@ export class CartPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this._authService.login('mstiven013@gmail.com','SoloNacional')
-      .map(res => res.json())
-      .subscribe(
-        data => console.log(data),
-        err => console.log(err.json())
-      );
-
     this._appComponent.setMetaTitle('Mi carrito de compras - Amolca');
 
     jQuery(document).ready(function() {
@@ -168,8 +161,6 @@ export class CartPageComponent implements OnInit {
           discount = (c.discount / 100) * this.subtotalCart;
         }
       }
-
-      console.log(discount);
 
   }
 
