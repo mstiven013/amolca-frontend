@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../../services/cart/cart.service';
+import { GetCartService } from '../../../services/cart/get-cart.service';
 
 @Component({
   selector: 'top-bar',
@@ -8,7 +8,7 @@ import { CartService } from '../../../services/cart/cart.service';
 export class TopBarComponent implements OnInit {
 
   constructor(
-    private _cartService: CartService
+    private _getCartService: GetCartService
   ) { }
 
   //Social network's position
@@ -26,21 +26,18 @@ export class TopBarComponent implements OnInit {
     this.getCartInfo();
 
     //Watch changes in cart info
-    this._cartService.cartDataWatch()
+    this._getCartService.cartDataWatch()
       .subscribe( data => {
         this.getCartInfo();
       });
   }
 
   getCartInfo() {
-    let cart = JSON.parse(localStorage.getItem('cart'));
+    let cart = JSON.parse(localStorage.getItem('wyC4r7'));
     if(cart !== null) {
       let me = this;
 
-      this.cartValue = 0;
-      for(let i = 0; i < cart.products.length; i++) {
-        me.cartValue += cart.products[i].price * cart.products[i].quantity;
-      }
+      this.cartValue = cart.total;
     }
   }
 

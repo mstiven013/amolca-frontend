@@ -60,9 +60,14 @@ import { BooksLoopComponent } from './components/books/books-loop/books-loop.com
 //Page routes
 import { PageRoutes } from './routes/pages.routes';
 
-//Services
+//Cart Services
+import { GetCartService } from './services/cart/get-cart.service';
 import { CartService } from './services/cart/cart.service';
+
+//Book Services
 import { GetBookService } from './services/book/get-book.service';
+
+//Coupon Services
 import { GetCouponService } from './services/coupons/get-coupon.service';
 
 //Routes var
@@ -130,6 +135,8 @@ const appRoutes: Routes = [
     )
   ],
   providers: [
+    //Carts
+    GetCartService,
     CartService,
 
     //Books

@@ -1,0 +1,83 @@
+.books-loop {
+    display: flex;
+    flex-flow: row wrap;
+    font-family: 'Tahoma';
+    justify-content: left;
+    width: 100%;
+}
+
+.books-loop .item {
+    background-color: rgb(255, 255, 255);
+    margin: 15px;
+    max-width: -webkit-calc(25% - 30px);
+    max-width: -moz-calc(25% - 30px);
+    max-width: -ms-calc(25% - 30px);
+    max-width: calc(25% - 30px);
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    width: 100%;
+}
+    .books-loop .item:hover,
+    .books-loop .item:active {
+        background-color: #F5F5F5;
+    }
+
+.item .info {
+    padding: 30px 20px;
+}
+
+.item .contain-img {
+    border-bottom: 1px solid #C7C7C7;
+    display: block;
+}
+    .item .contain-img img {
+        display: block;
+        max-width: 100%;
+        width: 100%;
+    }
+
+.item .name {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: normal;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+    .item .name a {
+        color: #00396F;
+        text-decoration: none;
+    }
+
+.item .authors a {
+    color: #666666;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.item .actions {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 24px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+    .item .actions .price {
+        color: #00396F;
+        font-weight: bold;
+    }
+
+    .item .actions a {
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .item .actions .cart-btn {
+        color: #00396F;
+    }
+    .item .actions .hearth-btn {
+        color: #E2231A;
+        margin-left: 5px;
+    }

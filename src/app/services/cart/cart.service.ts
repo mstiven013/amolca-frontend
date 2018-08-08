@@ -1,24 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { config } from '../../../config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor() { }
+  constructor(
+    private _http: Http
+  ) { }
 
-  private cartData = new Subject<any>();
+  createCart(cart) {
+    let headers = new Headers({'Content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
 
-  //Observable to cart data
-  cartDataWatch(): Observable<any> {
-    return this.cartData.asObservable();
+    return this._http.post(config.API_URL + '/carts', cart, options);
   }
 
-  //Refres cart data
-  cartDataRefresh(cart) {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    this.cartData.next(cart);
+  updateCart(info, id) {
+    let headers = new Headers({'Content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+
+    return this._http.put(config.API_URL + '/carts/' + id, info, options);
   }
 
 }

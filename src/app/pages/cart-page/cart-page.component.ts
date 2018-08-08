@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TooltipPosition } from '@angular/material';
-import { CartService } from '../../services/cart/cart.service';
+import { GetCartService } from '../../services/cart/get-cart.service';
 import { AppComponent } from '../../app.component';
 import { CurrencyPipe } from '@angular/common';
 import { ReplacePipe } from '../../pipes/currencyFormat';
@@ -20,7 +20,7 @@ declare var Materialize: any;
 export class CartPageComponent implements OnInit {
 
   constructor(
-    private _cartService: CartService,
+    private _getCartService: GetCartService,
     private _appComponent: AppComponent,
     private _currencyPipe: CurrencyPipe,
     private _transformCurrencyPipe: ReplacePipe,
@@ -61,7 +61,7 @@ export class CartPageComponent implements OnInit {
 
   //Get Cart Info
   getCartInfo() {
-    let cartInfo = JSON.parse(localStorage.getItem('cart'));
+    let cartInfo = JSON.parse(localStorage.getItem('wyC4r7'));
 
     if(cartInfo !== null) {
       this.cart = cartInfo;
@@ -103,7 +103,7 @@ export class CartPageComponent implements OnInit {
 
     console.log(this.cart)
 
-    this._cartService.cartDataRefresh(this.cart);
+    this._getCartService.cartDataRefresh(this.cart);
 
   }
 

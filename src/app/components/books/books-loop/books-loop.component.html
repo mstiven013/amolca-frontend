@@ -1,3 +1,57 @@
-<p>
-  products-loop works!
-</p>
+<div *ngIf="books.length > 0" class="books-loop">
+  <div *ngFor="let book of books;" class="item">
+
+    <!--Book principal image-->
+    <a routerLink="{{book.slug}}" class="contain-img">
+      <!--Show if book images exists-->        
+      <ng-template *ngIf="book.image.length > 0">
+        <ng-template *ngFor="let image of book.image;">
+          <img *ngIf="image.principal" src="assets/img/products/{{book.image.name}}" alt="">
+        </ng-template>
+      </ng-template>
+      
+      <img *ngIf="book.image.length == 0" src="assets/img/common/no-image.jpg" alt="">
+    </a>
+
+    <div class="info">
+      <!--Book Name-->
+      <h3 class="name">
+          <a routerLink="{{book.slug}}">{{book.name}}</a>
+      </h3>
+
+      <!--REPLACE WHEN CHANGE BOOKS MODEL-->
+      <!--
+      <ng-template *ngFor="let author of book.author;">
+        <p class="authors">
+          <a routerLink="{{author.slug}}">{{author.name}}</a>
+        </p>
+      </ng-template>
+      -->
+      <p class="authors">
+        <a>{{ book.author }}</a>
+      </p>
+
+      <!--Book actions-->
+      <div *ngIf="book.price > 0" class="actions">
+
+        <!--Book Price-->
+        <p class="price">{{ book.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
+
+        <!--Book buttons-->
+        <p class="btns">
+          <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book)">
+            <i class="material-icons">add_shopping_cart</i>
+          </a>
+          <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">
+            <i class="material-icons">favorite_border</i>
+          </a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="alert">
+  <p></p>
+</div>
