@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TooltipPosition } from '@angular/material';
 import { CartService } from '../../services/cart/cart.service';
 import { AppComponent } from '../../app.component';
-import { CurrencyPipe } from '../../../../node_modules/@angular/common';
+import { CurrencyPipe } from '@angular/common';
 import { ReplacePipe } from '../../pipes/currencyFormat';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -163,48 +163,5 @@ export class CartPageComponent implements OnInit {
       }
 
   }
-
-  /* CART EXAMPLE */
-  /*
-  cart = {
-    id: 1,
-    user_id: 1,
-    products: [
-      { 
-        id: 1, 
-        name: 'Serie de Interpretación de Biopsias: Jonathan I. Epstein Interpretación de Biopsias de Tumores de Tejido Blando – Segunda edición', 
-        image: 'interpretacion-de-bipsias.png', 
-        price: 250000, 
-        quantity: 1
-      },
-      { 
-        id: 2, 
-        name: 'Rehabilitación Neuro-Oclusal (RNO) Claves para el diagnóstico y el tratamiento', 
-        image: 'rehabilitacion-neuro-oclusal.png', 
-        price: 250000, 
-        quantity: 2 
-      }
-    ],
-    coupons: ['']
-  }
-  */
-
-  /*
-  products = [
-    { 
-      author: ['Cyril Fisher', 'Elizabeth A. Montgomery', 'Khin Thway'],
-      cover: 'Tapa dura de lujo, gofrado',
-      edition: 'Año 2018',
-      especialty: ['Medicina', 'Patologia'],
-      format: '15,00 x 23,00 cm',
-      isbn: '978-958-5426-82-5',
-      name: 'Serie de Interpretación de Biopsias: Jonathan I. Epstein Interpretación de Biopsias de Tumores de Tejido Blando – Segunda edición',
-      novelty_month: 8,
-      novelty_year: 2018,
-      pages: 606,
-      printing: 'A todo color'
-    }
-  ]
-  */
 
 }

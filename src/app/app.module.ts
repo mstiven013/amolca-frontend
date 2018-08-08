@@ -1,6 +1,6 @@
 //Angular libraries and modules
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '../../node_modules/@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -54,6 +54,9 @@ import { BlockSocialComponent } from './components/common/footer/block-social/bl
 import { LoginBtnComponent } from './components/common/login-btn/login-btn.component';
 import { CartBtnComponent } from './components/common/cart-btn/cart-btn.component';
 
+//Books components
+import { BooksLoopComponent } from './components/books/books-loop/books-loop.component';
+
 //Page routes
 import { PageRoutes } from './routes/pages.routes';
 
@@ -94,6 +97,9 @@ const appRoutes: Routes = [
 
     //Cart components
     CartTotalsComponent,
+
+    //Books components
+    BooksLoopComponent,
 
     //Pages
     HomeComponent,

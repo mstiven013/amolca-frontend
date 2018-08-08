@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { _MatSlideToggleMixinBase } from '../../../../../node_modules/@angular/material';
+import { _MatSlideToggleMixinBase } from '@angular/material';
 
 //Declare jQuery
 declare var jQuery: any;
