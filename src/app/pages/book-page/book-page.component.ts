@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { TooltipPosition } from '@angular/material';
 import { GetBookService } from '../../services/book/get-book.service';
 import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
 import { AppComponent } from '../../app.component';
 import { Meta } from '../../../../node_modules/@angular/platform-browser';
+
+declare var jQuery: any;
 
 @Component({
   selector: 'app-book-page',
@@ -10,6 +13,10 @@ import { Meta } from '../../../../node_modules/@angular/platform-browser';
   styleUrls: ['./book-page.component.css']
 })
 export class BookPageComponent implements OnInit {
+
+  //Declare position tooltip
+  tooltipPositionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
+  tooltipPosition = this.tooltipPositionOptions[2];
 
   private sub: any;
   bookActive: any;
@@ -33,6 +40,10 @@ export class BookPageComponent implements OnInit {
     this.sub = this._activatedRoute.params.subscribe(params => {
       this.bookActive = params['slug']
     })
+
+    jQuery(document).ready(function() {
+      jQuery('.materialboxed').materialbox();
+    });
 
     this.getBookInfo(this.bookActive);
   }

@@ -1,13 +1,106 @@
 .single-book {
+    font-family: 'Tahoma';
     padding-bottom: 40px;
     padding-top: 40px;
 }
 
+/*COLUMN IMAGE*/
+.image-book img {
+    height: auto;
+    max-width: 100%;
+    width: auto;
+}
+    .image-book img.active {
+        max-width: none;
+    }
+
+/*COLUMN INFORMATION*/
+.summary-book {
+    padding-left: 40px;
+}
+
 .name {
     color: #00396F;
-    font-family: 'Tahoma';
     font-size: 40px;
     font-weight: bold;
-    margin-bottom: 20px;
-    margin-top: 0px;
+    line-height: 100%;
+    margin: 0px;
 }
+
+.author {
+    font-size: 23px;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+    .author a {
+        color: #666666;
+        position: relative;
+        text-decoration: none;
+    }
+        .author a:before {
+            content: '';
+            background-color: #666666;
+            bottom: -4px;
+            height: 1px;
+            left: 0px;
+            position: absolute;
+            -webkit-transition: all 0.4s ease;
+            -moz-transition: all 0.4s ease;
+            -ms-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            width: 0%;
+        }
+        .author a:hover:before {
+            width: 100%;
+        }
+
+.price {
+    color: #E2231A;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 100%;
+    margin: 0px;
+}
+
+.shipping {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+
+.versions {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+    .version-btn {
+        color: #666666;
+        display: inline-block;
+        margin-left: 10px;
+        vertical-align: middle;
+    }
+        .version-btn span {
+            border-radius: 50%;
+            border: 1px solid #A5A5A5;
+            color: #00396F;
+            display: inline-block;
+            font-size: 20px;
+            height: 37px;
+            line-height: 35px;
+            text-align: center;
+            -webkit-transition: all 0.4s ease;
+            -moz-transition: all 0.4s ease;
+            -ms-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            vertical-align: inherit;
+            width: 37px;
+        }
+            .version-btn span.icon-book {
+                font-size: 15px;
+            }
+
+        .version-btn:hover span {
+            background-color: #00396F;
+            border-color: #00396F;
+            color: #fff;
+        }

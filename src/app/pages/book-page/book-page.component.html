@@ -1,27 +1,79 @@
 <div class="page-container single-book" *ngIf="this.exists">
-  <h1 class="name">{{book.name}}</h1>
 
-  <p>{{book.author}}</p>
+  <div class="row">
+    <!--Images Book column-->
+    <div class="col s12 l5 image-book">
+      <!--Show if book images exists-->        
+      <ng-template *ngIf="book.image !== undefined && book.image.length > 0">
+        <ng-template *ngFor="let image of book.image;">
+          <img *ngIf="image.principal" class="materialboxed" src="assets/img/products/{{book.image.name}}" alt="">
+        </ng-template>
+      </ng-template>
+        
+      <img *ngIf="book.image === undefined || book.image.length == 0" class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
+    </div>
 
-  <!--Material Accordion-->
-  <mat-accordion>
+    <!--Summary Book column-->
+    <div class="col s12 l7 summary-book">
+      <!--Book name-->
+      <h1 class="name">{{book.name}}</h1>
 
-    <!--Description Panel-->
-    <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''">
-      <!--Header-->
-      <mat-expansion-panel-header>
-        <mat-panel-title>Descripción</mat-panel-title>
-      </mat-expansion-panel-header>
+      <!--Book author-->
+      <h3 class="author">
+        <a>{{book.author}}</a>
+      </h3>
 
-      {{book.description}}
-    </mat-expansion-panel>
+      <!--Book price-->
+      <p class="price" *ngIf="book.price !== 0">{{book.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
 
-    <!--Panel-->
-    <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''">
-    </mat-expansion-panel>
+      <!--Free Shipping text-->
+      <p class="shipping">¡Envío gratis a cualquier ciudad de Colombia!</p>
+
+      <!--Book versions-->
+      <p *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
+        Disponible en: 
+        <ng-template ngFor let-v [ngForOf]="book.version">
+
+          <!--If version is PAPER-->
+          <a *ngIf="v == 'PAPER'" matTooltip="Papel" [matTooltipPosition]="tooltipPosition" class="version-btn">
+            <span class="icon-book"></span> Papel
+          </a>
+
+          <!--If version is EBOOK-->
+          <a *ngIf="v == 'EBOOK'" matTooltip="Ebook" [matTooltipPosition]="tooltipPosition" class="version-btn">
+            <span class="icon-document-text"></span> Ebook
+          </a>
+
+          <!--If version is VIDEO-->
+          <a *ngIf="v == 'VIDEO'" matTooltip="Vídeo" [matTooltipPosition]="tooltipPosition" class="version-btn">
+            <span class="icon-media-play"></span> Vídeo
+          </a>
+
+        </ng-template>
+      </p>
+
+      <!--Material Accordion-->
+      <mat-accordion>
+
+        <!--Description Panel-->
+        <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''">
+          <!--Header-->
+          <mat-expansion-panel-header>
+            <mat-panel-title>Descripción</mat-panel-title>
+          </mat-expansion-panel-header>
+
+          {{book.description}}
+        </mat-expansion-panel>
+
+        <!--Panel-->
+        <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''">
+        </mat-expansion-panel>
 
 
-  </mat-accordion>
+      </mat-accordion>
+    </div>
+  </div>
+  
 </div>
 
 <!--If not exists one book with this slug show Not Found component-->

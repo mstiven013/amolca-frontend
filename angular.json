@@ -24,6 +24,7 @@
             ],
             "styles": [
               "src/assets/css/fonts.css",
+              "src/assets/libs/icomoon/style.css",
               "src/assets/css/global.css",
               "src/assets/css/responsive.css"
             ],
@@ -78,6 +79,7 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": [
               "src/assets/css/fonts.css",
+              "src/assets/libs/icomoon/style.css",
               "src/assets/css/global.css",
               "src/assets/css/responsive.css"
             ],
