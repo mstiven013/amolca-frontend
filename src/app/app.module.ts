@@ -20,6 +20,7 @@ import 'hammerjs';
 import 'materialize-css';
 import { MatTooltipModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 //Pages
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -128,7 +129,9 @@ const appRoutes: Routes = [
     MatIconModule,
     BrowserAnimationsModule,
     MatTooltipModule,
+    MatExpansionModule,
 
+    //Http
     HttpClientModule,
     HttpModule,
 

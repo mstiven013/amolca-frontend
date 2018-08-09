@@ -31,10 +31,7 @@ export class BooksLoopComponent implements OnInit {
     this._getBookService.getAllBooks()
       .map(resp => resp.json())
       .subscribe(
-        data => {
-          this.books = data.books
-          console.log(this.books)
-        },
+        data => this.books = data.books,
         err => console.log(err)
       )
   }
@@ -71,32 +68,22 @@ export class BooksLoopComponent implements OnInit {
       this._CartService.updateCart({"products": uCart.products}, uCart._id)
         .map(resp => resp.json())
         .subscribe(
-          data => {
-            this._getCartService.cartDataRefresh(data)
-            console.log(data)
-          },
-          err => {
-            console.log(err)
-          }
+          data => this._getCartService.cartDataRefresh(data),
+          err => console.log(err)
         )
 
     } else {
 
       let data = {
-        "products": [
-          { "id": book._id, "price": book.price, "quantity": 1 }
-        ]
-      }
+        "products": [{ 
+          "id": book._id, "price": book.price, "quantity": 1 }
+        ]};
+
       this._CartService.createCart(data)
         .map(resp => resp.json())
         .subscribe(
-          data => {
-            this._getCartService.cartDataRefresh(data)
-            console.log(data)
-          },
-          err => {
-            console.log(err)
-          }
+          data => this._getCartService.cartDataRefresh(data),
+          err => console.log(err)
         )
     }
   }

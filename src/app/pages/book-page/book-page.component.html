@@ -1,3 +1,28 @@
-<p>
-  book-page works!
-</p>
+<div class="page-container single-book" *ngIf="this.exists">
+  <h1 class="name">{{book.name}}</h1>
+
+  <p>{{book.author}}</p>
+
+  <!--Material Accordion-->
+  <mat-accordion>
+
+    <!--Description Panel-->
+    <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''">
+      <!--Header-->
+      <mat-expansion-panel-header>
+        <mat-panel-title>Descripción</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      {{book.description}}
+    </mat-expansion-panel>
+
+    <!--Panel-->
+    <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''">
+    </mat-expansion-panel>
+
+
+  </mat-accordion>
+</div>
+
+<!--If not exists one book with this slug show Not Found component-->
+<not-found *ngIf="!this.exists" [pageType]="'product'"></not-found>

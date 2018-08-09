@@ -1,0 +1,13 @@
+.single-book {
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+.name {
+    color: #00396F;
+    font-family: 'Tahoma';
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}

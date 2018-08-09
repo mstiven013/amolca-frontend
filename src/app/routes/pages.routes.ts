@@ -12,6 +12,7 @@ export const PageRoutes: Routes = [
     { path: 'iniciar-sesion', component: AuthPageComponent },
     { path: 'carrito', component: CartPageComponent },
     { path: 'libro/:slug', component: BookPageComponent },
+    { path: '404', component: NotFoundComponent },
 
     //Not found page
     { path: '**', component: NotFoundComponent }
