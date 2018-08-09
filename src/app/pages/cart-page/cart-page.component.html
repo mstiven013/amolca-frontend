@@ -13,23 +13,34 @@
     </thead>
   
     <tbody>
-      <tr *ngFor="let product of cart.products; let i = index;">
-
+      <tr *ngFor="let book of cart.products; let i = index;">
+        <!--Book image-->
         <td class="image">
-          <img matTooltip="{{product.name}}" [matTooltipPosition]="tooltipPosition" *ngIf="product.image !== ''" class="materialboxed" src="assets\img\products\{{product.image}}" />
-          <p *ngIf="product.image == ''">{{product.image}}</p>
+          <!--If image is defined and have minimun one object-->
+          <ng-template *ngIf="book.image !== undefined && book.image.length > 0">
+            <ng-template *ngFor="let image of book.image;">
+              <img *ngIf="image.principal" matTooltip="{{book.name}}" [matTooltipPosition]="tooltipPosition" class="materialboxed" src="assets\img\products\{{book.image}}">
+            </ng-template>
+          </ng-template>
+
+          <!--If image is undefined or not have objects-->
+          <img *ngIf="book.image == undefined || book.image.length == 0" matTooltip="{{book.name}}" [matTooltipPosition]="tooltipPosition" class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
         </td>
+        <!--Book name-->
         <td class="name">
-          {{product.name}}
+          {{book.name}}
         </td>
+        <!--Book price-->
         <td class="price">
-          {{product.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}
+          {{book.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}
         </td>
+        <!--Book quantity-->
         <td class="qty">
-          <input type="number" matTooltip="Cantidad" [matTooltipPosition]="tooltipPosition" #qty [value]="product.quantity" (change)="changeTotalProduct(product, qty.value, i)" (keyup)="changeTotalProduct(product, qty.value, i)">
+          <input type="number" matTooltip="Cantidad" [matTooltipPosition]="tooltipPosition" #qty [value]="book.quantity" (change)="changeTotalBook(book, qty.value, i)" (keyup)="changeTotalBook(book, qty.value, i)">
         </td>
+        <!--Book total-->
         <td class="total">
-          {{product.price * product.quantity | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}
+          {{book.price * book.quantity | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}
         </td>
         <td class="actions">
           <button class="delete" matTooltip="Eliminar" [matTooltipPosition]="tooltipPosition" (click)="deleteProduct(i)"><i class="material-icons">delete_outline</i></button>
@@ -51,7 +62,7 @@
     </div>
     
     <div class="cart-totals">
-      <cart-totals [subtotal]="subtotalCart" [shipping]="shipping" [total]="totalCart"></cart-totals>
+      <cart-totals [subtotal]="cart.total" [shipping]="shipping" [total]="cart.total"></cart-totals>
     </div>
 
   </div>

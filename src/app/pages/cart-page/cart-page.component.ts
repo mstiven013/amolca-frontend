@@ -5,6 +5,7 @@ import { AppComponent } from '../../app.component';
 import { CurrencyPipe } from '@angular/common';
 import { ReplacePipe } from '../../pipes/currencyFormat';
 import { AuthService } from '../../services/auth/auth.service';
+import { CartService } from '../../services/cart/cart.service';
 
 //Declare jQuery
 //import jQuery from 'jquery';
@@ -21,6 +22,7 @@ export class CartPageComponent implements OnInit {
 
   constructor(
     private _getCartService: GetCartService,
+    private _CartService: CartService,
     private _appComponent: AppComponent,
     private _currencyPipe: CurrencyPipe,
     private _transformCurrencyPipe: ReplacePipe,
@@ -55,7 +57,7 @@ export class CartPageComponent implements OnInit {
   };
 
   //Declare cart variable
-  cart = { id: 0, user_id: 0, products: [], coupon: [], total: 0 };
+  cart = { _id: 0, user_id: 0, products: [], coupon: [], total: 0 };
 
   couponError = { state: false, text: '' };
 
@@ -64,47 +66,57 @@ export class CartPageComponent implements OnInit {
     let cartInfo = JSON.parse(localStorage.getItem('wyC4r7'));
 
     if(cartInfo !== null) {
-      this.cart = cartInfo;
-      this.changeTotalCart();
+
+      this._getCartService.getCartById(cartInfo._id)
+        .map(resp => resp.json())
+        .subscribe(
+          data => {
+            this.cart = data;
+          },
+          err => {
+            console.log(err)
+          }
+        )
     }
   }
 
   //Change product Total
-  changeTotalProduct(p, qty, i) {
+  changeTotalBook(p, qty, i) {
     if(qty == 0) {
       this.cart.products.splice(i, 1);
       return false;
     }
-
+    
     let product = this.cart.products.filter( product => product.id === p.id);
-    product[0].quantity = qty;
+    product[0].quantity = parseInt(qty);
 
-    this.changeTotalCart();
+    let pUpdated = {products: this.cart.products};
+
+    this.updateCartInfo(pUpdated, this.cart._id);
   }
 
   //Delete product object from array
   deleteProduct(i) {
     this.cart.products.splice(i, 1);
-    this.changeTotalCart();
+    let pUpdated = {products: this.cart.products};
+
+    this.updateCartInfo(pUpdated, this.cart._id);
+    //this.changeTotalCart();
   }
 
   //Change cart total
-  changeTotalCart() {
-    let me = this;
+  updateCartInfo(info, id) {
 
-    //Change subtotal
-    this.subtotalCart = 0;
-    for(let i = 0; i < this.cart.products.length; i++) {
-      me.subtotalCart += me.cart.products[i].price * me.cart.products[i].quantity;
-    }
-
-    //Change total cart
-    this.totalCart = this.subtotalCart + this.shipping.price;
-
-    console.log(this.cart)
-
-    this._getCartService.cartDataRefresh(this.cart);
-
+    this._CartService.updateCart(info, id)
+      .map(resp => resp.json())
+      .subscribe(
+        data => {
+          this.cart = data
+          this._getCartService.cartDataRefresh(this.cart)
+        },
+        err => console.log(err)
+      );
+      
   }
 
   validateCoupons() {
