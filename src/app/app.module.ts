@@ -69,6 +69,7 @@ import { GetBookService } from './services/book/get-book.service';
 
 //Coupon Services
 import { GetCouponService } from './services/coupons/get-coupon.service';
+import { BookPageComponent } from './pages/book-page/book-page.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -114,6 +115,8 @@ const appRoutes: Routes = [
 
     //Pipes
     ReplacePipe,
+
+    BookPageComponent,
   ],
   imports: [
     //Angular libraries

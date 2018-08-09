@@ -2,7 +2,7 @@
   <div *ngFor="let book of books;" class="item">
 
     <!--Book principal image-->
-    <a routerLink="{{book.slug}}" class="contain-img">
+    <a routerLink="libro/{{book.slug}}" class="contain-img">
       <!--Show if book images exists-->        
       <ng-template *ngIf="book.image.length > 0">
         <ng-template *ngFor="let image of book.image;">
@@ -16,7 +16,7 @@
     <div class="info">
       <!--Book Name-->
       <h3 class="name">
-          <a routerLink="{{book.slug}}">{{book.name}}</a>
+          <a routerLink="libro/{{book.slug}}">{{book.name}}</a>
       </h3>
 
       <!--REPLACE WHEN CHANGE BOOKS MODEL-->
