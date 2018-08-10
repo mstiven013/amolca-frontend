@@ -53,13 +53,15 @@
       </p>
 
       <!--Material Accordion-->
-      <mat-accordion>
+      <mat-accordion class="book-accordion">
 
         <!--Description Panel-->
         <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''">
           <!--Header-->
-          <mat-expansion-panel-header>
-            <mat-panel-title>Descripción</mat-panel-title>
+          <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
+            <mat-panel-title>
+              <span class="icon-plus"></span> Descripción
+            </mat-panel-title>
           </mat-expansion-panel-header>
 
           {{book.description}}

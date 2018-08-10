@@ -330,6 +330,139 @@ html {
     top: auto;
 }
 
+/*Material accordion*/
+.mat-expansion-panel,
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none !important;
+}
+
+.book-accordion mat-expansion-panel-header {
+    background-color: #EAEAEA;
+    border-radius: 7px;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+    .mat-expansion-panel.mat-expanded .mat-expansion-panel-header:not([aria-disabled=true]),
+    .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused,
+    .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused,
+    .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover {
+        background-color: #EAEAEA;
+    }
+    .book-accordion mat-expansion-panel-header:before {
+        background: url('../img/common/accordion-active.png');
+        background-position: right 150px center;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        border-radius: 7px;
+        content: '';
+        height: 100%;
+        left: 0px;
+        opacity: 0;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        -ms-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        z-index: -1;
+    }
+        .mat-expansion-panel.mat-expanded .mat-expansion-panel-header:not([aria-disabled=true]):before,
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused:before,
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused:before,
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover:before {
+            opacity: 1;
+        }
+    .book-accordion mat-expansion-panel-header .mat-content {
+        overflow: visible;
+    }
+    .book-accordion mat-expansion-panel-header mat-panel-title span {
+        background-color: #00396F;
+        border-radius: 50%;
+        color: #fff;
+        display: inline-block;
+        font-family: 'icomoon' !important;
+        font-size: 9px;
+        font-weight: normal;
+        font-style: normal;
+        height: 20px;
+        line-height: 21px;
+        margin-right: 15px;
+        margin-top: 1px;
+        position: relative;
+        text-align: center;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        -ms-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        width: 20px;
+    }
+        
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover mat-panel-title span,
+        .mat-expansion-panel.mat-expanded mat-panel-title span {
+            background-color: #7CB6D0;
+        }
+        .book-accordion mat-expansion-panel-header mat-panel-title span::after {
+            background-color: transparent;
+            border-radius: 50%;
+            border: 2px solid #C8C8C8;
+            bottom: -7px;
+            content: '';
+            left: -7px;
+            position: absolute;
+            right: -7px;
+            top: -7px;
+        }
+
+    .mat-expansion-panel-header-title,
+    .mat-expansion-indicator::after,
+    .mat-expansion-panel-header-description {
+        color: #666666;
+        font-family: 'Tahoma';
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 100%;
+        -webkit-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        -ms-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+    .mat-expansion-indicator::after {
+        margin-top: -5px;
+    }
+        /*Header title hover*/
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused .mat-expansion-panel-header-title,
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused .mat-expansion-panel-header-title,
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover .mat-expansion-panel-header-title,
+        .mat-expansion-panel.mat-expanded .mat-expansion-panel-header-title {
+            color: #fff;
+        }
+
+        /*Arrow hover*/
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused .mat-expansion-panel-header-description,
+        .mat-expansion-panel.mat-expanded .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused .mat-expansion-panel-header-description,
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused .mat-expansion-panel-header-description,
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover .mat-expansion-panel-header-description,
+        .mat-expansion-panel.mat-expanded .mat-expansion-panel-header-description {
+            color: #fff;
+        }
+
+    .mat-expansion-panel-content {
+        background-color: #F5F5F5;
+        border-radius: 10px;
+        color: #A5A5A5;
+        font-family: 'Tahoma';
+        font-size: 16px;
+        margin-top: 10px;
+    }
+        .mat-expansion-panel-content .mat-expansion-panel-body {
+            padding: 30px 30px 30px 60px;
+        }
+
 /*Custom row and columns*/
 .custom-row {
     display: flex;
