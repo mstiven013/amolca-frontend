@@ -313,6 +313,15 @@ html {
         background-color: #fff;
         color: #00396F;
     }
+    .button.danger {
+        background-color: #E2231A;
+        color: #fff;
+    }
+        .button.danger:hover,
+        .button.danger:active,
+        .button.danger:focus {
+            background-color: rgb(180, 23, 15);
+        }
 
 /*Angular Material & Materialize css*/
 #materialbox-overlay {

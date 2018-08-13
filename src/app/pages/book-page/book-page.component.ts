@@ -23,6 +23,8 @@ export class BookPageComponent implements OnInit {
   book: any = {};
   exists = true;
 
+  showCartBtn: Boolean = true;
+
   footerOffset: any = jQuery('.footer').offset().top - 40;
 
   constructor(
