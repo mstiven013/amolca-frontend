@@ -31,7 +31,7 @@ export class BooksLoopComponent implements OnInit {
     this._getBookService.getAllBooks()
       .map(resp => resp.json())
       .subscribe(
-        data => this.books = data.books,
+        data => this.books = data,
         err => console.log(err)
       )
   }

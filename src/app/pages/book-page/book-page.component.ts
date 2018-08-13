@@ -23,6 +23,8 @@ export class BookPageComponent implements OnInit {
   book: any = {};
   exists = true;
 
+  footerOffset: any = jQuery('.footer').offset().top - 40;
+
   constructor(
     //Meta info for this book
     private _appComponent: AppComponent,
@@ -45,6 +47,7 @@ export class BookPageComponent implements OnInit {
       jQuery('.materialboxed').materialbox();
     });
 
+    this.scrollInteraction();
     this.getBookInfo(this.bookActive);
   }
 
@@ -65,4 +68,40 @@ export class BookPageComponent implements OnInit {
     this._meta.addTag({ name: "description", content: this.book.description });
   }
 
+  scrollInteraction() {
+    let me = this;
+    jQuery(document).ready(function(){
+
+      let imgCont = jQuery('#image-container');
+      let start_pos = imgCont.offset().top;
+
+      jQuery(window).scroll(function(){
+
+        let end_pos = me.footerOffset - (imgCont.height() + 40);
+        let scroll = jQuery(window).scrollTop();
+
+        if(scroll >= start_pos - 140) {
+          jQuery('#image-container .scroll-info').fadeIn();
+        } else {
+          jQuery('#image-container .scroll-info').fadeOut();
+        }
+
+        if (scroll >= start_pos - 140 && scroll <= end_pos) {
+          imgCont.removeClass('scroll-waiting');
+          imgCont.addClass('scroll-fixed');
+        } else if(scroll > end_pos - 300) {
+          imgCont.removeClass('scroll-fixed');
+          imgCont.addClass('scroll-waiting');
+        } else {
+          imgCont.removeClass('scroll-waiting');
+          imgCont.removeClass('scroll-fixed');
+        }
+      });
+
+    });    
+  }
+
+  changeFooterOffsetTop() {
+    this.footerOffset = jQuery('.footer').offset().top;
+  }
 }

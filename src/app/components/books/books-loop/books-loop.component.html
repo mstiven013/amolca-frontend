@@ -20,15 +20,8 @@
       </h3>
 
       <!--REPLACE WHEN CHANGE BOOKS MODEL-->
-      <!--
-      <ng-template *ngFor="let author of book.author;">
-        <p class="authors">
-          <a routerLink="{{author.slug}}">{{author.name}}</a>
-        </p>
-      </ng-template>
-      -->
       <p class="authors">
-        <a>{{ book.author }}</a>
+        <a *ngFor="let author of book.author;" routerLink="/autor/{{author.slug}}">{{author.name}}</a>
       </p>
 
       <!--Book actions-->

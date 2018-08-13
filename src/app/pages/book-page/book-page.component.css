@@ -4,15 +4,80 @@
     padding-top: 40px;
 }
 
+.single-book .row {
+    position: relative;
+}
+
 /*COLUMN IMAGE*/
 .image-book img {
+    display: block;
     height: auto;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 100%;
     width: auto;
 }
     .image-book img.active {
+        max-height: none;
         max-width: none;
     }
+
+#image-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 100;
+}
+
+#image-container.scroll-waiting {
+    bottom: 0px;
+    left: 0;
+    max-height: -webkit-calc(100vh - 220px);
+    max-height: -moz-calc(100vh - 220px);
+    max-height: -ms-calc(100vh - 220px);
+    max-height: -o-calc(100vh - 220px);
+    max-height: calc(100vh - 220px);
+    max-width: -webkit-calc(41.6666666667% - 0.75rem);
+    max-width: -moz-calc(41.6666666667% - 0.75rem);
+    max-width: -ms-calc(41.6666666667% - 0.75rem);
+    max-width: -o-calc(41.6666666667% - 0.75rem);
+    max-width: calc(41.6666666667% - 0.75rem);
+    position: absolute;
+}
+
+#image-container.scroll-fixed {
+    left: 5%;
+    max-height: -webkit-calc(100vh - 220px);
+    max-height: -moz-calc(100vh - 220px);
+    max-height: -ms-calc(100vh - 220px);
+    max-height: -o-calc(100vh - 220px);
+    max-height: calc(100vh - 220px);
+    max-width: -webkit-calc(41.6666666667% - 3.75rem);
+    max-width: -moz-calc(41.6666666667% - 3.75rem);
+    max-width: -ms-calc(41.6666666667% - 3.75rem);
+    max-width: -o-calc(41.6666666667% - 3.75rem);
+    max-width: calc(41.6666666667% - 3.75rem);
+    position: fixed;
+    top: 160px;
+}
+    #image-container.scroll-fixed img,
+    #image-container.scroll-waiting img {
+        max-height: calc(50vh - 100px);
+    }
+        #image-container.scroll-fixed img.active,
+        #image-container.scroll-waiting img.active {
+            max-height: none;
+        }
+
+/*Scroll interaction*/
+.scroll-info {
+    background-color: #F5F5F5;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display: none;
+    padding: 30px 5%;
+    text-align: center;
+}
 
 /*COLUMN INFORMATION*/
 .summary-book {
@@ -104,3 +169,22 @@
             border-color: #00396F;
             color: #fff;
         }
+
+/*Author Panel*/
+.row.author-item {
+    margin-bottom: 10px;
+}
+    /*Image*/
+    .author-item .image img {
+        border-radius: 50%;
+        overflow: hidden;
+        height: auto;
+        max-width: 100%;
+    }
+    /*Information*/
+    .author-item .name {
+        font-size: 25px;
+    }
+    .author-item .description {
+        margin: 10px auto;
+    }
