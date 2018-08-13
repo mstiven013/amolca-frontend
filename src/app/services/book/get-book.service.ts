@@ -23,56 +23,56 @@ export class GetBookService {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.get(`${config.API_URL}/books?searchby=id&id=${id}`, options);
+    return this._http.get(`${config.API_URL}/books/${id}`, options);
   }
 
   getBooksBySlug(slug) {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.get(`${config.API_URL}/books?searchby=slug&slug=${slug}`, options);
+    return this._http.get(`${config.API_URL}/books/slug/${slug}`, options);
   }
 
   getBooksByUser(id) {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.get(`${config.API_URL}/books?searchby=user&id=${id}`, options);
+    return this._http.get(`${config.API_URL}/users/${id}/books`, options);
   }
 
   getBooksBySpecialty(specialty) {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.get(`${config.API_URL}/books?searchby=specialty&specialty=${specialty}`, options);
+    return this._http.get(`${config.API_URL}/specialties/${specialty}/books`, options);
   }
 
   getBooksByAuthor(id) {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.get(`${config.API_URL}/books?searchby=author&id=${id}`, options);
+    return this._http.get(`${config.API_URL}/authors/${id}/books`, options);
   }
 
   getBooksByIsbn(isbn) {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.get(`${config.API_URL}/books?searchby=isbn&isbn=${isbn}`, options);
+    return this._http.get(`${config.API_URL}/books/isbn/${isbn}`, options);
   }
 
   getBooksByInventoryState(state) {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.get(`${config.API_URL}/books?searchby=state&state=${state}`, options);
+    return this._http.get(`${config.API_URL}/books/state/${state}`, options);
   }
 
   getBooksByPublication(year) {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.get(`${config.API_URL}/books?searchby=publication&year=${year}`, options);
+    return this._http.get(`${config.API_URL}/books/publication/${year}`, options);
   }
 
 }

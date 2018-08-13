@@ -335,6 +335,10 @@ html {
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
     box-shadow: none !important;
 }
+    .mat-expansion-panel-spacing {
+        margin-bottom: 10px !important;
+        margin-top: 0px !important;
+    }
 
 .book-accordion mat-expansion-panel-header {
     background-color: #EAEAEA;
