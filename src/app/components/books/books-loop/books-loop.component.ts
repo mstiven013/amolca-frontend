@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GetBookService } from '../../../services/book/get-book.service';
 import { TooltipPosition } from '@angular/material';
 import { CartService } from '../../../services/cart/cart.service';
 import { GetCartService } from '../../../services/cart/get-cart.service';
+import { NgxCarousel } from 'ngx-carousel';
 
 declare var jQuery: any;
 declare var Materialize: any;
+declare var slick: any;
 
 @Component({
   selector: 'books-loop',
@@ -14,8 +16,17 @@ declare var Materialize: any;
 })
 export class BooksLoopComponent implements OnInit {
 
+  public carouselOne: NgxCarousel;
+
   //Declare variables
   books: any = [];
+  loopclass: any = 'books-loop';
+  itemclass: any = 'item';
+
+  //Input vars
+  @Input() specialty: any;
+  @Input() carousel: Boolean = false;
+  @Input() itemsPerRow: any = 0;
 
   //Declare position tooltip
   tooltipPositionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
@@ -28,12 +39,30 @@ export class BooksLoopComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._getBookService.getAllBooks()
-      .map(resp => resp.json())
-      .subscribe(
-        data => this.books = data,
-        err => console.log(err)
-      )
+      this.initGetBooks();
+      this.validateCarousel();
+  }
+
+  //Get books
+  initGetBooks() {
+    //If specialty is diffetent to "undefined"
+    if(this.specialty !== undefined) {
+      
+      this._getBookService.getBooksBySpecialty(this.specialty)
+        .map(resp => resp.json())
+        .subscribe(
+          data => this.books = data,
+          err => console.log(err)
+        );
+
+    } else {
+      this._getBookService.getAllBooks()
+        .map(resp => resp.json())
+        .subscribe(
+          data => this.books = data,
+          err => console.log(err)
+        );
+    }
   }
 
   addToCart(book){
@@ -91,5 +120,30 @@ export class BooksLoopComponent implements OnInit {
   addToWishlist(book) {
     console.log(book)
   }
+
+  validateCarousel() {
+    let me = this;
+    if(this.carousel) {
+        this.carouselOne = {
+          grid: {xs: 1, sm: 2, md: 2, lg: me.itemsPerRow, all: 0},
+          slide: 1,
+          speed: 400,
+          interval: 4000,
+          point: {
+            visible: true
+          },
+          load: 2,
+          touch: true,
+          loop: true,
+          custom: 'banner'
+        }
+    }
+  }
+
+  public myfunc(event: Event) {
+    // carouselLoad will trigger this funnction when your load value reaches
+    // it is helps to load the data by parts to increase the performance of the app
+    // must use feature to all carousel
+ }
 
 }

@@ -12,6 +12,11 @@ export class HomeComponent implements OnInit {
     private _appComponent: AppComponent
   ) { }
 
+  specialties = {
+    medicina: '5b6e008952cb3c24201b9ed6',
+    odontologia: '5b6dfb0fc6602423d0eb35f5'
+  }
+
   ngOnInit() {
     this._appComponent.setMetaTitle('Amolca - Editorial médica y odontológica orientada a las ciencias de la salud');
   }

@@ -1,6 +1,24 @@
-
-<h2>Home!</h2>
-
-<div class="page-container">
-    <books-loop></books-loop>
+<div class="banner">
+    <div style="background-color: greenyellow;"></div>
+    <div style="background-color: red;"></div>
+    <div style="background-color: blue;"></div>
+    <div style="background-color: green;"></div>
 </div>
+
+    <div class="page-container">
+        <h2 class="title">Novedades médicas</h2>
+        <books-loop [carousel]="true" [itemsPerRow]="4"></books-loop>
+    </div>
+
+    <div class="page-container">
+        <h2 class="title">Novedades odontológicas</h2>
+        <books-loop [carousel]="true" [itemsPerRow]="4" [specialty]="specialties.medicina"></books-loop>
+    </div>
+    <div class="page-container">
+        <h2 class="title">Autores destacados</h2>
+    </div>
+
+    <div class="blog-block">
+        <h2 class="title">Últimas publicaciones de nuestro blog</h2>
+        <p class="text-center"><a class="button primary">Ver todas las publicaciones</a></p>
+    </div>

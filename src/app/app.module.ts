@@ -9,6 +9,8 @@ import { HttpModule, Http, Headers, RequestOptions, URLSearchParams, Response } 
 
 import 'rxjs/add/operator/map';
 
+import { NgxCarouselModule } from 'ngx-carousel';
+
 //Form
 import { FormsModule }   from '@angular/forms';
 
@@ -134,6 +136,9 @@ const appRoutes: Routes = [
     //Http
     HttpClientModule,
     HttpModule,
+
+    //Ngx
+    NgxCarouselModule,
 
     RouterModule.forRoot(
       PageRoutes,

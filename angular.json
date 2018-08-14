@@ -23,10 +23,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/fonts.scss",
-              "src/assets/libs/icomoon/style.scss",
               "src/assets/css/global.scss",
-              "src/assets/css/responsive.scss"
+              "src/assets/css/responsive.scss",
+              "src/assets/css/fonts.scss",
+              "src/assets/libs/icomoon/style.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/assets/css/imports"]
@@ -81,10 +81,10 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/assets/css/fonts.scss",
-              "src/assets/libs/icomoon/style.scss",
               "src/assets/css/global.scss",
-              "src/assets/css/responsive.scss"
+              "src/assets/css/responsive.scss",
+              "src/assets/css/fonts.scss",
+              "src/assets/libs/icomoon/style.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/assets/css/imports"]
