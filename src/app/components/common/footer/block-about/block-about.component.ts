@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'footer-block-about',
   templateUrl: './block-about.component.html',
-  styleUrls: ['../footer.component.css']
+  styleUrls: ['../footer.component.scss']
 })
 export class BlockAboutComponent implements OnInit {
 

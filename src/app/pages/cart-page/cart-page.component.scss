@@ -1,3 +1,6 @@
+@import "vars.scss";
+@import "mixins.scss";
+
 /*Table styles*/
 .cart-page {
     padding-bottom: 40px;
@@ -16,7 +19,7 @@ table {
 
 /*THead styles*/
 table thead {
-    background-color: #ebebeb;
+    background-color: $gray-sup-light;
 }
 
 table thead #price,
@@ -53,7 +56,7 @@ table .price {
     font-weight: bold;
 }
 table .total {
-    color: #00396F;
+    color: $primary-color;
     font-weight: bold;
 }
 
@@ -63,7 +66,7 @@ table .actions button {
 table .actions .delete {
     background-color: transparent;
     border: none;
-    color: red;
+    color: $primary-red;
 }
 
 /*Info cart*/
@@ -81,7 +84,7 @@ table .actions .delete {
 
 /*Cart totals*/
 .cart-totals {
-    background-color: #f4f4f4;
+    background-color: $gray-sup-light;
     border-radius: 10px;
     font-size: 18px;
     overflow: hidden;
@@ -95,7 +98,7 @@ table .actions .delete {
     text-align: right;
 }
 input#coupon {
-    border: 1px solid rgba(0,0,0,0.12);
+    border: 1px solid $white-dark;
     border-radius: 5px;
     padding-left: 20px;
     padding-right: 20px;

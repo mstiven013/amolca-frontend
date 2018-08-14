@@ -28,6 +28,9 @@
               "src/assets/css/global.scss",
               "src/assets/css/responsive.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/assets/css/imports"]
+            },
             "scripts": [ 
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/hammerjs/hammer.js"
@@ -83,6 +86,9 @@
               "src/assets/css/global.scss",
               "src/assets/css/responsive.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/assets/css/imports"]
+            },
             "scripts": [ 
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/hammerjs/hammer.js"

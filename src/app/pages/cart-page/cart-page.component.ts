@@ -15,7 +15,7 @@ declare var Materialize: any;
 @Component({
   selector: 'app-cart-page',
   templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.css'],
+  styleUrls: ['./cart-page.component.scss'],
   providers: [CurrencyPipe, ReplacePipe]
 })
 export class CartPageComponent implements OnInit {

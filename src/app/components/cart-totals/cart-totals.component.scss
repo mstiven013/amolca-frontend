@@ -1,3 +1,6 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+
 /*Cart totals table*/
 td, th {
     padding-left: 30px;
@@ -8,7 +11,7 @@ td, th {
     }
     
 #total {
-    color: #00396F;
+    color: $primary-color;
     font-size: 25px;
 }
     #total #price {

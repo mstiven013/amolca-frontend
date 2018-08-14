@@ -10,7 +10,7 @@ declare var jQuery: any;
 @Component({
   selector: 'app-book-page',
   templateUrl: './book-page.component.html',
-  styleUrls: ['./book-page.component.css']
+  styleUrls: ['./book-page.component.scss']
 })
 export class BookPageComponent implements OnInit {
 

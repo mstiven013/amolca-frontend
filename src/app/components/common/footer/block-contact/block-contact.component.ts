@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'footer-block-contact',
   templateUrl: './block-contact.component.html',
-  styleUrls: ['../footer.component.css']
+  styleUrls: ['../footer.component.scss']
 })
 export class BlockContactComponent implements OnInit {
 

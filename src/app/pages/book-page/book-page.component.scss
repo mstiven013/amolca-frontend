@@ -1,5 +1,8 @@
+@import "vars.scss";
+@import "mixins.scss";
+
 .single-book {
-    font-family: 'Tahoma';
+    font-family: $primary-font;
     padding-bottom: 40px;
     padding-top: 40px;
 }
@@ -32,37 +35,21 @@
 #image-container.scroll-waiting {
     bottom: 0px;
     left: 0;
-    max-height: -webkit-calc(100vh - 220px);
-    max-height: -moz-calc(100vh - 220px);
-    max-height: -ms-calc(100vh - 220px);
-    max-height: -o-calc(100vh - 220px);
-    max-height: calc(100vh - 220px);
-    max-width: -webkit-calc(41.6666666667% - 0.75rem);
-    max-width: -moz-calc(41.6666666667% - 0.75rem);
-    max-width: -ms-calc(41.6666666667% - 0.75rem);
-    max-width: -o-calc(41.6666666667% - 0.75rem);
-    max-width: calc(41.6666666667% - 0.75rem);
+    @include calc(max-height, '100vh - 220px');
+    @include calc(max-width, '41.6666666667% - 0.75rem');
     position: absolute;
 }
 
 #image-container.scroll-fixed {
     left: 5%;
-    max-height: -webkit-calc(100vh - 220px);
-    max-height: -moz-calc(100vh - 220px);
-    max-height: -ms-calc(100vh - 220px);
-    max-height: -o-calc(100vh - 220px);
-    max-height: calc(100vh - 220px);
-    max-width: -webkit-calc(41.6666666667% - 3.75rem);
-    max-width: -moz-calc(41.6666666667% - 3.75rem);
-    max-width: -ms-calc(41.6666666667% - 3.75rem);
-    max-width: -o-calc(41.6666666667% - 3.75rem);
-    max-width: calc(41.6666666667% - 3.75rem);
+    @include calc(max-height, '100vh - 220px');
+    @include calc(max-width, '41.6666666667% - 3.75rem');
     position: fixed;
     top: 160px;
 }
     #image-container.scroll-fixed img,
     #image-container.scroll-waiting img {
-        max-height: calc(50vh - 100px);
+        @include calc(max-height, '50vh - 100px');
     }
         #image-container.scroll-fixed img.active,
         #image-container.scroll-waiting img.active {
@@ -71,7 +58,7 @@
 
 /*Scroll interaction*/
 .scroll-info {
-    background-color: #F5F5F5;
+    background-color: $gray-sup-light;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     display: none;
@@ -85,7 +72,7 @@
 }
 
 .name {
-    color: #00396F;
+    color: $primary-color;
     font-size: 40px;
     font-weight: bold;
     line-height: 100%;
@@ -98,21 +85,18 @@
     margin: 20px 0px;
 }
     .author a {
-        color: #666666;
+        color: $gray-dark;
         position: relative;
         text-decoration: none;
     }
         .author a:before {
             content: '';
-            background-color: #666666;
+            background-color: $gray-dark;
             bottom: -4px;
             height: 1px;
             left: 0px;
             position: absolute;
-            -webkit-transition: all 0.4s ease;
-            -moz-transition: all 0.4s ease;
-            -ms-transition: all 0.4s ease;
-            transition: all 0.4s ease;
+            @include transition('all 0.4s ease');
             width: 0%;
         }
         .author a:hover:before {
@@ -120,7 +104,7 @@
         }
 
 .price {
-    color: #E2231A;
+    color: $primary-red;
     font-size: 40px;
     font-weight: bold;
     line-height: 100%;
@@ -139,24 +123,21 @@
     margin: 20px 0px;
 }
     .version-btn {
-        color: #666666;
+        color: $gray-dark;
         display: inline-block;
         margin-left: 10px;
         vertical-align: middle;
     }
         .version-btn span {
             border-radius: 50%;
-            border: 1px solid #A5A5A5;
-            color: #00396F;
+            border: 1px solid $gray-light;
+            color: $primary-color;
             display: inline-block;
             font-size: 20px;
             height: 37px;
             line-height: 35px;
             text-align: center;
-            -webkit-transition: all 0.4s ease;
-            -moz-transition: all 0.4s ease;
-            -ms-transition: all 0.4s ease;
-            transition: all 0.4s ease;
+            @include transition('all 0.4s ease');
             vertical-align: inherit;
             width: 37px;
         }
@@ -165,9 +146,9 @@
             }
 
         .version-btn:hover span {
-            background-color: #00396F;
-            border-color: #00396F;
-            color: #fff;
+            background-color: $primary-color;
+            border-color: $primary-color;
+            color: $white-color;
         }
 
 /*Author Panel*/

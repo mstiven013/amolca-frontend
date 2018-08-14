@@ -10,7 +10,7 @@ declare var Materialize: any;
 @Component({
   selector: 'books-loop',
   templateUrl: './books-loop.component.html',
-  styleUrls: ['./books-loop.component.css']
+  styleUrls: ['./books-loop.component.scss']
 })
 export class BooksLoopComponent implements OnInit {
 

@@ -1,3 +1,6 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+
 ul.social-networks {
     list-style: none;
 }
@@ -18,10 +21,7 @@ ul.social-networks.top {
             height: 40px;
             justify-content: center;
             line-height: 40px;
-            -webkit-transition: all 0.4s ease;
-            -moz-transition: all 0.4s ease;
-            -ms-transition: all 0.4s ease;
-            transition: all 0.4s ease;
+            @include transition('all 0.4s ease');
             width: 40px;
         }
             ul.social-networks.top li a img {
@@ -32,7 +32,7 @@ ul.social-networks.top {
 
             ul.social-networks.top li:hover a,
             ul.social-networks.top li a:hover {
-                background-color: #00396F;
+                background-color: $primary-color;
             }
 
 ul.social-networks.main {
@@ -53,17 +53,14 @@ ul.social-networks.main {
             height: 50px;
             justify-content: center;
             line-height: 50px;
-            -webkit-transition: all 0.4s ease;
-            -moz-transition: all 0.4s ease;
-            -ms-transition: all 0.4s ease;
-            transition: all 0.4s ease;
+            @include transition('all 0.4s ease');
             width: 50px;
         }
             ul.social-networks.main li a.bg-blue {
-                background-color: #00396F;
+                background-color: $primary-color;
             }
             ul.social-networks.main li a.bg-white {
-                background-color: #ffffff;
+                background-color: $white-color;
             }
             ul.social-networks.main li a img {
                 display: block;
@@ -72,5 +69,5 @@ ul.social-networks.main {
             }
             ul.social-networks.main li:hover a,
             ul.social-networks.main li a:hover {
-                background-color: #55B9D4;
+                background-color: $blue-light;
             }

@@ -1,0 +1,26 @@
+//Transitin
+@mixin transition($expression) {
+    -webkit-transition: #{$expression};
+    -moz-transition: #{$expression};
+    -ms-transition: #{$expression};
+    -o-transition: #{$expression};
+    transition: #{$expression};
+}
+
+//Transform ROTATE
+@mixin transform($property, $expression) {
+    -webkit-transform: $property+unquote('(') #{$expression} unquote(')');
+    -moz-transform: $property+unquote('(') #{$expression} unquote(')');
+    -ms-transform: $property+unquote('(') #{$expression} unquote(')');
+    -o-transform: $property+unquote('(') #{$expression} unquote(')');
+    transform: $property+unquote('(') #{$expression} unquote(')');
+}
+
+//Calc HEIGHT
+@mixin calc($property, $expression) {
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -ms-calc(#{$expression});
+    #{$property}: -o-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}

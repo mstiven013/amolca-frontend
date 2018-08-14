@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'cart-btn',
   templateUrl: './cart-btn.component.html',
-  styleUrls: ['./cart-btn.component.css']
+  styleUrls: ['./cart-btn.component.scss']
 })
 export class CartBtnComponent implements OnInit {
 

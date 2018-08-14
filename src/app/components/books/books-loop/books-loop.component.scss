@@ -1,27 +1,24 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+
 .books-loop {
     display: flex;
     flex-flow: row wrap;
-    font-family: 'Tahoma';
+    font-family: $primary-font;
     justify-content: left;
     width: 100%;
 }
 
 .books-loop .item {
-    background-color: rgb(255, 255, 255);
+    background-color: $white-color;
     margin: 15px;
-    max-width: -webkit-calc(25% - 30px);
-    max-width: -moz-calc(25% - 30px);
-    max-width: -ms-calc(25% - 30px);
-    max-width: calc(25% - 30px);
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    -ms-transition: all 0.4s ease;
-    transition: all 0.4s ease;
+    @include calc(max-width, '25% - 30px');
+    @include transition('all 0.4s ease');
     width: 100%;
 }
     .books-loop .item:hover,
     .books-loop .item:active {
-        background-color: #F5F5F5;
+        background-color: $gray-sup-light;
     }
 
 .item .info {
@@ -29,7 +26,7 @@
 }
 
 .item .contain-img {
-    border-bottom: 1px solid #C7C7C7;
+    border-bottom: 1px solid $gray-light;
     display: block;
 }
     .item .contain-img img {
@@ -46,12 +43,12 @@
     margin-top: 0px;
 }
     .item .name a {
-        color: #00396F;
+        color: $primary-color;
         text-decoration: none;
     }
 
 .item .authors a {
-    color: #666666;
+    color: $gray-dark;
     font-size: 14px;
     font-weight: bold;
 }
@@ -65,7 +62,7 @@
     margin-top: 10px;
 }
     .item .actions .price {
-        color: #00396F;
+        color: $primary-color;
         font-weight: bold;
     }
 
@@ -75,9 +72,9 @@
     }
 
     .item .actions .cart-btn {
-        color: #00396F;
+        color: $primary-color;
     }
     .item .actions .hearth-btn {
-        color: #E2231A;
+        color: $primary-red;
         margin-left: 5px;
     }

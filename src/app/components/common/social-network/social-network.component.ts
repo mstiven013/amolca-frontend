@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 @Component({
   selector: 'social-network',
   templateUrl: './social-network.component.html',
-  styleUrls: ['./social-network.component.css'],
+  styleUrls: ['./social-network.component.scss'],
 })
 export class SocialNetworkComponent implements OnInit {
 
