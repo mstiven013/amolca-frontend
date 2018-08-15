@@ -1,0 +1,44 @@
+@import "vars.scss";
+@import "mixins.scss";
+
+.content {
+    background-color: $white-color;
+    box-shadow: 2px 5px 20px rgba(0,0,0,0.3);
+    font-family: $primary-font;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -70px;
+    padding: 30px 50px;
+    width: 60%;
+}
+
+.form {
+    position: relative;
+}
+    .form input[type="text"] {
+        border-color: $primary-color;
+        border-radius: 25px;
+        color: $gray-dark;
+        font-size: 18px;
+        height: 50px;
+        padding: 0px 50px 0px 30px;
+    }
+        .form input[type="text"]:focus,
+        .form input[type="text"]:active {
+            box-shadow: none;
+        }
+    .form input[type="button"] {
+        background-color: $primary-color;
+        border-radius: 25px;
+        border: none;
+        display: inline-block;
+        color: $white-color;
+        cursor: pointer;
+        font-size: 18px;
+        padding: 15px 40px;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        @include transition('all 0.4s ease');
+        text-decoration: none;
+    }

@@ -74,6 +74,7 @@ import { GetBookService } from './services/book/get-book.service';
 import { GetCouponService } from './services/coupons/get-coupon.service';
 import { BookPageComponent } from './pages/book-page/book-page.component';
 import { AuthorsCarouselComponent } from './components/authors/authors-carousel/authors-carousel.component';
+import { BigSearcherComponent } from './components/big-searcher/big-searcher.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -123,6 +124,8 @@ const appRoutes: Routes = [
     BookPageComponent,
 
     AuthorsCarouselComponent,
+
+    BigSearcherComponent,
   ],
   imports: [
     //Angular libraries
