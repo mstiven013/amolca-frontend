@@ -1,3 +1,16 @@
-<p>
-  authors-carousel works!
-</p>
+<ngx-carousel [inputs]="authorsCarousel" (carouselLoad)="myfunc($event)">
+    <ngx-item NgxCarouselItem *ngFor="let author of authors;">
+      <div class="content">
+        <div class="image">
+          <img src="assets/img/authors/{{author.image}}" />
+        </div>
+        <div class="info">
+          <h3 class="name">{{author.name}}</h3>
+          <p class="description">{{author.description}}</p>
+          <p><a routerLink="/author/{{author.slug}}" class="button primary">Ver libros</a></p>
+        </div>
+      </div>
+    </ngx-item>
+    <button NgxCarouselPrev class='leftRs'></button>
+    <button NgxCarouselNext class='rightRs'></button>
+  </ngx-carousel>

@@ -15,6 +15,7 @@
     @include calc(max-width, '25% - 30px');
     @include transition('all 0.4s ease');
     visibility: visible !important;
+    text-align: center;
     width: 100%;
 }
     .books-loop.carousel-loop .item {
@@ -87,13 +88,13 @@
 ngx-carousel {
     position: relative;
 }
-
     ngx-item .content {
         background-color: $white-color;
         font-family: $primary-font;
         margin: 0px auto;
-        width: 95%;
+        text-align: center;
         @include transition('all 0.4s ease');
+        width: 95%;
     }
         ngx-item .content:hover,
         ngx-item .content:active {

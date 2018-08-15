@@ -1,0 +1,67 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+
+//Styles in carousel
+ngx-carousel {
+    position: relative;
+}
+    ngx-item .content {
+        background-color: $white-color;
+        font-family: $primary-font;
+        margin: 0px auto;
+        text-align: center;
+        @include transition('all 0.4s ease');
+        width: 90%;
+    }
+        .image {
+            border-radius: 50%;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            height: 150px;
+            margin: 0px auto 20px;
+            overflow: hidden;
+            width: 150px;
+        }
+            .image img {
+                max-height: 150px;
+                max-width: 150px;
+            }
+        .name {
+            color: $primary-color;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: normal;
+            margin-bottom: 10px;
+            margin-top: 0px;
+        }
+        .description {
+            color: $gray-dark;
+            margin: 20px auto;
+        }
+
+        .leftRs, .rightRs {
+            background-color: transparent;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border: none;
+            cursor: pointer;
+            height: 70px;
+            opacity: 0.2;
+            position: absolute;
+            @include calc(top, '50% - 100px');
+            @include transition('all 0.4s ease');
+            width: 54px;
+        }
+            .leftRs {
+                background-image: url('/assets/img/common/left-carousel-btn.png');
+                left: -30px;
+            }
+            .rightRs {
+                background-image: url('/assets/img/common/right-carousel-btn.png');
+                right: -30px;
+            }
+            .leftRs:hover, .rightRs:hover {
+                opacity: 1;
+            }
