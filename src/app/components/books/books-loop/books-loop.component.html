@@ -48,53 +48,53 @@
 </ng-template>
 
 <ng-template [ngIf]="carousel">
-  <ngx-carousel [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
-      <ngx-item NgxCarouselItem *ngFor="let b of books;">
-        <div class="content">
-          <!--Book principal image-->
-          <a routerLink="libro/{{b.slug}}" class="contain-img">
-            <!--Show if b images exists-->        
-            <ng-template *ngIf="b.image.length > 0">
-              <ng-template *ngFor="let image of b.image;">
-                <img *ngIf="image.principal" src="assets/img/products/{{b.image.name}}" alt="">
-              </ng-template>
-            </ng-template>
-            
-            <img *ngIf="b.image.length == 0" src="assets/img/common/no-image.jpg" alt="">
-          </a>
+<ngx-carousel [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
+  <ngx-item NgxCarouselItem *ngFor="let b of books;">
+    <div class="content">
+      <!--Book principal image-->
+      <a routerLink="libro/{{b.slug}}" class="contain-img">
+        <!--Show if b images exists-->        
+        <ng-template *ngIf="b.image.length > 0">
+          <ng-template *ngFor="let image of b.image;">
+            <img *ngIf="image.principal" src="assets/img/products/{{b.image.name}}" alt="">
+          </ng-template>
+        </ng-template>
+        
+        <img *ngIf="b.image.length == 0" src="assets/img/common/no-image.jpg" alt="">
+      </a>
 
-          <div class="info">
-            <!--b Name-->
-            <h3 class="name">
-                <a routerLink="libro/{{b.slug}}">{{b.name}}</a>
-            </h3>
+      <div class="info">
+        <!--b Name-->
+        <h3 class="name">
+            <a routerLink="libro/{{b.slug}}">{{b.name}}</a>
+        </h3>
 
-            <!--REPLACE WHEN CHANGE bS MODEL-->
-            <p class="authors">
-              <a *ngFor="let author of b.author;" routerLink="/autor/{{author.slug}}">{{author.name}}</a>
-            </p>
+        <!--REPLACE WHEN CHANGE bS MODEL-->
+        <p class="authors">
+          <a *ngFor="let author of b.author;" routerLink="/autor/{{author.slug}}">{{author.name}}</a>
+        </p>
 
-            <!--b actions-->
-            <div *ngIf="b.price > 0" class="actions">
+        <!--b actions-->
+        <div *ngIf="b.price > 0" class="actions">
 
-              <!--b Price-->
-              <p class="price">{{ b.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
+          <!--b Price-->
+          <p class="price">{{ b.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
 
-              <!--b buttons-->
-              <p class="btns">
-                <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b)">
-                  <i class="material-icons">add_shopping_cart</i>
-                </a>
-                <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(b)">
-                  <i class="material-icons">favorite_border</i>
-                </a>
-              </p>
-            </div>
-          </div>
+          <!--b buttons-->
+          <p class="btns">
+            <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b)">
+              <i class="material-icons">add_shopping_cart</i>
+            </a>
+            <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(b)">
+              <i class="material-icons">favorite_border</i>
+            </a>
+          </p>
         </div>
-      </ngx-item>
-      <button NgxCarouselPrev class='leftRs'></button>
-      <button NgxCarouselNext class='rightRs'></button>
+      </div>
+    </div>
+  </ngx-item>
+  <button NgxCarouselPrev class='leftRs'></button>
+  <button NgxCarouselNext class='rightRs'></button>
 </ngx-carousel>
 </ng-template>
 

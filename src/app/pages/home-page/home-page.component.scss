@@ -1,6 +1,27 @@
 @import "vars.scss";
 @import "mixins.scss";
 
+.title {
+    color: $primary-color;
+    font-family: $primary-font;
+    font-weight: bold;
+    margin-bottom: 35px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.odontologic-block {
+    background-color: $primary-color;
+}
+    .odontologic-block .title {
+        color: $white-color;
+    }
+
+.home-block {
+    padding-bottom: 70px;
+    padding-top: 70px;
+}
+
 .blog-block {
     background-color: $gray-sup-light;
 }
