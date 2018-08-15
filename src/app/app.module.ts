@@ -73,6 +73,7 @@ import { GetBookService } from './services/book/get-book.service';
 //Coupon Services
 import { GetCouponService } from './services/coupons/get-coupon.service';
 import { BookPageComponent } from './pages/book-page/book-page.component';
+import { AuthorsCarouselComponent } from './components/authors/authors-carousel/authors-carousel.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -120,6 +121,8 @@ const appRoutes: Routes = [
     ReplacePipe,
 
     BookPageComponent,
+
+    AuthorsCarouselComponent,
   ],
   imports: [
     //Angular libraries
