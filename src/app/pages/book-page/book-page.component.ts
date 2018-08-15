@@ -26,6 +26,7 @@ export class BookPageComponent implements OnInit {
   showCartBtn: Boolean = true;
 
   footerOffset: any = jQuery('.footer').offset().top - 40;
+  mainHigher: Boolean = false;
 
   constructor(
     //Meta info for this book
@@ -49,8 +50,11 @@ export class BookPageComponent implements OnInit {
       jQuery('.materialboxed').materialbox();
     });
 
-    this.scrollInteraction();
     this.getBookInfo(this.bookActive);
+  }
+
+  ngAfterViewInit() {
+    this.scrollInteraction();
   }
 
   //Get Book info by SLUG
@@ -75,35 +79,47 @@ export class BookPageComponent implements OnInit {
     jQuery(document).ready(function(){
 
       let imgCont = jQuery('#image-container');
-      let start_pos = imgCont.offset().top;
+
+      if(jQuery('.main').height() > (me.footerOffset - 180 - imgCont.height()) ) {
+        me.mainHigher = true;
+      }
 
       jQuery(window).scroll(function(){
-
-        let end_pos = me.footerOffset - (imgCont.height() + 40);
         let scroll = jQuery(window).scrollTop();
 
-        if(scroll >= start_pos - 140) {
-          jQuery('#image-container .scroll-info').fadeIn();
-        } else {
-          jQuery('#image-container .scroll-info').fadeOut();
+        if(me.mainHigher) {
+          //If show full image
+          if(scroll < 100) {
+            imgCont.removeClass('scroll-waiting');
+            imgCont.removeClass('scroll-fixed');
+            jQuery('#image-container .scroll-info').fadeOut();
+          }
+
+          //Position fixed 
+          if(scroll >= 100) {
+            jQuery('#image-container .scroll-info').fadeIn();
+            imgCont.removeClass('scroll-waiting');
+            imgCont.addClass('scroll-fixed');
+          }
+
+          //Waiting scroll while looking footer
+          if(scroll > 100 && scroll >= (me.footerOffset - 180 - imgCont.height()) ) {
+            imgCont.removeClass('scroll-fixed');
+            imgCont.addClass('scroll-waiting');
+            console.log('Ya paso')
+          }
         }
 
-        if (scroll >= start_pos - 140 && scroll <= end_pos) {
-          imgCont.removeClass('scroll-waiting');
-          imgCont.addClass('scroll-fixed');
-        } else if(scroll > end_pos - 300) {
-          imgCont.removeClass('scroll-fixed');
-          imgCont.addClass('scroll-waiting');
-        } else {
-          imgCont.removeClass('scroll-waiting');
-          imgCont.removeClass('scroll-fixed');
-        }
       });
 
     });    
   }
 
   changeFooterOffsetTop() {
+    let me = this;
     this.footerOffset = jQuery('.footer').offset().top;
+    if(jQuery('.main').height() > (me.footerOffset - 180 - jQuery('#image-container').height()) ) {
+      me.mainHigher = true;
+    }
   }
 }

@@ -65,6 +65,10 @@
     padding: 30px 5%;
     text-align: center;
 }
+    .scroll-info .add-to-cart {
+        margin-bottom: 0px;
+        margin-right: 0px;
+    }
 
 /*COLUMN INFORMATION*/
 .summary-book {
@@ -151,6 +155,17 @@
             color: $white-color;
         }
 
+.add-to-cart {
+    margin: 20px 10px 20px 0px;
+}
+    .add-to-cart input {
+        height: 39px;
+        margin-bottom: 0px;
+        margin-right: 20px;
+        width: 150px;
+        vertical-align: middle;
+    }
+
 /*Author Panel*/
 .row.author-item {
     margin-bottom: 10px;
@@ -169,3 +184,41 @@
     .author-item .description {
         margin: 10px auto;
     }
+
+//Responsive
+@media screen and (max-width: 992px) {
+    //Image column
+    .image-book {
+        margin-bottom: 40px;
+    }
+        #image-container.scroll-waiting,
+        #image-container.scroll-fixed {
+            left: 0px;
+            max-height: none;
+            max-width: none;
+            position: relative;
+            top: 0px;
+        }
+            #image-container.scroll-fixed img,
+            #image-container.scroll-waiting img {
+                max-height: none;
+            }
+        .scroll-info {
+            display: none !important;
+        }
+
+    //Summary column
+    .summary-book {
+        padding-left: .75rem;
+    }
+        .name, .price {
+            font-size: 30px;
+        }
+        .author {
+            font-size: 20px;
+        }
+
+    .row.author-item {
+        text-align: center;
+    }
+}

@@ -10,12 +10,20 @@
             <img *ngIf="image.principal" class="materialboxed" src="assets/img/products/{{book.image.name}}" alt="">
           </ng-template>
         </ng-template>
-          
-        <img *ngIf="book.image === undefined || book.image.length == 0" class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
-  
-        <div class="scroll-info">
-          <p class="price" *ngIf="book.price !== 0">{{book.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
-        </div>
+
+        <ng-template [ngIf]="book.image === undefined || book.image.length < 1">
+            <img class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
+        </ng-template>
+
+        <ng-template [ngIf]="book.inventory !== undefined && book.inventory.quantity > 0 && book.price !== 0 && book.inventory.state == 'STOCK'">
+          <div class="scroll-info">
+            <p class="price" *ngIf="book.price !== 0">{{book.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
+            <div class="add-to-cart">
+              <input type="number" placeholder="Cantidad...">
+              <a class="button danger waves-effect waves-light">Añadir al carrito</a>
+            </div>
+          </div>
+        </ng-template>
       </div>
     </div>
 
@@ -59,10 +67,12 @@
       </p>
 
       <!--Cart button-->
-      <div class="add-to-cart">
-        <input type="number" placeholder="Cantidad...">
-        <a class="button danger waves-effect waves-light">Añadir al carrito</a>
-      </div>
+      <ng-template [ngIf]="book.inventory !== undefined && book.inventory.quantity > 0 && book.price !== 0 && book.inventory.state == 'STOCK'">
+        <div class="add-to-cart">
+          <input type="number" placeholder="Cantidad...">
+          <a class="button danger waves-effect waves-light">Añadir al carrito</a>
+        </div>
+      </ng-template>
 
       <!--Material Accordion-->
       <mat-accordion class="book-accordion">

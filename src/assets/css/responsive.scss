@@ -9,6 +9,11 @@
         margin-bottom: 20px;
         width: 50%;
     }
+
+    //Mat Panel Extension Book
+    .mat-expansion-panel-content .mat-expansion-panel-body {
+        padding-left: 30px;
+    }
 }
 
 @media screen and (min-width: 951px) {
