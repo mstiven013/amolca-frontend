@@ -25,24 +25,26 @@
         <a *ngFor="let author of book.author;" routerLink="/autor/{{author.slug}}">{{author.name}}</a>
       </p>
 
-      <!--Book actions-->
-      <div *ngIf="book.price > 0" class="actions">
+      <ng-template ngFor let-country [ngForOf]="book.countries">
+        <!--book actions-->
+        <div *ngIf="country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'" class="actions">
 
-        <!--Book Price-->
-        <p class="price">{{ book.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
+          <!--book Price-->
+          <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
 
-        <!--Book buttons-->
-        <p class="btns">
-          <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book)">
-            <i class="material-icons">add_shopping_cart</i>
-          </a>
-          <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">
-            <i class="material-icons">favorite_border</i>
-          </a>
-        </p>
-      </div>
+          <!--book buttons-->
+          <p class="btns">
+            <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b)">
+              <i class="material-icons">add_shopping_cart</i>
+            </a>
+            <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(b)">
+              <i class="material-icons">favorite_border</i>
+            </a>
+          </p>
+        </div>
+      </ng-template>
+
     </div>
-
   </div>
 </div>
 </ng-template>
@@ -74,22 +76,25 @@
           <a *ngFor="let author of b.author;" routerLink="/autor/{{author.slug}}">{{author.name}}</a>
         </p>
 
-        <!--b actions-->
-        <div *ngIf="b.price > 0" class="actions">
+        <ng-template ngFor let-country [ngForOf]="b.countries">
+          <!--b actions-->
+          <div *ngIf="country.name === currentCountry && country.price > 0" class="actions">
 
-          <!--b Price-->
-          <p class="price">{{ b.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
+            <!--b Price-->
+            <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
+  
+            <!--b buttons-->
+            <p class="btns">
+              <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b)">
+                <i class="material-icons">add_shopping_cart</i>
+              </a>
+              <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(b)">
+                <i class="material-icons">favorite_border</i>
+              </a>
+            </p>
+          </div>
+        </ng-template>
 
-          <!--b buttons-->
-          <p class="btns">
-            <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b)">
-              <i class="material-icons">add_shopping_cart</i>
-            </a>
-            <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(b)">
-              <i class="material-icons">favorite_border</i>
-            </a>
-          </p>
-        </div>
       </div>
     </div>
   </ngx-item>

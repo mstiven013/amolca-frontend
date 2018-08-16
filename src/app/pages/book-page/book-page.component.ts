@@ -14,6 +14,9 @@ declare var jQuery: any;
 })
 export class BookPageComponent implements OnInit {
 
+  //Declare current country
+  currentCountry: any;
+
   //Declare position tooltip
   tooltipPositionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
   tooltipPosition = this.tooltipPositionOptions[2];
@@ -51,10 +54,16 @@ export class BookPageComponent implements OnInit {
     });
 
     this.getBookInfo(this.bookActive);
+    this.getCountry();
   }
 
   ngAfterViewInit() {
     this.scrollInteraction();
+  }
+
+  getCountry() {
+    let c = localStorage.getItem('C0uN7r1');
+    this.currentCountry = c;
   }
 
   //Get Book info by SLUG
@@ -106,7 +115,6 @@ export class BookPageComponent implements OnInit {
           if(scroll > 100 && scroll >= (me.footerOffset - 180 - imgCont.height()) ) {
             imgCont.removeClass('scroll-fixed');
             imgCont.addClass('scroll-waiting');
-            console.log('Ya paso')
           }
         }
 

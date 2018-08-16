@@ -70,12 +70,8 @@ export class CartPageComponent implements OnInit {
       this._getCartService.getCartById(cartInfo._id)
         .map(resp => resp.json())
         .subscribe(
-          data => {
-            this.cart = data;
-          },
-          err => {
-            console.log(err)
-          }
+          data => { this.cart = data },
+          err => { console.log(err) }
         )
     }
   }

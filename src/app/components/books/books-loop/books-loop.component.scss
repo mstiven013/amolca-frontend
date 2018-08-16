@@ -94,7 +94,7 @@ ngx-carousel {
         margin: 0px auto;
         text-align: center;
         @include transition('all 0.4s ease');
-        width: 95%;
+        @include calc(width, '100% - 30px');
     }
         ngx-item .content:hover,
         ngx-item .content:active {

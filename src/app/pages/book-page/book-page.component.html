@@ -15,14 +15,16 @@
             <img class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
         </ng-template>
 
-        <ng-template [ngIf]="book.inventory !== undefined && book.inventory.quantity > 0 && book.price !== 0 && book.inventory.state == 'STOCK'">
-          <div class="scroll-info">
-            <p class="price" *ngIf="book.price !== 0">{{book.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
-            <div class="add-to-cart">
-              <input type="number" placeholder="Cantidad...">
-              <a class="button danger waves-effect waves-light">Añadir al carrito</a>
+        <ng-template ngFor let-country [ngForOf]="book.countries">
+          <ng-template [ngIf]="country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
+            <div class="scroll-info">
+              <p class="price" *ngIf="book.price !== 0">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
+              <div class="add-to-cart">
+                <input type="number" placeholder="Cantidad...">
+                <a class="button danger waves-effect waves-light">Añadir al carrito</a>
+              </div>
             </div>
-          </div>
+          </ng-template>
         </ng-template>
       </div>
     </div>
@@ -38,7 +40,11 @@
       </h3>
 
       <!--Book price-->
-      <p class="price" *ngIf="book.price !== 0">{{book.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
+      <ng-template ngFor let-country [ngForOf]="book.countries">
+        <ng-template [ngIf]="country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
+          <p class="price">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
+        </ng-template>
+      </ng-template>
 
       <!--Free Shipping text-->
       <p class="shipping">¡Envío gratis a cualquier ciudad de Colombia!</p>
@@ -67,11 +73,13 @@
       </p>
 
       <!--Cart button-->
-      <ng-template [ngIf]="book.inventory !== undefined && book.inventory.quantity > 0 && book.price !== 0 && book.inventory.state == 'STOCK'">
-        <div class="add-to-cart">
-          <input type="number" placeholder="Cantidad...">
-          <a class="button danger waves-effect waves-light">Añadir al carrito</a>
-        </div>
+      <ng-template ngFor let-country [ngForOf]="book.countries">
+        <ng-template [ngIf]="country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
+          <div class="add-to-cart">
+            <input type="number" placeholder="Cantidad...">
+            <a class="button danger waves-effect waves-light">Añadir al carrito</a>
+          </div>
+        </ng-template>
       </ng-template>
 
       <!--Material Accordion-->
@@ -86,7 +94,7 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-          {{book.description}}
+          <div [innerHTML]="book.description"></div>
         </mat-expansion-panel>
 
         <!--Index Panel-->
@@ -98,7 +106,7 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-          {{book.index}}
+          <div [innerHTML]="book.index"></div>
         </mat-expansion-panel>
 
         <!--Author Panel-->

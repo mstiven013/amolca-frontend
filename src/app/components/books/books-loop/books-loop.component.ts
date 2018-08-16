@@ -18,6 +18,8 @@ export class BooksLoopComponent implements OnInit {
 
   public carouselOne: NgxCarousel;
 
+  currentCountry: any;
+
   //Declare variables
   books: any = [];
   loopclass: any = 'books-loop';
@@ -41,6 +43,12 @@ export class BooksLoopComponent implements OnInit {
   ngOnInit() {
       this.initGetBooks();
       this.validateCarousel();
+      this.getCountry();
+  }
+
+  getCountry() {
+    let c = localStorage.getItem('C0uN7r1');
+    this.currentCountry = c;
   }
 
   //Get books
@@ -59,7 +67,7 @@ export class BooksLoopComponent implements OnInit {
       this._getBookService.getAllBooks()
         .map(resp => resp.json())
         .subscribe(
-          data => this.books = data,
+          data => { this.books = data },
           err => console.log(err)
         );
     }
