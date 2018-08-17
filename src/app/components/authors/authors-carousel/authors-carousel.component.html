@@ -6,7 +6,7 @@
         </div>
         <div class="info">
           <h3 class="name">{{author.name}}</h3>
-          <p class="description">{{author.description}}</p>
+          <p class="description" [innerHTML]="author.description.substring(0,100) + '...'"></p>
           <p><a routerLink="/author/{{author.slug}}" class="button primary">Ver libros</a></p>
         </div>
       </div>
