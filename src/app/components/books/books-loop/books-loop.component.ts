@@ -73,14 +73,14 @@ export class BooksLoopComponent implements OnInit {
     }
   }
 
-  addToCart(book){
+  addToCart(book, price){
 
     let localCart = localStorage.getItem('wyC4r7');
 
     if(localCart !== null) {
       let product = {
         "id": book._id,
-        "price": book.price,
+        "price": price,
         "quantity": 1
       }
 
@@ -113,7 +113,7 @@ export class BooksLoopComponent implements OnInit {
 
       let data = {
         "products": [{ 
-          "id": book._id, "price": book.price, "quantity": 1 }
+          "id": book._id, "price": price, "quantity": 1 }
         ]};
 
       this._CartService.createCart(data)

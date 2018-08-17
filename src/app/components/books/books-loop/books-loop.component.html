@@ -34,10 +34,10 @@
 
           <!--book buttons-->
           <p class="btns">
-            <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b)">
+            <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, country.price)">
               <i class="material-icons">add_shopping_cart</i>
             </a>
-            <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(b)">
+            <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">
               <i class="material-icons">favorite_border</i>
             </a>
           </p>
@@ -85,7 +85,7 @@
   
             <!--b buttons-->
             <p class="btns">
-              <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b)">
+              <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b, country.price)">
                 <i class="material-icons">add_shopping_cart</i>
               </a>
               <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(b)">
