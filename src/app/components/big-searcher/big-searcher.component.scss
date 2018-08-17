@@ -3,25 +3,73 @@
 
 .content {
     background-color: $white-color;
-    box-shadow: 2px 5px 20px rgba(0,0,0,0.3);
+    box-shadow: 2px 5px 20px rgba(0,0,0,0.1);
     font-family: $primary-font;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -70px;
-    padding: 30px 50px;
+    margin-top: -59px;
+    padding: 29px 50px;
+    position: relative;
     width: 60%;
+    z-index: 10;
 }
+
+.content:before, .content:after {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0px;
+    z-index: 0;
+}
+    .content:before {
+        border-top: 59px solid transparent;
+        border-right: 50px solid $white-color;
+        border-bottom: 59px solid transparent;
+        right: 100%;
+    }
+
+    .content:after {
+        border-top: 59px solid transparent;
+        border-left: 50px solid $white-color;
+        border-bottom: 59px solid transparent;
+        left: 100%;
+    }
+
+#leftArrows, #rightArrows {
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+    display: block;
+    height: 118px;
+    opacity: 1;
+    position: absolute;
+    @include calc(top, '50% - 59px');
+    @include transition('all 0.4s ease');
+    width: 95px;
+}
+    #leftArrows {
+        background-image: url('/assets/img/common/left-carousel-btn.png');
+        left: -110px;
+    }
+    #rightArrows {
+        background-image: url('/assets/img/common/right-carousel-btn.png');
+        right: -110px;
+    }
 
 .form {
     position: relative;
 }
     .form input[type="text"] {
         border-color: $primary-color;
-        border-radius: 25px;
+        border-radius: 30px;
         color: $gray-dark;
-        font-size: 18px;
-        height: 50px;
-        padding: 0px 50px 0px 30px;
+        font-size: 20px;
+        height: 60px;
+        margin: 0px;
+        padding: 0px 140px 0px 30px;
     }
         .form input[type="text"]:focus,
         .form input[type="text"]:active {
@@ -29,13 +77,13 @@
         }
     .form input[type="button"] {
         background-color: $primary-color;
-        border-radius: 25px;
+        border-radius: 30px;
         border: none;
         display: inline-block;
         color: $white-color;
         cursor: pointer;
         font-size: 18px;
-        padding: 15px 40px;
+        padding: 20px 40px;
         position: absolute;
         right: 0px;
         top: 0px;
