@@ -16,17 +16,21 @@
     }
 }
 
-@media screen and (min-width: 951px) {
+@media screen and (min-width: 1280px) {
     #nav-menu > ul > li > .submenu {
         display: flex !important;
     }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1280px) {
 
     /*Top bar*/
     .top-bar #login-btn {
         display: none;
+    }
+
+    .header {
+        padding-right: 5%;
     }
 
     /*Login btn in nav menu*/
@@ -134,7 +138,9 @@
                             width: -ms-calc(100% - 40px);
                             width: calc(100% - 40px);
                         }
+}
 
+@media screen and (max-width: 950px) {
     /*Bottom bar*/
     #bottom-bar {
         justify-content: center;

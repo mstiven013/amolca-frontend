@@ -84,6 +84,9 @@ export class NavMenuComponent implements OnInit {
       }
     },
     { 
+      id: 47849, name: 'Vídeos', link: 'videos', image: 'videos.png', state: true, target: '_self', submenu: ''
+    },
+    { 
       id: 27263, name: 'Biblioteca digital', link: 'medicina', image: 'biblioteca-digital.png', state: true, target: '_self', submenu: ''
     },
   ]
