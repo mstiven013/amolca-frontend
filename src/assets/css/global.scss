@@ -447,6 +447,14 @@ html {
         text-align: left;
     }
 
+.banner-slides h1,
+.banner-slides h2,
+.banner-slides h3,
+.banner-slides h4,
+.banner-slides p {
+    margin-top: 0px;
+}
+
 /*Form's*/
 input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
     border-radius: 5px;

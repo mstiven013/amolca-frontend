@@ -16,6 +16,7 @@ import { FormsModule }   from '@angular/forms';
 
 //Pipes
 import { ReplacePipe } from './pipes/currencyFormat';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 //Material
 import 'hammerjs';
@@ -75,6 +76,7 @@ import { GetCouponService } from './services/coupons/get-coupon.service';
 import { BookPageComponent } from './pages/book-page/book-page.component';
 import { AuthorsCarouselComponent } from './components/authors/authors-carousel/authors-carousel.component';
 import { BigSearcherComponent } from './components/big-searcher/big-searcher.component';
+import { BannerComponent } from './components/banner/banner.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -117,15 +119,16 @@ const appRoutes: Routes = [
     AuthPageComponent,
     CartPageComponent,
     NotFoundComponent,
+    BookPageComponent,
 
     //Pipes
     ReplacePipe,
+    SafeHtmlPipe,
 
-    BookPageComponent,
-
+    //Content
     AuthorsCarouselComponent,
-
     BigSearcherComponent,
+    BannerComponent,
   ],
   imports: [
     //Angular libraries
@@ -165,7 +168,8 @@ const appRoutes: Routes = [
     Title
   ],
   exports: [
-    ReplacePipe
+    ReplacePipe,
+    SafeHtmlPipe
   ],
   bootstrap: [AppComponent]
 })

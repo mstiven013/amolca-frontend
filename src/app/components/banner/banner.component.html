@@ -1,0 +1,14 @@
+<ngx-carousel [inputs]="banner" (carouselLoad)="myfunc($event)" class="banner-slides">
+
+  <ngx-item NgxCarouselItem *ngFor="let slide of slider">
+
+    <div class="slide" [style.background-image]="'url(' + pathImg + slide.image + ')'" [style.background-attachment]="slide.bgAttach">
+      <div class="content" [innerHTML]="slide.text | safeHtml"></div>
+    </div>
+
+  </ngx-item>
+
+  <button NgxCarouselPrev class='leftRs'></button>
+  <button NgxCarouselNext class='rightRs'></button>
+
+</ngx-carousel>
