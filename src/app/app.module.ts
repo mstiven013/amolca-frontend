@@ -21,7 +21,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 //Material
 import 'hammerjs';
 import 'materialize-css';
-import { MatTooltipModule } from '@angular/material';
+import { MatTooltipModule, MatTabsModule, MatCheckboxModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 
@@ -31,8 +31,6 @@ import { AuthPageComponent } from './pages/auth-page/auth-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 //Page Components
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { CartTotalsComponent } from './components/cart-totals/cart-totals.component';
 
 //Common components
@@ -80,6 +78,8 @@ import { BannerComponent } from './components/banner/banner.component';
 import { PostCarouselComponent } from './components/posts/post-carousel/post-carousel.component';
 import { PostLoopComponent } from './components/posts/post-loop/post-loop.component';
 import { BooksCarouselComponent } from './components/books/books-carousel/books-carousel.component';
+import { LoginFormComponent } from './components/authentication/login-form/login-form.component';
+import { RegisterFormComponent } from './components/authentication/register-form/register-form.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -108,14 +108,19 @@ const appRoutes: Routes = [
     BlockSocialComponent,
 
     //Auth page components
-    LoginComponent,
-    RegisterComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
 
     //Cart components
     CartTotalsComponent,
 
     //Books components
     BooksLoopComponent,
+    BooksCarouselComponent,
+
+    //Posts components
+    PostCarouselComponent,
+    PostLoopComponent,
 
     //Pages
     HomeComponent,
@@ -132,9 +137,6 @@ const appRoutes: Routes = [
     AuthorsCarouselComponent,
     BigSearcherComponent,
     BannerComponent,
-    PostCarouselComponent,
-    PostLoopComponent,
-    BooksCarouselComponent,
   ],
   imports: [
     //Angular libraries
@@ -147,6 +149,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatTooltipModule,
     MatExpansionModule,
+    MatTabsModule,
+    MatCheckboxModule,
 
     //Http
     HttpClientModule,

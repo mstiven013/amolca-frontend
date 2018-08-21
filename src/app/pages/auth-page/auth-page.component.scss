@@ -1,2 +1,21 @@
 @import "vars.scss";
 @import "mixins.scss";
+
+.login-bg {
+    background-color: $blue-light;
+    padding-bottom: 70px;
+    padding-top: 70px;
+}
+
+.content {
+    background-color: $white-color;
+    border-radius: 10px;
+    margin: auto;
+    overflow: hidden;
+    width: 500px;
+}
+
+.form-container {
+    padding: 40px 30px;
+    text-align: center;
+}

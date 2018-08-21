@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-auth-page',

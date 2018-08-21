@@ -460,6 +460,7 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     border-radius: 5px;
     border: 1px solid $gray-light;
     @include boxSizing('border-box');
+    color: $gray-dark;
     font-family: $primary-font;
     font-weight: normal;
     padding-left: 10px;
