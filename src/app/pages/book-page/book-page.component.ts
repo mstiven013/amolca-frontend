@@ -79,8 +79,20 @@ export class BookPageComponent implements OnInit {
   //Set book info for page
   setBookInfoPage(b) {
     this.book = b;
-    this._appComponent.setMetaTitle(this.book.name);
-    this._meta.addTag({ name: "description", content: this.book.description });
+
+    //Set meta Title
+    if(this.book.metaTitle && this.book.metaTitle !== '') {
+      this._appComponent.setMetaTitle(this.book.metaTitle);
+    } else {
+      this._appComponent.setMetaTitle(this.book.name);
+    }
+
+    //Set meta Description
+    if(this.book.metaDescription && this.book.metaDescription !== '') {
+      this._meta.addTag({ name: "description", content: this.book.metaDescription });
+    } else {
+      this._meta.addTag({ name: "description", content: this.book.description });
+    }
   }
 
   scrollInteraction() {
