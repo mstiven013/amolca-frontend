@@ -79,6 +79,7 @@ import { BigSearcherComponent } from './components/big-searcher/big-searcher.com
 import { BannerComponent } from './components/banner/banner.component';
 import { PostCarouselComponent } from './components/posts/post-carousel/post-carousel.component';
 import { PostLoopComponent } from './components/posts/post-loop/post-loop.component';
+import { BooksCarouselComponent } from './components/books/books-carousel/books-carousel.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -133,6 +134,7 @@ const appRoutes: Routes = [
     BannerComponent,
     PostCarouselComponent,
     PostLoopComponent,
+    BooksCarouselComponent,
   ],
   imports: [
     //Angular libraries

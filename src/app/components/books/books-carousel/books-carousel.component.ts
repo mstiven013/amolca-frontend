@@ -5,15 +5,14 @@ import { CartService } from '../../../services/cart/cart.service';
 import { GetCartService } from '../../../services/cart/get-cart.service';
 import { NgxCarousel } from 'ngx-carousel';
 
-declare var jQuery: any;
-declare var Materialize: any;
-
 @Component({
-  selector: 'books-loop',
-  templateUrl: './books-loop.component.html',
+  selector: 'books-carousel',
+  templateUrl: './books-carousel.component.html',
   styleUrls: ['../books-loop.component.scss']
 })
-export class BooksLoopComponent implements OnInit {
+export class BooksCarouselComponent implements OnInit {
+
+  public carouselOne: NgxCarousel;
 
   currentCountry: any;
 
@@ -39,6 +38,7 @@ export class BooksLoopComponent implements OnInit {
 
   ngOnInit() {
       this.initGetBooks();
+      this.validateCarousel();
       this.getCountry();
   }
 
@@ -123,6 +123,23 @@ export class BooksLoopComponent implements OnInit {
 
   addToWishlist(book) {
     console.log(book)
+  }
+
+  validateCarousel() {
+    let me = this;
+    this.carouselOne = {
+      grid: {xs: 1, sm: 2, md: 2, lg: me.itemsPerRow, all: 0},
+      slide: 1,
+      speed: 400,
+      interval: 4000,
+      point: {
+        visible: true
+      },
+      load: 2,
+      touch: true,
+      loop: true,
+      custom: 'banner'
+    }
   }
 
   public myfunc(event: Event) {
