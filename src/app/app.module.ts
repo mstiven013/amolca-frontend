@@ -77,6 +77,8 @@ import { BookPageComponent } from './pages/book-page/book-page.component';
 import { AuthorsCarouselComponent } from './components/authors/authors-carousel/authors-carousel.component';
 import { BigSearcherComponent } from './components/big-searcher/big-searcher.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { PostCarouselComponent } from './components/posts/post-carousel/post-carousel.component';
+import { PostLoopComponent } from './components/posts/post-loop/post-loop.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -129,6 +131,8 @@ const appRoutes: Routes = [
     AuthorsCarouselComponent,
     BigSearcherComponent,
     BannerComponent,
+    PostCarouselComponent,
+    PostLoopComponent,
   ],
   imports: [
     //Angular libraries

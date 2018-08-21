@@ -1,0 +1,28 @@
+<div *ngIf="posts.length > 0" class="posts-loop items-per-page-{{itemsPerRow}}">
+  <div class="item" *ngFor="let post of posts">
+
+    <div class="content">
+      <div class="image-container">
+        <a *ngIf="post.thumbnail && post.thumbnail !== ''" routerLink="/post/{{post.slug}}">
+          <img src="post.thumbnail" alt="">
+        </a>
+        <a *ngIf="!post.thumbnail || post.thumbnail == ''" routerLink="/post/{{post.slug}}">
+          <img src="assets/img/common/no-image.jpg" alt="">
+        </a>
+      </div>
+  
+      <div class="info">
+        <h3 class="title">
+          <a routerLink="/post/{{post.slug}}">{{post.title}}</a>
+        </h3>
+  
+        <p class="date">{{post.registerDate | date:'mediumDate'}}</p>
+        <p *ngIf="!post.excerpt || post.excerpt == ''" class="description" [innerHTML]="post.content.substring(0,100) + '...'"></p>
+        <p *ngIf="post.excerpt && post.excerpt != ''" class="description" [innerHTML]="post.excerpt.substring(0,100) + '...'"></p>
+  
+        <p><a routerLink="/post/{{post.slug}}" class="button primary">Leer más</a></p>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,80 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+
+.posts-loop {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+    width: 100%;
+}
+    //Width for item's
+    .posts-loop.items-per-page-1 .item {
+        width: 100%;
+    }
+    .posts-loop.items-per-page-2 .item {
+        width: 50%;
+    }
+    .posts-loop.items-per-page-3 .item {
+        width: 33.33%;
+    }
+    .posts-loop.items-per-page-4 .item {
+        width: 25%;
+    }
+    .posts-loop.items-per-page-5 .item {
+        width: 20%;
+    }
+
+.content {
+    background-color: $white-color;
+    height: 100%;
+    margin: auto;
+    width: 90%;
+}
+
+.info{
+    font-family: $primary-font;
+    padding: 30px 20px;
+    text-align: left;
+}
+
+.image-container {
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+}
+    .image-container img {
+        left: 50%;
+        min-height: 100%;
+        height: auto;
+        position: absolute;
+        @include transform(translate, '-50%, -50%');
+        top: 50%;
+        min-width: 100%;
+        width: 100%;
+    }
+
+.title, .title a {
+    color: $primary-color;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: normal;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.date {
+    color: $gray-light;
+    font-size: 12px;
+    margin: 10px auto;
+}
+
+.description {
+    color: $gray-dark;
+    font-size: 14px;
+    margin: 10px auto;
+}
+
+.button {
+    font-size: 14px;
+}
