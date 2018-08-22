@@ -27,13 +27,17 @@ export class AuthorPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    //Get slug of active route
     this.sub = this._activatedRoute.params.subscribe(params => {
       this.authorActive = params['slug']
     });
 
+    //Call get author info function
     this.getAuthorInfo(this.authorActive);
   }
 
+  //Get author information with get author service
   getAuthorInfo(slug) {
     this._authorService.getAuthorsBySlug(slug)
       .map(resp => resp.json())
@@ -43,6 +47,7 @@ export class AuthorPageComponent implements OnInit {
       )
   }
 
+  //Set author information after get author service
   setAuthorInfo(author) {
     this.author = author;
 
@@ -59,7 +64,7 @@ export class AuthorPageComponent implements OnInit {
     } else {
       this._appComponent.setMetaDescription(this.author.description);
     }
-    
+
     console.log(this.author)
   }
 

@@ -1,0 +1,47 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+
+.single-author {
+    font-family: $primary-font;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+.image-container {
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    width: 180px;
+}
+    .image-container img {
+        left: 50%;
+        min-height: 100%;
+        min-width: 100%;
+        position: absolute;
+        top: 50%;
+        @include transform(translate, '-50%, -50%');
+    }
+
+.name {
+    color: $primary-color;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+.description {
+    color: $gray-dark;
+    font-size: 18px;
+}
+
+.common-separator {
+    margin: 60px auto 40px;
+}
+
+.author-books .subtitle {
+    color: $primary-color;
+    padding-left: 15px;
+}

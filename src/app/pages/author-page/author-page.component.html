@@ -1,6 +1,26 @@
-<div *ngIf="this.exists">
+<div class="page-container single-author" *ngIf="this.exists">
 
-  <h2>¡Hola, {{author.name}}!</h2>
+  <div class="row">
+    <!--Image column-->
+    <div class="col s12 m3 l3 image">
+      <div class="image-container">
+        <img src="assets/img/authors/{{author.image}}" />
+      </div>
+    </div>
+    <!--Information column-->
+    <div class="col s12 m9 l9 information">
+      <h2 class="name">{{author.name}}</h2>
+      <p class="description" [innerHTML]="author.description"></p>
+    </div>
+  </div>
+
+  <div class="common-separator"></div>
+
+  <div class="author-books">
+    <p class="subtitle">Libros de <b>{{author.name}}</b></p>
+
+    <books-loop [author]="author._id" [itemsPerRow]="4"></books-loop>
+  </div>
 
 </div>
 

@@ -509,6 +509,13 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     flex-flow: row wrap;
 }
 
+/*Common separator*/
+.common-separator {
+    background-color: $gray-sup-light;
+    height: 1px;
+    width: 100%;
+}
+
 /*Login page mat tabs*/
 .mat-tab-header, .mat-tab-nav-bar {
     border-bottom: 0px;

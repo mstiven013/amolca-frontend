@@ -12,7 +12,6 @@
 .books-loop .item {
     background-color: $white-color;
     margin: 15px;
-    @include calc(max-width, '25% - 30px');
     @include transition('all 0.4s ease');
     visibility: visible !important;
     text-align: center;
@@ -25,6 +24,23 @@
         .books-loop .item:active {
             background-color: $gray-sup-light;
         }
+
+    //Width for item's
+    .books-loop.items-per-page-1 .item {
+        @include calc(max-width, '100% - 30px');
+    }
+    .books-loop.items-per-page-2 .item {
+        @include calc(max-width, '50% - 30px');
+    }
+    .books-loop.items-per-page-3 .item {
+        @include calc(max-width, '33.33% - 30px');
+    }
+    .books-loop.items-per-page-4 .item {
+        @include calc(max-width, '25% - 30px');
+    }
+    .books-loop.items-per-page-5 .item {
+        @include calc(max-width, '20% - 30px');
+    }
 
 .item .info {
     padding: 30px 20px;

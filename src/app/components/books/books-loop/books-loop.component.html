@@ -1,5 +1,5 @@
 
-<div *ngIf="books.length > 0" class="{{loopclass}}">
+<div *ngIf="books.length > 0" class="{{loopclass}} items-per-page-{{itemsPerRow}}">
   <div *ngFor="let book of books;" class="{{itemclass}}">
 
     <!--Book principal image-->

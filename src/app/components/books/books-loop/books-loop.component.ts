@@ -24,6 +24,7 @@ export class BooksLoopComponent implements OnInit {
 
   //Input vars
   @Input() specialty: any;
+  @Input() author: any;
   @Input() carousel: Boolean = false;
   @Input() itemsPerRow: any = 0;
 
@@ -50,9 +51,18 @@ export class BooksLoopComponent implements OnInit {
   //Get books
   initGetBooks() {
     //If specialty is diffetent to "undefined"
-    if(this.specialty !== undefined) {
+    if(this.specialty !== undefined && this.specialty !== null) {
       
       this._getBookService.getBooksBySpecialty(this.specialty)
+        .map(resp => resp.json())
+        .subscribe(
+          data => this.books = data,
+          err => console.log(err)
+        );
+
+    } else if(this.author !== undefined && this.author !== null) {
+
+      this._getBookService.getBooksByAuthor(this.author)
         .map(resp => resp.json())
         .subscribe(
           data => this.books = data,
