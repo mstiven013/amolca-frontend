@@ -23,11 +23,16 @@ ngx-carousel {
             overflow: hidden;
             width: 150px;
         }
-            .image img {
-                max-height: 150px;
-                max-width: 150px;
+            .image a {
+                display: block;
+                height: 150px;
+                width: 150px;
             }
-        .name {
+                .image img {
+                    max-height: 150px;
+                    max-width: 150px;
+                }
+        .name, .name a {
             color: $primary-color;
             font-size: 20px;
             font-weight: bold;

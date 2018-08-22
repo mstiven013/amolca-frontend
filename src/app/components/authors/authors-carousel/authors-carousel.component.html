@@ -1,11 +1,15 @@
-<ngx-carousel [inputs]="authorsCarousel" (carouselLoad)="myfunc($event)">
+<ngx-carousel *ngIf="authors.length > 0" [inputs]="authorsCarousel" (carouselLoad)="myfunc($event)">
     <ngx-item NgxCarouselItem *ngFor="let author of authors;">
       <div class="content">
         <div class="image">
-          <img src="assets/img/authors/{{author.image}}" />
+          <a routerLink="/autor/{{author.slug}}">
+            <img src="assets/img/authors/{{author.image}}" />
+          </a>
         </div>
         <div class="info">
-          <h3 class="name">{{author.name}}</h3>
+          <h3 class="name">
+            <a routerLink="/autor/{{author.slug}}">{{author.name}}</a>
+          </h3>
           <p class="description" [innerHTML]="author.description.substring(0,100) + '...'"></p>
           <p><a routerLink="/autor/{{author.slug}}" class="button primary">Ver libros</a></p>
         </div>
