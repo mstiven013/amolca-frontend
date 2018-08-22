@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 import { NgxCarouselModule } from 'ngx-carousel';
 
 //Form
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 //Pipes
 import { ReplacePipe } from './pipes/currencyFormat';
@@ -21,7 +21,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 //Material
 import 'hammerjs';
 import 'materialize-css';
-import { MatTooltipModule, MatTabsModule, MatCheckboxModule } from '@angular/material';
+import { MatTooltipModule, MatTabsModule, MatCheckboxModule, MatProgressBarModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 
@@ -80,6 +80,8 @@ import { PostLoopComponent } from './components/posts/post-loop/post-loop.compon
 import { BooksCarouselComponent } from './components/books/books-carousel/books-carousel.component';
 import { LoginFormComponent } from './components/authentication/login-form/login-form.component';
 import { RegisterFormComponent } from './components/authentication/register-form/register-form.component';
+import { LoaderComponent } from './components/common/loader/loader.component';
+import { UserBtnComponent } from './components/common/user-btn/user-btn.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -137,6 +139,8 @@ const appRoutes: Routes = [
     AuthorsCarouselComponent,
     BigSearcherComponent,
     BannerComponent,
+    LoaderComponent,
+    UserBtnComponent,
   ],
   imports: [
     //Angular libraries
@@ -151,6 +155,7 @@ const appRoutes: Routes = [
     MatExpansionModule,
     MatTabsModule,
     MatCheckboxModule,
+    MatProgressBarModule,
 
     //Http
     HttpClientModule,
@@ -158,6 +163,9 @@ const appRoutes: Routes = [
 
     //Ngx
     NgxCarouselModule,
+
+    //Forms
+    ReactiveFormsModule,
 
     RouterModule.forRoot(
       PageRoutes,

@@ -1,0 +1,15 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+
+.view-mobile {
+    color: $white-color;
+    display: none;
+    line-height: 40px;
+    height: 40px;
+    margin-right: 10px;
+    width: 40px;
+    text-align: center;
+}
+    .view-mobile i {
+        font-size: 39px;
+    }

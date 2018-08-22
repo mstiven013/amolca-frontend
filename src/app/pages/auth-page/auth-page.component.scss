@@ -1,21 +1,37 @@
 @import "vars.scss";
 @import "mixins.scss";
 
-.login-bg {
+.login-page {
     background-color: $blue-light;
-    padding-bottom: 70px;
-    padding-top: 70px;
+    background-image: url('/assets/img/common/example-library.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 80px;
+    padding-top: 80px;
+    position: relative;
 }
+    .login-page:before {
+        content: '';
+        background-color: rgba(0, 57, 111, 0.5);
+        height: 100%;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        z-index: 0;
+    }
 
 .content {
     background-color: $white-color;
     border-radius: 10px;
     margin: auto;
     overflow: hidden;
+    position: relative;
     width: 500px;
 }
 
 .form-container {
-    padding: 40px 30px;
+    padding: 40px;
     text-align: center;
 }

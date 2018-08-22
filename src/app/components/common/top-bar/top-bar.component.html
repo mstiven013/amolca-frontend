@@ -8,6 +8,9 @@
     <li><cart-btn [view]="this.cartBtnView" [value]="this.cartValue"></cart-btn></li>
 
     <!--Login/Register Button-->
-    <li><login-btn [view]="this.loginBtnView"></login-btn></li>
+    <li>
+      <login-btn *ngIf="!userIsLogged" [view]="this.loginBtnView"></login-btn>
+      <user-btn *ngIf="userIsLogged" [user]="userInfo" [view]="'full'"></user-btn>
+    </li>
   </ul>
 </div>

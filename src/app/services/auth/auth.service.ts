@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { config } from '../../../config';
 
@@ -6,6 +7,8 @@ import { config } from '../../../config';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private userData = new Subject<any>();
 
   constructor(
     private _Http: Http
@@ -24,5 +27,17 @@ export class AuthService {
 
     return this._Http.post(config.API_URL + '/login', params.toString(), options);
 
+  }
+
+  //Observable to user data
+  userDataWatch(): Observable<any> {
+    return this.userData.asObservable();
+  }
+
+  //Refres user data
+  userDataRefresh(data) {
+    localStorage.setItem('4ccT0k3n', data.access_token);
+    localStorage.setItem('U53r', JSON.stringify(data.user));
+    this.userData.next(data.user);
   }
 }

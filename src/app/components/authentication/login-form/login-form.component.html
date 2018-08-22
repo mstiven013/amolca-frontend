@@ -1,3 +1,8 @@
-<input type="email" autocomplete="off" placeholder="Escribe tu correo electrónico">
-<input type="password" placeholder="Escribe tu contraseña">
-<button class="button primary">Iniciar sesión</button>
+<form (ngSubmit)="login(loginForm)" [formGroup]="loginform" #loginForm="ngForm">
+    <input type="email" formControlName="user" (keyup)="error.show = false" autocomplete="off" placeholder="Escribe tu correo electrónico">
+    <input type="password" formControlName="pass" (keyup)="error.show = false" placeholder="Escribe tu contraseña">
+    <p *ngIf="error.show" class="error">{{error.msg}}</p>
+    <input [disabled]="!loginForm.valid" type="submit" class="button primary" value="Iniciar sesión">
+</form>
+
+<app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>

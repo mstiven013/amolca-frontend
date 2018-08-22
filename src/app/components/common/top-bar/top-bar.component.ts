@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetCartService } from '../../../services/cart/get-cart.service';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'top-bar',
@@ -8,11 +9,16 @@ import { GetCartService } from '../../../services/cart/get-cart.service';
 export class TopBarComponent implements OnInit {
 
   constructor(
-    private _getCartService: GetCartService
+    private _getCartService: GetCartService,
+    private _authService: AuthService
   ) { }
 
   //Social network's position
   socialPosition = 'top';
+
+  //If user is logged
+  userIsLogged: Boolean = false;
+  userInfo: any;
 
   //Login btn view
   loginBtnView = 'full';
@@ -24,12 +30,18 @@ export class TopBarComponent implements OnInit {
   ngOnInit() {
     //Get cart info
     this.getCartInfo();
+    this.ifUserLoggedIn();
 
     //Watch changes in cart info
     this._getCartService.cartDataWatch()
       .subscribe( data => {
         this.getCartInfo();
       });
+
+    this._authService.userDataWatch()
+      .subscribe( data =>  {
+        this.ifUserLoggedIn()
+      })
   }
 
   getCartInfo() {
@@ -38,6 +50,13 @@ export class TopBarComponent implements OnInit {
       let me = this;
 
       this.cartValue = cart.total;
+    }
+  }
+
+  ifUserLoggedIn(){
+    if(localStorage.getItem('U53r') != undefined) {
+      this.userIsLogged = true;
+      this.userInfo = JSON.parse(localStorage.getItem('U53r'));
     }
   }
 

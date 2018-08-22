@@ -276,6 +276,7 @@ html {
     border-radius: 5px;
     display: inline-block;
     cursor: pointer;
+    outline: 0;
     padding: 10px 20px;
     @include transition('all 0.4s ease');
     text-decoration: none;
@@ -297,6 +298,10 @@ html {
         .button.danger:focus {
             background-color: $red-dark;
         }
+    .button[disabled] {
+        cursor: initial;
+        opacity: 0.5;
+    }
 
 /*Angular Material & Materialize css*/
 #materialbox-overlay {
@@ -304,6 +309,24 @@ html {
 }
     .cart-page table .material-placeholder {
         max-height: 150px;
+    }
+
+//Material line's
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: $primary-color;
+}
+
+//Material loader
+app-loader .mat-progress-bar {
+    left: 0px;
+    position: absolute;
+    top: 0px;
+}
+.mat-progress-bar-buffer {
+    background-color: $blue-light;
+}
+    .mat-progress-bar-fill::after {
+        background-color: $primary-color;
     }
 
 /*Materialize toast's*/
@@ -467,11 +490,45 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     padding-right: 10px;
 }
 
+.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: $primary-color;
+}
+
+.error {
+    margin: 0 auto 8px;
+}
+
 /*Custom row and columns*/
 .custom-row {
     display: flex;
     flex-flow: row wrap;
 }
+
+/*Login page mat tabs*/
+.mat-tab-header, .mat-tab-nav-bar {
+    border-bottom: 0px;
+}
+.login-page .mat-tab-label {
+    background-color: $blue-light;
+    color: $white-color;
+    font-family: $primary-font;
+    font-size: 16px;
+    font-weight: normal;
+    opacity: 1;
+    width: 50%;
+}
+    .login-page .mat-tab-label.mat-tab-label-active{
+        background-color: $primary-color;
+        color: $white-color;
+    }
+
+.login-page .mat-checkbox-layout {
+    font-family: $primary-font;
+    font-size: 14px;
+}
+    .login-page .mat-checkbox-layout a {
+        color: $primary-color;
+    }
 
 /*Footer styles*/
 .footer {
