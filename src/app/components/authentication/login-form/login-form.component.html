@@ -1,8 +1,29 @@
 <form (ngSubmit)="login(loginForm)" [formGroup]="loginform" #loginForm="ngForm">
-    <input type="email" formControlName="user" (keyup)="error.show = false" autocomplete="off" placeholder="Escribe tu correo electrónico">
-    <input type="password" formControlName="pass" (keyup)="error.show = false" placeholder="Escribe tu contraseña">
-    <p *ngIf="error.show" class="error">{{error.msg}}</p>
-    <input [disabled]="!loginForm.valid" type="submit" class="button primary" value="Iniciar sesión">
+    
+    <div class="row">
+        <!--Email column-->
+        <div class="col s12 m12 l12">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" formControlName="user" (keyup)="error.show = false" autocomplete="off" placeholder="Escribe tu correo electrónico">
+        </div>
+
+        <!--Password column-->
+        <div class="col s12 m12 l12">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" formControlName="pass" (keyup)="error.show = false" placeholder="Escribe tu contraseña">
+        </div>
+
+        <!--Errors column-->
+        <div class="col s12 m12 l12">
+            <p *ngIf="error.show" class="error">{{error.msg}}</p>
+        </div>
+
+        <!--Submit button column-->
+        <div class="col s12 m12 l12">
+            <input [disabled]="!loginForm.valid" type="submit" class="button primary" value="Iniciar sesión">
+        </div>
+    </div>
+    
 </form>
 
 <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>

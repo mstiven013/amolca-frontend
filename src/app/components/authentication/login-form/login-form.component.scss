@@ -6,9 +6,16 @@ input[type="text"], input[type="password"], input[type="email"] {
     width: 100%;
 }
 
+label {
+    display: block;
+    font-size: 14px;
+}
+
 .button {
     font-weight: bold;
     letter-spacing: 3px;
+    padding-bottom: 15px;
+    padding-top: 15px;
     text-transform: uppercase;
     width: 100%;
 }
