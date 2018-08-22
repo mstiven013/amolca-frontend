@@ -28,6 +28,25 @@ export class AuthService {
     this.userData.next(data.user);
   }
 
+  register(user) {
+
+    //Declare data to register function
+    let data = {
+      "name": user.name,
+      "lastname": user.lastname,
+      "email": user.email,
+      "role": ["CLIENT"],
+      "country": localStorage.getItem('C0uN7r1'),
+      "password": user.password
+    }
+
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: headers });
+
+    return this._Http.post(config.API_URL + '/register', data, options);
+    
+  }
+
   login(username, password) {
 
     let params = new URLSearchParams();

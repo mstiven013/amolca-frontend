@@ -2,8 +2,14 @@
 @import "mixins.scss";
 
 input[type="text"], input[type="password"], input[type="email"] {
-    text-align: center;
+    text-align: left;
     width: 100%;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    text-align: left;
 }
 
 .terms-condition {
@@ -17,6 +23,8 @@ input[type="text"], input[type="password"], input[type="email"] {
 .button.primary {
     font-weight: bold;
     letter-spacing: 3px;
+    padding-bottom: 15px;
+    padding-top: 15px;
     text-transform: uppercase;
     width: 100%;
 }
