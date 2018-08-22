@@ -40,7 +40,11 @@ export class TopBarComponent implements OnInit {
 
     this._authService.userDataWatch()
       .subscribe( data =>  {
-        this.ifUserLoggedIn()
+        if(data != 'removed') {
+          this.ifUserLoggedIn()
+        } else {
+          this.userIsLogged = false;
+        }
       })
   }
 
@@ -54,7 +58,7 @@ export class TopBarComponent implements OnInit {
   }
 
   ifUserLoggedIn(){
-    if(localStorage.getItem('U53r') != undefined) {
+    if(localStorage.getItem('U53r') != undefined && localStorage.getItem('U53r') != null) {
       this.userIsLogged = true;
       this.userInfo = JSON.parse(localStorage.getItem('U53r'));
     }

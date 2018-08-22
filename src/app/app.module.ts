@@ -69,6 +69,9 @@ import { CartService } from './services/cart/cart.service';
 //Book Services
 import { GetBookService } from './services/book/get-book.service';
 
+//My Account components
+import { MyAccountPageComponent } from './pages/my-account-page/my-account-page.component';
+
 //Coupon Services
 import { GetCouponService } from './services/coupons/get-coupon.service';
 import { BookPageComponent } from './pages/book-page/book-page.component';
@@ -141,6 +144,7 @@ const appRoutes: Routes = [
     BannerComponent,
     LoaderComponent,
     UserBtnComponent,
+    MyAccountPageComponent,
   ],
   imports: [
     //Angular libraries

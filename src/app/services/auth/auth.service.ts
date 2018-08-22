@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { config } from '../../../config';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,21 @@ export class AuthService {
   private userData = new Subject<any>();
 
   constructor(
-    private _Http: Http
+    private _Http: Http,
+    private _router: Router
   ) { }
+
+  //Observable to user data
+  userDataWatch(): Observable<any> {
+    return this.userData.asObservable();
+  }
+
+  //Refres user data
+  userDataRefresh(data) {
+    localStorage.setItem('4ccT0k3n', data.access_token);
+    localStorage.setItem('U53r', JSON.stringify(data.user));
+    this.userData.next(data.user);
+  }
 
   login(username, password) {
 
@@ -29,15 +43,22 @@ export class AuthService {
 
   }
 
-  //Observable to user data
-  userDataWatch(): Observable<any> {
-    return this.userData.asObservable();
+  logout() {
+    localStorage.removeItem('4ccT0k3n');
+    localStorage.removeItem('U53r');
+    this.userData.next('removed');
+
+    this._router.navigate(['/']);
   }
 
-  //Refres user data
-  userDataRefresh(data) {
-    localStorage.setItem('4ccT0k3n', data.access_token);
-    localStorage.setItem('U53r', JSON.stringify(data.user));
-    this.userData.next(data.user);
+  isUserLoggedIn() {
+    let token = localStorage.getItem('4ccT0k3n');
+    let user = localStorage.getItem('U53r');
+
+    if(token === undefined || user === undefined || token === null || user === null) {
+      this._router.navigate(['/iniciar-sesion']);
+    } else {
+      return true;
+    }
   }
 }
