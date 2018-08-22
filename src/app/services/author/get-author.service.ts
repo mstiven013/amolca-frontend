@@ -26,4 +26,11 @@ export class GetAuthorService {
     return this._http.get(`${config.API_URL}/authors/${id}`, options);
   }
 
+  getAuthorsBySlug(slug) {
+    let headers = new Headers({'Content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+
+    return this._http.get(`${config.API_URL}/authors/slug/${slug}`, options);
+  }
+
 }

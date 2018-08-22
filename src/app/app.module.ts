@@ -29,9 +29,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthPageComponent } from './pages/auth-page/auth-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
-
-//Page Components
-import { CartTotalsComponent } from './components/cart-totals/cart-totals.component';
+import { BookPageComponent } from './pages/book-page/book-page.component';
+import { HomeComponent } from './pages/home-page/home-page.component';
+import { MyAccountPageComponent } from './pages/my-account-page/my-account-page.component';
 
 //Common components
 import { AppComponent } from './app.component';
@@ -40,7 +40,9 @@ import { HeaderComponent } from './components/common/header/header.component';
 import { NavMenuComponent } from './components/common/nav-menu/nav-menu.component';
 import { SocialNetworkComponent } from './components/common/social-network/social-network.component';
 import { LogoComponent } from './components/common/logo/logo.component';
-import { HomeComponent } from './pages/home-page/home-page.component';
+import { LoaderComponent } from './components/common/loader/loader.component';
+import { BigSearcherComponent } from './components/big-searcher/big-searcher.component';
+import { BannerComponent } from './components/banner/banner.component';
 
 //Footer components
 import { FooterComponent } from './components/common/footer/footer.component';
@@ -55,9 +57,11 @@ import { BlockSocialComponent } from './components/common/footer/block-social/bl
 //Buttons components
 import { LoginBtnComponent } from './components/common/login-btn/login-btn.component';
 import { CartBtnComponent } from './components/common/cart-btn/cart-btn.component';
+import { UserBtnComponent } from './components/common/user-btn/user-btn.component';
 
 //Books components
 import { BooksLoopComponent } from './components/books/books-loop/books-loop.component';
+import { BooksCarouselComponent } from './components/books/books-carousel/books-carousel.component';
 
 //Page routes
 import { PageRoutes } from './routes/pages.routes';
@@ -69,22 +73,27 @@ import { CartService } from './services/cart/cart.service';
 //Book Services
 import { GetBookService } from './services/book/get-book.service';
 
+//Author page components
+import { AuthorPageComponent } from './pages/author-page/author-page.component';
+
+//Author components
+import { AuthorsCarouselComponent } from './components/authors/authors-carousel/authors-carousel.component';
+
+//Post components
+import { PostCarouselComponent } from './components/posts/post-carousel/post-carousel.component';
+import { PostLoopComponent } from './components/posts/post-loop/post-loop.component';
+
 //My Account components
-import { MyAccountPageComponent } from './pages/my-account-page/my-account-page.component';
+
+//Cart Page Components
+import { CartTotalsComponent } from './components/cart-totals/cart-totals.component';
+
+//Authentication page components
+import { LoginFormComponent } from './components/authentication/login-form/login-form.component';
+import { RegisterFormComponent } from './components/authentication/register-form/register-form.component';
 
 //Coupon Services
 import { GetCouponService } from './services/coupons/get-coupon.service';
-import { BookPageComponent } from './pages/book-page/book-page.component';
-import { AuthorsCarouselComponent } from './components/authors/authors-carousel/authors-carousel.component';
-import { BigSearcherComponent } from './components/big-searcher/big-searcher.component';
-import { BannerComponent } from './components/banner/banner.component';
-import { PostCarouselComponent } from './components/posts/post-carousel/post-carousel.component';
-import { PostLoopComponent } from './components/posts/post-loop/post-loop.component';
-import { BooksCarouselComponent } from './components/books/books-carousel/books-carousel.component';
-import { LoginFormComponent } from './components/authentication/login-form/login-form.component';
-import { RegisterFormComponent } from './components/authentication/register-form/register-form.component';
-import { LoaderComponent } from './components/common/loader/loader.component';
-import { UserBtnComponent } from './components/common/user-btn/user-btn.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -145,6 +154,7 @@ const appRoutes: Routes = [
     LoaderComponent,
     UserBtnComponent,
     MyAccountPageComponent,
+    AuthorPageComponent,
   ],
   imports: [
     //Angular libraries

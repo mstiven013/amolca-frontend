@@ -1,0 +1,8 @@
+<div *ngIf="this.exists">
+
+  <h2>¡Hola, {{author.name}}!</h2>
+
+</div>
+
+<!--If not exists one author with this slug show Not Found component-->
+<not-found *ngIf="!this.exists" [pageType]="'normal'"></not-found>

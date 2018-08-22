@@ -89,9 +89,9 @@ export class BookPageComponent implements OnInit {
 
     //Set meta Description
     if(this.book.metaDescription && this.book.metaDescription !== '') {
-      this._meta.addTag({ name: "description", content: this.book.metaDescription });
+      this._appComponent.setMetaDescription(this.book.metaDescription);
     } else {
-      this._meta.addTag({ name: "description", content: this.book.description });
+      this._appComponent.setMetaDescription(this.book.description);
     }
   }
 

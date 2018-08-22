@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NotFoundComponent implements OnInit {
 
-  @Input() pageType: any;
+  @Input() pageType: any = 'normal';
 
   //Text vars
   text = {
