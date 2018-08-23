@@ -1,4 +1,13 @@
-<form (ngSubmit)="register(registerForm)" [formGroup]="registerform" #registerForm="ngForm">
+<app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+
+<div *ngIf="success.show" class="success">
+    <img *ngIf="success.state" class="icon" src="assets/img/common/check.png" alt="">
+    <img *ngIf="!success.state" class="icon" src="assets/img/common/alert.png" alt="">
+    <p class="title">{{success.title}}</p>
+    <p class="text" [innerHTML]="success.msg"></p>
+</div>
+
+<form *ngIf="!success.show" (ngSubmit)="register(registerForm)" [formGroup]="registerform" #registerForm="ngForm">
     
     <div class="row">
         <!--Name column-->
@@ -49,5 +58,3 @@
     </div>
 
 </form>
-
-<app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>

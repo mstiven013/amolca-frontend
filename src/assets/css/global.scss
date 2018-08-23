@@ -542,6 +542,27 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
         color: $primary-color;
     }
 
+//Succes styles
+.success {
+    font-family: $primary-font;
+    padding-bottom: 35px;
+    text-align: center;
+}
+    .success .icon {
+        display: block;
+        margin: 0px auto 5px;
+        max-width: 100px;
+    }
+    .success .title {
+        color: $primary-color;
+        font-size: 35px;
+        font-weight: bold;
+    }
+    .success .text {
+        color: $gray-dark;
+        font-size: 16px;
+    }
+
 /*Footer styles*/
 .footer {
     background-color: $white-dark;

@@ -16,6 +16,17 @@ export class RegisterFormComponent implements OnInit {
   error = { show: false, msg: '' };
   regitserdata = { name: '', lastname: '', email: '', pass: '', repassword: '' };
 
+  success = {
+    show: false,
+    title: 'Registro exitoso',
+    msg: `
+      Te has registrado exitosamente.<br/>
+      Te damos la bienvenida a <b>Amolca</b>.<br/><br/>
+      <i>En un momento serás redireccionado a tu cuenta.</i>
+    `,
+    state: true
+  }
+
   //Declare loader var
   loader = { show: false, mode: 'indeterminate'};
 
@@ -68,9 +79,17 @@ export class RegisterFormComponent implements OnInit {
   }
 
   signUp(data) {
+
+    let me = this;
+
     this.loader.show = false;
     this._authService.userDataRefresh(data);
-    this._router.navigate(['mi-cuenta']);
+
+    this.success.show = true;
+
+    setTimeout(function() {
+      me._router.navigate(['mi-cuenta']);
+    }, 4000);
   }
 
   //Function to error's map after login
