@@ -62,6 +62,11 @@ export class LoginFormComponent implements OnInit {
           this.error.msg = `El usuario ${this.logindata.user} no existe`;
         break;
 
+      case 403:
+        this.error.show = true;
+        this.error.msg = `El usuario y la contraseña no coinciden`;
+      break;
+
       case 0:
           this.error.show = true;
           this.error.msg = `Ha ocurrido un error, por favor inténtelo de nuevo.`;
