@@ -36,7 +36,7 @@ export class PostCarouselComponent implements OnInit {
     this._getPostService.getAllPosts()
       .map(resp => resp.json())
       .subscribe(
-        data => { this.posts = data;  console.log(data)},
+        data => { this.posts = data;},
         err => { console.log(err.json()) }
       )
   }
