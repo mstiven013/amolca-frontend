@@ -1,0 +1,21 @@
+@import "vars.scss";
+@import "mixins.scss";
+
+.page-container {
+    padding-bottom: 60px;
+    padding-top: 60px;
+}
+
+.post-header {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 250px;
+}
+
+.title {
+    color: $primary-color;
+    font-family: $primary-font;
+    font-weight: bold;
+    margin-top: 0px;
+}

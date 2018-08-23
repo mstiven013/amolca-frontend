@@ -94,6 +94,7 @@ import { RegisterFormComponent } from './components/authentication/register-form
 
 //Coupon Services
 import { GetCouponService } from './services/coupons/get-coupon.service';
+import { PostPageComponent } from './pages/post-page/post-page.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -155,6 +156,7 @@ const appRoutes: Routes = [
     UserBtnComponent,
     MyAccountPageComponent,
     AuthorPageComponent,
+    PostPageComponent,
   ],
   imports: [
     //Angular libraries

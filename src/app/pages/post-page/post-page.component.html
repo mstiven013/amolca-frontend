@@ -1,0 +1,21 @@
+<div *ngIf="this.exists" class="single-post">
+
+  <div *ngIf="post.header !== undefined && post.header !== null" class="post-header" [style.background-image]="'url(' + post.header + ')'">
+  </div>
+
+  <div *ngIf="post.header === undefined || post.header === null" class="post-header" [style.background-image]="'url(/assets/img/common/example-library.jpg)'">
+    </div>
+  
+  <div class="page-container">
+    <div class="row">
+      <div class="col s12">
+        <h2 class="title">{{post.title}}</h2>
+        <p class="date">{{post.registerDate | date:'longDate'}}</p>
+        <div class="content" [innerHTML]="post.content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--If not exists one book with this slug show Not Found component-->
+<not-found *ngIf="!this.exists" [pageType]="'post'"></not-found>
