@@ -29,4 +29,8 @@ export class ShippingFormComponent implements OnInit {
 
   }
 
+  updateShippingAddress(frm) {
+    console.log(frm.value)
+  }
+
 }
