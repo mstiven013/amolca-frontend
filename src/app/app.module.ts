@@ -21,7 +21,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 //Material
 import 'hammerjs';
 import 'materialize-css';
-import { MatTooltipModule, MatTabsModule, MatCheckboxModule, MatProgressBarModule } from '@angular/material';
+import { MatTooltipModule, MatTabsModule, MatCheckboxModule, MatProgressBarModule, MatMenuModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 
@@ -95,6 +95,14 @@ import { RegisterFormComponent } from './components/authentication/register-form
 //Coupon Services
 import { GetCouponService } from './services/coupons/get-coupon.service';
 import { PostPageComponent } from './pages/post-page/post-page.component';
+import { AccountMenuComponent } from './components/authentication/account-menu/account-menu.component';
+import { OrdersPageComponent } from './pages/my-account-page/orders-page/orders-page.component';
+import { DesktopPageComponent } from './pages/my-account-page/desktop-page/desktop-page.component';
+import { DetailsPageComponent } from './pages/my-account-page/details-page/details-page.component';
+import { ShippingFormComponent } from './components/authentication/shipping-form/shipping-form.component';
+import { BillingFormComponent } from './components/authentication/billing-form/billing-form.component';
+import { BillingAddressPageComponent } from './pages/my-account-page/billing-address-page/billing-address-page.component';
+import { ShippingAddressPageComponent } from './pages/my-account-page/shipping-address-page/shipping-address-page.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -157,6 +165,14 @@ const appRoutes: Routes = [
     MyAccountPageComponent,
     AuthorPageComponent,
     PostPageComponent,
+    AccountMenuComponent,
+    OrdersPageComponent,
+    DesktopPageComponent,
+    DetailsPageComponent,
+    ShippingFormComponent,
+    BillingFormComponent,
+    BillingAddressPageComponent,
+    ShippingAddressPageComponent,
   ],
   imports: [
     //Angular libraries
@@ -172,6 +188,7 @@ const appRoutes: Routes = [
     MatTabsModule,
     MatCheckboxModule,
     MatProgressBarModule,
+    MatMenuModule,
 
     //Http
     HttpClientModule,

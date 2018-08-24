@@ -1,5 +1,28 @@
-<h2>¡Hola, {{user.name}}!</h2>
-<p>Te damos la bienvenida a Amolca Editorial Médica y Odontológica</p>
+<div class="page-container account-page">
+    <div class="row">
 
+        <!--Vertical menu column-->
+        <div class="col s12 m12 l3 vmenu">
+            <account-menu (sectionChanged)="onSectionChanged($event)"></account-menu>
+        </div>
 
-<a (click)="logout()">Cerrar sesión</a>
+        <!--Account information-->
+        <div class="col s12 m12 l9 information">
+            <!--Desktop section-->
+            <desktop-account *ngIf="aSection === 'desktop'" [user]="user" (sectionChanged)="onSectionChanged($event)"></desktop-account>
+
+            <!--Orders section-->
+            <orders-account *ngIf="aSection === 'orders'" [user]="user"></orders-account>
+
+            <!--Shipping Addresses section-->
+            <shipping-address-account *ngIf="aSection === 'shipping'" [user]="user"></shipping-address-account>
+
+            <!--Billing Addresses section-->
+            <billing-address-account *ngIf="aSection === 'billing'" [user]="user"></billing-address-account>
+
+            <!--Details section-->
+            <details-account *ngIf="aSection === 'details'" [user]="user"></details-account>
+        </div>
+
+    </div>
+</div>

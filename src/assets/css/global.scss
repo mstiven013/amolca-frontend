@@ -60,6 +60,18 @@ html {
         background-color: $primary-color;
     }
 
+.mat-menu-panel.user-menu {
+    margin-top: 40px;
+}
+    .mat-menu-panel.user-menu .mat-menu-item {
+        color: $gray-dark;
+        font-family: $primary-font;
+        font-size: 14px;
+    }
+        .mat-menu-panel.user-menu .mat-menu-item span {
+            font-size: 18px;
+            vertical-align: middle;
+        }
 .header {
     background-color: $primary-color;
     background-image: url('../img/common/header-bg.png');
@@ -234,16 +246,31 @@ html {
 }
 
 .page-container {
+    color: $gray-dark;
+    font-family: $primary-font;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
 }
-
-.page-container ol, .page-container ul {
-    margin-bottom: 20px;
-    margin-left: 30px;
-    margin-top: 20px;
-} 
+    .page-container a {
+        color: $primary-color;
+        cursor: pointer;
+        font-family: $primary-font;
+        font-weight: bold;
+        text-decoration: none;
+    }
+        .page-container a:disabled,
+        .page-container a[disabled] {
+            cursor: initial;
+        }
+    .page-container p {
+        margin: 7px auto;
+    }
+    .page-container ol, .page-container ul {
+        margin-bottom: 20px;
+        margin-left: 30px;
+        margin-top: 20px;
+    } 
 
 /*Titles, subtitle and text's*/
 .main .title {
@@ -507,6 +534,11 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 .error {
     margin: 0 auto 8px;
+}
+
+form .button {
+    font-size: 18px;
+    padding: 15px 30px;
 }
 
 /*Custom row and columns*/

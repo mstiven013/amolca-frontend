@@ -1,0 +1,50 @@
+<p class="title section">Mi información</p>
+
+<form (ngSubmit)="updateUser(userForm)" [formGroup]="userform" #userForm="ngForm">
+
+  <div class="row">
+
+    <!--Name column-->
+    <div class="col s12 m6 l6">
+      <label for="name">Nombre:</label>
+      <input type="text" formControlName="name" id="name" placeholder="Nombre...">
+    </div>
+
+    <!--Lastnames column-->
+    <div class="col s12 m6 l6">
+      <label for="lastname">Apellidos:</label>
+      <input type="text" formControlName="lastname" id="lastname" placeholder="Apellidos...">
+    </div>
+
+    <!--Email column-->
+    <div class="col s12 m12 l12">
+      <label for="email">Correo electrónico:</label>
+      <input type="text" formControlName="email" id="email" placeholder="Correo electrónico...">
+    </div>
+
+    <!--Phone column-->
+    <div class="col s12 m6 l6">
+      <label for="phone">Número de teléfono:</label>
+      <input type="text" formControlName="phone" id="phone" placeholder="Número de teléfono...">
+    </div>
+
+    <!--Mobile column-->
+    <div class="col s12 m6 l6">
+      <label for="mobile">Teléfono celular:</label>
+      <input type="text" formControlName="mobile" id="mobile" placeholder="Teléfono celular...">
+    </div>
+
+    <!--Save button-->
+    <div class="col s12 m12 l12">
+      <input [disabled]="!userForm.valid" type="submit" class="button primary account" value="Guardar cambios">
+    </div>
+
+  </div>
+
+  <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+
+  <div *ngIf="notification.show" class="card-panel notification" [style.background-color]="notification.bg">
+    <p>{{notification.msg}}</p>
+  </div>
+
+</form>

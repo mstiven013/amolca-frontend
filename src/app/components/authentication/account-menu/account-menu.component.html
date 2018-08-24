@@ -1,0 +1,20 @@
+<ul class="vmenu">
+    <li [class.active]="active == 'desktop'">
+        <a (click)="changeSectionTo('desktop')" class="waves-effect waves-light"><span class="icon-user-outline"></span> Escritorio</a>
+    </li>
+    <li [class.active]="active == 'orders'">
+        <a (click)="changeSectionTo('orders')" class="waves-effect waves-light"><span class="icon-document-text"></span> Pedidos</a>
+    </li>
+    <li [class.active]="active == 'shipping'">
+        <a (click)="changeSectionTo('shipping')" class="waves-effect waves-light"><span class="icon-location-outline"></span> Direccion de envío</a>
+    </li>
+    <li [class.active]="active == 'billing'">
+        <a (click)="changeSectionTo('billing')" class="waves-effect waves-light"><span class="icon-location-arrow-outline"></span> Direccion de facturación</a>
+    </li>
+    <li [class.active]="active == 'details'">
+        <a (click)="changeSectionTo('details')" class="waves-effect waves-light"><span class="icon-cog-outline"></span>  Mi información</a>
+    </li>
+    <li>
+        <a (click)="logout()" class="waves-effect waves-light"><span class="icon-exit"></span> Cerrar sesión</a>
+    </li>
+</ul>

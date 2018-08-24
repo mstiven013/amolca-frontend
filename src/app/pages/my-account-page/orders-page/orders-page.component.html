@@ -1,0 +1,38 @@
+<table *ngIf="showTable">
+  <!--Table header-->
+  <thead>
+    <tr>
+      <th>Pedido:</th>
+      <th>Fecha:</th>
+      <th>Estado:</th>
+      <th>Total:</th>
+      <th>Acciones:</th>
+    </tr>
+  </thead>
+
+  <!--Table body-->
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <a class="button primary waves-effect waves-light" (click)="showOrder(order)">Ver</a>
+      </td>
+    </tr>
+  </tbody>
+
+  <!--Table footer-->
+  <tfoot>
+    <th>Pedido:</th>
+    <th>Fecha:</th>
+    <th>Estado:</th>
+    <th>Total:</th>
+    <th>Acciones:</th>
+  </tfoot>
+</table>
+
+<div *ngIf="!showTable || orders.length < 1">
+  {{error.msg}}
+</div>

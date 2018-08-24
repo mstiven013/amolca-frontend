@@ -1,1 +1,6 @@
-<a routerLink="/mi-cuenta" id="login-btn" class="waves-effect waves-light {{this.class}}"><i class="material-icons">person</i> <span *ngIf="view === 'full'">{{fullName}}</span></a>
+<a id="login-btn" class="waves-effect waves-light {{this.class}}" [matMenuTriggerFor]="menu"><i class="material-icons">person</i> <span *ngIf="view === 'full'">{{fullName}}</span></a>
+
+<mat-menu #menu="matMenu" class="user-menu">
+    <a routerLink="/mi-cuenta" mat-menu-item><span class="icon-cog-outline"></span> Mi cuenta</a>
+    <a (click)="logout()" mat-menu-item><span class="icon-exit"></span> Cerrar sesión</a>
+</mat-menu>

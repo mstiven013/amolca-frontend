@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'user-btn',
@@ -13,10 +14,22 @@ export class UserBtnComponent implements OnInit {
 
   fullName: any;
 
-  constructor() { }
+  constructor(
+    private _authService: AuthService
+  ) { }
 
   ngOnInit() {
     this.fullName = this.user.name + ' ' + this.user.lastname;
+
+    this._authService.userDataWatch()
+      .subscribe( data =>  {
+          this.user = data
+          this.fullName = this.user.name + ' ' + this.user.lastname;
+      })
+  }
+
+  logout() {
+    this._authService.logout()
   }
 
 }

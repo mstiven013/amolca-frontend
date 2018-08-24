@@ -1,0 +1,9 @@
+<p class="title section">Dirección de envíos</p>
+
+<shipping-form [user]="user"></shipping-form>
+
+<app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+
+<div *ngIf="notification.show" class="card-panel notification" [style.background-color]="notification.bg">
+  <p>{{notification.msg}}</p>
+</div>

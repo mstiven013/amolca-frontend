@@ -11,11 +11,17 @@ export class MyAccountPageComponent implements OnInit {
 
   //Declare "user" var
   user: any;
+  aSection: string = 'desktop';
 
   constructor(
     private _appComponent: AppComponent,
     private _authService: AuthService
   ) { }
+
+  //Watch when menu clicked to change menu
+  onSectionChanged(section) {
+    this.aSection = section;
+  }
 
   ngOnInit() {
     this.getUserData();

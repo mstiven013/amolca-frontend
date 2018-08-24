@@ -1,0 +1,62 @@
+<form (ngSubmit)="updateBillingAddress(billingForm)" [formGroup]="billingform" #billingForm="ngForm">
+  
+        <div class="row">
+      
+          <!--Nombre column-->
+          <div class="col s12 m6 l6">
+            <label for="name">Nombre:</label>
+            <input type="text" formControlName="name" id="name" name="name" #name placeholder="Nombre...">
+          </div>
+      
+          <!--Apellidos column-->
+          <div class="col s12 m6 l6">
+            <label for="lastname">Apellidos:</label>
+            <input type="text" formControlName="lastname" id="lastname" name="lastname" #lastname placeholder="Apellidos...">
+          </div>
+      
+          <!--Correo electrónico column-->
+          <div class="col s12 m12 l12">
+            <label for="email">Correo electrónico:</label>
+            <input type="text" formControlName="email" id="email" name="email" #email placeholder="Correo electrónico...">
+          </div>
+      
+          <!--País column-->
+          <div class="col s12 m6 l6">
+            <label for="country">País:</label>
+            <input type="text" formControlName="country" id="country" name="country" #country placeholder="País...">
+          </div>
+      
+          <!--Ciudad column-->
+          <div class="col s12 m6 l6">
+            <label for="state">Ciudad:</label>
+            <input type="text" formControlName="state" id="state" name="state" #state placeholder="Ciudad...">
+          </div>
+      
+          <!--Dirección column-->
+          <div class="col s12 m12 l12">
+            <label for="address">Dirección:</label>
+            <input type="text" formControlName="address" id="address" name="address" #address placeholder="Dirección de envío...">
+          </div>
+      
+          <!--Código postal column-->
+          <div class="col s12 m6 l6">
+            <label for="postalCode">Código postal:</label>
+            <input type="text" formControlName="postalCode" id="postalCode" name="postalCode" #postalCode placeholder="Código postal...">
+          </div>
+      
+          <!--Número de teléfono column-->
+          <div class="col s12 m6 l6">
+            <label for="phone">Número de teléfono:</label>
+            <input type="text" formControlName="phone" id="phone" name="phone" #phone placeholder="Número de teléfono...">
+          </div>
+      
+          <!--Save button-->
+          <div class="col s12 m12 l12">
+            <input type="submit" class="button primary" value="Guardar">
+          </div>
+      
+        </div>
+      
+        
+      
+      </form>

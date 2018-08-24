@@ -41,7 +41,7 @@ export class TopBarComponent implements OnInit {
     this._authService.userDataWatch()
       .subscribe( data =>  {
         if(data != 'removed') {
-          this.ifUserLoggedIn()
+          this.userInfo = data
         } else {
           this.userIsLogged = false;
         }

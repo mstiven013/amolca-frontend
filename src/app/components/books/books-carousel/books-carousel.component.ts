@@ -72,6 +72,7 @@ export class BooksCarouselComponent implements OnInit {
   addToCart(book, price){
 
     let localCart = localStorage.getItem('wyC4r7');
+    let user = localStorage.getItem('U53r');
 
     if(localCart !== null) {
       let product = {
@@ -97,6 +98,10 @@ export class BooksCarouselComponent implements OnInit {
         uCart.products.push(product)
       }
 
+      if(user !== null) {
+        uCart.userId = JSON.parse(user)._id;
+      }
+
       //Consume service for update Cart
       this._CartService.updateCart({"products": uCart.products}, uCart._id)
         .map(resp => resp.json())
@@ -104,15 +109,25 @@ export class BooksCarouselComponent implements OnInit {
           data => this._getCartService.cartDataRefresh(data),
           err => console.log(err)
         )
-
     } else {
 
-      let data = {
-        "products": [{ 
-          "id": book._id, "price": price, "quantity": 1 }
-        ]};
+      let dataCart: any;
 
-      this._CartService.createCart(data)
+      if(user !== null) {
+        dataCart = {
+          "products": [
+            { "id": book._id, "price": price, "quantity": 1 }
+          ],
+          "userId": JSON.parse(user)._id
+        }
+      } else {
+        dataCart = {
+          "products": [{ 
+            "id": book._id, "price": price, "quantity": 1 }
+          ]};
+      }
+      
+      this._CartService.createCart(dataCart)
         .map(resp => resp.json())
         .subscribe(
           data => this._getCartService.cartDataRefresh(data),
