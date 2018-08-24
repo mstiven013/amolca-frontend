@@ -103,6 +103,7 @@ import { ShippingFormComponent } from './components/authentication/shipping-form
 import { BillingFormComponent } from './components/authentication/billing-form/billing-form.component';
 import { BillingAddressPageComponent } from './pages/my-account-page/billing-address-page/billing-address-page.component';
 import { ShippingAddressPageComponent } from './pages/my-account-page/shipping-address-page/shipping-address-page.component';
+import { SpecialtyPageComponent } from './pages/specialty-page/specialty-page.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -173,6 +174,7 @@ const appRoutes: Routes = [
     BillingFormComponent,
     BillingAddressPageComponent,
     ShippingAddressPageComponent,
+    SpecialtyPageComponent,
   ],
   imports: [
     //Angular libraries

@@ -1,5 +1,4 @@
-
-<div *ngIf="books.length > 0" class="{{loopclass}} items-per-page-{{itemsPerRow}}">
+<div *ngIf="!error.show && books.length > 0" class="{{loopclass}} items-per-page-{{itemsPerRow}}">
   <div *ngFor="let book of books;" class="{{itemclass}}">
 
     <!--Book principal image-->
@@ -48,6 +47,6 @@
   </div>
 </div>
 
-<div class="alert">
-  <p></p>
+<div *ngIf="error.show || books.length < 1" class="alert">
+  <p>No hay libros con estas especificaciones</p>
 </div>

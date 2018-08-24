@@ -1,0 +1,8 @@
+<div *ngIf="this.exists" class="page-container">
+  <h2>{{specialty.title}}</h2>
+
+  <books-loop [specialty]="specialty._id" [itemsPerRow]="4"></books-loop>
+</div>
+
+<!--If not exists one book with this slug show Not Found component-->
+<not-found *ngIf="!this.exists" [pageType]="'post'"></not-found>

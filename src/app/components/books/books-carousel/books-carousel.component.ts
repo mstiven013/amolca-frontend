@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { GetBookService } from '../../../services/book/get-book.service';
 import { TooltipPosition } from '@angular/material';
 import { CartService } from '../../../services/cart/cart.service';
@@ -20,9 +20,11 @@ export class BooksCarouselComponent implements OnInit {
   books: any = [];
   loopclass: any = 'books-loop';
   itemclass: any = 'item';
+  error = { show: false, msg: '' }
 
   //Input vars
   @Input() specialty: any;
+  @Input() author: any;
   @Input() carousel: Boolean = false;
   @Input() itemsPerRow: any = 0;
 
@@ -35,6 +37,10 @@ export class BooksCarouselComponent implements OnInit {
     private _CartService: CartService,
     private _getCartService: GetCartService
   ) { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.initGetBooks();
+  }
 
   ngOnInit() {
       this.initGetBooks();
@@ -50,22 +56,64 @@ export class BooksCarouselComponent implements OnInit {
   //Get books
   initGetBooks() {
     //If specialty is diffetent to "undefined"
-    if(this.specialty !== undefined) {
+    if(this.specialty !== undefined && this.specialty !== null) {
       
       this._getBookService.getBooksBySpecialty(this.specialty)
         .map(resp => resp.json())
         .subscribe(
-          data => this.books = data,
-          err => console.log(err)
+          data => {
+            this.books = data; 
+            this.error.show = false; 
+          },
+          err => this.mapErrors(err, 'especialidad')
+        );
+
+    } else if(this.author !== undefined && this.author !== null) {
+
+      this._getBookService.getBooksByAuthor(this.author)
+        .map(resp => resp.json())
+        .subscribe(
+          data => {
+            this.books = data; 
+            this.error.show = false; 
+          },
+          err => this.mapErrors(err, 'autor')
         );
 
     } else {
       this._getBookService.getAllBooks()
         .map(resp => resp.json())
         .subscribe(
-          data => { this.books = data },
-          err => console.log(err)
+          data => {
+            this.books = data; 
+            this.error.show = false; 
+          },
+          err => this.mapErrors(err, 'todos')
         );
+    }
+  }
+
+  //Function to error's map after login
+  mapErrors(err, type) {
+    switch (err.status) {
+      case 404:
+          this.error.show = true;
+
+          //If message is for author
+          if(type == 'todos') this.error.msg = `Lo sentimos pero en estos momentos no contamos con libros en stock.`;
+
+          //If message is for specialty
+          if(type == 'especialidad') this.error.msg = `Lo sentimos pero en estos momentos no contamos con libros de esta especialidad.`;
+
+          //If message is for author
+          if(type == 'autor') this.error.msg = `Lo sentimos pero en estos momentos no contamos con libros de este autor.`;
+
+          break;
+
+      case 0:
+          this.error.show = true;
+          this.error.msg = `Ha ocurrido un error, por favor inténtelo de nuevo.`;
+        break;
     }
   }
 

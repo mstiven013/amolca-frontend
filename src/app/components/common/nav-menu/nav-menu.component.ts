@@ -126,7 +126,7 @@ export class NavMenuComponent implements OnInit {
     let windowWidth = jQuery(window).width();
     let submenuId = `#submenu-${id}`;
 
-    if(submenuId && windowWidth <= 950) {
+    if(submenuId && windowWidth <= 1280) {
       jQuery(submenuId).slideToggle('slow', function() {
         //Change display "block" for "flex"
         if(jQuery(this).is(':visible')) jQuery(this).css('display', 'flex')        

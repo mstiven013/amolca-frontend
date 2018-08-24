@@ -1,4 +1,4 @@
-<ngx-carousel [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
+<ngx-carousel *ngIf="!error.show && books.length > 0" [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
     <ngx-item NgxCarouselItem *ngFor="let b of books;">
       <div class="content">
         <!--Book principal image-->
@@ -48,4 +48,8 @@
     </ngx-item>
     <button NgxCarouselPrev class='leftRs'></button>
     <button NgxCarouselNext class='rightRs'></button>
-  </ngx-carousel>
+</ngx-carousel>
+  
+<div *ngIf="error.show || books.length < 1" class="alert">
+  <p>No hay libros con estas especificaciones</p>
+</div>

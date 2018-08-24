@@ -10,6 +10,7 @@ import { MyAccountPageComponent } from '../pages/my-account-page/my-account-page
 import { AuthGuard } from '../guards/auth.guard';
 import { AuthorPageComponent } from '../pages/author-page/author-page.component';
 import { PostPageComponent } from '../pages/post-page/post-page.component';
+import { SpecialtyPageComponent } from '../pages/specialty-page/specialty-page.component';
 
 export const PageRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ export const PageRoutes: Routes = [
     { path: 'libro/:slug', component: BookPageComponent },
     { path: 'autor/:slug', component: AuthorPageComponent },
     { path: 'blog/:slug', component: PostPageComponent },
+    { path: 'especialidad/:slug', component: SpecialtyPageComponent },
     { path: '404', component: NotFoundComponent },
 
     //Not found page
