@@ -42,6 +42,7 @@ export class TopBarComponent implements OnInit {
       .subscribe( data =>  {
         if(data != 'removed') {
           this.userInfo = data
+          this.userIsLogged = true
         } else {
           this.userIsLogged = false;
         }
@@ -52,8 +53,9 @@ export class TopBarComponent implements OnInit {
     let cart = JSON.parse(localStorage.getItem('wyC4r7'));
     if(cart !== null) {
       let me = this;
-
       this.cartValue = cart.total;
+    } else {
+      this.cartValue = 0;
     }
   }
 

@@ -35,7 +35,7 @@ export class BooksLoopComponent implements OnInit {
 
   constructor(
     private _getBookService: GetBookService,
-    private _CartService: CartService,
+    private _cartService: CartService,
     private _getCartService: GetCartService
   ) { }
 
@@ -117,56 +117,81 @@ export class BooksLoopComponent implements OnInit {
     }
   }
 
+  //Add to cart function
   addToCart(book, price){
 
     let localCart = localStorage.getItem('wyC4r7');
 
     if(localCart !== null) {
-      let product = {
-        "id": book._id,
-        "price": price,
-        "quantity": 1
-      }
-
-      //Get Cart in localhost
-      let uCart = JSON.parse(localCart);
-      let push = true;
-
-      //Run products in activeCart and add quantity to product
-      for(let i = 0; i < uCart.products.length; i++) {
-        if(uCart.products[i].id == book._id) {
-          uCart.products[i].quantity = uCart.products[i].quantity + 1;
-          push = false;
-        }
-      }
-
-      //If the product no exists in the active cart from LocalStorage
-      if(push) {
-        uCart.products.push(product)
-      }
-
-      //Consume service for update Cart
-      this._CartService.updateCart({"products": uCart.products}, uCart._id)
-        .map(resp => resp.json())
-        .subscribe(
-          data => this._getCartService.cartDataRefresh(data),
-          err => console.log(err)
-        )
-
+      //If exists cart in localStorage update this
+      this.updateCartExistent(localCart, book, price)
     } else {
-
-      let data = {
-        "products": [{ 
-          "id": book._id, "price": price, "quantity": 1 }
-        ]};
-
-      this._CartService.createCart(data)
-        .map(resp => resp.json())
-        .subscribe(
-          data => this._getCartService.cartDataRefresh(data),
-          err => console.log(err)
-        )
+      //If not exists cart in localStorage create one new
+      this.createCartIfNotExists(book, price)
     }
+  }
+
+  //If not exists cart in localStorage create one new
+  createCartIfNotExists(book, price) {
+
+    let user = localStorage.getItem('U53r');
+    let dataCart: any;
+
+    if(user !== null) {
+      dataCart = {
+        "products": [
+          { "this": book._id, "price": price, "quantity": 1 }
+        ],
+        "userId": JSON.parse(user)._id
+      }
+    } else {
+      dataCart = {
+        "products": [{ 
+          "this": book._id, "price": price, "quantity": 1 }
+        ]};
+    }
+    
+    this._cartService.createCart(dataCart)
+      .map(resp => resp.json())
+      .subscribe(
+        data => this._getCartService.cartDataRefresh(data),
+        err => console.log(err)
+      )
+  }
+
+  //If exists cart in localStorage update this
+  updateCartExistent(lCart, book, price) {
+    let user = localStorage.getItem('U53r');
+
+    let product = {
+      "this": book._id,
+      "price": price,
+      "quantity": 1
+    }
+
+    //Get Cart in localhost
+    let uCart = JSON.parse(lCart);
+
+    //Run products in activeCart and add quantity to product
+    let pExistent = uCart.products.filter(bEx => bEx.this._id === product.this);
+    if(pExistent.length > 0) {
+      pExistent[0].quantity = pExistent[0].quantity + 1;
+    } else {
+      uCart.products.push(product)
+    }
+
+    //If user exists in localStorage add "UserId" field into cart json
+    if(user !== null) {
+      uCart.userId = JSON.parse(user)._id;
+    }
+
+    //Consume service for update Cart
+    this._cartService.updateCart({"products": uCart.products}, uCart._id)
+      .map(resp => resp.json())
+      .subscribe(
+        data => this._getCartService.cartDataRefresh(data),
+        err => console.log(err)
+      )
   }
 
   addToWishlist(book) {

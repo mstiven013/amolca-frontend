@@ -19,7 +19,15 @@ export class GetCartService {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.get(config.API_URL + '/carts?searchby=id&id=' + id, options);
+    return this._http.get(config.API_URL + '/carts/' + id, options);
+  }
+
+  //Get cart by User Id
+  getCartByUser(id) {
+    let headers = new Headers({'Content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+
+    return this._http.get(config.API_URL + '/users/' + id + '/carts', options);
   }
 
   //Observable to cart data
@@ -29,7 +37,9 @@ export class GetCartService {
 
   //Refres cart data
   cartDataRefresh(cart) {
-    localStorage.setItem('wyC4r7', JSON.stringify(cart));
+    if(cart != 'removed') {
+      localStorage.setItem('wyC4r7', JSON.stringify(cart));
+    }
     this.cartData.next(cart);
   }
 

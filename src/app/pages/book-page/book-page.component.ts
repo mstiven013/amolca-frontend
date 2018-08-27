@@ -4,6 +4,9 @@ import { GetBookService } from '../../services/book/get-book.service';
 import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
 import { AppComponent } from '../../app.component';
 import { Meta } from '../../../../node_modules/@angular/platform-browser';
+import { GetCartService } from '../../services/cart/get-cart.service';
+import { CartService } from '../../services/cart/cart.service';
+import { FormControl } from '@angular/forms';
 
 declare var jQuery: any;
 
@@ -26,7 +29,12 @@ export class BookPageComponent implements OnInit {
   book: any = {};
   exists = true;
 
+  //Cart btn vars
   showCartBtn: Boolean = true;
+  qtyInput: Number = 1;
+
+  //Notification
+  notification = { bg: 'red', show: false, msg: 'Ejemplo' }
 
   footerOffset: any = jQuery('.footer').offset().top - 40;
   mainHigher: Boolean = false;
@@ -38,6 +46,10 @@ export class BookPageComponent implements OnInit {
 
     //Book services
     private _getBookService: GetBookService,
+
+    //Cart services
+    private _getCartService: GetCartService,
+    private _cartService: CartService,
 
     //Router services
     private _activatedRoute: ActivatedRoute,
@@ -141,5 +153,132 @@ export class BookPageComponent implements OnInit {
     if(jQuery('.main').height() > (me.footerOffset - 180 - jQuery('#image-container').height()) ) {
       me.mainHigher = true;
     }
+  }
+
+  //Add to cart function
+  addToCart(book, price, qty){
+
+    let localCart = localStorage.getItem('wyC4r7');
+    
+    if(localCart !== null) {
+      //If exists cart in localStorage update this
+      this.updateCartExistent(localCart, book, price, qty)
+    } else {
+      //If not exists cart in localStorage create one new
+      this.createCartIfNotExists(book, price, qty)
+    }
+  }
+
+  //If not exists cart in localStorage create one new
+  createCartIfNotExists(book, price, qty) {
+
+    let user = localStorage.getItem('U53r');
+    let dataCart: any;
+
+    if(user !== null) {
+      dataCart = {
+        "products": [
+          { "this": book._id, "price": price, "quantity": qty }
+        ],
+        "userId": JSON.parse(user)._id
+      }
+    } else {
+      dataCart = {
+        "products": [{ 
+          "this": book._id, "price": price, "quantity": qty }
+        ]};
+    }
+    
+    this._cartService.createCart(dataCart)
+      .map(resp => resp.json())
+      .subscribe(
+        data => {
+          this._getCartService.cartDataRefresh(data)
+
+          //Input qty
+          this.qtyInput = 1;
+
+          //Notification
+          let me = this;
+          this.notification.bg = '#00396F';
+          this.notification.msg = 'Se agregó este libro a tu carrito de compras.';
+          this.notification.show = true;
+
+          setTimeout(function() {
+            me.notification.show = false;
+          }, 4000);
+        },
+        err => {
+          //Notification
+          let me = this;
+          this.notification.bg = 'red';
+          this.notification.msg = 'Ha ocurrido un error actualizando tus datos, por favor inténtelo de nuevo más tarde.';
+          this.notification.show = true;
+
+          setTimeout(function() {
+            me.notification.show = false;
+          }, 4000);
+        }
+      )
+  }
+
+  //If exists cart in localStorage update this
+  updateCartExistent(lCart, book, price, qty) {
+    let user = localStorage.getItem('U53r');
+
+    let product = {
+      "this": book._id,
+      "price": price,
+      "quantity": qty
+    }
+
+    //Get Cart in localhost
+    let uCart = JSON.parse(lCart);
+
+    //Run products in activeCart and add quantity to product
+    let pExistent = uCart.products.filter(bEx => bEx.this._id === product.this);
+    if(pExistent.length > 0) {
+      pExistent[0].quantity = pExistent[0].quantity + qty;
+    } else {
+      uCart.products.push(product)
+    }
+
+    //If user exists in localStorage add "UserId" field into cart json
+    if(user !== null) {
+      uCart.userId = JSON.parse(user)._id;
+    }
+
+    //Consume service for update Cart
+    this._cartService.updateCart({"products": uCart.products}, uCart._id)
+      .map(resp => resp.json())
+      .subscribe(
+        data => {
+          this._getCartService.cartDataRefresh(data)
+
+          //Input qty
+          this.qtyInput = 1;
+
+          //Notification
+          let me = this;
+          this.notification.bg = '#00396F';
+          this.notification.msg = 'Se agregó este libro a tu carrito de compras.';
+          this.notification.show = true;
+
+          setTimeout(function() {
+            me.notification.show = false;
+          }, 4000);
+        },
+        err => {
+          //Notification
+          let me = this;
+          this.notification.bg = 'red';
+          this.notification.msg = 'Ha ocurrido un error actualizando tus datos, por favor inténtelo de nuevo más tarde.';
+          this.notification.show = true;
+
+          setTimeout(function() {
+            me.notification.show = false;
+          }, 4000);
+        }
+      )
   }
 }

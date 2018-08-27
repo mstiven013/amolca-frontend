@@ -3,6 +3,8 @@ import { Subject, Observable } from 'rxjs';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { config } from '../../../config';
 import { Router } from '@angular/router';
+import {  } from '../cart/cart.service';
+import { GetCartService } from '../cart/get-cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ export class AuthService {
 
   constructor(
     private _Http: Http,
-    private _router: Router
+    private _router: Router,
+    private _getCartService: GetCartService
   ) { }
 
   //Observable to user data
@@ -65,7 +68,9 @@ export class AuthService {
   logout() {
     localStorage.removeItem('4ccT0k3n');
     localStorage.removeItem('U53r');
+    localStorage.removeItem('wyC4r7');
     this.userData.next('removed');
+    this._getCartService.cartDataRefresh('removed');
 
     this._router.navigate(['/']);
   }
