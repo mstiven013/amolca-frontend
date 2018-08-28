@@ -26,7 +26,8 @@
               "src/assets/css/global.scss",
               "src/assets/css/responsive.scss",
               "src/assets/css/fonts.scss",
-              "src/assets/libs/icomoon/style.scss"
+              "src/assets/libs/icomoon/style.scss",
+              "src/assets/libs/select2/css/select2.min.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/assets/css/imports"]
@@ -34,8 +35,7 @@
             "scripts": [ 
               "node_modules/jquery/dist/jquery.min.js",
               "src/assets/libs/select2/js/select2.full.min.js",
-              "node_modules/hammerjs/hammer.js",
-              "src/assets/libs/select2/css/select2.min.css"
+              "node_modules/hammerjs/hammer.js"
             ]
           },
           "configurations": {
