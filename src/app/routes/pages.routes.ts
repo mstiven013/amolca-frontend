@@ -11,12 +11,14 @@ import { AuthGuard } from '../guards/auth.guard';
 import { AuthorPageComponent } from '../pages/author-page/author-page.component';
 import { PostPageComponent } from '../pages/post-page/post-page.component';
 import { SpecialtyPageComponent } from '../pages/specialty-page/specialty-page.component';
+import { CheckoutPageComponent } from '../pages/checkout-page/checkout-page.component';
 
 export const PageRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'iniciar-sesion', component: AuthPageComponent },
     { path: 'mi-cuenta', component: MyAccountPageComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard] },
     { path: 'carrito', component: CartPageComponent },
+    { path: 'finalizar-compra', component: CheckoutPageComponent },
     { path: 'libro/:slug', component: BookPageComponent },
     { path: 'autor/:slug', component: AuthorPageComponent },
     { path: 'blog/:slug', component: PostPageComponent },

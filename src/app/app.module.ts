@@ -25,6 +25,9 @@ import { MatTooltipModule, MatTabsModule, MatCheckboxModule, MatProgressBarModul
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 
+//Select2
+import { Select2Module } from 'ng2-select2';
+
 //Pages
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthPageComponent } from './pages/auth-page/auth-page.component';
@@ -104,6 +107,7 @@ import { BillingFormComponent } from './components/authentication/billing-form/b
 import { BillingAddressPageComponent } from './pages/my-account-page/billing-address-page/billing-address-page.component';
 import { ShippingAddressPageComponent } from './pages/my-account-page/shipping-address-page/shipping-address-page.component';
 import { SpecialtyPageComponent } from './pages/specialty-page/specialty-page.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -175,6 +179,7 @@ const appRoutes: Routes = [
     BillingAddressPageComponent,
     ShippingAddressPageComponent,
     SpecialtyPageComponent,
+    CheckoutPageComponent,
   ],
   imports: [
     //Angular libraries
@@ -191,6 +196,9 @@ const appRoutes: Routes = [
     MatCheckboxModule,
     MatProgressBarModule,
     MatMenuModule,
+
+    //Select2
+    Select2Module,
 
     //Http
     HttpClientModule,

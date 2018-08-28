@@ -22,6 +22,7 @@ export class BooksLoopComponent implements OnInit {
   loopclass: any = 'books-loop';
   itemclass: any = 'item';
   error = { show: false, msg: '' }
+  notification = { show: false, msg: 'Se agregó este libro a tu carrito' }
 
   //Input vars
   @Input() specialty: any;
@@ -110,7 +111,7 @@ export class BooksLoopComponent implements OnInit {
 
           break;
 
-      case 0:
+      default:
           this.error.show = true;
           this.error.msg = `Ha ocurrido un error, por favor inténtelo de nuevo.`;
         break;
@@ -154,8 +155,19 @@ export class BooksLoopComponent implements OnInit {
     this._cartService.createCart(dataCart)
       .map(resp => resp.json())
       .subscribe(
-        data => this._getCartService.cartDataRefresh(data),
-        err => console.log(err)
+        data => { 
+          //Refresh cart data
+          this._getCartService.cartDataRefresh(data)
+
+          //Notification
+          let me = this;
+          this.notification.show = true;
+          setTimeout(function() {
+            me.notification.show = false;
+          }, 4000);
+
+        },
+        err => this.mapErrors(err, 'cart')
       )
   }
 
@@ -189,8 +201,19 @@ export class BooksLoopComponent implements OnInit {
     this._cartService.updateCart({"products": uCart.products}, uCart._id)
       .map(resp => resp.json())
       .subscribe(
-        data => this._getCartService.cartDataRefresh(data),
-        err => console.log(err)
+        data => { 
+          //Refresh cart data
+          this._getCartService.cartDataRefresh(data)
+
+          //Notification
+          let me = this;
+          this.notification.show = true;
+          setTimeout(function() {
+            me.notification.show = false;
+          }, 4000);
+
+        },
+        err => this.mapErrors(err, 'cart')
       )
   }
 

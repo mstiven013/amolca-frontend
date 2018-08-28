@@ -13,7 +13,7 @@
     padding: 0px;
 }
 
-html {
+html, body {
     overflow-x: hidden;
 }
 
@@ -411,8 +411,7 @@ app-loader .mat-progress-bar {
     }
         .mat-expansion-panel.mat-expanded .mat-expansion-panel-header:not([aria-disabled=true]):before,
         .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused:before,
-        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused:before,
-        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover:before {
+        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused:before {
             opacity: 1;
         }
     .book-accordion mat-expansion-panel-header .mat-content {
@@ -436,8 +435,6 @@ app-loader .mat-progress-bar {
         @include transition('all 0.4s ease');
         width: 20px;
     }
-        
-        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover mat-panel-title span,
         .mat-expansion-panel.mat-expanded mat-panel-title span {
             background-color: $blue-light;
         }
@@ -469,7 +466,6 @@ app-loader .mat-progress-bar {
         /*Header title hover*/
         .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused .mat-expansion-panel-header-title,
         .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused .mat-expansion-panel-header-title,
-        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover .mat-expansion-panel-header-title,
         .mat-expansion-panel.mat-expanded .mat-expansion-panel-header-title {
             color: $white-color;
         }
@@ -478,7 +474,6 @@ app-loader .mat-progress-bar {
         .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused .mat-expansion-panel-header-description,
         .mat-expansion-panel.mat-expanded .mat-expansion-panel-header:not([aria-disabled=true]).cdk-keyboard-focused .mat-expansion-panel-header-description,
         .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]).cdk-program-focused .mat-expansion-panel-header-description,
-        .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover .mat-expansion-panel-header-description,
         .mat-expansion-panel.mat-expanded .mat-expansion-panel-header-description {
             color: $white-color;
         }
@@ -503,6 +498,45 @@ app-loader .mat-progress-bar {
         text-align: left;
     }
 
+    .cart-notification {
+        background-color: $primary-color;
+        border-radius: 5px;
+        color: $white-color;
+        font-family: $primary-font;
+        font-size: 14px;
+        font-weight: normal;
+        margin-bottom: 5px;
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .leftRs, .rightRs {
+        background-color: transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
+        cursor: pointer;
+        height: 70px;
+        opacity: 0.2;
+        position: absolute;
+        @include calc(top, '50% - 100px');
+        @include transition('all 0.4s ease');
+        width: 54px;
+    }
+        .leftRs {
+            background-image: url('/assets/img/common/left-carousel-btn.png');
+            left: -30px;
+        }
+        .rightRs {
+            background-image: url('/assets/img/common/right-carousel-btn.png');
+            right: -30px;
+        }
+        .leftRs:hover, .rightRs:hover {
+            opacity: 1;
+        }
+
 .banner-slides h1,
 .banner-slides h2,
 .banner-slides h3,
@@ -512,7 +546,7 @@ app-loader .mat-progress-bar {
 }
 
 /*Form's*/
-input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea, textarea  {
     border-radius: 5px;
     border: 1px solid $gray-light;
     @include boxSizing('border-box');
@@ -523,13 +557,41 @@ input:not([type]), input[type=text]:not(.browser-default), input[type=password]:
     padding-right: 10px;
 }
 
-input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]), textarea:focus:not([readonly]) {
     border: 1px solid $primary-color;
     box-shadow: none;
 }
 
+textarea.materialize-textarea, textarea {
+    height: 75px;
+}
+
+.select2-container {
+    color: $gray-dark;
+    font-family: $primary-font;
+    max-width: 100%;
+    outline: 0;
+}
+    .select2-container .select2-selection,
+    .select2-container .select2-selection--single {
+        height: 3rem !important;
+    }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 3rem !important;
+            padding-left: 10px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 3rem !important;
+        }
+
 .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
     background-color: $primary-color;
+}
+
+//Checkout terms and conditions
+.checkout-page .mat-checkbox-layout {
+    font-family: $primary-font;
+    font-size: 16px;
 }
 
 .error {

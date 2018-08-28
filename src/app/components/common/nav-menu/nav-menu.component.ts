@@ -99,6 +99,7 @@ export class NavMenuComponent implements OnInit {
     parentItem.each(function() {
       if(jQuery(this).children('ul').length > 0) {
         jQuery(this).children('a').removeAttr('ng-reflect-router-link');
+        jQuery(this).children('a').removeAttr('href');
       }
     });
 
@@ -137,8 +138,10 @@ export class NavMenuComponent implements OnInit {
   //Hidde mobile menu onclick action
   hiddeSubmenu() {
     let menu = document.getElementById('hmenu');
+    let btn = document.getElementById('mobile-btn');
     if(menu.classList.contains('active')) {
       menu.classList.remove('active')
+      btn.classList.remove('active')
     }
   }
 

@@ -94,7 +94,12 @@
 
     .item .actions a {
         cursor: pointer;
+        display: inline-block;
+        height: 36px;
+        line-height: 43px;
+        text-align: center;
         text-decoration: none;
+        width: 35px;
     }
 
     .item .actions .cart-btn {
@@ -122,28 +127,28 @@ ngx-carousel {
             background-color: $gray-sup-light;
         }
 
-        .leftRs, .rightRs {
-            background-color: transparent;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            border: none;
-            cursor: pointer;
-            height: 70px;
-            opacity: 0.2;
-            position: absolute;
-            @include calc(top, '50% - 100px');
-            @include transition('all 0.4s ease');
-            width: 54px;
-        }
-            .leftRs {
-                background-image: url('/assets/img/common/left-carousel-btn.png');
-                left: -30px;
-            }
-            .rightRs {
-                background-image: url('/assets/img/common/right-carousel-btn.png');
-                right: -30px;
-            }
-            .leftRs:hover, .rightRs:hover {
-                opacity: 1;
-            }
+@media screen and (max-width: 992px) {
+    .books-loop .item,
+    .books-loop.items-per-page-1 .item,
+    .books-loop.items-per-page-2 .item,
+    .books-loop.items-per-page-3 .item,
+    .books-loop.items-per-page-4 .item,
+    .books-loop.items-per-page-5 .item {
+        @include calc(max-width, '50% - 30px');
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .books-loop .item,
+    .books-loop.items-per-page-1 .item,
+    .books-loop.items-per-page-2 .item,
+    .books-loop.items-per-page-3 .item,
+    .books-loop.items-per-page-4 .item,
+    .books-loop.items-per-page-5 .item {
+        @include calc(max-width, '100% - 30px');
+    }
+
+    ngx-item .content {
+        width: 100%;
+    }
+}

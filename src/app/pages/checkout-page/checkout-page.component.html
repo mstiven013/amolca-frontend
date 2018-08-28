@@ -1,0 +1,101 @@
+<div class="page-container checkout-page">
+
+  <div class="row">
+
+    <!--Form column-->
+    <div class="col s12 m8 l8">
+      <p class="title">Detalles de facturación y envío</p>
+      <form (ngSubmit)="createOrder(checkoutForm)" [formGroup]="checkoutform" #checkoutForm="ngForm">
+        <div class="row">
+      
+          <!--Name column-->
+          <div class="col s12 m6 l6">
+            <label for="name">Nombres:</label>
+            <input type="text" name="name" id="name" formControlName="name" #name placeholder="Escribe tu nombre...">
+          </div>
+      
+          <!--Lastname column-->
+          <div class="col s12 m6 l6">
+            <label for="lastname">Apellidos:</label>
+            <input type="text" name="lastname" id="lastname" formControlName="lastname" #lastname placeholder="Escribe tus apellidos...">
+          </div>
+
+          <!--Name column-->
+          <div class="col s12 m6 l6">
+            <label for="phone">Teléfono fijo:</label>
+            <input type="text" name="phone" id="phone" formControlName="phone" #phone placeholder="Escribe tu número de teléfono fijo...">
+          </div>
+      
+          <!--Lastname column-->
+          <div class="col s12 m6 l6">
+            <label for="mobile">Teléfono celular:</label>
+            <input type="text" name="mobile" id="mobile" formControlName="mobile" #mobile placeholder="Escribe tu número de celular...">
+          </div>
+
+          <!--Email column-->
+          <div class="col s12 m12 l12">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" name="email" id="email" formControlName="email" #email placeholder="Escribe tu correo electrónico...">
+          </div>
+
+          <!--Country column-->
+          <div class="col s12 m6 l6">
+            <label for="country">País:</label>
+            <select name="country" id="country" formControlName="country" #country>
+              <option value="0">Seleccione un país...</option>
+            </select>
+
+            <select2 [data]="countries"  [cssImport]="true"></select2>
+          </div>
+      
+          <!--City column-->
+          <div class="col s12 m6 l6">
+            <label for="city">Ciudad:</label>
+            <input type="text" name="city" id="city" formControlName="city" #city placeholder="Escribe la ciudad de envío...">
+          </div>
+
+          <!--Address column-->
+          <div class="col s12 m4 l4">
+            <label for="address">Dirección:</label>
+            <input type="text" name="address" id="address" formControlName="address" #address placeholder="Escribe tu dirección...">
+          </div>
+
+          <!--Aditionals column-->
+          <div class="col s12 m4 l4">
+            <label for="aditionals">Extra (oficina, interior, etc):</label>
+            <input type="text" name="aditionals" id="aditionals" formControlName="aditionals" #aditionals placeholder="Extra (oficina, interior, etc)...">
+          </div>
+
+          <!--Postal code column-->
+          <div class="col s12 m4 l4">
+            <label for="postalCode">Código postal:</label>
+            <input type="text" name="postalCode" id="postalCode" formControlName="postalCode" #postalCode placeholder="Escribe tu código postal...">
+          </div>
+
+          <!--Notes column-->
+          <div class="col s12 m12 l12">
+            <label for="notes">Notas sobre tu pedido:</label>
+            <textarea class="materialize-textarea" name="notes" id="notes" formControlName="notes" #notes placeholder="Si tienes notas adicionales sobre tu pedido escríbelas aquí..."></textarea>
+          </div>
+
+          <!--Terms and conditions column-->
+          <div class="col s12 m12 l12 terms-condition">
+              <mat-checkbox class="example-margin" formControlName="termsCondition">He leído y acepto los <a routerLink="terminos-y-condiciones">Términos y condiciones</a> y <a>Políticas de privacidad</a></mat-checkbox>
+          </div>
+
+          <!--Button column-->
+          <div class="col s12 m12 l12">
+            <input [disabled]="!checkoutForm.valid" type="submit" class="button primary" value="¡Pagar ahora!">
+          </div>
+      
+        </div> 
+      </form>
+    </div>
+
+    <!--Content table column-->
+    <div class="col s12 m4 l4">
+      <p class="title">Tu pedido</p>
+    </div>
+
+  </div>
+</div>

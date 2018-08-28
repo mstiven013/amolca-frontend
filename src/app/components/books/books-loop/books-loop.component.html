@@ -27,6 +27,10 @@
       <ng-template ngFor let-country [ngForOf]="book.countries">
         <!--book actions-->
         <div *ngIf="country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'" class="actions">
+          <!--Notification-->
+          <div *ngIf="notification.show" class="cart-notification">
+            <p>{{notification.msg}}</p>
+          </div>
 
           <!--book Price-->
           <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>

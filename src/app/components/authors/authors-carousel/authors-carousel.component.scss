@@ -44,29 +44,3 @@ ngx-carousel {
             color: $gray-dark;
             margin: 20px auto;
         }
-
-        .leftRs, .rightRs {
-            background-color: transparent;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            border: none;
-            cursor: pointer;
-            height: 70px;
-            opacity: 0.2;
-            position: absolute;
-            @include calc(top, '50% - 100px');
-            @include transition('all 0.4s ease');
-            width: 54px;
-        }
-            .leftRs {
-                background-image: url('/assets/img/common/left-carousel-btn.png');
-                left: -30px;
-            }
-            .rightRs {
-                background-image: url('/assets/img/common/right-carousel-btn.png');
-                right: -30px;
-            }
-            .leftRs:hover, .rightRs:hover {
-                opacity: 1;
-            }

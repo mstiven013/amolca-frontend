@@ -44,3 +44,27 @@ ngx-item, ngx-item.item {
     .content {
         margin-top: -59px;
     }
+
+@media screen and (max-width: 768px) {
+    ngx-item, ngx-item.item {
+        height: 400px;
+    }
+
+    .leftRs, .rightRs {
+        height: 40px;
+        @include calc(top, '50% - 60px');
+        width: 32px;
+    }
+        .leftRs {
+            left: 5px;
+        }
+        .rightRs {
+            right: 5px;
+        }
+}
+
+@media screen and (max-width: 576px) {
+    ngx-item, ngx-item.item {
+        height: 350px;
+    }
+}

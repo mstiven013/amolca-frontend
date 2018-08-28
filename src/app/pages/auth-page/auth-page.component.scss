@@ -35,3 +35,13 @@
     padding: 40px;
     text-align: center;
 }
+
+@media screen and (max-width: 578px) {
+    .content {
+        width: 85%;
+    }
+    
+    .form-container {
+        padding: 30px 20px;
+    }
+}
