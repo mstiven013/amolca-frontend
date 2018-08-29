@@ -17,8 +17,12 @@
         </h3>
   
         <p class="date">{{post.registerDate | date:'mediumDate'}}</p>
-        <p *ngIf="!post.excerpt || post.excerpt == ''" class="description" [innerHTML]="post.content.substring(0,100) + '...'"></p>
-        <p *ngIf="post.excerpt && post.excerpt != ''" class="description" [innerHTML]="post.excerpt.substring(0,100) + '...'"></p>
+        <p *ngIf="!post.excerpt || post.excerpt == ''" class="description">
+          <span [innerHTML]="post.excerpt | slice:0:100"></span><span>...</span>
+        </p>
+        <p *ngIf="post.excerpt && post.excerpt != ''" class="description">
+          <span [innerHTML]="post.excerpt | slice:0:100"></span><span>...</span>
+        </p>
   
         <p><a routerLink="/blog/{{post.slug}}" class="button primary">Leer más</a></p>
       </div>

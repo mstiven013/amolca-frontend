@@ -10,7 +10,9 @@
           <h3 class="name">
             <a routerLink="/autor/{{author.slug}}">{{author.name}}</a>
           </h3>
-          <p class="description" [innerHTML]="author.description.substring(0,100) + '...'"></p>
+          <p class="description">
+            <span [innerHTML]="author.description | slice:0:100"></span><span>...</span>
+          </p>
           <p><a routerLink="/autor/{{author.slug}}" class="button primary">Ver libros</a></p>
         </div>
       </div>

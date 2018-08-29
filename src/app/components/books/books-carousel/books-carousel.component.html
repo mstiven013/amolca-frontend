@@ -4,19 +4,17 @@
         <!--Book principal image-->
         <a routerLink="libro/{{b.slug}}" class="contain-img">
           <!--Show if b images exists-->        
-          <ng-template *ngIf="b.image.length > 0">
-            <ng-template *ngFor="let image of b.image;">
-              <img *ngIf="image.principal" src="assets/img/products/{{b.image.name}}" alt="">
-            </ng-template>
+          <ng-template *ngIf="b.thumbnail && b.thumbnail !== ''">
+            <img *ngIf="b.thumbnail" src="assets/img/products/{{b.thumbnail}}" alt="">
           </ng-template>
           
-          <img *ngIf="b.image.length == 0" src="assets/img/common/no-image.jpg" alt="">
+          <img *ngIf="!b.thumbnail || b.thumbnail == ''" src="assets/img/common/no-image.jpg" alt="">
         </a>
   
         <div class="info">
           <!--b Name-->
           <h3 class="name">
-              <a routerLink="libro/{{b.slug}}">{{b.name}}</a>
+              <a routerLink="libro/{{b.slug}}">{{b.title}}</a>
           </h3>
   
           <!--REPLACE WHEN CHANGE bS MODEL-->
