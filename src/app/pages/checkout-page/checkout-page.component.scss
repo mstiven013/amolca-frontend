@@ -24,3 +24,26 @@
 .button {
     width: 100%;
 }
+
+/*Order col*/
+.col.order {
+    background-color: $gray-sup-light;
+    border-radius: 10px;
+    padding: 20px 30px 30px;
+}
+
+.col.order table {
+    background-color: $white-dark;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+    .col.order table tr td,
+    .col.order table tr th {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .col.order table th.qty,
+    .col.order table td.qty {
+        text-align: center;
+    }

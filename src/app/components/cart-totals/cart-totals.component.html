@@ -12,7 +12,7 @@
     <th>Total</th>
     <th id="price">{{total | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</th>
   </tr>
-  <tr id="actions">
+  <tr id="actions" *ngIf="mode == 'cart'">
     <td colspan="2">
       <a class="button primary waves-effect waves-light" routerLink="/finalizar-compra">Finalizar compra</a>
     </td>

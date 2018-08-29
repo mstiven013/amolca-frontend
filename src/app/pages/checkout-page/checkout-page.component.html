@@ -1,4 +1,4 @@
-<div class="page-container checkout-page">
+<div *ngIf="cartExists" class="page-container checkout-page">
 
   <div class="row">
 
@@ -10,37 +10,37 @@
       
           <!--Name column-->
           <div class="col s12 m6 l6">
-            <label for="name">Nombres:</label>
+            <label for="name"><span class="required">*</span> Nombres:</label>
             <input type="text" name="name" id="name" formControlName="name" #name placeholder="Escribe tu nombre...">
           </div>
       
           <!--Lastname column-->
           <div class="col s12 m6 l6">
-            <label for="lastname">Apellidos:</label>
+            <label for="lastname"><span class="required">*</span> Apellidos:</label>
             <input type="text" name="lastname" id="lastname" formControlName="lastname" #lastname placeholder="Escribe tus apellidos...">
           </div>
 
-          <!--Name column-->
+          <!--Mobile column-->
+          <div class="col s12 m6 l6">
+            <label for="mobile"><span class="required">*</span> Teléfono celular:</label>
+            <input type="text" name="mobile" id="mobile" formControlName="mobile" #mobile placeholder="Escribe tu número de celular...">
+          </div>
+
+          <!--Phone column-->
           <div class="col s12 m6 l6">
             <label for="phone">Teléfono fijo:</label>
             <input type="text" name="phone" id="phone" formControlName="phone" #phone placeholder="Escribe tu número de teléfono fijo...">
           </div>
-      
-          <!--Lastname column-->
-          <div class="col s12 m6 l6">
-            <label for="mobile">Teléfono celular:</label>
-            <input type="text" name="mobile" id="mobile" formControlName="mobile" #mobile placeholder="Escribe tu número de celular...">
-          </div>
 
           <!--Email column-->
           <div class="col s12 m12 l12">
-            <label for="email">Correo electrónico:</label>
+            <label for="email"><span class="required">*</span> Correo electrónico:</label>
             <input type="email" name="email" id="email" formControlName="email" #email placeholder="Escribe tu correo electrónico...">
           </div>
 
           <!--Country column-->
           <div class="col s12 m6 l6">
-            <label for="country">País:</label>
+            <label for="country"><span class="required">*</span> País:</label>
             <select name="country" id="country" formControlName="country" #country>
               <option value="0">Seleccione un país...</option>
             </select>
@@ -50,13 +50,13 @@
       
           <!--City column-->
           <div class="col s12 m6 l6">
-            <label for="city">Ciudad:</label>
+            <label for="city"><span class="required">*</span> Ciudad:</label>
             <input type="text" name="city" id="city" formControlName="city" #city placeholder="Escribe la ciudad de envío...">
           </div>
 
           <!--Address column-->
           <div class="col s12 m4 l4">
-            <label for="address">Dirección:</label>
+            <label for="address"><span class="required">*</span> Dirección:</label>
             <input type="text" name="address" id="address" formControlName="address" #address placeholder="Escribe tu dirección...">
           </div>
 
@@ -93,9 +93,27 @@
     </div>
 
     <!--Content table column-->
-    <div class="col s12 m4 l4">
+    <div class="col s12 m4 l4 order">
       <p class="title">Tu pedido</p>
+
+      <table class="striped highlight">
+        <thead>
+          <tr>
+            <th class="product">Producto</th>
+            <th class="qty">Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of cart.products; let i = index;">
+            <td class="product">{{book.this.title}}</td>
+            <td class="qty">{{book.quantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <cart-totals [subtotal]="cart.total" [shipping]="shipping" [total]="cart.total" [mode]="'checkout'"></cart-totals>
     </div>
 
   </div>
 </div>
+
+<not-found *ngIf="!cartExists" [pageType]="'cart'"></not-found>

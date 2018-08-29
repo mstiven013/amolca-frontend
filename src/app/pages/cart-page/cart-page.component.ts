@@ -64,7 +64,7 @@ export class CartPageComponent implements OnInit {
   //Get Cart Info
   getCartInfo() {
     let cartInfo = JSON.parse(localStorage.getItem('wyC4r7'));
-
+    
     if(cartInfo !== null) {
       this._getCartService.getCartById(cartInfo._id)
         .map(resp => resp.json())

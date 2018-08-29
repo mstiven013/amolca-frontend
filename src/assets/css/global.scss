@@ -566,6 +566,10 @@ textarea.materialize-textarea, textarea {
     height: 75px;
 }
 
+.required {
+    color: $primary-red;
+}
+
 .select2-container {
     color: $gray-dark;
     font-family: $primary-font;
@@ -592,6 +596,7 @@ textarea.materialize-textarea, textarea {
 .checkout-page .mat-checkbox-layout {
     font-family: $primary-font;
     font-size: 16px;
+    white-space: normal;
 }
 
 .error {

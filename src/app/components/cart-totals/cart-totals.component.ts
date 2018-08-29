@@ -10,6 +10,7 @@ export class CartTotalsComponent implements OnInit {
   @Input() subtotal: any;
   @Input() shipping: any;
   @Input() total: any;
+  @Input() mode: any = 'cart';
 
   constructor() { }
 
