@@ -2,19 +2,17 @@
   <div *ngFor="let book of books;" class="{{itemclass}}">
 
     <!--Book principal image-->
-    <a routerLink="libro/{{b.slug}}" class="contain-img">
-      <!--Show if b images exists-->        
-      <ng-template *ngIf="b.thumbnail && b.thumbnail !== ''">
-        <img *ngIf="b.thumbnail" src="assets/img/products/{{b.thumbnail}}" alt="">
-      </ng-template>
+    <a routerLink="/libro/{{book.slug}}" class="contain-img">
+      <!--Show if b images exists-->
+      <img *ngIf="book.image !== undefined" src="assets/img/products/{{book.image}}" alt="">
       
-      <img *ngIf="!b.thumbnail || b.thumbnail == ''" src="assets/img/common/no-image.jpg" alt="">
+      <img *ngIf="book.image === undefined || book.image == ''" src="assets/img/common/no-image.jpg" alt="">
     </a>
 
     <div class="info">
       <!--b Name-->
       <h3 class="name">
-          <a routerLink="libro/{{b.slug}}">{{b.title}}</a>
+          <a routerLink="/libro/{{book.slug}}">{{book.title}}</a>
       </h3>
 
       <!--REPLACE WHEN CHANGE BOOKS MODEL-->

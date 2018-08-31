@@ -61,16 +61,15 @@ export class BookPageComponent implements OnInit {
       this.bookActive = params['slug']
     })
 
-    jQuery(document).ready(function() {
-      jQuery('.materialboxed').materialbox();
-    });
-
     this.getBookInfo(this.bookActive);
     this.getCountry();
   }
 
   ngAfterViewInit() {
     this.scrollInteraction();
+    jQuery(document).ready(function() {
+      jQuery('.materialboxed').materialbox();
+    });
   }
 
   getCountry() {
@@ -96,7 +95,7 @@ export class BookPageComponent implements OnInit {
     if(this.book.metaTitle && this.book.metaTitle !== '') {
       this._appComponent.setMetaTitle(this.book.metaTitle);
     } else {
-      this._appComponent.setMetaTitle(this.book.name);
+      this._appComponent.setMetaTitle(this.book.title + ' - Amolca Editorial Médica y Odontológica');
     }
 
     //Set meta Description

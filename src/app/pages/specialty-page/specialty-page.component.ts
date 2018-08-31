@@ -29,10 +29,12 @@ export class SpecialtyPageComponent implements OnInit {
   }
 
   getSpecialtyInfo(slug) {
+    console.log(slug)
     this._getSpecialtyService.getSpecialtiesBySlug(slug)
       .map(resp => resp.json())
       .subscribe(
-        data => { 
+        data => {
+          console.log(data)
           this.setSpecialtyInfo(data);
         },
         err => this.exists = false

@@ -4,16 +4,10 @@
     <!--Images Book column-->
     <div class="col s12 l5 image-book">
       <div id="image-container">
-        <!--Show if book images exists-->        
-        <ng-template *ngIf="book.image !== undefined && book.image.length > 0">
-          <ng-template *ngFor="let image of book.image;">
-            <img *ngIf="image.principal" class="materialboxed" src="assets/img/products/{{book.image.name}}" alt="">
-          </ng-template>
-        </ng-template>
-
-        <ng-template [ngIf]="book.image === undefined || book.image.length < 1">
-            <img class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
-        </ng-template>
+        <!--Show if book images exists-->
+        <img *ngIf="book.image !== undefined" class="materialboxed" src="assets/img/products/{{book.image}}" alt="">
+        
+        <img *ngIf="book.image === undefined || book.image == ''" class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
 
         <ng-template ngFor let-country [ngForOf]="book.countries">
           <ng-template [ngIf]="country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
@@ -32,7 +26,7 @@
     <!--Summary Book column-->
     <div class="col s12 l7 summary-book">
       <!--Book name-->
-      <h1 class="name">{{book.name}}</h1>
+      <h1 class="name">{{book.title}}</h1>
 
       <!--Book author-->
       <h3 class="author" *ngIf="book.author !== undefined && book.author.length > 0">
@@ -101,6 +95,35 @@
           <div [innerHTML]="book.description"></div>
         </mat-expansion-panel>
 
+        <!--Data sheet Panel-->
+        <mat-expansion-panel *ngIf="(book.isbn !== undefined && book.isbn != '') || book.attributes.length > 0">
+          <!--Header-->
+          <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
+            <mat-panel-title>
+              <span class="icon-plus"></span> Ficha técnica
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+  
+          <table class="table">
+            <tbody>
+              <tr *ngIf="book.isbn !== undefined && book.isbn != ''">
+                <th>ISBN:</th>
+                <td>{{book.isbn}}</td>
+              </tr>
+
+              <tr *ngIf="book.numberPages !== undefined && book.numberPages != ''">
+                <th>Páginas:</th>
+                <td>{{book.numberPages}}</td>
+              </tr>
+
+              <tr *ngFor="let attr of book.attributes">
+                <th>{{attr.name}}</th>
+                <td>{{attr.value}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-expansion-panel>
+
         <!--Index Panel-->
         <mat-expansion-panel *ngIf="book.index !== undefined && book.index != ''">
           <!--Header-->
@@ -111,6 +134,18 @@
           </mat-expansion-panel-header>
 
           <div [innerHTML]="book.index"></div>
+        </mat-expansion-panel>
+
+        <!--Key Points Panel-->
+        <mat-expansion-panel *ngIf="book.keyPoints !== undefined && book.keyPoints != ''">
+          <!--Header-->
+          <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
+            <mat-panel-title>
+              <span class="icon-plus"></span> Puntos clave
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div [innerHTML]="book.keyPoints"></div>
         </mat-expansion-panel>
 
         <!--Author Panel-->

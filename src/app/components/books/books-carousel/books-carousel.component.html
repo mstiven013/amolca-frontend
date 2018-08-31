@@ -3,12 +3,10 @@
       <div class="content">
         <!--Book principal image-->
         <a routerLink="libro/{{b.slug}}" class="contain-img">
-          <!--Show if b images exists-->        
-          <ng-template *ngIf="b.thumbnail && b.thumbnail !== ''">
-            <img *ngIf="b.thumbnail" src="assets/img/products/{{b.thumbnail}}" alt="">
-          </ng-template>
+          <!--Show if b images exists-->
+          <img *ngIf="b.image !== undefined" src="assets/img/products/{{b.image}}" alt="">
           
-          <img *ngIf="!b.thumbnail || b.thumbnail == ''" src="assets/img/common/no-image.jpg" alt="">
+          <img *ngIf="b.image === undefined || b.image == ''" src="assets/img/common/no-image.jpg" alt="">
         </a>
   
         <div class="info">
