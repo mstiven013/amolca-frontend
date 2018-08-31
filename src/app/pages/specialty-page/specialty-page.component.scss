@@ -1,0 +1,27 @@
+@import "vars.scss";
+@import "mixins.scss";
+
+.single-specialty {
+    padding-top: 40px;
+}
+
+.specialty-title {
+    background-image: url(/assets/img/common/titles-bg.png);
+    background-position: left center;
+    background-size: cover;
+    color: $white-color;
+    font-family: $primary-font;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 15px 5%;
+}
+    .specialty-title > * {
+        font-size: 40px;
+        font-weight: bold;
+        margin: 0px;
+    }
+
+.page-container {
+    padding-bottom: 40px;
+    padding-top: 40px;
+}

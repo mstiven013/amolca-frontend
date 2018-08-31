@@ -34,7 +34,6 @@ export class SpecialtyPageComponent implements OnInit {
       .map(resp => resp.json())
       .subscribe(
         data => {
-          console.log(data)
           this.setSpecialtyInfo(data);
         },
         err => this.exists = false
@@ -49,7 +48,7 @@ export class SpecialtyPageComponent implements OnInit {
     if(this.specialty.metaTitle && this.specialty.metaTitle !== '') {
       this._appComponent.setMetaTitle(this.specialty.metaTitle);
     } else {
-      this._appComponent.setMetaTitle(this.specialty.name);
+      this._appComponent.setMetaTitle(this.specialty.title);
     }
 
     //Set meta Description

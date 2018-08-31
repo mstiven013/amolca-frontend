@@ -12,7 +12,7 @@
         <div class="info">
           <!--b Name-->
           <h3 class="name">
-              <a routerLink="libro/{{b.slug}}">{{b.title}}</a>
+              <a routerLink="libro/{{b.slug}}">{{b.title | slice:0:40}}...</a>
           </h3>
   
           <!--REPLACE WHEN CHANGE bS MODEL-->

@@ -12,7 +12,7 @@
     <div class="info">
       <!--b Name-->
       <h3 class="name">
-          <a routerLink="/libro/{{book.slug}}">{{book.title}}</a>
+          <a matTooltip="{{book.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{book.slug}}">{{book.title | slice:0:40}}</a>
       </h3>
 
       <!--REPLACE WHEN CHANGE BOOKS MODEL-->

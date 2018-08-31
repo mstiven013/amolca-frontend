@@ -96,7 +96,7 @@
         </mat-expansion-panel>
 
         <!--Data sheet Panel-->
-        <mat-expansion-panel *ngIf="(book.isbn !== undefined && book.isbn != '') || book.attributes.length > 0">
+        <mat-expansion-panel *ngIf="(book.isbn !== undefined && book.isbn != '') || (book.attributes !== undefined && book.attributes.length > 0)">
           <!--Header-->
           <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
             <mat-panel-title>
