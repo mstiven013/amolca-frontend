@@ -14,6 +14,8 @@
         <div class="content" [innerHTML]="post.content"></div>
       </div>
     </div>
+
+    <app-comments *ngIf="loadPost" [postId]="post._id"></app-comments>
   </div>
 </div>
 

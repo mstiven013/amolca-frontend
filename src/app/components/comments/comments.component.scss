@@ -1,0 +1,30 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+
+form {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+    .terms-condition {
+        margin: 10px auto;
+    }
+
+.title {
+    color: $primary-color;
+    font-family: $primary-font;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.button {
+    margin-right: 10px;
+}
+
+.comment-item {
+    border-bottom: 1px solid $gray-dark;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}

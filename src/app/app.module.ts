@@ -108,6 +108,10 @@ import { BillingAddressPageComponent } from './pages/my-account-page/billing-add
 import { ShippingAddressPageComponent } from './pages/my-account-page/shipping-address-page/shipping-address-page.component';
 import { SpecialtyPageComponent } from './pages/specialty-page/specialty-page.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { CommentsLoggedFormComponent } from './components/comments/comments-logged-form/comments-logged-form.component';
+import { CommentsLogoutFormComponent } from './components/comments/comments-logout-form/comments-logout-form.component';
+import { CommentsListComponent } from './components/comments/comments-list/comments-list.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -180,6 +184,10 @@ const appRoutes: Routes = [
     ShippingAddressPageComponent,
     SpecialtyPageComponent,
     CheckoutPageComponent,
+    CommentsComponent,
+    CommentsLoggedFormComponent,
+    CommentsLogoutFormComponent,
+    CommentsListComponent,
   ],
   imports: [
     //Angular libraries

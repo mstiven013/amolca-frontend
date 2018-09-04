@@ -1,0 +1,37 @@
+<form (ngSubmit)="createComment(commentForm)" [formGroup]="commentform" #commentForm="ngForm">
+    <div class="row">
+      <!--Title column-->
+      <div class="col s12 m12 l12">
+        <p class="title">Déjanos un comentario</p>
+      </div>
+
+      <!--Name column-->
+      <div class="col s12 m6 l6">
+        <label for="name">Nombre completo:</label>
+        <input type="text" name="name" formControlName="name" #name id="name" placeholder="Escribe tu nombre completo...">
+      </div>
+  
+      <!--Email column-->
+      <div class="col s12 m6 l6">
+        <label for="email">Correo electrónico:</label>
+        <input type="text" name="email" formControlName="email" #email id="email" placeholder="Escribe tu nombre completo...">
+      </div>
+  
+      <!--Comment column-->
+      <div class="col s12 m12 l12">
+        <label for="content">Comentario:</label>
+        <textarea name="content" formControlName="content" #content id="content" placeholder="Escribe aquí tu comentario"></textarea>
+      </div>
+
+      <div class="col s12 m12 l12 terms-condition">
+          <mat-checkbox class="example-margin" formControlName="termsCondition">Acepto los <a routerLink="terminos-y-condiciones">Términos y condiciones</a></mat-checkbox>
+      </div>
+  
+      <!--Buttons column-->
+      <div class="col s12 m12 l12">
+        <input [disabled]="!commentForm.valid" type="submit" class="button primary" value="Enviar">
+        <input type="reset" class="button danger" value="Limpiar">
+      </div>
+  
+    </div>
+  </form>

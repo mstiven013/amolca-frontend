@@ -1,0 +1,21 @@
+<mat-tab-group>
+
+    <mat-tab label="Comentarios ({{comments.length}})">
+
+      <div class="contain-comments">
+
+        <comments-list [comments]="comments" *ngIf="comments.length > 0"></comments-list>
+
+        <!--Comments form if user is logged-->
+        <comments-logged-form *ngIf="userLogged"></comments-logged-form>
+        <!--Comments form if user is logout-->
+        <comments-logout-form *ngIf="!userLogged" [postId]="postId" (newComment)="onNewCommentEvent($event)"></comments-logout-form>
+      </div>  
+      
+    </mat-tab>
+
+    <mat-tab label="Reportar un error">
+      Error
+    </mat-tab>
+
+</mat-tab-group>

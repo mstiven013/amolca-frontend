@@ -13,6 +13,7 @@ export class PostPageComponent implements OnInit {
   private sub: any;
   postActive: any;
   post: any = {};
+  loadPost: Boolean = false;
   exists = true;
 
   constructor(
@@ -40,6 +41,7 @@ export class PostPageComponent implements OnInit {
 
   setPostInfo(p) {
     this.post = p;
+    this.loadPost = true;
 
     //Set meta Title
     if(this.post.metaTitle && this.post.metaTitle !== '') {
