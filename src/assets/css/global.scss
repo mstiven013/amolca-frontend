@@ -536,6 +536,10 @@ app-loader .mat-progress-bar {
         .leftRs:hover, .rightRs:hover {
             opacity: 1;
         }
+        .leftRs:focus, .rightRs:focus,
+        .leftRs:active, .rightRs:active {
+            background-color: transparent;
+        }
 
 .banner-slides h1,
 .banner-slides h2,
@@ -544,6 +548,24 @@ app-loader .mat-progress-bar {
 .banner-slides p {
     margin-top: 0px;
 }
+
+//Sections titles
+.section-title {
+    background-image: url(/assets/img/common/titles-bg.png);
+    background-position: left center;
+    background-size: cover;
+    color: $white-color;
+    font-family: $primary-font;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding: 15px 5%;
+}
+    .section-title > * {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0px;
+    }
 
 /*Form's*/
 input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea, textarea  {

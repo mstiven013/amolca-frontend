@@ -2,7 +2,7 @@
     <ngx-item NgxCarouselItem *ngFor="let b of books;">
       <div class="content">
         <!--Book principal image-->
-        <a routerLink="libro/{{b.slug}}" class="contain-img">
+        <a routerLink="/libro/{{b.slug}}" class="contain-img">
           <!--Show if b images exists-->
           <img *ngIf="b.image !== undefined" src="assets/img/products/{{b.image}}" alt="">
           
@@ -12,7 +12,11 @@
         <div class="info">
           <!--b Name-->
           <h3 class="name">
-              <a routerLink="libro/{{b.slug}}">{{b.title | slice:0:40}}...</a>
+            <!--If name is more than 40 words-->
+            <a *ngIf="b.title.length >= 40" routerLink="/libro/{{b.slug}}">{{b.title | slice:0:40}}...</a>
+
+            <!--If name is minor than 40 words-->
+            <a *ngIf="b.title.length < 40" routerLink="/libro/{{b.slug}}">{{b.title}}</a>
           </h3>
   
           <!--REPLACE WHEN CHANGE bS MODEL-->

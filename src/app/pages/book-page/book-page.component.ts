@@ -111,6 +111,7 @@ export class BookPageComponent implements OnInit {
     jQuery(document).ready(function(){
 
       let imgCont = jQuery('#image-container');
+      let relBooks = jQuery('.related-products');
 
       if(jQuery('.main').height() > (me.footerOffset - 180 - imgCont.height()) ) {
         me.mainHigher = true;
@@ -135,7 +136,7 @@ export class BookPageComponent implements OnInit {
           }
 
           //Waiting scroll while looking footer
-          if(scroll > 100 && scroll >= (me.footerOffset - 180 - imgCont.height()) ) {
+          if(scroll > 100 && scroll >= (me.footerOffset - 180 - imgCont.height() - relBooks.height()) ) {
             imgCont.removeClass('scroll-fixed');
             imgCont.addClass('scroll-waiting');
           }
@@ -143,13 +144,13 @@ export class BookPageComponent implements OnInit {
 
       });
 
-    });    
+    });
   }
 
   changeFooterOffsetTop() {
     let me = this;
     this.footerOffset = jQuery('.footer').offset().top;
-    if(jQuery('.main').height() > (me.footerOffset - 180 - jQuery('#image-container').height()) ) {
+    if(jQuery('.main').height() > (me.footerOffset - 180 - jQuery('#image-container').height() - jQuery('.related-products').height()) ) {
       me.mainHigher = true;
     }
   }
