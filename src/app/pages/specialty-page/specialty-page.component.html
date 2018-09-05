@@ -1,6 +1,8 @@
 <div *ngIf="this.exists" class="single-specialty">
+  <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+
   <div class="specialty-title">
-    <h2>{{specialty.title}}</h2>
+    <h2>{{specialty.name}}</h2>
   </div>
 
   <div class="page-container">

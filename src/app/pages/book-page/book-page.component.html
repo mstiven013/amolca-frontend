@@ -1,5 +1,6 @@
 <div class="page-container single-book" *ngIf="this.exists">
-
+  <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+  
   <div class="row">
     <!--Images Book column-->
     <div class="col s12 l5 image-book">

@@ -112,6 +112,7 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { CommentsLoggedFormComponent } from './components/comments/comments-logged-form/comments-logged-form.component';
 import { CommentsLogoutFormComponent } from './components/comments/comments-logout-form/comments-logout-form.component';
 import { CommentsListComponent } from './components/comments/comments-list/comments-list.component';
+import { ReportErrorFormComponent } from './components/comments/report-error-form/report-error-form.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -188,6 +189,7 @@ const appRoutes: Routes = [
     CommentsLoggedFormComponent,
     CommentsLogoutFormComponent,
     CommentsListComponent,
+    ReportErrorFormComponent,
   ],
   imports: [
     //Angular libraries

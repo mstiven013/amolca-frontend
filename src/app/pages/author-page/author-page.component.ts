@@ -14,6 +14,7 @@ export class AuthorPageComponent implements OnInit {
   authorActive: any;
   author: any = {};
   exists = true;
+  loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
 
   constructor(
     //App component
@@ -31,10 +32,12 @@ export class AuthorPageComponent implements OnInit {
     //Get slug of active route
     this.sub = this._activatedRoute.params.subscribe(params => {
       this.authorActive = params['slug']
-    });
 
-    //Call get author info function
-    this.getAuthorInfo(this.authorActive);
+      this.loader.show = true;
+
+      //Call get author info function
+      this.getAuthorInfo(this.authorActive);
+    });
   }
 
   //Get author information with get author service
@@ -50,6 +53,7 @@ export class AuthorPageComponent implements OnInit {
   //Set author information after get author service
   setAuthorInfo(author) {
     this.author = author;
+    this.loader.show = false;
 
     //Set meta Title
     if(this.author.metaTitle && this.author.metaTitle !== '') {
@@ -64,8 +68,6 @@ export class AuthorPageComponent implements OnInit {
     } else {
       this._appComponent.setMetaDescription(this.author.description);
     }
-
-    console.log(this.author)
   }
 
 }

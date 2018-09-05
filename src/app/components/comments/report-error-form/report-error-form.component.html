@@ -1,24 +1,26 @@
-<form (ngSubmit)="createComment(commentForm)" [formGroup]="commentform" #commentForm="ngForm">
+<form (ngSubmit)="reportError(errorForm)" [formGroup]="errorform" #errorForm="ngForm">
     <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
-    
+
     <div class="row">
-      <!--Title column-->
       <div class="col s12 m12 l12">
-        <p class="title">Déjanos un comentario</p>
+        <p>Datos extra, información confidencial y/o pistas para avanzar en nuestras investigaciones. Puedes hacer parte de la construcción de nuestro contenido. Te invitamos a ampliar la información de este tema.</p>
       </div>
 
-      <!--Name column-->
-      <div class="col s12 m6 l6">
+      <div class="col s12 m12 l12">
         <label for="name">Nombre completo:</label>
-        <input type="text" name="name" formControlName="name" #name id="name" placeholder="Escribe tu nombre completo...">
+        <input type="text" name="name" id="name" formControlName="name" placeholder="Escribe tu nombre completo">
       </div>
-  
-      <!--Email column-->
+
       <div class="col s12 m6 l6">
         <label for="email">Correo electrónico:</label>
-        <input type="text" name="email" formControlName="email" #email id="email" placeholder="Escribe tu nombre completo...">
+        <input type="text" name="email" id="email" formControlName="email" placeholder="Escribe tu correo electrónico">
       </div>
-  
+
+      <div class="col s12 m6 l6">
+        <label for="phone">Número de teléfono / Celular:</label>
+        <input type="text" name="phone" id="phone" formControlName="phone" placeholder="Escribe tu número de teléfono / Celular">
+      </div>
+
       <!--Comment column-->
       <div class="col s12 m12 l12">
         <label for="content">Comentario:</label>
@@ -28,12 +30,12 @@
       <div class="col s12 m12 l12 terms-condition">
           <mat-checkbox class="example-margin" formControlName="termsCondition">Acepto los <a routerLink="terminos-y-condiciones">Términos y condiciones</a></mat-checkbox>
       </div>
-  
+
       <!--Buttons column-->
       <div class="col s12 m12 l12">
-        <input [disabled]="!commentForm.valid" type="submit" class="button primary" value="Enviar">
+        <input [disabled]="!errorForm.valid" type="submit" class="button primary" value="Enviar">
         <input type="reset" class="button danger" value="Limpiar">
       </div>
-  
+
     </div>
-  </form>
+</form>

@@ -1,5 +1,7 @@
 <div class="comment-item" *ngFor="let comment of comments">
-  <div class="col-image"></div>
+  <div class="col-image">
+    <img src="assets/img/authors/no-author-image.png" alt="">
+  </div>
   <div class="col-comment">
     <p class="title">{{comment.userName}}</p>
     <p class="comment">{{comment.content}}</p>

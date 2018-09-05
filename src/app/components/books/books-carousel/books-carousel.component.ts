@@ -20,7 +20,9 @@ export class BooksCarouselComponent implements OnInit {
   books: any = [];
   loopclass: any = 'books-loop';
   itemclass: any = 'item';
+  showBooks: Boolean = false;
   error = { show: false, msg: '' }
+  loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
 
   //Input vars
   @Input() specialty: any;
@@ -62,8 +64,7 @@ export class BooksCarouselComponent implements OnInit {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            this.books = data; 
-            this.error.show = false; 
+            this.setBooksInfo(data)
           },
           err => this.mapErrors(err, 'especialidad')
         );
@@ -74,8 +75,7 @@ export class BooksCarouselComponent implements OnInit {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            this.books = data; 
-            this.error.show = false; 
+            this.setBooksInfo(data)
           },
           err => this.mapErrors(err, 'autor')
         );
@@ -85,12 +85,18 @@ export class BooksCarouselComponent implements OnInit {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            this.books = data; 
-            this.error.show = false; 
+            this.setBooksInfo(data)
           },
           err => this.mapErrors(err, 'todos')
         );
     }
+  }
+
+  //Function to set books info in all services
+  setBooksInfo(data) {
+    this.books = data;
+    this.showBooks = true;
+    this.error.show = false; 
   }
 
   //Function to error's map after login

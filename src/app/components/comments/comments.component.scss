@@ -4,6 +4,7 @@
 form {
     padding-bottom: 20px;
     padding-top: 20px;
+    position: relative;
 }
     .terms-condition {
         margin: 10px auto;
@@ -21,10 +22,31 @@ form {
 }
 
 .comment-item {
-    border-bottom: 1px solid $gray-dark;
+    border-bottom: 1px solid $gray-light;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     padding-bottom: 20px;
     padding-top: 20px;
+}
+
+#logged-comment .comment-item {
+    border-bottom-color: transparent;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.comment-item .col-image {
+    width: 200px;
+}
+
+    .comment-item .col-image img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 125px;
+    }
+
+.comment-item .col-comment {
+    @include calc(width, '100% - 200px');
 }

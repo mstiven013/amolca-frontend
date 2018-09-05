@@ -1,0 +1,31 @@
+<form (ngSubmit)="createComment(commentForm)" [formGroup]="commentform" #commentForm="ngForm" id="logged-comment">
+    <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+    
+    <div class="row">
+        <!--Title column-->
+        <div class="col s12 m12 l12">
+            <p class="title">Déjanos un comentario</p>
+        </div>
+    </div>
+
+    <div class="comment-item">
+        <div class="col-image">
+            <img src="assets/img/authors/no-author-image.png" alt="">
+        </div>
+        <div class="col-comment">
+            
+            <p class="title">{{user.name}} {{user.lastname}}</p>
+            <label for="content">Comentario:</label>
+            <textarea name="content" formControlName="content" #content id="content" placeholder="¡Hola, {{user.name}} {{user.lastname}}! Escribe aquí tu comentario"></textarea>
+    
+            <div class="terms-condition">
+                <mat-checkbox class="example-margin" formControlName="termsCondition">Acepto los <a routerLink="terminos-y-condiciones">Términos y condiciones</a></mat-checkbox>
+            </div>
+
+            <!--Buttons column-->
+            <input [disabled]="!commentForm.valid" type="submit" class="button primary" value="Enviar">
+            <input type="reset" class="button danger" value="Limpiar">
+
+        </div>
+    </div>
+</form>

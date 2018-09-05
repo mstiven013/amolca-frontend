@@ -12,6 +12,7 @@ export class CommentsLogoutFormComponent implements OnInit {
   commentform: FormGroup;
   @Input() postId: string;
   @Output() newComment = new EventEmitter<any>();
+  loader = { show: false, bgColor: '#000', mode: 'indeterminate'};
 
   constructor(
     private _commentService: CommentsService
@@ -40,6 +41,8 @@ export class CommentsLogoutFormComponent implements OnInit {
 
   createComment(frm) {
     //console.log(frm.value)
+    this.loader.show = true;
+
     let data = {
       post: this.postId,
       userName: frm.value.name,
@@ -53,6 +56,8 @@ export class CommentsLogoutFormComponent implements OnInit {
         data => {
           //console.log(data)
           this.newComment.emit(data);
+          this.loader.show = false;
+          this.commentform.reset();
         },
         err => {
           console.log(err)

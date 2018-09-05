@@ -14,6 +14,7 @@ export class SpecialtyPageComponent implements OnInit {
   specialtyActive: any;
   specialty: any = {};
   exists = true;
+  loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
 
   constructor(
     private _appComponent: AppComponent,
@@ -24,25 +25,29 @@ export class SpecialtyPageComponent implements OnInit {
   ngOnInit() {
     this.sub = this._activatedRoute.params.subscribe(params => {
       this.specialtyActive = params['slug']
+      this.loader.show = true;
       this.getSpecialtyInfo(this.specialtyActive);
     });
   }
 
   getSpecialtyInfo(slug) {
-    console.log(slug)
     this._getSpecialtyService.getSpecialtiesBySlug(slug)
       .map(resp => resp.json())
       .subscribe(
         data => {
           this.setSpecialtyInfo(data);
         },
-        err => this.exists = false
+        err => {
+          this.loader.show = false;
+          this.exists = false;
+        }
       )
   }
 
   setSpecialtyInfo(s) {
     this.specialty = s;
     this.exists = true;
+    this.loader.show = false;
 
     //Set meta Title
     if(this.specialty.metaTitle && this.specialty.metaTitle !== '') {

@@ -567,6 +567,38 @@ app-loader .mat-progress-bar {
         margin: 0px;
     }
 
+/*Loader loops*/
+.loader-loops {
+    background-color: $white-dark;
+    border-radius: 5px;
+    font-family: $primary-font;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 30px;
+    position: relative;
+    text-align: center;
+}
+
+/*Comment posts*/
+.comment-tabs {
+    font-family: $primary-font;
+    font-size: 16px;
+}
+.comment-tabs .mat-tab-label-container {
+    background-color: $white-dark;
+}
+.comment-tabs .mat-tab-label {
+    color: $gray-dark;
+    font-family: $primary-font;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 1;
+}
+    .comment-tabs .mat-tab-label-active {
+        background-color: $primary-color;
+        color: $white-color;
+    }
+
 /*Form's*/
 input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea, textarea  {
     border-radius: 5px;

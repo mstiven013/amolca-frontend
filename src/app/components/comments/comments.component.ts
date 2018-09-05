@@ -22,6 +22,7 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit() {
     this.getComments();
+    this.ifUserIsLogged();
   }
 
   //Watch when menu clicked to change menu
@@ -29,6 +30,14 @@ export class CommentsComponent implements OnInit {
     this.getComments();
   }
 
+  //If user is logged in
+  ifUserIsLogged() {
+    if(localStorage.getItem('U53r') != undefined && localStorage.getItem('U53r') != null) {
+      this.userLogged = true;
+    }
+  }
+
+  //Get comments
   getComments() {
     this._commentService.getCommentsByPostId(this.postId)
       .map(resp => resp.json())

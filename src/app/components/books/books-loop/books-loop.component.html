@@ -1,4 +1,9 @@
-<div *ngIf="!error.show && books.length > 0" class="{{loopclass}} items-per-page-{{itemsPerRow}}">
+<div *ngIf="!showBooks && !error.show" class="loader-loops">
+  Cargando libros...
+  <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+</div>
+
+<div *ngIf="!error.show && showBooks && books.length > 0" class="{{loopclass}} items-per-page-{{itemsPerRow}}">
   <div *ngFor="let book of books;" class="{{itemclass}}">
 
     <!--Book principal image-->
@@ -27,10 +32,6 @@
       <ng-template ngFor let-country [ngForOf]="book.countries">
         <!--book actions-->
         <div *ngIf="country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'" class="actions">
-          <!--Notification-->
-          <div *ngIf="notification.show" class="cart-notification">
-            <p>{{notification.msg}}</p>
-          </div>
 
           <!--book Price-->
           <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
@@ -51,6 +52,6 @@
   </div>
 </div>
 
-<div *ngIf="error.show || books.length < 1" class="alert">
+<div *ngIf="error.show" class="loader-loops">
   <p>No hay libros con estas especificaciones</p>
 </div>

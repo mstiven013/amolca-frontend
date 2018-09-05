@@ -1,4 +1,9 @@
-<ngx-carousel *ngIf="!error.show && books.length > 0" [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
+<div *ngIf="!showBooks && !error.show" class="loader-loops">
+  Cargando libros...
+  <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+</div>
+
+<ngx-carousel *ngIf="!error.show && showBooks && books.length > 0" [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
     <ngx-item NgxCarouselItem *ngFor="let b of books;">
       <div class="content">
         <!--Book principal image-->
@@ -13,10 +18,10 @@
           <!--b Name-->
           <h3 class="name">
             <!--If name is more than 40 words-->
-            <a *ngIf="b.title.length >= 40" routerLink="/libro/{{b.slug}}">{{b.title | slice:0:40}}...</a>
+            <a *ngIf="b.title.length >= 40" matTooltip="{{b.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{b.slug}}">{{b.title | slice:0:40}}...</a>
 
             <!--If name is minor than 40 words-->
-            <a *ngIf="b.title.length < 40" routerLink="/libro/{{b.slug}}">{{b.title}}</a>
+            <a *ngIf="b.title.length < 40" matTooltip="{{b.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{b.slug}}">{{b.title}}</a>
           </h3>
   
           <!--REPLACE WHEN CHANGE bS MODEL-->
@@ -50,6 +55,6 @@
     <button NgxCarouselNext class='rightRs'></button>
 </ngx-carousel>
   
-<div *ngIf="error.show || books.length < 1" class="alert">
+<div *ngIf="error.show" class="loader-loops">
   <p>No hay libros con estas especificaciones</p>
 </div>
