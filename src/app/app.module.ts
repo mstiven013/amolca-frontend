@@ -9,7 +9,7 @@ import { HttpModule, Http, Headers, RequestOptions, URLSearchParams, Response } 
 
 import 'rxjs/add/operator/map';
 
-import { NgxCarouselModule } from 'ngx-carousel';
+import { NguCarouselModule } from '@ngu/carousel';
 
 //Form
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
@@ -215,7 +215,7 @@ const appRoutes: Routes = [
     HttpModule,
 
     //Ngx
-    NgxCarouselModule,
+    NguCarouselModule,
 
     //Forms
     ReactiveFormsModule,

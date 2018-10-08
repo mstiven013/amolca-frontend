@@ -1,5 +1,5 @@
-<ngx-carousel [inputs]="postsCarousel" (carouselLoad)="myfunc($event)">
-  <ngx-item NgxCarouselItem *ngFor="let post of posts;">
+<ngu-carousel [inputs]="postsCarousel" (carouselLoad)="myfunc($event)" [dataSource]="posts">
+  <ngu-item NguCarouselItem *nguCarouselDef="let post;">
     <div class="content">
 
       <div class="image-container">
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-  </ngx-item>
-  <button NgxCarouselPrev class='leftRs'></button>
-  <button NgxCarouselNext class='rightRs'></button>
-</ngx-carousel>
+  </ngu-item>
+  <button NguCarouselPrev class='leftRs'></button>
+  <button NguCarouselNext class='rightRs'></button>
+</ngu-carousel>

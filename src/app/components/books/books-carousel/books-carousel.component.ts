@@ -3,7 +3,7 @@ import { GetBookService } from '../../../services/book/get-book.service';
 import { TooltipPosition } from '@angular/material';
 import { CartService } from '../../../services/cart/cart.service';
 import { GetCartService } from '../../../services/cart/get-cart.service';
-import { NgxCarousel } from 'ngx-carousel';
+import { NguCarouselConfig } from '@ngu/carousel';
 
 @Component({
   selector: 'books-carousel',
@@ -12,7 +12,7 @@ import { NgxCarousel } from 'ngx-carousel';
 })
 export class BooksCarouselComponent implements OnInit {
 
-  public carouselOne: NgxCarousel;
+  public carouselOne: NguCarouselConfig;
 
   currentCountry: any;
 
@@ -210,7 +210,6 @@ export class BooksCarouselComponent implements OnInit {
       grid: {xs: 1, sm: 2, md: 2, lg: me.itemsPerRow, all: 0},
       slide: 1,
       speed: 400,
-      interval: 4000,
       point: {
         visible: true
       },

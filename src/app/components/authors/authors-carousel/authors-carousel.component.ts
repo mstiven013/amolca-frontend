@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgxCarousel } from 'ngx-carousel';
 import { GetAuthorService } from '../../../services/author/get-author.service';
+import { NguCarouselConfig, NguCarousel } from '@ngu/carousel';
 
 declare var jQuery: any;
 declare var Materialize: any;
@@ -12,8 +12,8 @@ declare var Materialize: any;
 })
 export class AuthorsCarouselComponent implements OnInit {
 
-  //Ngx Carousel vars
-  authorsCarousel: NgxCarousel;
+  //Ngu Carousel vars
+  authorsCarousel: NguCarouselConfig;
   @Input() itemsPerRow: any = 4;
 
   //Custom vars
@@ -43,7 +43,6 @@ export class AuthorsCarouselComponent implements OnInit {
       grid: {xs: 1, sm: 2, md: 2, lg: me.itemsPerRow, all: 0},
       slide: 1,
       speed: 400,
-      interval: 4000,
       point: {
         visible: true
       },

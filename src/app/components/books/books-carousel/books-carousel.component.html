@@ -3,8 +3,8 @@
   <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
 </div>
 
-<ngx-carousel *ngIf="!error.show && showBooks && books.length > 0" [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
-    <ngx-item NgxCarouselItem *ngFor="let b of books;">
+<ngu-carousel *ngIf="!error.show && showBooks && books.length > 0" [inputs]="carouselOne" [dataSource]="books" (carouselLoad)="myfunc($event)">
+    <ngu-item class="item" NguCarouselItem *nguCarouselDef="let b;">
       <div class="content">
         <!--Book principal image-->
         <a routerLink="/libro/{{b.slug}}" class="contain-img">
@@ -50,10 +50,10 @@
   
         </div>
       </div>
-    </ngx-item>
-    <button NgxCarouselPrev class='leftRs'></button>
-    <button NgxCarouselNext class='rightRs'></button>
-</ngx-carousel>
+    </ngu-item>
+    <button NguCarouselPrev class='leftRs'></button>
+    <button NguCarouselNext class='rightRs'></button>
+</ngu-carousel>
   
 <div *ngIf="error.show" class="loader-loops">
   <p>No hay libros con estas especificaciones</p>

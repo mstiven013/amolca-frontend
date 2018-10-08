@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgxCarousel } from 'ngx-carousel';
+import { NguCarouselConfig } from '@ngu/carousel';
 import { GetPostService } from '../../../services/post/get-post.service';
 
 declare var jQuery: any;
@@ -13,7 +13,7 @@ declare var Materialize: any;
 export class PostCarouselComponent implements OnInit {
 
   //Ngx Carousel vars
-  postsCarousel: NgxCarousel;
+  postsCarousel: NguCarouselConfig;
   @Input() itemsPerRow: any = 4;
 
   //Custom vars
@@ -47,7 +47,6 @@ export class PostCarouselComponent implements OnInit {
       grid: {xs: 1, sm: 2, md: 2, lg: me.itemsPerRow, all: 0},
       slide: 1,
       speed: 400,
-      interval: 4000,
       point: {
         visible: true
       },

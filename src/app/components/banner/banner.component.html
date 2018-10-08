@@ -1,14 +1,14 @@
-<ngx-carousel [inputs]="banner" (carouselLoad)="myfunc($event)" class="banner-slides">
+<ngu-carousel [inputs]="banner" (carouselLoad)="myfunc($event)" [dataSource]="slider" class="banner-slides">
 
-  <ngx-item NgxCarouselItem *ngFor="let slide of slider">
+  <ngu-item *nguCarouselDef="let slide">
 
     <div class="slide" [style.background-image]="'url(' + pathImg + slide.image + ')'" [style.background-attachment]="slide.bgAttach">
       <div class="content" [innerHTML]="slide.text | safeHtml"></div>
     </div>
 
-  </ngx-item>
+  </ngu-item>
 
-  <button NgxCarouselPrev class='leftRs'></button>
-  <button NgxCarouselNext class='rightRs'></button>
+  <button NguCarouselPrev class='leftRs'></button>
+  <button NguCarouselNext class='rightRs'></button>
 
-</ngx-carousel>
+</ngu-carousel>

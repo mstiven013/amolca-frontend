@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgxCarousel } from 'ngx-carousel';
+import { NguCarouselConfig } from '@ngu/carousel';
 
 declare var jQuery: any;
 
@@ -12,7 +12,7 @@ declare var jQuery: any;
 export class BannerComponent implements OnInit {
 
   //Ngx Carousel vars
-  banner: NgxCarousel;
+  banner: NguCarouselConfig;
 
   //Declare banner var
   slides: any;
@@ -46,7 +46,6 @@ export class BannerComponent implements OnInit {
       grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
       slide: 1,
       speed: 400,
-      interval: 4000,
       point: {
         visible: false,
       },
