@@ -527,11 +527,11 @@ app-loader .mat-progress-bar {
     }
         .leftRs {
             background-image: url('/assets/img/common/left-carousel-btn.png');
-            left: -30px;
+            left: 0px;
         }
         .rightRs {
             background-image: url('/assets/img/common/right-carousel-btn.png');
-            right: -30px;
+            right: 0px;
         }
         .leftRs:hover, .rightRs:hover {
             opacity: 1;

@@ -111,10 +111,10 @@
     }
 
 //Styles in carousel
-ngx-carousel {
+ngu-carousel {
     position: relative;
 }
-    ngx-item .content {
+    ngu-item .content {
         background-color: $white-color;
         font-family: $primary-font;
         margin: 0px auto;
@@ -122,8 +122,8 @@ ngx-carousel {
         @include transition('all 0.4s ease');
         @include calc(width, '100% - 30px');
     }
-        ngx-item .content:hover,
-        ngx-item .content:active {
+        ngu-item .content:hover,
+        ngu-item .content:active {
             background-color: $gray-sup-light;
         }
 
@@ -148,7 +148,7 @@ ngx-carousel {
         @include calc(max-width, '100% - 30px');
     }
 
-    ngx-item .content {
+    ngu-item .content {
         width: 100%;
     }
 }
