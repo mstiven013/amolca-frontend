@@ -39,26 +39,39 @@ html, body {
     flex-flow: row wrap;
     justify-content: flex-end;
     list-style: none;
-}
-    #top-bar-btns li a i {
-        font-size: 18px;
-        margin-top: -3px;
-        vertical-align: middle;
-    }
-    #top-bar-btns li a {
-        color: $white-color;
-        display: block;
-        font-size: 14px;
-        height: 40px;
-        line-height: 40px;
-        padding-left: 15px;
-        padding-right: 15px;
-        text-decoration: none;
-    }
+    li {
+        a {
+            color: $white-color;
+            display: block;
+            font-size: 14px;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 15px;
+            padding-right: 15px;
+            text-decoration: none;
 
-    #top-bar-btns #login-btn {
-        background-color: $primary-color;
+            i {
+                font-size: 18px;
+                margin-top: -3px;
+                vertical-align: middle;
+            }
+
+            &#cart-btn {
+                background-color: $primary-color;
+
+                .icon-shopping-cart {
+                    font-size: 20px;
+                    vertical-align: sub;
+                    margin-right: 5px;
+                }
+            }
+    
+            &#login-btn {
+                background-color: $blue-opacity;
+            }
+        }
     }
+}
 
 .mat-menu-panel.user-menu {
     margin-top: 40px;
