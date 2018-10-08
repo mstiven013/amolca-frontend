@@ -1,7 +1,7 @@
 @import 'vars.scss';
 @import 'mixins.scss';
 
-ngx-item, ngx-item.item {
+ngu-item, ngu-item.item {
     height: 450px;
     width: 100% !important;
 }
@@ -46,7 +46,7 @@ ngx-item, ngx-item.item {
     }
 
 @media screen and (max-width: 768px) {
-    ngx-item, ngx-item.item {
+    ngu-item, ngu-item.item {
         height: 400px;
     }
 
@@ -64,7 +64,7 @@ ngx-item, ngx-item.item {
 }
 
 @media screen and (max-width: 576px) {
-    ngx-item, ngx-item.item {
+    ngu-item, ngu-item.item {
         height: 350px;
     }
 }
