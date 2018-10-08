@@ -15,6 +15,9 @@ export class AuthorsCarouselComponent implements OnInit {
   //Ngu Carousel vars
   authorsCarousel: NguCarouselConfig;
   @Input() itemsPerRow: any = 4;
+  @Input() maxItems: any = 12;
+  @Input() orderBy: any = 'name';
+  @Input() order: any = 1;
 
   //Custom vars
   authors: any = [];
@@ -29,10 +32,14 @@ export class AuthorsCarouselComponent implements OnInit {
   }
 
   getAuthorsInfo() {
-    this._getAuthorService.getAllAuthors()
+    console.log(this.maxItems)
+    this._getAuthorService.getAllAuthors(this.orderBy, this.order, this.maxItems)
       .map(resp => resp.json())
       .subscribe(
-        data => { this.authors = data },
+        data => { 
+          this.authors = data
+          console.log(data)
+         },
         err => { console.log(err.json()) }
       )
   }
