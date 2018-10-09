@@ -12,7 +12,11 @@
   <ul class="hmenu" id="hmenu">
     <li *ngFor="let item of menu; let i = index;" (click)="showSubmenuItem(item.id)">
       <!--Sup Item-->
-      <a *ngIf="item.state === true" routerLink="/especialidad/{{item.link}}" target="{{item.target}}" id="menu-{{item.id}}">
+      <a *ngIf="item.state === true && item.target == '_self'" routerLink="/especialidad/{{item.link}}" target="{{item.target}}" id="menu-{{item.id}}">
+        <img *ngIf="item.image !== ''" src="assets\img\menu\{{item.image}}" alt="{{item.name}}">
+        <span>{{item.name}}</span>
+      </a>
+      <a *ngIf="item.state === true && item.target != '_self'" href="{{item.link}}" target="{{item.target}}" id="menu-{{item.id}}">
         <img *ngIf="item.image !== ''" src="assets\img\menu\{{item.image}}" alt="{{item.name}}">
         <span>{{item.name}}</span>
       </a>
