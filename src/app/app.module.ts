@@ -82,6 +82,7 @@ import { GetBookService } from './services/book/get-book.service';
 import { AuthorPageComponent } from './pages/author-page/author-page.component';
 
 //Author components
+import { GlobalAuthorsLoopComponent } from './components/authors/global-authors-loop.component';
 import { AuthorsCarouselComponent } from './components/authors/authors-carousel/authors-carousel.component';
 
 //Post components
@@ -155,6 +156,10 @@ const appRoutes: Routes = [
     BooksCarouselComponent,
     BookPageLoaderComponent,
 
+    //Authors components
+    AuthorsCarouselComponent,
+    GlobalAuthorsLoopComponent,
+
     //Posts components
     PostCarouselComponent,
     PostLoopComponent,
@@ -171,7 +176,6 @@ const appRoutes: Routes = [
     SafeHtmlPipe,
 
     //Content
-    AuthorsCarouselComponent,
     BigSearcherComponent,
     BannerComponent,
     LoaderComponent,

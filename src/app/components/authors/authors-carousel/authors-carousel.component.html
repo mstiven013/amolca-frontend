@@ -1,4 +1,9 @@
-<ngu-carousel *ngIf="authors.length > 0" [inputs]="authorsCarousel" [dataSource]="authors" (carouselLoad)="myfunc($event)">
+<div *ngIf="showLoader" class="loader-loops">
+  Cargando autores destacados...
+  <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+</div>
+
+<ngu-carousel *ngIf="showAuthors && authors.length > 0" [inputs]="authorsCarousel" [dataSource]="authors" (carouselLoad)="myfunc($event)">
     <ngu-item *nguCarouselDef="let author ;">
       <div class="content">
         <div class="image">
@@ -20,3 +25,7 @@
     <button NguCarouselPrev class='leftRs'></button>
     <button NguCarouselNext class='rightRs'></button>
 </ngu-carousel>
+
+<div *ngIf="error.show" class="loader-loops">
+  <p>{{error.msg}}</p>
+</div>
