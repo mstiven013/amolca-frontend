@@ -36,6 +36,7 @@ export class BookPageComponent implements OnInit {
   //Notification
   notification = { bg: 'red', show: false, msg: 'Ejemplo' }
   loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
+  showPageLoader: Boolean = true;
 
   footerOffset: any = jQuery('.footer').offset().top - 40;
   mainHigher: Boolean = false;
@@ -60,7 +61,9 @@ export class BookPageComponent implements OnInit {
   ngOnInit() {
     this.sub = this._activatedRoute.params.subscribe(params => {
       this.bookActive = params['slug']
+      window.scrollTo(0,0)
       this.loader.show = true;
+      this.showPageLoader = true;
       this.getBookInfo(this.bookActive);
       this.getCountry();
     })
@@ -92,6 +95,7 @@ export class BookPageComponent implements OnInit {
   setBookInfoPage(b) {
     this.book = b;
     this.loader.show = false;
+    this.showPageLoader = false;
 
     //Set meta Title
     if(this.book.metaTitle && this.book.metaTitle !== '') {

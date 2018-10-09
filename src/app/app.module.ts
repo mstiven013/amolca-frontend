@@ -65,6 +65,7 @@ import { UserBtnComponent } from './components/common/user-btn/user-btn.componen
 //Books components
 import { BooksLoopComponent } from './components/books/books-loop/books-loop.component';
 import { BooksCarouselComponent } from './components/books/books-carousel/books-carousel.component';
+import { BookPageLoaderComponent } from './pages/book-page/book-page-loader/book-page-loader.component';
 
 //Page routes
 import { PageRoutes } from './routes/pages.routes';
@@ -150,6 +151,7 @@ const appRoutes: Routes = [
     //Books components
     BooksLoopComponent,
     BooksCarouselComponent,
+    BookPageLoaderComponent,
 
     //Posts components
     PostCarouselComponent,

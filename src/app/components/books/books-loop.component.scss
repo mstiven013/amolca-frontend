@@ -73,11 +73,19 @@
         text-decoration: none;
     }
 
-.item .authors a {
-    color: $gray-dark;
-    font-size: 14px;
-    font-weight: bold;
+
+.item .authors > span {
+    margin-right: 3px;
 }
+    .item .authors a {
+        color: $gray-dark;
+        font-size: 14px;
+        font-weight: bold;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 
 .item .actions {
     align-items: center;

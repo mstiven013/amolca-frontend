@@ -42,11 +42,13 @@ export class GetBookService {
     return this._http.get(`${config.API_URL}/users/${id}/books`, options);
   }
 
-  getBooksBySpecialty(specialty) {
+  getBooksBySpecialty(specialty, orderby, order, limit) {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.get(`${config.API_URL}/specialties/${specialty}/books`, options);
+    let params = `orderby=${orderby}&order=${order}&limit=${limit}`;
+
+    return this._http.get(`${config.API_URL}/specialties/${specialty}/books?${params}`, options);
   }
 
   getBooksByAuthor(id) {

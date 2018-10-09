@@ -1,12 +1,13 @@
 <div class="page-container single-book" *ngIf="this.exists">
   <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+  <book-page-loader *ngIf="showPageLoader"></book-page-loader>
   
-  <div class="row">
+  <div *ngIf="!showPageLoader" class="row">
     <!--Images Book column-->
     <div class="col s12 l5 image-book">
       <div id="image-container">
         <!--Show if book images exists-->
-        <img *ngIf="book.image !== undefined" class="materialboxed" src="assets/img/products/{{book.image}}" alt="">
+        <img *ngIf="book.image !== undefined" class="materialboxed" src="{{book.image}}" alt="">
         
         <img *ngIf="book.image === undefined || book.image == ''" class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
 
@@ -162,7 +163,7 @@
             <!--Image-->
             <div class="col s12 m3 l3 image">
               <a routerLink="/autor/{{author.slug}}">
-                <img *ngIf="author.image !== undefined && author.image != ''" src="assets/img/authors/{{author.image}}" />
+                <img *ngIf="author.image !== undefined && author.image != ''" src="{{author.image}}" />
               </a>
             </div>
             <!--Information-->
@@ -187,7 +188,7 @@
   </div>
   <div class="page-container">
     <!--If specialty exists-->
-    <books-carousel *ngIf="book.specialty && book.specialty.length > 0" [specialty]="book.specialty[0]._id" [itemsPerRow]="4"></books-carousel>
+    <books-carousel *ngIf="book.specialty && book.specialty.length > 0" [specialty]="book.specialty[0]._id" [itemsPerRow]="4" [orderBy]="'publicationYear'" [order]="1" [maxShowItems]="12"></books-carousel>
 
     <!--If specialty not exists-->
     <books-carousel *ngIf="!book.specialty || book.specialty.length < 1" [itemsPerRow]="4"></books-carousel>

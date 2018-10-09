@@ -1,15 +1,15 @@
-<div *ngIf="!showBooks && !error.show" class="loader-loops">
+<div *ngIf="showLoader" class="loader-loops">
   Cargando libros...
   <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
 </div>
 
-<div *ngIf="!error.show && showBooks && books.length > 0" class="{{loopclass}} items-per-page-{{itemsPerRow}}">
+<div *ngIf="showBooks && books.length > 0" class="{{loopclass}} items-per-page-{{itemsPerRow}}">
   <div *ngFor="let book of books;" class="{{itemclass}}">
 
     <!--Book principal image-->
     <a routerLink="/libro/{{book.slug}}" class="contain-img">
       <!--Show if b images exists-->
-      <img *ngIf="book.image !== undefined" src="assets/img/products/{{book.image}}" alt="">
+      <img *ngIf="book.image !== undefined" src="{{book.image}}" alt="">
       
       <img *ngIf="book.image === undefined || book.image == ''" src="assets/img/common/no-image.jpg" alt="">
     </a>
@@ -26,7 +26,12 @@
 
       <!--REPLACE WHEN CHANGE BOOKS MODEL-->
       <p class="authors">
-        <a *ngFor="let author of book.author;" routerLink="/autor/{{author.slug}}">{{author.name}}</a>
+        <span *ngFor="let author of book.author; let i = index;">
+          <a *ngIf="i < 5" routerLink="/autor/{{author.slug}}">{{author.name}}
+            <span *ngIf="i < 3 && book.author.length > 2">-</span>
+            <span *ngIf="i == 4 && book.author.length > 4">...</span>
+          </a>
+        </span>
       </p>
 
       <ng-template ngFor let-country [ngForOf]="book.countries">
@@ -53,5 +58,5 @@
 </div>
 
 <div *ngIf="error.show" class="loader-loops">
-  <p>No hay libros con estas especificaciones</p>
+  <p>{{error.msg}}</p>
 </div>

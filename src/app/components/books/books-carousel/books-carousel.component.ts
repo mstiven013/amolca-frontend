@@ -21,6 +21,7 @@ export class BooksCarouselComponent implements OnInit {
   loopclass: any = 'books-loop';
   itemclass: any = 'item';
   showBooks: Boolean = false;
+  showLoader: Boolean = true;
   error = { show: false, msg: '' }
   loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
 
@@ -28,7 +29,10 @@ export class BooksCarouselComponent implements OnInit {
   @Input() specialty: any;
   @Input() author: any;
   @Input() carousel: Boolean = false;
+  @Input() maxShowItems: any = 12;
   @Input() itemsPerRow: any = 0;
+  @Input() orderBy: any = 'title';
+  @Input() order: any = 1;
 
   //Declare position tooltip
   tooltipPositionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
@@ -60,11 +64,16 @@ export class BooksCarouselComponent implements OnInit {
     //If specialty is diffetent to "undefined"
     if(this.specialty !== undefined && this.specialty !== null) {
       
-      this._getBookService.getBooksBySpecialty(this.specialty)
+      this._getBookService.getBooksBySpecialty(this.specialty, this.orderBy, this.order, this.maxShowItems)
         .map(resp => resp.json())
         .subscribe(
           data => {
-            this.setBooksInfo(data)
+            if(data.length < 1) {
+              let err = { status: 404 }
+              this.mapErrors(err, 'especialidad')
+            } else {
+              this.setBooksInfo(data)
+            }
           },
           err => this.mapErrors(err, 'especialidad')
         );
@@ -75,7 +84,12 @@ export class BooksCarouselComponent implements OnInit {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            this.setBooksInfo(data)
+            if(data.length < 1) {
+              let err = { status: 404 }
+              this.mapErrors(err, 'autor')
+            } else {
+              this.setBooksInfo(data)
+            }
           },
           err => this.mapErrors(err, 'autor')
         );
@@ -85,7 +99,12 @@ export class BooksCarouselComponent implements OnInit {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            this.setBooksInfo(data)
+            if(data.length < 1) {
+              let err = { status: 404 }
+              this.mapErrors(err, 'todos')
+            } else {
+              this.setBooksInfo(data)
+            }
           },
           err => this.mapErrors(err, 'todos')
         );
@@ -95,12 +114,16 @@ export class BooksCarouselComponent implements OnInit {
   //Function to set books info in all services
   setBooksInfo(data) {
     this.books = data;
+    this.showLoader = false;
     this.showBooks = true;
-    this.error.show = false; 
+    this.error.show = false;
   }
 
   //Function to error's map after login
   mapErrors(err, type) {
+    this.showBooks = false;
+    this.showLoader = false;
+
     switch (err.status) {
       case 404:
           this.error.show = true;

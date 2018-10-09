@@ -1,15 +1,15 @@
-<div *ngIf="!showBooks && !error.show" class="loader-loops">
+<div *ngIf="showLoader" class="loader-loops">
   Cargando libros...
   <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
 </div>
 
-<ngu-carousel *ngIf="!error.show && showBooks && books.length > 0" [inputs]="carouselOne" [dataSource]="books" (carouselLoad)="myfunc($event)">
+<ngu-carousel *ngIf="showBooks && books.length > 0" [inputs]="carouselOne" [dataSource]="books" (carouselLoad)="myfunc($event)">
     <ngu-item class="item" NguCarouselItem *nguCarouselDef="let b;">
       <div class="content">
         <!--Book principal image-->
         <a routerLink="/libro/{{b.slug}}" class="contain-img">
           <!--Show if b images exists-->
-          <img *ngIf="b.image !== undefined" src="assets/img/products/{{b.image}}" alt="">
+          <img *ngIf="b.image !== undefined" src="{{b.image}}" alt="">
           
           <img *ngIf="b.image === undefined || b.image == ''" src="assets/img/common/no-image.jpg" alt="">
         </a>
@@ -26,7 +26,12 @@
   
           <!--REPLACE WHEN CHANGE bS MODEL-->
           <p class="authors">
-            <a *ngFor="let author of b.author;" routerLink="/autor/{{author.slug}}">{{author.name}}</a>
+            <span *ngFor="let author of b.author; let i = index;">
+              <a *ngIf="i < 5" routerLink="/autor/{{author.slug}}">{{author.name}}
+                <span *ngIf="i < 3 && b.author.length > 2">-</span>
+                <span *ngIf="i == 4 && b.author.length > 4">...</span>
+              </a>
+            </span>
           </p>
   
           <ng-template ngFor let-country [ngForOf]="b.countries">
@@ -56,5 +61,5 @@
 </ngu-carousel>
   
 <div *ngIf="error.show" class="loader-loops">
-  <p>No hay libros con estas especificaciones</p>
+  <p>{{error.msg}}</p>
 </div>

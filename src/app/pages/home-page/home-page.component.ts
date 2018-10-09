@@ -13,8 +13,8 @@ export class HomeComponent implements OnInit {
   ) { }
 
   specialties = {
-    medicina: '5b6e008952cb3c24201b9ed6',
-    odontologia: '5b6dfb0fc6602423d0eb35f5'
+    medicina: '5bbba0ff7a4f39001363ebae',
+    odontologia: '5bbba1197a4f39001363ebaf'
   }
 
   ngOnInit() {

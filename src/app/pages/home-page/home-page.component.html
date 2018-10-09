@@ -7,14 +7,14 @@
 <div class="home-block medician-block">
     <h2 class="title"><span class="color-blue-light">Novedades</span> Médicas</h2>
     <div class="page-container">
-        <books-carousel [carousel]="true" [itemsPerRow]="4"></books-carousel>
+    <books-carousel [specialty]="specialties.medicina" [orderBy]="'publicationYear'" [order]="1" [carousel]="true" [maxShowItems]="12" [itemsPerRow]="4"></books-carousel>
     </div>
 </div>
 
 <div class="home-block odontologic-block">
-    <h2 class="title">Novedades odontológicas</h2>
+    <h2 class="title"><span class="color-blue-light">Novedades</span> odontológicas</h2>
     <div class="page-container">
-        <books-carousel [carousel]="true" [itemsPerRow]="4"></books-carousel>
+    <books-carousel [specialty]="specialties.odontologia" [orderBy]="'publicationYear'" [order]="1" [carousel]="true" [maxShowItems]="12" [itemsPerRow]="4"></books-carousel>
     </div>
 </div>
 

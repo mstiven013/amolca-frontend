@@ -23,6 +23,7 @@ export class BooksLoopComponent implements OnInit {
   itemclass: any = 'item';
   error = { show: false, msg: '' }
   showBooks: Boolean = false;
+  showLoader: Boolean = true;
   notification = { show: false, msg: 'Se agregó este libro a tu carrito' }
   loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
 
@@ -30,7 +31,10 @@ export class BooksLoopComponent implements OnInit {
   @Input() specialty: any;
   @Input() author: any;
   @Input() carousel: Boolean = false;
+  @Input() maxShowItems: any = 12;
   @Input() itemsPerRow: any = 0;
+  @Input() orderBy: any = 'title';
+  @Input() order: any = 1;
 
   //Declare position tooltip
   tooltipPositionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];
@@ -61,7 +65,7 @@ export class BooksLoopComponent implements OnInit {
     //If specialty is diffetent to "undefined"
     if(this.specialty !== undefined && this.specialty !== null) {
       
-      this._getBookService.getBooksBySpecialty(this.specialty)
+      this._getBookService.getBooksBySpecialty(this.specialty, this.orderBy, this.order, this.maxShowItems)
         .map(resp => resp.json())
         .subscribe(
           data => {
@@ -96,6 +100,7 @@ export class BooksLoopComponent implements OnInit {
   //Function to set books info in all services
   setBooksInfo(data) {
     this.books = data;
+    this.showLoader = false;
     this.showBooks = true;
     this.error.show = false; 
   }
