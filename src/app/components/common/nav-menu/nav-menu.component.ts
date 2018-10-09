@@ -72,7 +72,7 @@ export class NavMenuComponent implements OnInit {
         state: true,
         item: [
           { id: 56382, name: 'Cirugía Oral', link: '/cirugia-oral', image: 'cirugia-oral.png', state: true, target: '_self' },
-          { id: 56382, name: 'Cirugía Oral y Maxilofacial', link: '/cirugia-oral-y-maxilofacial', image: 'cirugia-oral-y-maxilofacial.png', state: true, target: '_self' },
+          { id: 32423, name: 'Cirugía Oral y Maxilofacial', link: '/cirugia-oral-y-maxilofacial', image: 'cirugia-oral-y-maxilofacial.png', state: true, target: '_self' },
           { id: 34321, name: 'Endodoncia', link: '/endodoncia', image: 'endodoncia.png', state: true, target: '_self' },
           { id: 92726, name: 'Estética dental', link: '/estetica-dental', image: 'estetica-dental.png', state: true, target: '_self' },
           { id: 24687, name: 'Implantología', link: '/implantologia', image: 'implantologia.png', state: true, target: '_self' },
