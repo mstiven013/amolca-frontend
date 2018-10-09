@@ -63,6 +63,7 @@ import { CartBtnComponent } from './components/common/cart-btn/cart-btn.componen
 import { UserBtnComponent } from './components/common/user-btn/user-btn.component';
 
 //Books components
+import { BooksGlobalLoopComponent } from './components/books/global-books-loop.component';
 import { BooksLoopComponent } from './components/books/books-loop/books-loop.component';
 import { BooksCarouselComponent } from './components/books/books-carousel/books-carousel.component';
 import { BookPageLoaderComponent } from './pages/book-page/book-page-loader/book-page-loader.component';
@@ -149,6 +150,7 @@ const appRoutes: Routes = [
     CartTotalsComponent,
 
     //Books components
+    BooksGlobalLoopComponent,
     BooksLoopComponent,
     BooksCarouselComponent,
     BookPageLoaderComponent,
