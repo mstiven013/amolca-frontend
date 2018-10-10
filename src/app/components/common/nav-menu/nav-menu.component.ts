@@ -140,6 +140,19 @@ export class NavMenuComponent implements OnInit {
     }
   }
 
+  mouseLeaveMenu(id) {
+    jQuery('#submenu-'+id).removeClass('active');
+  }
+
+  mouseOverMenu(id) {
+    jQuery('#submenu-'+id).addClass('active');
+  }
+
+  hiddeMenuDesktop(id) {
+    jQuery('#submenu-'+id).removeClass('active');
+    window.scrollTo(0,0);
+  }
+
   //Hidde mobile menu onclick action
   hiddeSubmenu() {
     let menu = document.getElementById('hmenu');

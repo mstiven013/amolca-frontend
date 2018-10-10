@@ -10,13 +10,13 @@
 
   <!--Navigation menu-->
   <ul class="hmenu" id="hmenu">
-    <li *ngFor="let item of menu; let i = index;" (click)="showSubmenuItem(item.id)">
+    <li *ngFor="let item of menu; let i = index;" (click)="showSubmenuItem(item.id)" (mouseover)="mouseOverMenu(item.id)" (mouseleave)="mouseLeaveMenu(item.id)">
       <!--Sup Item-->
-      <a *ngIf="item.state === true && item.target == '_self'" routerLink="/especialidad/{{item.link}}" target="{{item.target}}" id="menu-{{item.id}}">
+      <a *ngIf="item.state === true && item.target == '_self'" routerLink="/especialidad/{{item.link}}" target="{{item.target}}" id="menu-{{item.id}}" (click)="hiddeMenuDesktop(item.id)">
         <img *ngIf="item.image !== ''" src="assets\img\menu\{{item.image}}" alt="{{item.name}}">
         <span>{{item.name}}</span>
       </a>
-      <a *ngIf="item.state === true && item.target != '_self'" href="{{item.link}}" target="{{item.target}}" id="menu-{{item.id}}">
+      <a *ngIf="item.state === true && item.target != '_self'" href="{{item.link}}" target="{{item.target}}" id="menu-{{item.id}}" (click)="hiddeMenuDesktop(item.id)">
         <img *ngIf="item.image !== ''" src="assets\img\menu\{{item.image}}" alt="{{item.name}}">
         <span>{{item.name}}</span>
       </a>
@@ -24,7 +24,7 @@
       <!--Submenu-->
       <ul *ngIf="item.submenu.state === true && item.submenu.item.length > 0" class="submenu" id="submenu-{{item.id}}">
         <li *ngFor="let subitem of item.submenu.item">
-          <a *ngIf="subitem.state === true" routerLink="/especialidad/{{subitem.link}}" (click)="hiddeSubmenu()">
+          <a *ngIf="subitem.state === true" routerLink="/especialidad/{{subitem.link}}" (click)="hiddeSubmenu()" (click)="hiddeMenuDesktop(item.id)">
             <img *ngIf="subitem.image !== ''" src="assets\img\menu\{{subitem.image}}" alt="{{subitem.name}}">
             <span>{{subitem.name}}</span>
           </a>

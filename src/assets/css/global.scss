@@ -221,8 +221,8 @@ html, body {
         @include transition('all 0.4s ease');
         width: 95%;
     }
-        #nav-menu > ul > li:hover > .submenu {
-            padding: 20px;
+        #nav-menu > ul > li > .submenu.active {
+            padding: 20px !important;
             opacity: 1;
             height: auto;
         }
