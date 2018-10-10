@@ -23,7 +23,6 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
   ngOnInit() {
     this.getCountry();
     this.initGetBooks();
-    console.log(this.author)
   }
 
    //Get books
