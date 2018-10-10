@@ -62,6 +62,7 @@ export class BooksGlobalLoopComponent {
   mapErrors(err, type) {
     this.books = [];
     this.showLoader = false;
+    this.showBooks = false;
 
     switch (err.status) {
       case 404:
