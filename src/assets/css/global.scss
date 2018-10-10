@@ -793,7 +793,7 @@ form .button {
     .footer .custom-row .custom-col {
         padding-left: 10px;
         padding-right: 10px;
-        width: 22%;
+        width: 20%;
     }
         .footer .custom-row .custom-col:first-child {
             padding-left: 0px;
@@ -801,8 +801,8 @@ form .button {
         .footer .custom-row .custom-col:last-child {
             padding-right: 0px;
         }
-    .custom-row .custom-col#block-contact {
-        width: 34%;
+    .custom-row .custom-col.block-contact {
+        width: 30%;
     }
 
     .footer .title {
@@ -829,16 +829,16 @@ form .button {
         }
 
     /*Contact block*/
-    .footer #block-contact {
+    .footer .block-contact {
         font-size: 25px;
         font-weight: bold;
     }
-        .footer #block-contact #direction {
+        .footer .block-contact #direction {
             display: block;
             margin-bottom: 30px;
         }
-        .footer #block-contact #phone,
-        .footer #block-contact #mobile {
+        .footer .block-contact #phone,
+        .footer .block-contact #mobile {
             color: $gray-dark;
             font-size: 25px;
         }
