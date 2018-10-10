@@ -28,6 +28,100 @@
     background-color: $gray-sup-light;
 }
 
+.info-block {
+    position: relative;
+
+    &:before {
+        background-color: $gray-min-dark;
+        content: '';
+        height: 1px;
+        left: 5%;
+        position: absolute;
+        top: 0px;
+        width: 90%;
+    }
+
+    .page-container {
+        margin-top: -25px;
+    }
+
+    .banner {
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        color: $white-color;
+        cursor: pointer;
+        display: flex;
+        flex-flow: row nowrap;
+        font-family: $primary-font;
+        font-size: 25pt;
+        font-weight: 900;
+        justify-content: center;
+        margin: 25px auto;
+        position: relative;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        width: 100%;
+        z-index: 1;
+
+        &:before {
+            background-color: rgba(0,0,0,0.07);
+            content: '';
+            left: 0px;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            z-index: -1;
+        }
+
+        &:after {
+            background-color: transparent;
+            border: 1px solid transparent;
+            bottom: 0px;
+            content: '';
+            left: 0px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            @include transition('all 0.4s ease');
+            z-index: -1;
+        }
+
+        &:hover:after {
+            background-color: rgba(0, 57, 111, 0.2);
+            border-color: $white-color;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            top: 20px;
+        }
+
+        &.small {
+            height: 150px;
+        }
+
+        &.large {
+            height: 325px;
+        }
+
+        &.notices {
+            background-color: red;
+            background-image: url('/assets/img/banner/notices.jpg');
+            background-position: top center;
+        }
+
+        &.events {
+            background-color: $primary-color;
+            background-image: url('/assets/img/banner/events.jpg');
+        }
+
+        &.congresses {
+            background-color: green;
+            background-image: url('/assets/img/banner/congresses.jpg');
+        }
+    }
+}
+
 @media screen and (max-width: 578px) {
     .title {
         padding-left: 5%;
