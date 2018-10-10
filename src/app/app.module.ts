@@ -80,6 +80,7 @@ import { GetBookService } from './services/book/get-book.service';
 
 //Author page components
 import { AuthorPageComponent } from './pages/author-page/author-page.component';
+import { AuthorPageLoaderComponent } from './pages/author-page/author-page-loader/author-page-loader.component';
 
 //Author components
 import { GlobalAuthorsLoopComponent } from './components/authors/global-authors-loop.component';
@@ -160,6 +161,7 @@ const appRoutes: Routes = [
     //Authors components
     AuthorsCarouselComponent,
     GlobalAuthorsLoopComponent,
+    AuthorPageLoaderComponent,
 
     //Posts components
     GlobalPostLoopComponent,
@@ -172,6 +174,7 @@ const appRoutes: Routes = [
     CartPageComponent,
     NotFoundComponent,
     BookPageComponent,
+    AuthorPageComponent,
 
     //Pipes
     ReplacePipe,
@@ -183,7 +186,6 @@ const appRoutes: Routes = [
     LoaderComponent,
     UserBtnComponent,
     MyAccountPageComponent,
-    AuthorPageComponent,
     PostPageComponent,
     AccountMenuComponent,
     OrdersPageComponent,

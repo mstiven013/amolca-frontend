@@ -38,10 +38,35 @@
 }
 
 .common-separator {
+    background-color: $gray-min-dark;
     margin: 60px auto 40px;
 }
 
 .author-books .subtitle {
     color: $primary-color;
     padding-left: 15px;
+}
+
+/*Mockups*/
+.mockup {
+    &.image {
+        border-radius: 50%;
+        height: 180px;
+        margin: auto;
+        width: 180px;
+    }
+
+    &.name {
+        height: 55px;
+        margin-bottom: 20px;
+    }
+
+    &.description {
+        height: 35px;
+        margin: 10px auto;
+    }
+
+    &.books {
+        height: 55px;
+    }
 }
