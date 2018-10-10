@@ -191,14 +191,6 @@
 
 /*Mockup book page loader*/
 .mockup {
-    animation: mockupAnimation 3s linear 0s infinite alternate;
-    background: linear-gradient(to right, $gray-sup-light, #E1E1E1, $gray-sup-light);
-    background-size: 600% 600%;
-    border-radius: 7px;
-    margin: 10px auto;
-    transition: all 0.4s ease;
-    width: 100%;
-
     &.image {
         padding-top: 100%;
         width: 100%;
@@ -222,13 +214,6 @@
     &.accordion {
         height: 50px;
     }
-}
-
-/*Mockup animation*/
-@keyframes mockupAnimation {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
 }
 
 /*

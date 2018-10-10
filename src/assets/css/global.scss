@@ -283,7 +283,40 @@ html, body {
         margin-bottom: 20px;
         margin-left: 30px;
         margin-top: 20px;
-    } 
+    }
+
+/*Global mockups styles*/
+.mockup {
+    animation: mockupAnimation 3s linear 0s infinite alternate;
+    background: linear-gradient(to right, $gray-sup-light, #E1E1E1, $gray-sup-light);
+    background-size: 600% 600%;
+    border-radius: 7px;
+    margin: 10px auto;
+    transition: all 0.4s ease;
+    width: 100%;
+}
+
+/*Mockup animation*/
+@keyframes mockupAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-webkit-keyframes mockupAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes mockupAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes mockupAnimation {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
 
 /*Titles, subtitle and text's*/
 .main .title {
