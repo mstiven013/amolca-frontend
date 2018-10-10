@@ -86,6 +86,7 @@ import { GlobalAuthorsLoopComponent } from './components/authors/global-authors-
 import { AuthorsCarouselComponent } from './components/authors/authors-carousel/authors-carousel.component';
 
 //Post components
+import { GlobalPostLoopComponent } from './components/posts/global-posts-loop.component';
 import { PostCarouselComponent } from './components/posts/post-carousel/post-carousel.component';
 import { PostLoopComponent } from './components/posts/post-loop/post-loop.component';
 
@@ -161,6 +162,7 @@ const appRoutes: Routes = [
     GlobalAuthorsLoopComponent,
 
     //Posts components
+    GlobalPostLoopComponent,
     PostCarouselComponent,
     PostLoopComponent,
 

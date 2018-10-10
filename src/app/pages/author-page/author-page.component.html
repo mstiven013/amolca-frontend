@@ -19,10 +19,10 @@
   <div class="author-books">
     <p class="subtitle">Libros de <b>{{author.name}}</b></p>
 
-    <books-loop [author]="author._id" [itemsPerRow]="4"></books-loop>
+    <books-loop [author]="author._id" [itemsPerRow]="4" [orderBy]="publicationYear" [order]="1"></books-loop>
   </div>
 
 </div>
 
 <!--If not exists one author with this slug show Not Found component-->
-<not-found *ngIf="!this.exists" [pageType]="'normal'"></not-found>
+<not-found *ngIf="this.loadError404" [pageType]="'normal'"></not-found>

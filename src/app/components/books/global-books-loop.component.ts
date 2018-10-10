@@ -54,8 +54,8 @@ export class BooksGlobalLoopComponent {
   setBooksInfo(data) {
     this.books = data;
     this.showLoader = false;
+    this.error.show = false;
     this.showBooks = true;
-    this.error.show = false; 
   }
 
   //Function to error's map after login

@@ -23,6 +23,7 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
   ngOnInit() {
     this.getCountry();
     this.initGetBooks();
+    console.log(this.author)
   }
 
    //Get books
@@ -34,11 +35,11 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            if(data.length < 1) {
+            if(data.length > 0) {
+              this.setBooksInfo(data)
+            } else {
               let err = { status: 404 }
               this.mapErrors(err, 'especialidad')
-            } else {
-              this.setBooksInfo(data)
             }
           },
           err => this.mapErrors(err, 'especialidad')
@@ -50,11 +51,11 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            if(data.length < 1) {
+            if(data.length > 0) {
+              this.setBooksInfo(data)
+            } else {
               let err = { status: 404 }
               this.mapErrors(err, 'autor')
-            } else {
-              this.setBooksInfo(data)
             }
           },
           err => this.mapErrors(err, 'autor')
@@ -65,11 +66,11 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            if(data.length < 1) {
+            if(data.length > 0) {
+              this.setBooksInfo(data)
+            } else {
               let err = { status: 404 }
               this.mapErrors(err, 'todos')
-            } else {
-              this.setBooksInfo(data)
             }
           },
           err => this.mapErrors(err, 'todos')

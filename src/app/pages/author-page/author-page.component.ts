@@ -13,7 +13,8 @@ export class AuthorPageComponent implements OnInit {
   private sub: any;
   authorActive: any;
   author: any = {};
-  exists = true;
+  exists = false;
+  loadError404: Boolean = false;
   loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
 
   constructor(
@@ -46,13 +47,15 @@ export class AuthorPageComponent implements OnInit {
       .map(resp => resp.json())
       .subscribe(
         data => { this.setAuthorInfo(data) },
-        err => { this.exists = false }
+        err => { this.exists = false; this.loadError404 = true; }
       )
   }
 
   //Set author information after get author service
   setAuthorInfo(author) {
     this.author = author;
+    this.loadError404 = false;
+    this.exists = true;
     this.loader.show = false;
 
     //Set meta Title

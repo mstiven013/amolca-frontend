@@ -1,4 +1,9 @@
-<ngu-carousel [inputs]="postsCarousel" (carouselLoad)="myfunc($event)" [dataSource]="posts">
+<div *ngIf="showLoader" class="loader-loops">
+  Cargando publicaciones...
+  <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+</div>
+
+<ngu-carousel *ngIf="showPosts && posts.length > 0" [inputs]="postsCarousel" (carouselLoad)="myfunc($event)" [dataSource]="posts">
   <ngu-item NguCarouselItem *nguCarouselDef="let post;">
     <div class="content">
 
@@ -31,3 +36,7 @@
   <button NguCarouselPrev class='leftRs'></button>
   <button NguCarouselNext class='rightRs'></button>
 </ngu-carousel>
+
+<div *ngIf="error.show" class="loader-loops">
+  <p>{{error.msg}}</p>
+</div>

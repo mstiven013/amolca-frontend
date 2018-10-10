@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GetPostService } from '../../../services/post/get-post.service';
+import { GlobalPostLoopComponent } from '../global-posts-loop.component';
 
 declare var jQuery: any;
 declare var Materialize: any;
@@ -9,16 +10,10 @@ declare var Materialize: any;
   templateUrl: './post-loop.component.html',
   styleUrls: ['../post-loop.component.scss']
 })
-export class PostLoopComponent implements OnInit {
-
-  @Input() itemsPerRow: any = 4;
+export class PostLoopComponent extends GlobalPostLoopComponent {
 
   //Custom vars
   posts: any = [];
-
-  constructor(
-    private _getPostService: GetPostService
-  ) { }
 
   ngOnInit() {
     this.getPostsInfo();
@@ -26,23 +21,6 @@ export class PostLoopComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-  }
-
-  getPostsInfo() {
-    this._getPostService.getAllPosts()
-      .map(resp => resp.json())
-      .subscribe(
-        data => { this.posts = data;},
-        err => { console.log(err.json()) }
-      )
-  }
-
-  transformItemImageHeight() {
-    jQuery(document).ready(function() {
-      jQuery('.image-container').each(function() {
-        jQuery(this).css('height', jQuery(this).width())
-      })
-    })
   }
 
   myfunc(event: Event) {

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
 import { GetPostService } from '../../../services/post/get-post.service';
+import { GlobalPostLoopComponent } from '../global-posts-loop.component';
 
 declare var jQuery: any;
 declare var Materialize: any;
@@ -10,7 +11,7 @@ declare var Materialize: any;
   templateUrl: './post-carousel.component.html',
   styleUrls: ['../post-loop.component.scss']
 })
-export class PostCarouselComponent implements OnInit {
+export class PostCarouselComponent extends GlobalPostLoopComponent {
 
   //Ngx Carousel vars
   postsCarousel: NguCarouselConfig;
@@ -19,26 +20,10 @@ export class PostCarouselComponent implements OnInit {
   //Custom vars
   posts: any = [];
 
-  constructor(
-    private _getPostService: GetPostService
-  ) { }
-
   ngOnInit() {
     this.getPostsInfo();
     this.generateCarousel();
     this.transformItemImageHeight();
-  }
-
-  ngAfterViewInit() {
-  }
-
-  getPostsInfo() {
-    this._getPostService.getAllPosts()
-      .map(resp => resp.json())
-      .subscribe(
-        data => { this.posts = data;},
-        err => { console.log(err.json()) }
-      )
   }
 
   generateCarousel() {
@@ -55,18 +40,6 @@ export class PostCarouselComponent implements OnInit {
       loop: true,
       custom: 'banner'
     }
-  }
-
-  transformItemImageHeight() {
-    jQuery(document).ready(function() {
-      jQuery('.image-container').each(function() {
-        jQuery(this).css('height', jQuery(this).width())
-      })
-    })
-  }
-
-  myfunc(event: Event) {
-    //
   }
 
 }
