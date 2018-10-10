@@ -60,6 +60,7 @@ export class BooksGlobalLoopComponent {
 
   //Function to error's map after login
   mapErrors(err, type) {
+    this.books = [];
     this.showLoader = false;
 
     switch (err.status) {

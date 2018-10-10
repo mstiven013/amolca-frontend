@@ -21,9 +21,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 //Material
 import 'hammerjs';
 import 'materialize-css';
-import { MatTooltipModule, MatTabsModule, MatCheckboxModule, MatProgressBarModule, MatMenuModule } from '@angular/material';
-import { MatIconModule } from '@angular/material/icon';
-import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTooltipModule, MatTabsModule, MatCheckboxModule, MatProgressBarModule, MatMenuModule, MatExpansionModule, MatIconModule } from '@angular/material';
 
 //Select2
 import { Select2Module } from 'ng2-select2';

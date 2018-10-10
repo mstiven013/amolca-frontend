@@ -3,7 +3,6 @@ import { GetBookService } from '../../../services/book/get-book.service';
 import { TooltipPosition } from '@angular/material';
 import { CartService } from '../../../services/cart/cart.service';
 import { GetCartService } from '../../../services/cart/get-cart.service';
-import { NgxCarousel } from 'ngx-carousel';
 import { BooksGlobalLoopComponent } from '../global-books-loop.component';
 
 declare var jQuery: any;

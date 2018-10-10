@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth/auth.service';
+import {MatMenuModule} from '@angular/material/menu';
 
 @Component({
   selector: 'user-btn',
