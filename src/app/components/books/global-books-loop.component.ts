@@ -33,6 +33,7 @@ export class BooksGlobalLoopComponent {
   @Input() itemsPerRow: any = 0;
   @Input() orderBy: any = 'title';
   @Input() order: any = 1;
+  @Input() pageType : any = 'normal';
 
   //Declare position tooltip
   tooltipPositionOptions: TooltipPosition[] = ['after', 'before', 'above', 'below', 'left', 'right'];

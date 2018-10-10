@@ -36,7 +36,7 @@
   
           <ng-template ngFor let-country [ngForOf]="b.countries">
             <!--b actions-->
-            <div *ngIf="country.name === currentCountry && country.price > 0" class="actions">
+            <div *ngIf="country.name === currentCountry && country.price > 0 && pageType != 'news'" class="actions">
   
               <!--b Price-->
               <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
@@ -52,6 +52,11 @@
               </p>
             </div>
           </ng-template>
+
+          <div *ngIf="pageType === 'news'" class="reservations">
+            <p class="disponibility">Disponible a partir de: <b>12 de Nov, 2018</b></p>
+            <a class="button primary">Reservar</a>
+          </div>
   
         </div>
       </div>
