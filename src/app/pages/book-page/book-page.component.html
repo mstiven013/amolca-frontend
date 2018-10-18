@@ -118,6 +118,11 @@
                 <td>{{book.numberPages}}</td>
               </tr>
 
+              <tr *ngIf="book.publicationYear !== undefined && book.publicationYear != ''">
+                <th>Páginas:</th>
+                <td>{{book.publicationYear}}</td>
+              </tr>
+
               <tr *ngFor="let attr of book.attributes">
                 <th>{{attr.name}}</th>
                 <td>{{attr.value}}</td>
