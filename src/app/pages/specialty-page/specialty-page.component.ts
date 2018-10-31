@@ -13,6 +13,7 @@ export class SpecialtyPageComponent implements OnInit {
   private sub: any;
   specialtyActive: any;
   specialty: any = {};
+  error = false;
   exists = true;
   loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
 
@@ -26,6 +27,9 @@ export class SpecialtyPageComponent implements OnInit {
     this.sub = this._activatedRoute.params.subscribe(params => {
       this.specialtyActive = params['slug']
       this.loader.show = true;
+      this.error = false;
+      this.exists = false;
+      window.scrollTo(0,0)
       this.getSpecialtyInfo(this.specialtyActive);
     });
   }

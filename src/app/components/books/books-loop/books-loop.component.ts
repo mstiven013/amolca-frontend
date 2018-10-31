@@ -76,4 +76,8 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
     }
   }
 
+  pageChanged(e: any) {
+    window.scrollTo(0,0)
+  }
+
 }

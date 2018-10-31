@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 //Pipes
 import { ReplacePipe } from './pipes/currencyFormat';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 //Material
 import 'hammerjs';
@@ -226,6 +227,7 @@ const appRoutes: Routes = [
 
     //Ngx
     NguCarouselModule,
+    NgxPaginationModule,
 
     //Forms
     ReactiveFormsModule,

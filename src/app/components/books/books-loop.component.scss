@@ -127,6 +127,35 @@
     }
 }
 
+.books-pagination /deep/ ul.ngx-pagination {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    li {
+        border-radius: 2px;
+        border: 1px solid $gray-light;
+        padding: 0px;
+        vertical-align: middle;
+
+        &.current {
+            background-color: $primary-color;
+            border-color: $primary-color;
+            padding: 0.1875rem 0.625rem;
+        }
+        &.pagination-previous.disabled {
+            height: 30px;
+            line-height: 30px;
+            padding-right: 0.1875rem 0.625rem;
+        }
+        &.pagination-next.disabled {
+            height: 29px;
+            line-height: 22px;
+            padding: 0.1875rem 0.625rem;
+        }
+    }
+}
+
 //Styles in carousel
 ngu-carousel {
     position: relative;

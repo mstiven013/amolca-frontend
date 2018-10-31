@@ -11,4 +11,4 @@
 </div>
 
 <!--If not exists one book with this slug show Not Found component-->
-<not-found *ngIf="!this.exists" [pageType]="'post'"></not-found>
+<not-found *ngIf="this.error" [pageType]="'post'"></not-found>

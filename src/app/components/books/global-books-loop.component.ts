@@ -29,8 +29,9 @@ export class BooksGlobalLoopComponent {
   @Input() specialty: any;
   @Input() author: any;
   @Input() carousel: Boolean = false;
-  @Input() maxShowItems: any = 12;
+  @Input() maxShowItems: any = 10000;
   @Input() itemsPerRow: any = 0;
+  @Input() itemsPerPage: any = 16;
   @Input() orderBy: any = 'title';
   @Input() order: any = 1;
   @Input() pageType : any = 'normal';
