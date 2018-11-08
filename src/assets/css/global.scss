@@ -222,20 +222,20 @@ html, body {
         width: 95%;
     }
         #nav-menu > ul > li > .submenu.active {
-            padding: 20px !important;
+            padding: 0px !important;
             opacity: 1;
             height: auto;
         }
         #nav-menu > ul > li > .submenu li {
             margin: 10px 0;
-            width: 14%;
+            width: 11%;
         }
             #nav-menu > ul > li > .submenu li a {
                 border-radius: 5px;
                 color: $primary-red;
                 display: block;
                 font-family: $primary-font;
-                font-size: 14px;
+                font-size: 13px;
                 font-weight: bold;
                 padding: 5px;
                 text-align: center;
