@@ -174,7 +174,7 @@
             <!--Information-->
             <div class="col s12 m9 l9 info">
               <h3 class="name">{{author.name}}</h3>
-              <p class="description">{{author.description}}</p>
+              <p class="description" [innerHTML]="author.description"></p>
               <p><a routerLink="/autor/{{author.slug}}" class="button primary">Ver libros de este autor</a></p>
             </div>
           </div>
