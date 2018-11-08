@@ -66,7 +66,10 @@ export class BookPageComponent implements OnInit {
       this.showPageLoader = true;
       this.getBookInfo(this.bookActive);
       this.getCountry();
+      this.scrollInteraction();
     })
+
+    this.scrollInteraction();
   }
 
   ngAfterViewInit() {
@@ -112,6 +115,14 @@ export class BookPageComponent implements OnInit {
     }
   }
 
+  changeFooterOffsetTop() {
+    let me = this;
+    this.footerOffset = jQuery('.footer').offset().top;
+    if(jQuery('.main').height() > (me.footerOffset - 180 - jQuery('#image-container').height() - jQuery('.related-products').height()) ) {
+      me.mainHigher = true;
+    }
+  }
+
   scrollInteraction() {
     let me = this;
     jQuery(document).ready(function(){
@@ -129,36 +140,28 @@ export class BookPageComponent implements OnInit {
         if(me.mainHigher) {
           //If show full image
           if(scroll < 100) {
-            imgCont.removeClass('scroll-waiting');
-            imgCont.removeClass('scroll-fixed');
+            jQuery('#image-container').removeClass('scroll-waiting');
+            jQuery('#image-container').removeClass('scroll-fixed');
             jQuery('#image-container .scroll-info').fadeOut();
           }
 
           //Position fixed 
           if(scroll >= 100) {
             jQuery('#image-container .scroll-info').fadeIn();
-            imgCont.removeClass('scroll-waiting');
-            imgCont.addClass('scroll-fixed');
+            jQuery('#image-container').removeClass('scroll-waiting');
+            jQuery('#image-container').addClass('scroll-fixed');
           }
 
           //Waiting scroll while looking footer
-          if(scroll > 100 && scroll >= (me.footerOffset - 180 - imgCont.height() - relBooks.height()) ) {
-            imgCont.removeClass('scroll-fixed');
-            imgCont.addClass('scroll-waiting');
+          if(scroll > 100 && scroll >= (me.footerOffset - 180 - jQuery('#image-container').height() - relBooks.height()) ) {
+            jQuery('#image-container').removeClass('scroll-fixed');
+            jQuery('#image-container').addClass('scroll-waiting');
           }
         }
 
       });
 
     });
-  }
-
-  changeFooterOffsetTop() {
-    let me = this;
-    this.footerOffset = jQuery('.footer').offset().top;
-    if(jQuery('.main').height() > (me.footerOffset - 180 - jQuery('#image-container').height() - jQuery('.related-products').height()) ) {
-      me.mainHigher = true;
-    }
   }
 
   //Add to cart function
