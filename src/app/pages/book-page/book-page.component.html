@@ -113,14 +113,14 @@
                 <td>{{book.isbn}}</td>
               </tr>
 
+              <tr *ngIf="book.publicationYear !== undefined && book.publicationYear != ''">
+                <th>Año de publicación:</th>
+                <td>{{book.publicationYear}}</td>
+              </tr>
+
               <tr *ngIf="book.numberPages !== undefined && book.numberPages != ''">
                 <th>Páginas:</th>
                 <td>{{book.numberPages}}</td>
-              </tr>
-
-              <tr *ngIf="book.publicationYear !== undefined && book.publicationYear != ''">
-                <th>Páginas:</th>
-                <td>{{book.publicationYear}}</td>
               </tr>
 
               <tr *ngFor="let attr of book.attributes">
