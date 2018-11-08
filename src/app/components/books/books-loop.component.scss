@@ -9,114 +9,125 @@
     width: 100%;
 }
 
-.books-loop .item {
-    background-color: $white-color;
+.books-loop {
+    
+    &.carousel-loop .item {
+        max-width: none;
+    }
+
+    //Width for item's
+    &.items-per-page-1 .item {
+        @include calc(max-width, '100% - 30px');
+    }
+    &.items-per-page-2 .item {
+        @include calc(max-width, '50% - 30px');
+    }
+    &.items-per-page-3 .item {
+        @include calc(max-width, '33.33% - 30px');
+    }
+    &.items-per-page-4 .item {
+        @include calc(max-width, '25% - 30px');
+    }
+    &.items-per-page-5 .item {
+        @include calc(max-width, '20% - 30px');
+    }
+}
+
+.item {
+    background-color: $gray-sup-light;
     margin: 15px;
     @include transition('all 0.4s ease');
     visibility: visible !important;
     text-align: center;
     width: 100%;
-}
-    .books-loop.carousel-loop .item {
-        max-width: none;
-    }
-        .books-loop .item:hover,
-        .books-loop .item:active {
-            background-color: $gray-sup-light;
-        }
 
-    //Width for item's
-    .books-loop.items-per-page-1 .item {
-        @include calc(max-width, '100% - 30px');
-    }
-    .books-loop.items-per-page-2 .item {
-        @include calc(max-width, '50% - 30px');
-    }
-    .books-loop.items-per-page-3 .item {
-        @include calc(max-width, '33.33% - 30px');
-    }
-    .books-loop.items-per-page-4 .item {
-        @include calc(max-width, '25% - 30px');
-    }
-    .books-loop.items-per-page-5 .item {
-        @include calc(max-width, '20% - 30px');
+    &:hover,
+    &:active {
+        background-color: $gray-sup-light;
     }
 
-.item .info {
-    padding: 30px 20px;
-    text-align: left;
-}
+    p {
+        margin: 0px;
+    }
 
-.item .contain-img {
-    border-bottom: 1px solid $gray-light;
-    display: block;
-}
-    .item .contain-img img {
+    .info {
+        padding: 30px 20px;
+        text-align: left;
+    }
+    
+    .contain-img {
+        border-bottom: 1px solid $gray-light;
         display: block;
-        max-width: 100%;
-        width: 100%;
+
+        img {
+            display: block;
+            max-width: 100%;
+            width: 100%;
+        }
     }
-
-.item p {
-    margin: 0px;
-}
-
-.item .name {
-    font-size: 24px;
-    font-weight: bold;
-    line-height: normal;
-    margin-bottom: 10px;
-    margin-top: 0px;
-}
-    .item .name a {
-        color: $primary-color;
-        text-decoration: none;
-    }
-
-
-.item .authors > span {
-    margin-right: 3px;
-}
-    .item .authors a {
-        color: $gray-dark;
-        font-size: 14px;
+    
+    .name {
+        font-size: 17px;
         font-weight: bold;
-
-        &:hover {
-            text-decoration: underline;
+        line-height: normal;
+        margin-bottom: 10px;
+        margin-top: 0px;
+    
+        a {
+            color: $primary-color;
+            text-decoration: none;
         }
     }
 
-.item .actions {
-    align-items: center;
-    display: flex;
-    flex-flow: row wrap;
-    font-size: 24px;
-    justify-content: space-between;
-    margin-top: 10px;
+    .authors {
+        & > span {
+            margin-right: 3px;
+        }
+
+        a {
+            color: $gray-dark;
+            font-size: 14px;
+            font-weight: bold;
+    
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .actions {
+        align-items: center;
+        display: flex;
+        flex-flow: row wrap;
+        font-size: 24px;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        .price {
+            color: $primary-color;
+            font-weight: bold;
+        }
+    
+        a {
+            cursor: pointer;
+            display: inline-block;
+            height: 36px;
+            line-height: 43px;
+            text-align: center;
+            text-decoration: none;
+            width: 35px;
+        }
+    
+        .cart-btn {
+            color: $primary-color;
+        }
+        .hearth-btn {
+            color: $primary-red;
+            margin-left: 5px;
+        }
+    }
+
 }
-    .item .actions .price {
-        color: $primary-color;
-        font-weight: bold;
-    }
-
-    .item .actions a {
-        cursor: pointer;
-        display: inline-block;
-        height: 36px;
-        line-height: 43px;
-        text-align: center;
-        text-decoration: none;
-        width: 35px;
-    }
-
-    .item .actions .cart-btn {
-        color: $primary-color;
-    }
-    .item .actions .hearth-btn {
-        color: $primary-red;
-        margin-left: 5px;
-    }
 
 .reservations {
     margin-top: 10px;
@@ -160,18 +171,33 @@
 ngu-carousel {
     position: relative;
 }
-    ngu-item .content {
-        background-color: $white-color;
-        font-family: $primary-font;
-        margin: 0px auto;
-        text-align: center;
-        @include transition('all 0.4s ease');
-        @include calc(width, '100% - 30px');
-    }
-        ngu-item .content:hover,
-        ngu-item .content:active {
-            background-color: $gray-sup-light;
+    ngu-item  {
+        
+        &.item {
+            background-color: transparent;
+            margin: 0px;
+            padding: 0px 15px;
+
+            &:hover,
+            &:active {
+                background-color: transparent;
+            }
         }
+
+        .content {
+            background-color: $gray-sup-light;
+            font-family: $primary-font;
+            margin: 0px auto;
+            text-align: center;
+            @include transition('all 0.4s ease');
+            //@include calc(width, '100% - 30px');
+
+            &:hover,
+            &:active {
+                background-color: $gray-sup-light;
+            }
+        }
+    }
 
 @media screen and (max-width: 992px) {
     .books-loop .item,

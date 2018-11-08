@@ -22,11 +22,11 @@
       <div class="info">
         <!--b Name-->
         <h3 class="name">
-          <!--If name is more than 40 words-->
-          <a *ngIf="book.title.length >= 40" matTooltip="{{book.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{book.slug}}">{{book.title | slice:0:40}}...</a>
+          <!--If name is more than 100 words-->
+          <a *ngIf="book.title.length >= 100" matTooltip="{{book.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{book.slug}}">{{book.title | slice:0:100}}...</a>
   
-          <!--If name is minor than 40 words-->
-          <a *ngIf="book.title.length < 39" matTooltip="{{book.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{book.slug}}">{{book.title}}</a>
+          <!--If name is minor than 100 words-->
+          <a *ngIf="book.title.length < 100" matTooltip="{{book.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{book.slug}}">{{book.title}}</a>
         </h3>
   
         <!--REPLACE WHEN CHANGE BOOKS MODEL-->

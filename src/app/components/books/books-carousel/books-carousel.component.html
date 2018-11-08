@@ -18,10 +18,10 @@
           <!--b Name-->
           <h3 class="name">
             <!--If name is more than 40 words-->
-            <a *ngIf="b.title.length >= 40" matTooltip="{{b.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{b.slug}}">{{b.title | slice:0:40}}...</a>
+            <a *ngIf="b.title.length >= 100" matTooltip="{{b.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{b.slug}}">{{b.title | slice:0:100}}...</a>
 
             <!--If name is minor than 40 words-->
-            <a *ngIf="b.title.length < 40" matTooltip="{{b.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{b.slug}}">{{b.title}}</a>
+            <a *ngIf="b.title.length < 100" matTooltip="{{b.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{b.slug}}">{{b.title}}</a>
           </h3>
   
           <!--REPLACE WHEN CHANGE bS MODEL-->
