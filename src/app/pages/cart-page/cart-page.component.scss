@@ -43,7 +43,7 @@ table .image {
     table .image img {
         display: block;
         margin: 0px auto;
-        max-height: 150px;
+        max-height: 120px;
         max-width: 90%;
     }
         img.materialboxed.active {
@@ -79,6 +79,7 @@ table .actions .delete {
 }
 
 .info-cart .related-products {
+    padding-right: 50px;
     width: 50%;
 }
 
@@ -114,6 +115,9 @@ input#coupon {
     .related-products, .cart-totals {
         width: 100%;
     }
+        .related-products {
+            padding-right: 0px;
+        }
         .cart-totals {
             font-size: 16px;
             padding: 20px;

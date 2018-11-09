@@ -1,6 +1,6 @@
 <!--Page & Post not found-->
 <div class="page-not-found">
-  <p><img src="assets\img\common\404.png" alt=""></p>
+  <p *ngIf="pageType !== 'cart'"><img src="assets\img\common\404.png" alt=""></p>
   <p class="title">{{text.title}}</p>
   <p class="btn-contain">
     <a class="button {{text.buttonBg}}" routerLink="/">{{text.button}}</a> 

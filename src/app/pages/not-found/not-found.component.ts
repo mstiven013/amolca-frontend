@@ -31,14 +31,10 @@ export class NotFoundComponent implements OnInit {
     switch (this.pageType) {
       case 'cart':
         this.text.title = 'No hay productos en el carrito.';
-        this.text.button = 'Ir a la tienda';
-        this.text.buttonUrl = '/tienda';
       break;
 
       default:
         this.text.title = 'La página que estás buscando no existe.';
-        this.text.button = 'Ir al Inicio';
-        this.text.buttonUrl = '/';
       break;
     }
   }

@@ -56,6 +56,10 @@ export class CartPageComponent implements OnInit {
     price: 0
   };
 
+  showInfo = false;
+  showNotFound = false;
+  loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
+
   //Declare cart variable
   cart = { _id: 0, user_id: 0, products: [], coupon: [], total: 0 };
 
@@ -69,8 +73,20 @@ export class CartPageComponent implements OnInit {
       this._getCartService.getCartById(cartInfo._id)
         .map(resp => resp.json())
         .subscribe(
-          data => { this.cart = data },
-          err => { console.log(err) }
+          data => { 
+            this.cart = data;
+            this.loader.show = false;
+            
+            if(data.products.length > 0) {
+              this.showInfo = true;
+            } else {
+              this.showNotFound = true;
+            }
+          },
+          err => { 
+            console.log(err)
+            this.loader.show = false;
+          }
         )
     }
   }
