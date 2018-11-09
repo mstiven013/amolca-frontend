@@ -45,6 +45,7 @@ import { LogoComponent } from './components/common/logo/logo.component';
 import { LoaderComponent } from './components/common/loader/loader.component';
 import { BigSearcherComponent } from './components/big-searcher/big-searcher.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { NotificationComponent } from './components/common/notification/notification.component';
 
 //Footer components
 import { FooterComponent } from './components/common/footer/footer.component';
@@ -135,6 +136,7 @@ const appRoutes: Routes = [
     LogoComponent,
     LoginBtnComponent,
     CartBtnComponent,
+    NotificationComponent,
 
     //Footer components
     FooterComponent,

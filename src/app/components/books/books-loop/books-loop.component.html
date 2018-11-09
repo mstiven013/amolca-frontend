@@ -5,6 +5,8 @@
 
 <div *ngIf="showBooks && books.length > 0">
 
+  <app-notification [message]="notification.msg" [class]="notification.class"></app-notification>
+
   <!--Loop container-->
   <div class="{{loopclass}} items-per-page-{{itemsPerRow}}">
 
@@ -70,7 +72,7 @@
   
             <!--book buttons-->
             <p class="btns">
-              <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, 0)">
+              <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, country.price)">
                 <i class="material-icons">add_shopping_cart</i>
               </a>
               <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">
@@ -89,7 +91,7 @@
 
           <!--book buttons-->
           <p class="btns">
-            <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, country.price)">
+            <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, 1000)">
               <i class="material-icons">add_shopping_cart</i>
             </a>
             <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">

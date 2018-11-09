@@ -22,7 +22,7 @@ export class BooksGlobalLoopComponent {
   error = { show: false, msg: '' }
   showBooks: Boolean = false;
   showLoader: Boolean = true;
-  notification = { show: false, msg: 'Se agregó este libro a tu carrito' }
+  notification = { show: false, class: 'inactive', msg: 'El libro se agregó correctamente a tu carrito' }
   loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
 
   //Input vars
@@ -88,7 +88,10 @@ export class BooksGlobalLoopComponent {
   }
 
   //Add to cart function
-  addToCart(book, price){
+  addToCart(book, price: any = 1000){
+
+    this.notification.class = 'inactive';
+    this.notification.msg = `El libro <b>${book.title}</b> se agregó correctamente a tu carrito.`;
 
     let localCart = localStorage.getItem('wyC4r7');
 
@@ -130,9 +133,9 @@ export class BooksGlobalLoopComponent {
 
           //Notification
           let me = this;
-          this.notification.show = true;
-          setTimeout(function() {
-            me.notification.show = false;
+          this.notification.class = 'active success';
+          setTimeout(function(){
+            me.notification.class = 'inactive';
           }, 4000);
 
         },
@@ -176,9 +179,9 @@ export class BooksGlobalLoopComponent {
 
           //Notification
           let me = this;
-          this.notification.show = true;
-          setTimeout(function() {
-            me.notification.show = false;
+          this.notification.class = 'active success';
+          setTimeout(function(){
+            me.notification.class = 'inactive';
           }, 4000);
 
         },
@@ -187,7 +190,15 @@ export class BooksGlobalLoopComponent {
   }
 
   addToWishlist(book) {
-    console.log(book)
+    //Notification
+    let me = this;
+
+    this.notification.class = 'inactive';
+    this.notification.msg = `El libro <b>${book.title}</b> se agregó correctamente a tu lista de deseos.`;
+    this.notification.class = 'active success';
+    setTimeout(function(){
+      me.notification.class = 'inactive';
+    }, 3000);
   }
 
   public myfunc(event: Event) {
