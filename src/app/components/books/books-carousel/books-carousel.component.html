@@ -13,6 +13,28 @@
           
           <img *ngIf="b.image === undefined || b.image == ''" src="assets/img/common/no-image.jpg" alt="">
         </a>
+
+        <!--Book versions-->
+        <div *ngIf="b.version !== undefined && b.version.length > 0" class="versions">
+          <ng-template ngFor let-v [ngForOf]="b.version">
+
+            <!--If version is PAPER-->
+            <a *ngIf="v == 'PAPER'" matTooltip="Papel" [matTooltipPosition]="tooltipPosition" class="version-btn">
+              <span class="icon-book"></span>
+            </a>
+
+            <!--If version is EBOOK-->
+            <a *ngIf="v == 'EBOOK'" matTooltip="Ebook" [matTooltipPosition]="tooltipPosition" class="version-btn">
+              <span class="icon-document-text"></span>
+            </a>
+
+            <!--If version is VIDEO-->
+            <a *ngIf="v == 'VIDEO'" matTooltip="Vídeo" [matTooltipPosition]="tooltipPosition" class="version-btn">
+              <span class="icon-media-play"></span>
+            </a>
+
+          </ng-template>
+        </div>
   
         <div class="info">
           <!--b Name-->
