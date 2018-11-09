@@ -18,6 +18,28 @@
         
         <img *ngIf="book.image === undefined || book.image == ''" src="assets/img/common/no-image.jpg" alt="">
       </a>
+
+      <!--Book versions-->
+      <div *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
+        <ng-template ngFor let-v [ngForOf]="book.version">
+
+          <!--If version is PAPER-->
+          <a *ngIf="v == 'PAPER'" matTooltip="Papel" [matTooltipPosition]="tooltipPosition" class="version-btn">
+            <span class="icon-book"></span>
+          </a>
+
+          <!--If version is EBOOK-->
+          <a *ngIf="v == 'EBOOK'" matTooltip="Ebook" [matTooltipPosition]="tooltipPosition" class="version-btn">
+            <span class="icon-document-text"></span>
+          </a>
+
+          <!--If version is VIDEO-->
+          <a *ngIf="v == 'VIDEO'" matTooltip="Vídeo" [matTooltipPosition]="tooltipPosition" class="version-btn">
+            <span class="icon-media-play"></span>
+          </a>
+
+        </ng-template>
+      </div>
   
       <div class="info">
         <!--b Name-->
@@ -48,7 +70,7 @@
   
             <!--book buttons-->
             <p class="btns">
-              <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, country.price)">
+              <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, 0)">
                 <i class="material-icons">add_shopping_cart</i>
               </a>
               <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">
@@ -57,6 +79,24 @@
             </p>
           </div>
         </ng-template>
+
+        <!--Test interface-->
+        <!--book actions-->
+        <div class="actions">
+
+          <!--book Price-->
+          <p class="price">$0</p>
+
+          <!--book buttons-->
+          <p class="btns">
+            <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, country.price)">
+              <i class="material-icons">add_shopping_cart</i>
+            </a>
+            <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">
+              <i class="material-icons">favorite_border</i>
+            </a>
+          </p>
+        </div>
   
       </div>
     </div>
