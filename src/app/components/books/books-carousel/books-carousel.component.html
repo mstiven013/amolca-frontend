@@ -62,9 +62,8 @@
             </p>
     
             <!--Actions-->
-            <!--QUITAR COMENTARIO PARA DEJAR EN PRODUCCION
             <ng-template ngFor let-country [ngForOf]="b.countries">
-              <div *ngIf="country.name === currentCountry && country.price > 0 && pageType != 'news'" class="actions">
+              <div *ngIf="aCountry !== 'COLOMBIA' && country.name === currentCountry && country.price > 0 && pageType != 'news'" class="actions">
 
                 <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
       
@@ -78,11 +77,10 @@
                 </p>
               </div>
             </ng-template>
-            -->
   
             <!--Test interface-->
             <!--book actions-->
-            <div *ngIf="pageType !== 'news'" class="actions">
+            <div *ngIf="pageType !== 'news' && aCountry == 'COLOMBIA'" class="actions">
     
               <!--book Price-->
               <p class="price">$0</p>

@@ -26,4 +26,11 @@ export class GetOrdersService {
     return this._http.get(`${config.API_URL}/users/${id}/orders`, options);
   }
 
+  createOrder(order) {
+    let headers = new Headers({'Content-type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+
+    return this._http.post(`${config.API_URL}/orders`, order, options);
+  }
+
 }

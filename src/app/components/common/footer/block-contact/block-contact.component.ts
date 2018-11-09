@@ -14,10 +14,10 @@ export class BlockContactComponent implements OnInit {
 
   //Test info vars
   contact = [
-    {name: 'direction', data: 'Calle 47 A # 81 - 58, Medellín, Antioquia, Colombia', state: true},
+    {name: 'direction', data: 'Carrera 43 #9 sur 195, Torre Inexmoda ofc 1334', state: true},
     {name: 'phone', data: '', state: false},
-    {name: 'mobile', data: '+57 317 504 98 44', state: true},
-    {name: 'email', data: 'gcomercial@amolca.com.co', state: true}
+    {name: 'mobile', data: '+57 44797431', state: true},
+    {name: 'email', data: 'contacto@amolca.com', state: true}
   ]
 
 }

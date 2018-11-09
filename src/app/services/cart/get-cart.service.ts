@@ -37,7 +37,9 @@ export class GetCartService {
 
   //Refres cart data
   cartDataRefresh(cart) {
-    if(cart != 'removed') {
+    if(cart == 'removed') {
+      localStorage.removeItem('wyC4r7');
+    } else {
       localStorage.setItem('wyC4r7', JSON.stringify(cart));
     }
     this.cartData.next(cart);

@@ -15,6 +15,8 @@ declare var Materialize: any;
 })
 export class BooksLoopComponent extends BooksGlobalLoopComponent {
 
+  aCountry: any;
+
   ngOnChanges(changes: SimpleChanges) {
     this.initGetBooks();
   }
@@ -22,6 +24,16 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
   ngOnInit() {
     this.getCountry();
     this.initGetBooks();
+
+    let c = localStorage.getItem('C0uN7r1');
+
+    if(c === null || c === undefined) {
+      jQuery.getJSON('http://ip-api.com/json?callback', function(data) {
+        localStorage.setItem('C0uN7r1', data.country.toUpperCase());
+      });
+    }
+
+    this.aCountry = c;
   }
 
    //Get books

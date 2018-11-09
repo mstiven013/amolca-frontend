@@ -28,6 +28,7 @@ export class BookPageComponent implements OnInit {
   bookActive: any;
   book: any = {};
   exists = true;
+  aCountry: any;
 
   //Cart btn vars
   showCartBtn: Boolean = true;
@@ -67,6 +68,16 @@ export class BookPageComponent implements OnInit {
       this.getBookInfo(this.bookActive);
       this.getCountry();
       this.scrollInteraction();
+
+      let c = localStorage.getItem('C0uN7r1');
+
+      if(c === null || c === undefined) {
+        jQuery.getJSON('http://ip-api.com/json?callback', function(data) {
+          localStorage.setItem('C0uN7r1', data.country.toUpperCase());
+        });
+      }
+
+      this.aCountry = c;
     })
 
     this.scrollInteraction();

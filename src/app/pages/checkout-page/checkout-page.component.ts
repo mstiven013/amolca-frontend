@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { country } from '../../../assets/data/country';
 import { AppComponent } from '../../app.component';
 import { GetCartService } from '../../services/cart/get-cart.service';
+import { TuCompraService } from 'src/app/services/orders/tucompra.service';
+import { GetOrdersService } from 'src/app/services/orders/get-orders.service';
 
 @Component({
   selector: 'app-checkout-page',
@@ -12,8 +14,11 @@ import { GetCartService } from '../../services/cart/get-cart.service';
 export class CheckoutPageComponent implements OnInit {
 
   //Generate init variables
+  showFormInfo = false;
   checkoutform: FormGroup;
-  user: any;
+  user = { _id: '', name: '', lastname: '', phone: '', mobile: '', email: '', country: '' }
+  loadCountries: Boolean = false;
+  countrySelected: any = 'Colombia';
   countries: any = [];
 
   //Declare shipping variable
@@ -30,19 +35,26 @@ export class CheckoutPageComponent implements OnInit {
 
   constructor(
     private _appComponent: AppComponent,
-    private _getCartService: GetCartService
+    private _getCartService: GetCartService,
+    private _tuCompraService: TuCompraService,
+    private _getOrderService: GetOrdersService
   ) { }
+
+  onChange(e) {
+    this.countrySelected = e.value;
+    this.checkoutform.value.country = e.value;
+  }
 
   ngOnInit() {
 
     this.loadCartData();
     this.loadCountryData();
     this.loadUserData();
-    this.generateCheckoutForm();
 
     //Set meta title
     this._appComponent.setMetaTitle('Finalizar compra - Amolca Editorial Médica y Odontológica');
 
+    this.showFormInfo = true;
   }
 
   //Create form
@@ -52,23 +64,24 @@ export class CheckoutPageComponent implements OnInit {
       'lastname': new FormControl(this.user.lastname, [ Validators.required ]),
       'phone': new FormControl(this.user.phone),
       'mobile': new FormControl(this.user.mobile, [ Validators.required ]),
-      'email': new FormControl(this.user.email, [ Validators.required, Validators.email ]),
-      'country': new FormControl(null, [ Validators.required ]),
-      'city': new FormControl(null, [ Validators.required ]),
-      'address': new FormControl(null, [ Validators.required ]),
-      'aditionals': new FormControl(null),
-      'postalCode': new FormControl(null),
-      'notes': new FormControl(null),
-      'termsCondition': new FormControl(null, [ Validators.required ])
+      'email': new FormControl(this.user.email, [ Validators.required ]),
+      'country': new FormControl(this.countrySelected, [ Validators.required ]),
+      'city': new FormControl('', [ Validators.required ]),
+      'address': new FormControl('', [ Validators.required ]),
+      'aditionals': new FormControl('', []),
+      'postalCode': new FormControl('', []),
+      'notes': new FormControl('', []),
+      'termsCondition': new FormControl([ Validators.required ])
     });
   }
 
   //Load countries data in select list of form
   loadCountryData() {
     for (let i = 0; i < country.length; i++) {
-      let newObj = { id: country[i].code, text: country[i].name }
+      let newObj = { id: country[i].name, text: country[i].name }
       this.countries.push(newObj);
     }
+    this.loadCountries = true;
   }
 
   //Load user data from localStorage
@@ -77,15 +90,14 @@ export class CheckoutPageComponent implements OnInit {
 
     if(data !== null && data !== undefined) {
       this.user = JSON.parse(data)
-    } else {
-      this.user = { name: null, lastname: null, phone: null, mobile: null, email: null, country: null }
     }
+
+    this.generateCheckoutForm();
   }
 
   //Load cart data from localStorage
   loadCartData() {
     let cartInfo = JSON.parse(localStorage.getItem('wyC4r7'));
-    console.log(cartInfo)
 
     if(cartInfo !== null) {
       this._getCartService.getCartById(cartInfo._id)
@@ -101,7 +113,44 @@ export class CheckoutPageComponent implements OnInit {
 
   //Send form
   createOrder(frm) {
-    console.log(frm)
+  
+    let order = {
+      cart: [this.cart._id],
+      shipping: {
+        name: frm.value.name + frm.value.lastname,
+        address: frm.value.address,
+        country: frm.value.country,
+        state: frm.value.city,
+        phone: frm.value.mobile,
+        aditional: frm.value.aditionals
+      },
+      billing: {
+        name: frm.value.name + frm.value.lastname,
+        address: frm.value.address,
+        country: frm.value.country,
+        state: frm.value.city,
+        phone: frm.value.mobile,
+        aditional: frm.value.aditionals
+      },
+      userId: null
+    };
+
+    if(this.user._id !== '') {
+      order.userId = this.user._id;
+    }
+
+    this._getOrderService.createOrder(order)
+      .subscribe(
+        data => {
+          console.log('melo')
+          console.log(data)
+          this._getCartService.cartDataRefresh('removed')
+        },
+        err => {
+          console.log('error')
+          console.log(err)
+        }
+      )
   }
 
 }

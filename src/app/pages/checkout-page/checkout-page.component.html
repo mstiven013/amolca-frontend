@@ -1,6 +1,6 @@
 <div *ngIf="cartExists" class="page-container checkout-page">
 
-  <div class="row">
+  <div *ngIf="showFormInfo" class="row">
 
     <!--Form column-->
     <div class="col s12 m8 l8">
@@ -41,11 +41,9 @@
           <!--Country column-->
           <div class="col s12 m6 l6">
             <label for="country"><span class="required">*</span> País:</label>
-            <select name="country" id="country" formControlName="country" #country>
-              <option value="0">Seleccione un país...</option>
-            </select>
 
-            <select2 [data]="countries"  [cssImport]="true"></select2>
+            <select2 *ngIf="loadCountries" [data]="countries" [cssImport]="true" (valueChanged)="countrySelected = ($event.value); onChange($event)" ng-model="countrySelected"></select2>
+            <input type="hidden" formControlName="country" [(ngModel)]="countrySelected" id="country" name="country" #country>
           </div>
       
           <!--City column-->
@@ -74,8 +72,8 @@
 
           <!--Notes column-->
           <div class="col s12 m12 l12">
-            <label for="notes">Notas sobre tu pedido:</label>
-            <textarea class="materialize-textarea" name="notes" id="notes" formControlName="notes" #notes placeholder="Si tienes notas adicionales sobre tu pedido escríbelas aquí..."></textarea>
+            <label for="aditionals">Notas sobre tu pedido:</label>
+            <textarea class="materialize-textarea" name="aditionals" id="aditionals" formControlName="aditionals" #aditionals placeholder="Si tienes notas adicionales sobre tu pedido escríbelas aquí..."></textarea>
           </div>
 
           <!--Terms and conditions column-->
