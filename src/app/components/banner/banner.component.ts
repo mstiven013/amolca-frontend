@@ -21,15 +21,15 @@ export class BannerComponent implements OnInit {
   pathImg = '/assets/img/banner/';
   slider = [
     { 
-      image: "banner-example-01.jpg",
-      bgAttach: "fixed",
-      text: `<h2 style="color: #fff; text-align: center;">AMOLCA</h2><p style="color: #fff; text-align: center;">Banner de ejemplo #1</p>`,
+      image: "slide-web-01.png",
+      bgAttach: "initial",
+      text: ``,
       state: true
     },
     { 
-      image: "banner-example-02.jpg",
+      image: "slide-web-2-02.png",
       bgAttach: "initial",
-      text: `<h2 style="color: #fff; text-align: center;">EDITORIAL MEDICA</h2><p style="color: #fff; text-align: center;">Editorial médica. Banner de ejemplo #2</p>`,
+      text: ``,
       state: true
     }  
   ]
