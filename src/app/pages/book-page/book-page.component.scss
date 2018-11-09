@@ -86,19 +86,20 @@
 }
 
 .author {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     margin: 20px 0px;
 }
     .author a {
         color: $gray-dark;
+        line-height: normal;
         position: relative;
         text-decoration: none;
     }
         .author a:before {
             content: '';
             background-color: $gray-dark;
-            bottom: -4px;
+            bottom: 0px;
             height: 1px;
             left: 0px;
             position: absolute;

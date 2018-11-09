@@ -47,7 +47,12 @@
 
       <!--Book author-->
       <h3 class="author" *ngIf="book.author !== undefined && book.author.length > 0">
-        <a *ngFor="let author of book.author; let i = index;" routerLink="/autor/{{author.slug}}">{{author.name}}</a>
+        <span *ngFor="let author of book.author; let i = index;">
+          <a routerLink="/autor/{{author.slug}}">
+            {{author.name}}
+          </a>
+          <span *ngIf="i < book.author.length - 1"> - </span>
+        </span>
       </h3>
 
       <!--Book price-->
