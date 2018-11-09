@@ -65,6 +65,8 @@ export class BooksGlobalLoopComponent {
     this.showLoader = false;
     this.showBooks = false;
 
+    let me = this;
+
     switch (err.status) {
       case 404:
           this.error.show = true;
@@ -85,6 +87,13 @@ export class BooksGlobalLoopComponent {
           this.error.msg = `Ha ocurrido un error, por favor inténtelo de nuevo.`;
         break;
     }
+
+    this.notification.class = 'active error';
+    this.notification.msg = `Ha ocurrido un error. Si el error persiste por favor comunicarse con diseno@webussines.com.`;
+
+    setTimeout(function(){
+      me.notification.class = 'inactive';
+    }, 4000);
   }
 
   //Add to cart function

@@ -34,7 +34,7 @@ export class BookPageComponent implements OnInit {
   qtyInput: Number = 1;
 
   //Notification
-  notification = { bg: 'red', show: false, msg: 'Ejemplo' }
+  notification = { show: false, class: 'inactive', msg: 'El libro se agregó correctamente a tu carrito' }
   loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
   showPageLoader: Boolean = true;
 
@@ -168,6 +168,9 @@ export class BookPageComponent implements OnInit {
   addToCart(book, price, qty){
 
     let localCart = localStorage.getItem('wyC4r7');
+
+    this.notification.class = 'inactive';
+    this.notification.msg = `El libro <b>${book.title}</b> se agregó correctamente a tu carrito.`;
     
     if(localCart !== null) {
       //If exists cart in localStorage update this
@@ -209,23 +212,20 @@ export class BookPageComponent implements OnInit {
 
           //Notification
           let me = this;
-          this.notification.bg = '#00396F';
-          this.notification.msg = 'Se agregó este libro a tu carrito de compras.';
-          this.notification.show = true;
-
-          setTimeout(function() {
-            me.notification.show = false;
+          this.notification.class = 'active success';
+          setTimeout(function(){
+            me.notification.class = 'inactive';
           }, 4000);
         },
         err => {
+          console.log(err)
           //Notification
           let me = this;
-          this.notification.bg = 'red';
-          this.notification.msg = 'Ha ocurrido un error actualizando tus datos, por favor inténtelo de nuevo más tarde.';
-          this.notification.show = true;
+          this.notification.class = 'active error';
+          this.notification.msg = `Ha ocurrido un error. Si el error persiste por favor comunicarse con diseno@webussines.com.`;
 
-          setTimeout(function() {
-            me.notification.show = false;
+          setTimeout(function(){
+            me.notification.class = 'inactive';
           }, 4000);
         }
       )
@@ -269,23 +269,19 @@ export class BookPageComponent implements OnInit {
 
           //Notification
           let me = this;
-          this.notification.bg = '#00396F';
-          this.notification.msg = 'Se agregó este libro a tu carrito de compras.';
-          this.notification.show = true;
-
-          setTimeout(function() {
-            me.notification.show = false;
+          this.notification.class = 'active success';
+          setTimeout(function(){
+            me.notification.class = 'inactive';
           }, 4000);
         },
         err => {
+          console.log(err)
           //Notification
           let me = this;
-          this.notification.bg = 'red';
-          this.notification.msg = 'Ha ocurrido un error actualizando tus datos, por favor inténtelo de nuevo más tarde.';
-          this.notification.show = true;
-
-          setTimeout(function() {
-            me.notification.show = false;
+          this.notification.class = 'active error';
+          this.notification.msg = `Ha ocurrido un error. Si el error persiste por favor comunicarse con diseno@webussines.com.`;
+          setTimeout(function(){
+            me.notification.class = 'inactive';
           }, 4000);
         }
       )

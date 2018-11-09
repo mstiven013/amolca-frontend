@@ -3,6 +3,9 @@
   <book-page-loader *ngIf="showPageLoader"></book-page-loader>
   
   <div *ngIf="!showPageLoader" class="row">
+    <!--Notification-->
+    <app-notification [message]="notification.msg" [class]="notification.class"></app-notification>
+
     <!--Images Book column-->
     <div class="col s12 l5 image-book">
       <div id="image-container">
@@ -11,6 +14,8 @@
         
         <img *ngIf="book.image === undefined || book.image == ''" class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
 
+        <!--Add to cart and price-->
+        <!-- QUITAR COMENTARIO PARA DEJAR EN PRODUCCION
         <ng-template ngFor let-country [ngForOf]="book.countries">
           <ng-template [ngIf]="country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
             <div class="scroll-info">
@@ -22,6 +27,16 @@
             </div>
           </ng-template>
         </ng-template>
+        -->
+
+        <!--Test interface-->
+        <div class="scroll-info">
+          <p class="price">$1.000</p>
+          <div class="add-to-cart">
+            <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
+            <a class="button danger waves-effect waves-light" (click)="addToCart(book, 1000, qtyInput)">Añadir al carrito</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -36,11 +51,16 @@
       </h3>
 
       <!--Book price-->
+      <!-- QUITAR COMENTARIO PARA DEJAR EN PRODUCCION
       <ng-template ngFor let-country [ngForOf]="book.countries">
         <ng-template [ngIf]="country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
           <p class="price">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
         </ng-template>
       </ng-template>
+      -->
+
+      <!--Test interface-->
+      <p class="price">$1.000</p>
 
       <!--Free Shipping text-->
       <p class="shipping">¡Envío gratis a cualquier ciudad de Colombia!</p>
@@ -69,6 +89,7 @@
       </p>
 
       <!--Cart button-->
+      <!-- QUITAR COMENTARIO PARA DEJAR EN PRODUCCION
       <ng-template ngFor let-country [ngForOf]="book.countries">
         <ng-template [ngIf]="country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
           <div class="add-to-cart">
@@ -77,6 +98,13 @@
           </div>
         </ng-template>
       </ng-template>
+      -->
+
+      <!--Test interface-->
+      <div class="add-to-cart">
+        <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
+        <a class="button danger waves-effect waves-light" (click)="addToCart(book, 1000, qtyInput)">Añadir al carrito</a>
+      </div>
 
       <div *ngIf="notification.show" class="card-panel notification" [style.background-color]="notification.bg">
         <p>{{notification.msg}}</p>
