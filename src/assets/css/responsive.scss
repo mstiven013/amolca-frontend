@@ -2,24 +2,6 @@
 @import 'vars.scss';
 @import "mixins.scss";
 
-@media screen and (max-width: 992px) {
-    /*Header*/
-    .header {
-        background-position: left -170px center;
-    }
-
-    .footer .custom-row .custom-col,
-    .custom-row .custom-col#block-contact {
-        margin-bottom: 20px;
-        width: 50%;
-    }
-
-    //Mat Panel Extension Book
-    .mat-expansion-panel-content .mat-expansion-panel-body {
-        padding-left: 30px;
-    }
-}
-
 @media screen and (min-width: 1280px) {
     #nav-menu > ul > li > .submenu {
         display: flex !important;
@@ -27,6 +9,24 @@
 }
 
 @media screen and (max-width: 1280px) {
+    /*Header*/
+    .header {
+        background-position: left -170px center;
+    }
+
+    /**/
+    #nav-menu > ul > li > a {
+        font-size: 15px;
+        padding-left: 30px;
+        padding-right: 30px;
+
+        img {
+            width: 30px;
+        }
+    }
+}
+
+@media screen and (max-width: 1023px) {
 
     /*Top bar*/
     .top-bar #login-btn {
@@ -89,6 +89,7 @@
             /*Submenu*/
             #nav-menu > ul > li:hover > .submenu {
                 height: auto;
+                justify-content: flex-start;
                 padding: 0px;
             }
             #nav-menu > ul > li > .submenu {
@@ -127,6 +128,20 @@
                             text-align: left;
                             @include calc(width, '100% - 40px');
                         }
+}
+
+@media screen and (max-width: 992px) {
+
+    .footer .custom-row .custom-col,
+    .custom-row .custom-col#block-contact {
+        margin-bottom: 20px;
+        width: 50%;
+    }
+
+    //Mat Panel Extension Book
+    .mat-expansion-panel-content .mat-expansion-panel-body {
+        padding-left: 30px;
+    }
 }
 
 @media screen and (max-width: 950px) {

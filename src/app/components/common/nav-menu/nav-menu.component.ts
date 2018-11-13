@@ -83,16 +83,16 @@ export class NavMenuComponent implements OnInit {
           { id: 54221, name: 'Ortodoncia', link: '/ortodoncia', image: 'ortodoncia.png', state: true, target: '_self' },
           { id: 32412, name: 'Periodoncia', link: '/periodoncia', image: 'periodoncia.png', state: true, target: '_self' },
           { id: 32412, name: 'Prostodoncia', link: '/prostodoncia', image: 'prostodoncia.png', state: true, target: '_self' },
-          { id: 23859, name: 'Radiología', link: '/radiologia', image: 'radiologia.png', state: true, target: '_self' },
+          { id: 23859, name: 'Radiología dental', link: '/radiologia-dental', image: 'radiologia.png', state: true, target: '_self' },
           { id: 92837, name: 'Rehabilitación Oral', link: '/rehabilitacion-oral', image: 'rehabilitacion-oral.png', state: true, target: '_self' },
         ]
       }
     },
     { 
-      id: 47849, name: 'Vídeos', link: 'videos', image: 'videos.png', state: true, target: '_self', submenu: ''
+      id: 47849, name: 'Vídeos', link: 'http://online.amolca.com', image: 'videos.png', state: true, target: '_blank', submenu: ''
     },
     { 
-      id: 27263, name: 'Biblioteca digital', link: 'http://online.amolca.com', image: 'biblioteca-digital.png', state: true, target: '_blank', submenu: ''
+      id: 27263, name: 'Biblioteca digital', link: '', image: 'biblioteca-digital.png', state: true, target: '_self', submenu: ''
     },
   ]
 
