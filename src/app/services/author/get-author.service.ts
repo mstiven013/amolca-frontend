@@ -17,7 +17,6 @@ export class GetAuthorService {
     let options = new RequestOptions({headers: headers});
 
     let params = `orderby=${orderby}&order=${order}&limit=${limit}`;
-    console.log(config.API_URL + '/authors?' + params)
 
     return this._http.get(config.API_URL + '/authors?' + params, options);
   }
