@@ -31,7 +31,13 @@ export class BannerComponent implements OnInit {
       bgAttach: "initial",
       text: ``,
       state: true
-    }  
+    },
+    { 
+      image: "slide-web-03.png",
+      bgAttach: "initial",
+      text: ``,
+      state: true
+    }
   ]
 
   constructor() { }
