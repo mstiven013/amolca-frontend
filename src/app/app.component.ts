@@ -13,7 +13,11 @@ export class AppComponent {
   ) {}
 
   ngOnInit() {
-    this.getGeolocalization();
+    localStorage.clear();
+    let me = this;
+    setTimeout(function() {
+      me.getGeolocalization();
+    }, 200);
   }
 
   getGeolocalization() {
