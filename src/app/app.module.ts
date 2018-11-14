@@ -119,6 +119,7 @@ import { CommentsLogoutFormComponent } from './components/comments/comments-logo
 import { CommentsListComponent } from './components/comments/comments-list/comments-list.component';
 import { ReportErrorFormComponent } from './components/comments/report-error-form/report-error-form.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { LoopLoaderComponent } from './components/books/loop-loader/loop-loader.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -205,6 +206,7 @@ const appRoutes: Routes = [
     CommentsListComponent,
     ReportErrorFormComponent,
     SearchPageComponent,
+    LoopLoaderComponent,
   ],
   imports: [
     //Angular libraries

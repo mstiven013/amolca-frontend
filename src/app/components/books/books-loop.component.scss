@@ -46,6 +46,10 @@
         background-color: $gray-sup-light;
     }
 
+    &.item-mockup {
+        background-color: transparent;
+    }
+
     p {
         margin: 0px;
     }
@@ -154,6 +158,44 @@
         }
     }
 
+}
+
+.mockup {
+    &.contain-img {
+        border-bottom: 0px solid transparent !important;
+    }
+
+    &.version-btn {
+        margin-right: 5px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    &.name {
+        height: 36px;
+    }
+
+    &.authors {
+        height: 18px;
+    }
+
+    &.price {
+        height: 36px;
+        margin-top: -3px !important;
+        @include calc(width, '100% - 90px');
+    }
+
+    &.cart-btn, &.hearth-btn {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+}
+
+.v-mockup {
+    margin-top: -30px !important;
+}
+.b-mockup {
+    line-height: normal;
 }
 
 .reservations {
