@@ -3,6 +3,7 @@ import { GetBookService } from '../../services/book/get-book.service';
 import { TooltipPosition } from '@angular/material';
 import { CartService } from '../../services/cart/cart.service';
 import { GetCartService } from '../../services/cart/get-cart.service';
+import { ActivatedRoute } from '@angular/router';
 
 declare var jQuery: any;
 declare var Materialize: any;
@@ -26,14 +27,15 @@ export class BooksGlobalLoopComponent {
   loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
 
   //Input vars
+  @Input() data: any = [];
   @Input() specialty: any;
   @Input() author: any;
   @Input() carousel: Boolean = false;
   @Input() maxShowItems: any = 10000;
-  @Input() itemsPerRow: any = 0;
+  @Input() itemsPerRow: any = 4;
   @Input() itemsPerPage: any = 16;
   @Input() orderBy: any = 'title';
-  @Input() order: any = 1;
+  @Input() order: any = -1;
   @Input() pageType : any = 'normal';
 
   //Declare position tooltip
@@ -43,7 +45,8 @@ export class BooksGlobalLoopComponent {
   constructor(
     protected _getBookService: GetBookService,
     protected _cartService: CartService,
-    protected _getCartService: GetCartService
+    protected _getCartService: GetCartService,
+    protected _activatedRoute: ActivatedRoute
   ) { }
 
   getCountry() {

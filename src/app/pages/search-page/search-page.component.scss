@@ -1,0 +1,12 @@
+@import "vars.scss";
+@import "mixins.scss";
+
+.header-page {
+    background-color: $gray-sup-light;
+    padding: 30px 5%;
+    position: relative;
+}
+
+.search-page {
+    padding: 40px 0px;
+}

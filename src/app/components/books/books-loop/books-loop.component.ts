@@ -16,14 +16,49 @@ declare var Materialize: any;
 export class BooksLoopComponent extends BooksGlobalLoopComponent {
 
   aCountry: any;
+  sub: any;
 
   ngOnChanges(changes: SimpleChanges) {
-    this.initGetBooks();
+
+    this.sub = this._activatedRoute.queryParams.subscribe(params => {
+      if(params['s'] !== undefined && params['s'] !== '') {
+        if(this.data.length > 0) {
+          this.books = this.data;
+          this.showLoader = false;
+          this.error.show = false;
+          this.showBooks = true;
+        } else {
+          this.showLoader = false;
+          this.error.msg = 'No se encontraron libros relacionados con la palabra: ' + params['s'];
+          this.error.show = true;
+        }
+      } else {
+        this.initGetBooks();
+      }
+    });
+
   }
 
   ngOnInit() {
+
+    this.sub = this._activatedRoute.queryParams.subscribe(params => {
+      if(params['s'] !== undefined && params['s'] !== '') {
+        if(this.data.length > 0) {
+          this.books = this.data;
+          this.showLoader = false;
+          this.error.show = false;
+          this.showBooks = true;
+        } else {
+          this.showLoader = false;
+          this.error.msg = 'No se encontraron libros relacionados con la palabra: ' + params['s'];
+          this.error.show = true;
+        }
+      } else {
+        this.initGetBooks();
+      }
+    });
+
     this.getCountry();
-    this.initGetBooks();
 
     let c = localStorage.getItem('C0uN7r1');
 

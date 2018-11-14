@@ -1,3 +1,13 @@
-<p>
-  search-page works!
-</p>
+<div class="header-page">
+  <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
+  Resultados de busqueda para: <b>{{search}}</b>
+</div>
+
+<div class="page-container search-page">
+  <books-loop-loader *ngIf="loader.show"></books-loop-loader>
+
+  <div *ngIf="showInfo">
+    <books-loop [data]="books" [orderBy]="'publicationYear'" [order]="-1" [itemsPerRow]="4"></books-loop>
+  </div>
+
+</div>

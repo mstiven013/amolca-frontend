@@ -9,8 +9,17 @@ import { SearcherService } from 'src/app/services/post/searcher.service';
 })
 export class SearchPageComponent implements OnInit {
 
+  //Url vars
   private sub: any;
-  postActive: any;
+  search: any;
+
+  //Loaders and show info
+  showInfo = false;
+  showNotFound = false;
+  loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
+
+  //Info vars
+  books: any = [];
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -20,18 +29,27 @@ export class SearchPageComponent implements OnInit {
   ngOnInit() {
     this.sub = this._activatedRoute.queryParams.subscribe(params => {
       if(params['s'] !== undefined && params['s'] !== '') {
-        this._searcherService.getResults(params['s'])
+        this.search = params['s'];
+        this._searcherService.getResults(this.search)
           .map(resp => resp.json())
           .subscribe(
-            data => {
-              console.log(data)
-            },
-            err => {
-              console.log(err)
-            }
+            data => this.setPageInfo(data),
+            err => this.mapErrorSearch(err)
           )
       }
     });
+  }
+
+  //Set page data
+  setPageInfo(data) {
+    this.books = data;
+    this.loader.show = false;
+    this.showInfo = true;
+  }
+
+  //Map errors
+  mapErrorSearch(err) {
+    console.log(err)
   }
 
 }
