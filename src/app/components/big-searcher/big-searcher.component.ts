@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'big-searcher',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BigSearcherComponent implements OnInit {
 
-  constructor() { }
+  searchStr: any = '';
+
+  constructor(
+    private _router: Router,
+  ) { }
 
   ngOnInit() {
+  }
+
+  redirectSearchPage() {
+    if(this.searchStr !== '') {
+      this._router.navigate(['/buscar'], { queryParams: { s: this.searchStr } });
+    }
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="content">
   <div class="form">
-    <input type="text" placeholder="¿Qué libro libro deseas encontrar?">
-    <input type="button" value="Buscar">
+    <input type="text" [(ngModel)]="searchStr" placeholder="¿Qué libro libro deseas encontrar?">
+    <input type="button" (click)="redirectSearchPage()" value="Buscar">
   </div>
   <span id="leftArrows"></span>
   <span id="rightArrows"></span>
