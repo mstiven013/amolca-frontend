@@ -88,6 +88,8 @@ export class CartPageComponent implements OnInit {
             this.loader.show = false;
           }
         )
+    } else {
+      this.showNotFound = true;
     }
   }
 
