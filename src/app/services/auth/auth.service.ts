@@ -78,9 +78,10 @@ export class AuthService {
   isUserLoggedIn() {
     let token = localStorage.getItem('4ccT0k3n');
     let user = localStorage.getItem('U53r');
+    let location = window.location.href;
 
     if(token === undefined || user === undefined || token === null || user === null) {
-      this._router.navigate(['/iniciar-sesion']);
+      this._router.navigate(['/iniciar-sesion'], {queryParams: {'redirect': location}} );
     } else {
       return true;
     }
