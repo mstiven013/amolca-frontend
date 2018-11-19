@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 import { country } from '../../../assets/data/country';
 import { AppComponent } from '../../app.component';
 import { GetCartService } from '../../services/cart/get-cart.service';
-import { TuCompraService } from 'src/app/services/orders/tucompra.service';
+import { TuCompraService } from 'src/app/services/payments/tucompra.service';
 import { GetOrdersService } from 'src/app/services/orders/get-orders.service';
 
 @Component({
@@ -151,6 +151,11 @@ export class CheckoutPageComponent implements OnInit {
           console.log(err)
         }
       )
+  }
+
+  tucompratest() {
+    let service = 'https://demover3-1.tucompra.net/tc/app/inputs/compra.jsp';
+    this._tuCompraService.redirect(service, {'usuario': 'sya0vqiuo79pni32', 'factura': '123456789', 'valor': '5000', 'descripcionFactura': 'Prueba'});
   }
 
 }

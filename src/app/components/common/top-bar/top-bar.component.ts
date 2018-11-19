@@ -50,10 +50,21 @@ export class TopBarComponent implements OnInit {
   }
 
   getCartInfo() {
-    let cart = JSON.parse(localStorage.getItem('wyC4r7'));
-    if(cart !== null) {
-      let me = this;
-      this.cartValue = cart.total;
+    let cartInfo = localStorage.getItem('wyC4r7');
+    
+    if(cartInfo !== null) {
+      this._getCartService.getCartById(cartInfo)
+        .map(resp => resp.json())
+        .subscribe(
+          data => { 
+            let me = this;
+            this.cartValue = data.total;
+          },
+          err => { 
+            console.log(err)
+            this.cartValue = 0;
+          }
+        )
     } else {
       this.cartValue = 0;
     }
