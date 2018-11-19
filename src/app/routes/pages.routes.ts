@@ -13,6 +13,7 @@ import { PostPageComponent } from '../pages/post-page/post-page.component';
 import { SpecialtyPageComponent } from '../pages/specialty-page/specialty-page.component';
 import { CheckoutPageComponent } from '../pages/checkout-page/checkout-page.component';
 import { SearchPageComponent } from '../pages/search-page/search-page.component';
+import { ResponsePageComponent } from '../pages/response-page/response-page.component';
 
 export const PageRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ export const PageRoutes: Routes = [
     { path: 'especialidad/:slug', component: SpecialtyPageComponent },
     { path: '404', component: NotFoundComponent },
     { path: 'buscar', component: SearchPageComponent },
+    { path: 'respuesta', component: ResponsePageComponent },
 
     //Not found page
     { path: '**', component: NotFoundComponent }
