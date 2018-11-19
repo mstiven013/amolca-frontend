@@ -97,10 +97,10 @@ export class CheckoutPageComponent implements OnInit {
 
   //Load cart data from localStorage
   loadCartData() {
-    let cartInfo = JSON.parse(localStorage.getItem('wyC4r7'));
+    let cartId = localStorage.getItem('wyC4r7');
 
-    if(cartInfo !== null) {
-      this._getCartService.getCartById(cartInfo._id)
+    if(cartId !== null) {
+      this._getCartService.getCartById(cartId)
         .map(resp => resp.json())
         .subscribe(
           data => { this.cart = data; this.cartExists = true;},
@@ -117,7 +117,9 @@ export class CheckoutPageComponent implements OnInit {
     let order = {
       cart: [this.cart._id],
       shipping: {
-        name: frm.value.name + frm.value.lastname,
+        name: frm.value.name,
+        lastname: frm.value.lastname,
+        email: frm.value.email,
         address: frm.value.address,
         country: frm.value.country,
         state: frm.value.city,
@@ -125,7 +127,9 @@ export class CheckoutPageComponent implements OnInit {
         aditional: frm.value.aditionals
       },
       billing: {
-        name: frm.value.name + frm.value.lastname,
+        name: frm.value.name,
+        lastname: frm.value.lastname,
+        email: frm.value.email,
         address: frm.value.address,
         country: frm.value.country,
         state: frm.value.city,
@@ -140,11 +144,12 @@ export class CheckoutPageComponent implements OnInit {
     }
 
     this._getOrderService.createOrder(order)
+      .map(resp => resp.json())
       .subscribe(
         data => {
-          console.log('melo')
           console.log(data)
-          this._getCartService.cartDataRefresh('removed')
+          //this._getCartService.cartDataRefresh('removed')
+          this.tucomprapayment(data);
         },
         err => {
           console.log('error')
@@ -153,9 +158,21 @@ export class CheckoutPageComponent implements OnInit {
       )
   }
 
-  tucompratest() {
+  tucomprapayment(order) {
+
+    let descFactura = '';
+    let productsTitles = [];
+
+    for (let i = 0; i < order.cart[0].products.length; i++) {
+      const element = order.cart[0].products[i].this.title;
+      productsTitles.push(element);
+    }
+
+    descFactura = 'Compra de: ' + productsTitles.join(', ') + '.';
+
     let service = 'https://demover3-1.tucompra.net/tc/app/inputs/compra.jsp';
-    this._tuCompraService.redirect(service, {'usuario': 'sya0vqiuo79pni32', 'factura': '123456789', 'valor': '5000', 'descripcionFactura': 'Prueba'});
+    this._tuCompraService.redirect(service, {'usuario': 'sya0vqiuo79pni32', 'factura': order._id, 'valor': order.cart[0].total, 'descripcionFactura': descFactura, 'nombreComprador': order.billing.name, 'apellidoComprador': order.billing.lastname, 'correoComprador': order.billing.email,  'ciudadComprador': order.billing.state, 'paisComprador': order.billing.country, 'direccionComprador': order.billing.address});
+
   }
 
 }
