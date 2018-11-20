@@ -24,7 +24,9 @@ export class GetCartService {
 
   //Get cart by User Id
   getCartByUser(id) {
-    let headers = new Headers({'Content-type': 'application/json'});
+    let token = localStorage.getItem('4ccT0k3n');
+
+    let headers = new Headers({'Content-type': 'application/json', 'Authorization': 'Bearer '+ token });
     let options = new RequestOptions({headers: headers});
 
     return this._http.get(config.API_URL + '/users/' + id + '/carts', options);

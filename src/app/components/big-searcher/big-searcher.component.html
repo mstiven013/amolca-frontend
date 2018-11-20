@@ -1,8 +1,8 @@
 <div class="content">
-  <div class="form">
-    <input type="text" [(ngModel)]="searchStr" placeholder="¿Qué libro libro deseas encontrar?">
+  <form class="form" (ngSubmit)="redirectSearchPage()" [formGroup]="sform">
+    <input type="text" [(ngModel)]="searchStr" formControlName="search" placeholder="¿Qué libro libro deseas encontrar?">
     <input type="button" (click)="redirectSearchPage()" value="Buscar">
-  </div>
+  </form>
   <span id="leftArrows"></span>
   <span id="rightArrows"></span>
 </div>

@@ -70,7 +70,8 @@ export class CartPageComponent implements OnInit {
     let cartInfo = localStorage.getItem('wyC4r7');
     
     if(cartInfo !== null) {
-      this._getCartService.getCartById(cartInfo)
+      let json_cart = JSON.parse(cartInfo);
+      this._getCartService.getCartById(json_cart._id)
         .map(resp => resp.json())
         .subscribe(
           data => { 

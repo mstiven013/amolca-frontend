@@ -23,7 +23,7 @@ export class BooksGlobalLoopComponent {
   error = { show: false, msg: '' }
   showBooks: Boolean = false;
   showLoader: Boolean = true;
-  notification = { show: false, class: 'inactive', msg: 'El libro se agregó correctamente a tu carrito' }
+  notification = { show: false, class: 'inactive', msg: 'El libro <b>1001 Tips en Ortodoncia y sus Secretos / Segunda edición</b> se agregó correctamente a tu carrito' }
   loader = { show: true, bgColor: '#000', mode: 'indeterminate'};
 
   //Input vars

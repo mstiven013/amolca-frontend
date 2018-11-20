@@ -37,6 +37,10 @@ export class AuthorsCarouselComponent extends GlobalAuthorsLoopComponent {
     this.authorsCarousel = {
       grid: {xs: 1, sm: 2, md: 2, lg: me.itemsPerRow, all: 0},
       slide: 1,
+      interval: {
+        timing: 3000,
+        initialDelay: 1000
+      },
       speed: 400,
       point: {
         visible: true

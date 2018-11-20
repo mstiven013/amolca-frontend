@@ -100,7 +100,8 @@ export class CheckoutPageComponent implements OnInit {
     let cartId = localStorage.getItem('wyC4r7');
 
     if(cartId !== null) {
-      this._getCartService.getCartById(cartId)
+      let json_cart = JSON.parse(cartId);
+      this._getCartService.getCartById(json_cart._id)
         .map(resp => resp.json())
         .subscribe(
           data => { this.cart = data; this.cartExists = true;},

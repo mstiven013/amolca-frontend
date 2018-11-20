@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
