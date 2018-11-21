@@ -30,7 +30,7 @@ export class BookPageComponent implements OnInit {
   exists = true;
   aCountry: any;
 
-  dummy: Boolean = true;
+  dummy: Boolean = false;
 
   //Cart btn vars
   showCartBtn: Boolean = true;

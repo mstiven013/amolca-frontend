@@ -16,6 +16,8 @@ declare var Materialize: any;
 export class BooksGlobalLoopComponent {
     currentCountry: any;
 
+    dummy: Boolean = false;
+
   //Declare variables
   books: any = [];
   loopclass: any = 'books-loop';

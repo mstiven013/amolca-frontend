@@ -17,7 +17,6 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
 
   aCountry: any;
   sub: any;
-  dummy: Boolean = true;
 
   ngOnChanges(changes: SimpleChanges) {
 

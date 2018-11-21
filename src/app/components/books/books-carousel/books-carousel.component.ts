@@ -15,7 +15,6 @@ export class BooksCarouselComponent extends BooksGlobalLoopComponent {
 
   public carouselOne: NguCarouselConfig;
   aCountry: any;
-  dummy: Boolean = true;
 
   ngOnChanges(changes: SimpleChanges) {
     this.initGetBooks();
