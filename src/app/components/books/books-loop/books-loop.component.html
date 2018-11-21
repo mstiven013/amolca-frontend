@@ -65,7 +65,7 @@
   
         <ng-template ngFor let-country [ngForOf]="book.countries">
           <!--book actions-->
-          <div *ngIf="aCountry !== 'COLOMBIA' && country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'" class="actions">
+          <div *ngIf="!dummy && country.name === currentCountry && country.price !== 0 && country.state == 'STOCK'" class="actions">
   
             <!--book Price-->
             <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
@@ -84,7 +84,7 @@
 
         <!--Test interface-->
         <!--book actions-->
-        <!--<div *ngIf="aCountry == 'COLOMBIA'" class="actions">
+        <div *ngIf="dummy" class="actions">
 
           <p class="price">$250.000</p>
 
@@ -96,7 +96,7 @@
               <i class="material-icons">favorite_border</i>
             </a>
           </p>
-        </div>-->
+        </div>
   
       </div>
     </div>

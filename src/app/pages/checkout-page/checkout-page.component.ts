@@ -47,6 +47,8 @@ export class CheckoutPageComponent implements OnInit {
 
   ngOnInit() {
 
+    window.scrollTo(0,0)
+
     this.loadCartData();
     this.loadCountryData();
     this.loadUserData();
@@ -149,7 +151,6 @@ export class CheckoutPageComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data)
-          //this._getCartService.cartDataRefresh('removed')
           this.tucomprapayment(data);
         },
         err => {
@@ -160,6 +161,8 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   tucomprapayment(order) {
+
+    this._getCartService.cartDataRefresh('removed')
 
     let descFactura = '';
     let productsTitles = [];

@@ -16,7 +16,7 @@
 
         <!--Add to cart and price-->
         <ng-template ngFor let-country [ngForOf]="book.countries">
-          <ng-template [ngIf]="aCountry !== 'COLOMBIA' && country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
+          <ng-template [ngIf]="currentCountry !== 'COLOMBIA' && country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
             <div class="scroll-info">
               <p class="price" *ngIf="book.price !== 0">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
               <div class="add-to-cart">
@@ -28,7 +28,7 @@
         </ng-template>
 
         <!--Test interface-->
-        <!--<div *ngIf="aCountry == 'COLOMBIA'" class="scroll-info">
+        <!--<div *ngIf="currentCountry == 'COLOMBIA'" class="scroll-info">
           <p class="price">$1.000</p>
           <div class="add-to-cart">
             <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
@@ -56,13 +56,13 @@
 
       <!--Book price-->
       <ng-template ngFor let-country [ngForOf]="book.countries">
-        <ng-template [ngIf]="aCountry !== 'COLOMBIA' && country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
+        <ng-template [ngIf]="currentCountry !== 'COLOMBIA' && country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
           <p class="price">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
         </ng-template>
       </ng-template>
 
       <!--Test interface-->
-      <!--<p *ngIf="aCountry == 'COLOMBIA'" class="price">$1.000</p>-->
+      <!--<p *ngIf="currentCountry == 'COLOMBIA'" class="price">$1.000</p>-->
 
       <!--Free Shipping text-->
       <p class="shipping">¡Envío gratis a cualquier ciudad de Colombia!</p>
@@ -92,8 +92,8 @@
 
       <!--Cart button-->
       <ng-template ngFor let-country [ngForOf]="book.countries">
-        <ng-template [ngIf]="aCountry !== 'COLOMBIA' && country.name === currentCountry && country.quantity > 0 && country.price !== 0 && country.state == 'STOCK'">
-          <div class="add-to-cart">
+        <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK'">
+          <div class="add-to-cart" *ngIf="country.name == currentCountry && !dummy">
             <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
             <a class="button danger waves-effect waves-light" (click)="addToCart(book, country.price, qtyInput)">Añadir al carrito</a>
           </div>
@@ -101,10 +101,10 @@
       </ng-template>
 
       <!--Test interface-->
-      <!--<div *ngIf="aCountry == 'COLOMBIA'"  class="add-to-cart">
+      <div *ngIf="dummy" class="add-to-cart">
         <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
-        <a class="button danger waves-effect waves-light" (click)="addToCart(book, 1000, qtyInput)">Añadir al carrito</a>
-      </div>-->
+        <a class="button danger waves-effect waves-light" (click)="addToCart(book, 250000, qtyInput)">Añadir al carrito</a>
+      </div>
 
       <div *ngIf="notification.show" class="card-panel notification" [style.background-color]="notification.bg">
         <p>{{notification.msg}}</p>

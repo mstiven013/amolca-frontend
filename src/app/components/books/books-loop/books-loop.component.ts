@@ -17,6 +17,7 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
 
   aCountry: any;
   sub: any;
+  dummy: Boolean = true;
 
   ngOnChanges(changes: SimpleChanges) {
 
@@ -59,16 +60,6 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
     });
 
     this.getCountry();
-
-    let c = localStorage.getItem('C0uN7r1');
-
-    if(c === null || c === undefined) {
-      jQuery.getJSON('http://ip-api.com/json?callback', function(data) {
-        localStorage.setItem('C0uN7r1', data.country.toUpperCase());
-      });
-    }
-
-    this.aCountry = c;
   }
 
    //Get books

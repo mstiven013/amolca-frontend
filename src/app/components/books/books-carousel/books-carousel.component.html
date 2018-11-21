@@ -63,7 +63,7 @@
     
             <!--Actions-->
             <ng-template ngFor let-country [ngForOf]="b.countries">
-              <div *ngIf="aCountry !== 'COLOMBIA' && country.name === currentCountry && country.price > 0 && pageType != 'news'" class="actions">
+              <div *ngIf="!dummy && country.name === currentCountry && country.price > 0 && pageType != 'news'" class="actions">
 
                 <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
       
@@ -80,19 +80,19 @@
   
             <!--Test interface-->
             <!--book actions-->
-            <!--<div *ngIf="pageType !== 'news' && aCountry == 'COLOMBIA'" class="actions">
+            <div *ngIf="pageType !== 'news' && dummy" class="actions">
 
-              <p class="price">$0</p>
+              <p class="price">$250.000</p>
     
               <p class="btns">
-                <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b, 1000)">
+                <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b, 250000)">
                   <i class="material-icons">add_shopping_cart</i>
                 </a>
                 <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(b)">
                   <i class="material-icons">favorite_border</i>
                 </a>
               </p>
-            </div>-->
+            </div>
   
             <!--<div *ngIf="pageType === 'news'" class="reservations">
               <p class="disponibility">Disponible a partir de: <b>12 de Nov, 2018</b></p>
