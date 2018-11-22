@@ -1,6 +1,10 @@
 <div *ngIf="this.exists" class="single-specialty">
   <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
 
+  <div class="banner-container">
+    <custom-banner [type]="'specialty'" [id]="specialty._id" [message]="'Amolca editorial médica y odontológica'"></custom-banner>
+  </div>
+
   <div class="specialty-title">
     <h2>{{specialty.title}}</h2>
   </div>

@@ -59,11 +59,10 @@
       <div class="related-products">
         <p class="title">Libros relacionados</p>
 
-        <!--If specialty exists-->
-        <books-carousel *ngIf="cart.products[0].this.interest[0] && cart.products[0].this.interest[0].length > 0" [specialty]="cart.products[0].this.interest[0]" [itemsPerRow]="2" [orderBy]="'publicationYear'" [order]="1" [maxShowItems]="12"></books-carousel>
+        {{cart.products[0].this.interest[0]}}
 
-        <!--If specialty not exists-->
-        <books-carousel *ngIf="!cart.products[0].this.interest || cart.products[0].this.interest.length < 1" [itemsPerRow]="2"></books-carousel>
+        <!--If specialty exists-->
+        <books-carousel *ngIf="showInfo" [specialty]="cart.products[0].this.interest[0]" [itemsPerRow]="2" [orderBy]="'publicationYear'" [order]="1" [maxShowItems]="12"></books-carousel>
       </div>
       
       <div class="cart-totals">

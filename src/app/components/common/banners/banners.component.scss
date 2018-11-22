@@ -1,0 +1,28 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+
+.banner-container {
+    margin: 0px auto 40px;
+    width: 100%;
+}
+
+.banner {
+    align-items: center;
+    background: url('/assets/img/banner/banner-example-02.jpg');
+    background-color: $primary-color;
+    background-position: center;
+    background-size: cover;
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    min-height: 100px;
+    max-height: 100px;
+
+    p {
+        color: $white-color;
+        font-size: 30px;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px #000;
+    }
+}

@@ -80,7 +80,9 @@ export class CartPageComponent implements OnInit {
             
             if(data.products.length > 0) {
               this.showInfo = true;
+              console.log(data)
             } else {
+              this.showInfo = false;
               this.showNotFound = true;
             }
           },
@@ -125,8 +127,14 @@ export class CartPageComponent implements OnInit {
       .map(resp => resp.json())
       .subscribe(
         data => {
-          this.cart = data
-          this._getCartService.cartDataRefresh(this.cart)
+          if(data.products.length > 0) {
+            this.cart = data
+            this._getCartService.cartDataRefresh(this.cart)
+          } else {
+            this._getCartService.cartDataRefresh('removed')
+            this.showInfo = false;
+            this.showNotFound = true;
+          }
         },
         err => console.log(err)
       );

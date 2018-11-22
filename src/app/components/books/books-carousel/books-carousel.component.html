@@ -3,25 +3,25 @@
   <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
 </div>
 
-<div *ngIf="showBooks && books.length > 0">
+<div *ngIf="showBooks">
 
   <app-notification [message]="notification.msg" [class]="notification.class"></app-notification>
 
   <ngu-carousel [inputs]="carouselOne" [dataSource]="books" (carouselLoad)="myfunc($event)">
 
-      <ngu-item class="item" NguCarouselItem *nguCarouselDef="let b;">
+      <ngu-item class="item" NguCarouselItem *nguCarouselDef="let book;">
         <div class="content">
           <!--Book principal image-->
-          <a routerLink="/libro/{{b.slug}}" class="contain-img">
+          <a routerLink="/libro/{{book.slug}}" class="contain-img">
             <!--Show if b images exists-->
-            <img *ngIf="b.image !== undefined" src="{{b.image}}" alt="">
+            <img *ngIf="book.image !== undefined" src="{{book.image}}" alt="">
             
-            <img *ngIf="b.image === undefined || b.image == ''" src="assets/img/common/no-image.jpg" alt="">
+            <img *ngIf="book.image === undefined || book.image == ''" src="assets/img/common/no-image.jpg" alt="">
           </a>
   
           <!--Book versions-->
-          <div *ngIf="b.version !== undefined && b.version.length > 0" class="versions">
-            <ng-template ngFor let-v [ngForOf]="b.version">
+          <div *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
+            <ng-template ngFor let-v [ngForOf]="book.version">
   
               <!--If version is PAPER-->
               <a *ngIf="v == 'PAPER'" matTooltip="Papel" [matTooltipPosition]="tooltipPosition" class="version-btn">
@@ -45,33 +45,35 @@
             <!--b Name-->
             <h3 class="name">
               <!--If name is more than 100 words-->
-              <a *ngIf="b.title.length >= 100" matTooltip="{{b.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{b.slug}}">{{b.title | slice:0:100}}...</a>
+              <a *ngIf="book.title.length >= 100" matTooltip="{{book.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{book.slug}}">{{book.title | slice:0:100}}...</a>
   
               <!--If name is minor than 100 words-->
-              <a *ngIf="b.title.length < 100" matTooltip="{{b.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{b.slug}}">{{b.title}}</a>
+              <a *ngIf="book.title.length < 100" matTooltip="{{book.title}}" [matTooltipPosition]="tooltipPosition" routerLink="/libro/{{book.slug}}">{{book.title}}</a>
             </h3>
     
             <!--REPLACE WHEN CHANGE bS MODEL-->
             <p class="authors">
-              <span *ngFor="let author of b.author; let i = index;">
+              <span *ngFor="let author of book.author; let i = index;">
                 <a *ngIf="i < 5" routerLink="/autor/{{author.slug}}">{{author.name}}
-                  <span *ngIf="i < 3 && b.author.length > 2">-</span>
-                  <span *ngIf="i == 4 && b.author.length > 4">...</span>
+                  <span *ngIf="i < 3 && book.author.length > 2">-</span>
+                  <span *ngIf="i == 4 && book.author.length > 4">...</span>
                 </a>
               </span>
             </p>
-    
             <!--Actions-->
-            <ng-template ngFor let-country [ngForOf]="b.countries">
-              <div *ngIf="!dummy && country.name === currentCountry && country.price > 0 && pageType != 'news'" class="actions">
-
+            <ng-template ngFor let-country [ngForOf]="book.countries">
+              <!--book actions-->
+              <div *ngIf="!dummy && country.name === aCountry && country.price !== 0 && country.state == 'STOCK'" class="actions">
+      
+                <!--book Price-->
                 <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
       
+                <!--book buttons-->
                 <p class="btns">
-                  <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b, country.price)">
+                  <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, country.price)">
                     <i class="material-icons">add_shopping_cart</i>
                   </a>
-                  <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(b)">
+                  <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">
                     <i class="material-icons">favorite_border</i>
                   </a>
                 </p>
@@ -80,18 +82,26 @@
   
             <!--Test interface-->
             <!--book actions-->
-            <div *ngIf="pageType !== 'news' && dummy" class="actions">
+            <div *ngIf="dummy">
 
-              <p class="price">$250.000</p>
-    
-              <p class="btns">
-                <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(b, 250000)">
-                  <i class="material-icons">add_shopping_cart</i>
-                </a>
-                <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(b)">
-                  <i class="material-icons">favorite_border</i>
-                </a>
-              </p>
+              <ng-template ngFor let-country [ngForOf]="book.countries">
+                  <!--book actions-->
+                  <div *ngIf="country.name === 'COLOMBIA' && country.price !== 0 && country.state == 'STOCK'" class="actions">
+          
+                    <!--book Price-->
+                    <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
+          
+                    <!--book buttons-->
+                    <p class="btns">
+                      <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, country.price)">
+                        <i class="material-icons">add_shopping_cart</i>
+                      </a>
+                      <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">
+                        <i class="material-icons">favorite_border</i>
+                      </a>
+                    </p>
+                  </div>
+                </ng-template>
             </div>
   
             <!--<div *ngIf="pageType === 'news'" class="reservations">

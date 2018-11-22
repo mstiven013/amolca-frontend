@@ -121,6 +121,7 @@ import { ReportErrorFormComponent } from './components/comments/report-error-for
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { LoopLoaderComponent } from './components/books/loop-loader/loop-loader.component';
 import { ResponsePageComponent } from './pages/response-page/response-page.component';
+import { BannersComponent } from './components/common/banners/banners.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -209,6 +210,7 @@ const appRoutes: Routes = [
     SearchPageComponent,
     LoopLoaderComponent,
     ResponsePageComponent,
+    BannersComponent,
   ],
   imports: [
     //Angular libraries

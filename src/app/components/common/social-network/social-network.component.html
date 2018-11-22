@@ -1,5 +1,5 @@
 <ul class="social-networks {{class}}">
-  <li *ngFor="let item of social" (click)="changePosition(item.name)">
+  <li *ngFor="let item of social">
     <!--Bottom 'USERNAME' view-->
     <p *ngIf="item.bottom === true && item.style === 'username' && position === 'bottom'">
       {{item.name}}: <a href="{{item.url}}" target="_blank">@{{item.user}}</a>

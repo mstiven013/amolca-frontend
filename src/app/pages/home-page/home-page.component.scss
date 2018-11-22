@@ -15,7 +15,17 @@
     height: 400px;
 }
 
-.odontologic-block {
+.medician-block {
+    .col-one {
+        border-right: 1px solid $white-dark;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+}
+
+.odontologic-block, .authors-block {
     background-color: $white-dark;
 }
 

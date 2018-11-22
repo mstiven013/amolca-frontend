@@ -174,8 +174,10 @@ export class CheckoutPageComponent implements OnInit {
 
     descFactura = 'Compra de: ' + productsTitles.join(', ') + '.';
 
-    let service = 'https://demover3-1.tucompra.net/tc/app/inputs/compra.jsp';
-    this._tuCompraService.redirect(service, {'usuario': 'sya0vqiuo79pni32', 'factura': order._id, 'valor': order.cart[0].total, 'descripcionFactura': descFactura, 'nombreComprador': order.billing.name, 'apellidoComprador': order.billing.lastname, 'correoComprador': order.billing.email,  'ciudadComprador': order.billing.state, 'paisComprador': order.billing.country, 'direccionComprador': order.billing.address});
+    let service = 'https://gateway2.tucompra.com.co/tc/app/inputs/compra.jsp';
+    //let service = 'https://demover3-1.tucompra.net/tc/app/inputs/compra.jsp';
+    
+    this._tuCompraService.redirect(service, {'usuario': 'c57l7o3zx0l26u7t', 'factura': order._id, 'valor': order.cart[0].total, 'descripcionFactura': descFactura, 'nombreComprador': order.billing.name, 'apellidoComprador': order.billing.lastname, 'celularComprador': order.billing.phone, 'correoComprador': order.billing.email,  'ciudadComprador': order.billing.state, 'paisComprador': order.billing.country, 'direccionComprador': order.billing.address});
 
   }
 

@@ -84,18 +84,26 @@
 
         <!--Test interface-->
         <!--book actions-->
-        <div *ngIf="dummy" class="actions">
+        <div *ngIf="dummy">
 
-          <p class="price">$250.000</p>
-
-          <p class="btns">
-            <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, 250000)">
-              <i class="material-icons">add_shopping_cart</i>
-            </a>
-            <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">
-              <i class="material-icons">favorite_border</i>
-            </a>
-          </p>
+          <ng-template ngFor let-country [ngForOf]="book.countries">
+            <!--book actions-->
+            <div *ngIf="country.name === 'COLOMBIA' && country.price !== 0 && country.state == 'STOCK'" class="actions">
+    
+              <!--book Price-->
+              <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
+    
+              <!--book buttons-->
+              <p class="btns">
+                <a class="cart-btn" matTooltip="Añadir al carrito" [matTooltipPosition]="tooltipPosition" (click)="addToCart(book, country.price)">
+                  <i class="material-icons">add_shopping_cart</i>
+                </a>
+                <a class="hearth-btn" matTooltip="Añadir a mi lista de deseos" [matTooltipPosition]="tooltipPosition" (click)="addToWishlist(book)">
+                  <i class="material-icons">favorite_border</i>
+                </a>
+              </p>
+            </div>
+          </ng-template>
         </div>
   
       </div>

@@ -7,7 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlockSocialComponent implements OnInit {
 
+  showInfo: Boolean = false;
+  dummy: Boolean = false;
+
   constructor() { }
+
+  ngOnInit() {
+    let me = this;
+    setTimeout(function() {
+      if(localStorage.getItem('C0uN7r1') == 'COLOMBIA') {
+        me.showInfo = true;
+      }
+    }, 1000)
+  }
   
   //Test info vars
   contact = [
@@ -16,8 +28,5 @@ export class BlockSocialComponent implements OnInit {
     {name: 'mobile', data: '+57 317 504 98 44', state: true},
     {name: 'email', data: 'gcomercial@amolca.com.co', state: true}
   ]
-
-  ngOnInit() {
-  }
 
 }

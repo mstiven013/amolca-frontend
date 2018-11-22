@@ -14,9 +14,9 @@ declare var Materialize: any;
     styleUrls: ['./books-loop.component.scss']
 })
 export class BooksGlobalLoopComponent {
-    currentCountry: any;
+  currentCountry: any = 'COLOMBIA';
 
-    dummy: Boolean = false;
+  dummy: Boolean = false;
 
   //Declare variables
   books: any = [];
