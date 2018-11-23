@@ -13,12 +13,6 @@ export class BlockSocialComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    let me = this;
-    setTimeout(function() {
-      if(localStorage.getItem('C0uN7r1') == 'COLOMBIA') {
-        me.showInfo = true;
-      }
-    }, 1000)
   }
   
   //Test info vars

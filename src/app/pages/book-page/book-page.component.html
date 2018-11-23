@@ -65,7 +65,7 @@
 
       <!--Book price-->
       <ng-template ngFor let-country [ngForOf]="book.countries">
-        <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == currentCountry && !dummy">
+        <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == currentCountry && !dummy && !globalPage">
           <p class="price">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
         </ng-template>
       </ng-template>
@@ -80,7 +80,7 @@
       </div>
 
       <!--Free Shipping text-->
-      <p class="shipping">¡Envío gratis a cualquier ciudad de Colombia!</p>
+      <p *ngIf="!globalPage" class="shipping">¡Envío gratis a cualquier ciudad de Colombia!</p>
 
       <!--Book versions-->
       <p *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
@@ -108,7 +108,7 @@
       <!--Cart button-->
       <ng-template ngFor let-country [ngForOf]="book.countries">
         <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK'">
-          <div class="add-to-cart" *ngIf="country.name == currentCountry && !dummy">
+          <div class="add-to-cart" *ngIf="country.name == currentCountry && !dummy && !globalPage">
             <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
             <a class="button danger waves-effect waves-light" (click)="addToCart(book, country.price, qtyInput)">Añadir al carrito</a>
           </div>

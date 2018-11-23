@@ -65,7 +65,7 @@
   
         <ng-template ngFor let-country [ngForOf]="book.countries">
           <!--book actions-->
-          <div *ngIf="!dummy && country.name === currentCountry && country.price !== 0 && country.state == 'STOCK'" class="actions">
+          <div *ngIf="!dummy && !globalPage && country.name === currentCountry && country.price !== 0 && country.state == 'STOCK'" class="actions">
   
             <!--book Price-->
             <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>

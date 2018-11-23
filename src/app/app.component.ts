@@ -30,14 +30,17 @@ export class AppComponent {
       });
     }
     
-    if(c !== null) {
-      if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.co") < 1) {
-        window.location.href = 'http://www.amolca.com.co';
-      }
-
-      if(c != 'COLOMBIA' && window.location.href.indexOf("amolca.com.co") > 0) {
-        window.location.href = 'http://www.amolca.com';
-      }
+    /*Casa matriz redirecciones*/
+    if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.co") < 1) {
+      window.location.href = 'http://www.amolca.com.co';
+    } else if(c === 'ARGENTINA' && window.location.href.indexOf("amolca.com.ar") < 1) {
+      window.location.href = 'http://www.amolca.com.ar';
+    } else if(c === 'MEXICO' && window.location.href.indexOf("amolca.com.mx") < 1) {
+      window.location.href = 'http://www.amolca.com.mx';
+    } else  if(c === 'PERU' && window.location.href.indexOf("amolca.com.pe") < 1) {
+      window.location.href = 'http://www.amolca.com.pe';
+    } else if(c === 'DOMINICAN REPUBLIC' && window.location.href.indexOf("amolca.com.do") < 1) {
+      window.location.href = 'http://www.amolca.com.do';
     }
     
   }
