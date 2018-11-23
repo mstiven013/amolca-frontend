@@ -30,16 +30,6 @@ export class AppComponent {
       });
     }
     
-    if(c !== null) {
-      if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.co") < 1) {
-        window.location.href = 'http://www.amolca.com.co';
-      }
-
-      if(c != 'COLOMBIA' && window.location.href.indexOf("amolca.com.co") > 0) {
-        window.location.href = 'http://www.amolca.com';
-      }
-    }
-    
   }
 
   public setMetaTitle( newTitle: string ) {
