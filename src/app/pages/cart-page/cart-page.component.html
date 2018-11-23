@@ -59,8 +59,6 @@
       <div class="related-products">
         <p class="title">Libros relacionados</p>
 
-        {{cart.products[0].this.interest[0]}}
-
         <!--If specialty exists-->
         <books-carousel *ngIf="showInfo" [specialty]="cart.products[0].this.interest[1]" [itemsPerRow]="2" [orderBy]="'title'" [order]="1" [maxShowItems]="12"></books-carousel>
       </div>
