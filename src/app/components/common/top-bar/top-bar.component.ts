@@ -24,7 +24,7 @@ export class TopBarComponent implements OnInit {
   loginBtnView = 'full';
 
   //Cart btn view
-  showCart: Boolean = false;
+  showCart: Boolean = true;
   cartBtnView = 'full';
   cartValue = 0;
   dummy: Boolean = false;

@@ -14,6 +14,7 @@ import { SpecialtyPageComponent } from '../pages/specialty-page/specialty-page.c
 import { CheckoutPageComponent } from '../pages/checkout-page/checkout-page.component';
 import { SearchPageComponent } from '../pages/search-page/search-page.component';
 import { ResponsePageComponent } from '../pages/response-page/response-page.component';
+import { TermsConditionsPageComponent } from '../pages/terms-conditions-page/terms-conditions-page.component';
 
 export const PageRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ export const PageRoutes: Routes = [
     { path: '404', component: NotFoundComponent },
     { path: 'buscar', component: SearchPageComponent },
     { path: 'respuesta', component: ResponsePageComponent },
+    { path: 'terminos-y-condiciones', component: TermsConditionsPageComponent },
 
     //Not found page
     { path: '**', component: NotFoundComponent }

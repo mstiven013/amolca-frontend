@@ -7,25 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlockSocialComponent implements OnInit {
 
-  showInfo: Boolean = false;
+  showInfo: Boolean = true;
   dummy: Boolean = false;
 
   constructor() { }
 
   ngOnInit() {
-    let me = this;
-    setTimeout(function() {
-      if(localStorage.getItem('C0uN7r1') == 'COLOMBIA') {
-        me.showInfo = true;
-      }
-    }, 1000)
   }
   
   //Test info vars
   contact = [
-    {name: 'direction', data: 'Calle 47 A # 81 - 58, Medellín, Antioquia, Colombia', state: true},
+    {name: 'direction', data: 'Calle 47 A # 81-58, Medellín, Antioquia, Colombia', state: true},
     {name: 'phone', data: '', state: false},
-    {name: 'mobile', data: '+57 317 504 98 44', state: true},
+    {name: 'mobile', data: '+57 3175049844', state: true},
     {name: 'email', data: 'gcomercial@amolca.com.co', state: true}
   ]
 
