@@ -14,7 +14,7 @@ import { BooksGlobalLoopComponent } from '../global-books-loop.component';
 export class BooksCarouselComponent extends BooksGlobalLoopComponent {
 
   public carouselOne: NguCarouselConfig;
-  aCountry: any = 'COLOMBIA';
+  aCountry: any = 'PERU';
 
   ngOnChanges(changes: SimpleChanges) {
     this.getCountry();
@@ -22,15 +22,6 @@ export class BooksCarouselComponent extends BooksGlobalLoopComponent {
   }
 
   ngOnInit() {
-    let c = localStorage.getItem('C0uN7r1');
-
-    if(c === null || c === undefined) {
-      jQuery.getJSON('http://ip-api.com/json?callback', function(data) {
-        localStorage.setItem('C0uN7r1', data.country.toUpperCase());
-      });
-    }
-
-    this.currentCountry = c;
     this.getCountry();
     this.initGetBooks();
     this.validateCarousel();

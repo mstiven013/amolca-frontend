@@ -79,9 +79,6 @@
         </ng-template>
       </div>
 
-      <!--Free Shipping text-->
-      <p class="shipping">¡Envío gratis a cualquier ciudad de Colombia!</p>
-
       <!--Book versions-->
       <p *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
         Disponible en: 
@@ -236,10 +233,7 @@
   </div>
   <div class="page-container">
     <!--If specialty exists-->
-    <books-carousel *ngIf="book.specialty && book.specialty.length > 0" [specialty]="book.specialty[0]._id" [itemsPerRow]="4" [orderBy]="'publicationYear'" [order]="1" [maxShowItems]="12"></books-carousel>
-
-    <!--If specialty not exists-->
-    <books-carousel *ngIf="!book.specialty || book.specialty.length < 1" [itemsPerRow]="4"></books-carousel>
+    <books-carousel [specialty]="book.specialty[1]._id" [itemsPerRow]="4" [orderBy]="'title'" [order]="1" [maxShowItems]="12"></books-carousel>
   </div>
 </div>
 
