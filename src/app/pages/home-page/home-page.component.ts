@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    window.scrollTo(0,0);
     this._appComponent.setMetaTitle('Amolca - Editorial médica y odontológica orientada a las ciencias de la salud');
   }
 
