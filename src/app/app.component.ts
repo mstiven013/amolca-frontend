@@ -31,11 +31,16 @@ export class AppComponent {
     }
     
     if(c !== null) {
-      if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.co") < 1) {
+      //Redirecciones REPUBLICA DOMINICANA
+      if(c === 'ARGENTINA' && window.location.href.indexOf("amolca.com.pe") > 0) {
+        window.location.href = 'http://www.amolca.com.ar';
+      } else if(c === 'PERU' && window.location.href.indexOf("amolca.com.pe") > 0) {
+        window.location.href = 'http://www.amolca.com.pe';
+      } else if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.pe") > 0) {
         window.location.href = 'http://www.amolca.com.co';
-      }
-
-      if(c != 'COLOMBIA' && window.location.href.indexOf("amolca.com.co") > 0) {
+      } else if(c === 'DOMINICAN REPUBLIC' && window.location.href.indexOf("amolca.com.do") > 0) {
+        return true;
+      } else {
         window.location.href = 'http://www.amolca.com';
       }
     }

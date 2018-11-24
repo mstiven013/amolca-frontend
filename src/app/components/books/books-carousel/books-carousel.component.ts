@@ -14,7 +14,7 @@ import { BooksGlobalLoopComponent } from '../global-books-loop.component';
 export class BooksCarouselComponent extends BooksGlobalLoopComponent {
 
   public carouselOne: NguCarouselConfig;
-  aCountry: any = 'COLOMBIA';
+  aCountry: any = 'DOMINICAN REPUBLIC';
 
   ngOnChanges(changes: SimpleChanges) {
     this.getCountry();

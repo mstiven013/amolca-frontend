@@ -24,7 +24,7 @@ export class TopBarComponent implements OnInit {
   loginBtnView = 'full';
 
   //Cart btn view
-  showCart: Boolean = false;
+  showCart: Boolean = true;
   cartBtnView = 'full';
   cartValue = 0;
   dummy: Boolean = false;
@@ -49,14 +49,6 @@ export class TopBarComponent implements OnInit {
           this.userIsLogged = false;
         }
       })
-
-    let me = this;
-    setTimeout(function() {
-      let aCountry = localStorage.getItem('C0uN7r1');
-      if(aCountry === 'COLOMBIA') {
-        me.showCart = true;
-      }
-    }, 500)
   }
 
   getCartInfo() {
