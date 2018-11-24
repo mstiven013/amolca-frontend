@@ -31,6 +31,8 @@ export class CartPageComponent implements OnInit {
 
   ngOnInit() {
 
+    window.scrollTo(0,0);
+
     this._appComponent.setMetaTitle('Mi carrito de compras - Amolca');
 
     jQuery(document).ready(function() {

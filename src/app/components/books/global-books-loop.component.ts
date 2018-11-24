@@ -14,7 +14,7 @@ declare var Materialize: any;
     styleUrls: ['./books-loop.component.scss']
 })
 export class BooksGlobalLoopComponent {
-  currentCountry: any = 'COLOMBIA';
+  currentCountry: any = 'ARGENTINA';
 
   dummy: Boolean = false;
 
@@ -53,7 +53,7 @@ export class BooksGlobalLoopComponent {
 
   getCountry() {
     let c = localStorage.getItem('C0uN7r1');
-    this.currentCountry = c;
+    //this.currentCountry = c;
   }
 
   //Function to set books info in all services
