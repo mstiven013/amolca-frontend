@@ -32,5 +32,5 @@ export const PageRoutes: Routes = [
     { path: 'terminos-y-condiciones', component: TermsConditionsPageComponent },
 
     //Not found page
-    { path: '**', component: NotFoundComponent }
+    { path: '**', redirectTo: '/' }
 ]

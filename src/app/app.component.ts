@@ -24,15 +24,9 @@ export class AppComponent {
   }
 
   getGeolocalization() {
-    /*
-    let nCountry = navigator.language.split('-')[1];
-    let activeCountry = country.filter( aC => aC.code === nCountry );
-    localStorage.setItem('C0uN7r1', activeCountry[0].name.toUpperCase())
-    */
     jQuery.getJSON('http://ip-api.com/json?callback', function(data) {
       localStorage.setItem('C0uN7r1', data.country.toUpperCase());
       let c = localStorage.getItem('C0uN7r1');
-      console.log(c)
       
       if(c !== null) {
         //Redirecciones COLOMBIA
