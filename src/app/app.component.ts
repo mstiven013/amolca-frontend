@@ -30,7 +30,7 @@ export class AppComponent {
       
       if(c !== null) {
         //Redirecciones COLOMBIA
-        /*if(c === 'ARGENTINA' && window.location.href.indexOf("amolca.com.co") > 0) {
+        if(c === 'ARGENTINA' && window.location.href.indexOf("amolca.com.co") > 0) {
           window.location.href = 'http://www.amolca.com.ar';
         } else if(c === 'PERU' && window.location.href.indexOf("amolca.com.co") > 0) {
           window.location.href = 'http://www.amolca.com.pe';
@@ -40,7 +40,7 @@ export class AppComponent {
           return true;
         } else {
           window.location.href = 'http://www.amolca.com';
-        }*/
+        }
       }
     });
     
