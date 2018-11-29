@@ -42,7 +42,7 @@ export class NavMenuComponent implements OnInit {
           { id: 323, name: 'Enfermería', link: '/enfermeria', image: 'enfermeria.png', state: true, target: '_self' },
           { id: 282, name: 'Fisioterapia', link: '/fisioterapia', image: 'fisioterapia.png', state: true, target: '_self' },
           { id: 3246, name: 'Gastroenterología', link: '/gastroenterologia', image: 'gastroenterologia.png', state: true, target: '_self' },
-          { id: 2343, name: 'Ginecología', link: '/ginecologia', image: 'ginecologia.png', state: true, target: '_self' },
+          { id: 2343, name: 'Ginecología y obstetricia', link: '/ginecologia', image: 'ginecologia.png', state: true, target: '_self' },
           { id: 38739, name: 'Imagenología', link: '/imagenologia', image: 'imagenologia.png', state: true, target: '_self' },
           { id: 12312, name: 'Laboratorio', link: '/laboratorio', image: 'laboratorio.png', state: true, target: '_self' },
           { id: 75234, name: 'Medicina Estética', link: '/medicina-estetica', image: 'medicina-estetica.png', state: true, target: '_self' },
@@ -50,7 +50,7 @@ export class NavMenuComponent implements OnInit {
           { id: 1252, name: 'Nefrología', link: '/nefrologia', image: 'nefrologia.png', state: true, target: '_self' },
           { id: 8334, name: 'Neurocirugia', link: '/neurocirugia', image: 'neurocirugia.png', state: true, target: '_self' },
           { id: 893, name: 'Neurología', link: '/neurologia', image: 'neurologia.png', state: true, target: '_self' },
-          { id: 2326, name: 'Obstetricia', link: '/obstetricia', image: 'obstetricia.png', state: true, target: '_self' },
+          //{ id: 2326, name: 'Obstetricia', link: '/obstetricia', image: 'obstetricia.png', state: true, target: '_self' },
           { id: 4235, name: 'Oftalmología', link: '/oftalmologia', image: 'oftalmologia.png', state: true, target: '_self' },
           { id: 43276, name: 'Oncología', link: '/oncologia', image: 'oncologia.png', state: true, target: '_self' },
           { id: 2346, name: 'Ortopedia', link: '/ortopedia', image: 'ortopedia.png', state: true, target: '_self' },
@@ -71,7 +71,7 @@ export class NavMenuComponent implements OnInit {
       submenu: {
         state: true,
         item: [
-          { id: 56382, name: 'Cirugía Oral', link: '/cirugia-oral', image: 'cirugia-oral.png', state: true, target: '_self' },
+          //{ id: 56382, name: 'Cirugía Oral', link: '/cirugia-oral', image: 'cirugia-oral.png', state: true, target: '_self' },
           { id: 32423, name: 'Cirugía Oral y Maxilofacial', link: '/cirugia-oral-y-maxilofacial', image: 'cirugia-oral-y-maxilofacial.png', state: true, target: '_self' },
           { id: 34321, name: 'Endodoncia', link: '/endodoncia', image: 'endodoncia.png', state: true, target: '_self' },
           { id: 92726, name: 'Estética dental', link: '/estetica-dental', image: 'estetica-dental.png', state: true, target: '_self' },
