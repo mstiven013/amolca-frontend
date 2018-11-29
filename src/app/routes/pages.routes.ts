@@ -30,5 +30,5 @@ export const PageRoutes: Routes = [
     { path: 'respuesta', component: ResponsePageComponent },
 
     //Not found page
-    { path: '**', component: NotFoundComponent }
+    { path: '**', redirectTo: '/' }
 ]
