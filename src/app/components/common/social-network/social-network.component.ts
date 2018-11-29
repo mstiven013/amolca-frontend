@@ -22,9 +22,9 @@ export class SocialNetworkComponent implements OnInit {
   }
 
   social = [
-    { name: 'Facebook', user: 'AmolcaEditorial', url: '#', style: 'username', image: 'facebook', top: true, bottom: true, main: true},
-    { name: 'Instagram', user: 'amolcacolombia', url: '#', style: 'username', image: 'instagram', top: true, bottom: true, main: true},
-    { name: 'Twitter', user: 'RedesAmolca', url: '#', style: 'username', image: 'twitter', top: true, bottom: true, main: true }
+    { name: 'Facebook', user: 'AmolcaEditorial', url: 'https://www.facebook.com/EdAmolca/', style: 'username', image: 'facebook', top: true, bottom: true, main: true},
+    { name: 'Instagram', user: 'amolcacolombia', url: 'https://www.instagram.com/amolcacolombia/', style: 'username', image: 'instagram', top: true, bottom: true, main: true},
+    { name: 'Twitter', user: 'RedesAmolca', url: 'https://twitter.com/EAmolca', style: 'username', image: 'twitter', top: true, bottom: true, main: true }
   ]
 
 }
