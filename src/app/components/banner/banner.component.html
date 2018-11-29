@@ -4,6 +4,7 @@
 
     <div class="slide" [style.background-image]="'url(' + pathImg + slide.image + ')'" [style.background-attachment]="slide.bgAttach">
       <div class="content" [innerHTML]="slide.text | safeHtml"></div>
+      <img src="{{pathImg + slide.image}}" class="only-mobile" alt="">
     </div>
 
   </ngu-item>
