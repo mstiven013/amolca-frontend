@@ -2,7 +2,6 @@
 @import 'mixins.scss';
 
 ngu-item, ngu-item.item {
-    height: 400px;
     width: 100% !important;
 }
 
@@ -40,19 +39,30 @@ ngu-item, ngu-item.item {
     flex-flow: column wrap;
     justify-content: center;
     height: 100%;
+
+    img.only-mobile {
+        opacity: 0;
+        visibility: hidden;
+        width: 100%;
+    }
 }
-    .content {
-        margin-top: -59px;
+
+@media screen and (max-width: 980px) {
+    ngu-item, ngu-item.item {
+        background-image: none;
+        height: auto;
     }
 
-@media screen and (max-width: 768px) {
-    ngu-item, ngu-item.item {
-        height: 400px;
+    .slide {
+        img.only-mobile {
+            visibility: visible;
+            opacity: 1;
+        }
     }
 
     .leftRs, .rightRs {
         height: 40px;
-        @include calc(top, '50% - 60px');
+        @include calc(top, '50% - 20px');
         width: 32px;
     }
         .leftRs {
@@ -61,10 +71,4 @@ ngu-item, ngu-item.item {
         .rightRs {
             right: 5px;
         }
-}
-
-@media screen and (max-width: 576px) {
-    ngu-item, ngu-item.item {
-        height: 350px;
-    }
 }
