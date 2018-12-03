@@ -72,8 +72,8 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            if(data.length > 0) {
-              this.setBooksInfo(data)
+            if(data.books.length > 0) {
+              this.setBooksInfo(data.books)
             } else {
               let err = { status: 404 }
               this.mapErrors(err, 'especialidad')
