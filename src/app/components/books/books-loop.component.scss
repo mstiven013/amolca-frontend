@@ -237,6 +237,15 @@
     }
 }
 
+.bottom-loader {
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    padding: 10px 20px 0px;
+    text-align: center;
+    width: 100%;
+}
+
 //Styles in carousel
 ngu-carousel {
     position: relative;
