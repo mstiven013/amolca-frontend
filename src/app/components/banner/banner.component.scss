@@ -22,7 +22,6 @@ ngu-item.item-0 {
 ngu-item.item-1 {
     img.visible-img {
         left: 100%;
-        top: -100%;
         @include transition('all 1s ease');
     }
 
@@ -31,7 +30,6 @@ ngu-item.item-1 {
 
         img.visible-img {
             left: 0%;
-            top: 0px;
         }
     }
 }
