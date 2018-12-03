@@ -39,11 +39,11 @@ export class BooksCarouselComponent extends BooksGlobalLoopComponent {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            if(data.length < 1) {
+            if(data.books.length < 1) {
               let err = { status: 404 }
               this.mapErrors(err, 'especialidad')
             } else {
-              this.setBooksInfo(data)
+              this.setBooksInfo(data.books)
             }
           },
           err => this.mapErrors(err, 'especialidad')

@@ -72,7 +72,7 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
         .map(resp => resp.json())
         .subscribe(
           data => {
-            if(data.length > 0) {
+            if(data.books.length > 0) {
               this.setBooksInfo(data.books)
               this.totalBooks = data.count;
             } else {
