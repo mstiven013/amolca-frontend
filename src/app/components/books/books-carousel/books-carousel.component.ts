@@ -38,7 +38,7 @@ export class BooksCarouselComponent extends BooksGlobalLoopComponent {
     //If specialty is diffetent to "undefined"
     if(this.specialty !== undefined && this.specialty !== null) {
       
-      this._getBookService.getBooksBySpecialty(this.specialty, this.orderBy, this.order, this.maxShowItems)
+      this._getBookService.getBooksBySpecialty(this.specialty, this.orderBy, this.order, this.maxShowItems, 0)
         .map(resp => resp.json())
         .subscribe(
           data => {
