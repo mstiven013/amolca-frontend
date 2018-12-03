@@ -1,4 +1,4 @@
 <p class="title">Casa Matriz</p>
 <p *ngFor="let item of contact">
-    <span *ngIf="item.state === true" id="{{item.name}}">{{item.data}}</span>
+    <span *ngIf="item.state === true" id="{{item.name}}" [innerHTML]="item.data"></span>
 </p>

@@ -53,7 +53,7 @@ export class BannerComponent implements OnInit {
       grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
       slide: 1,
       interval: {
-        timing: 4000,
+        timing: 3000,
         initialDelay: 1000
       },
       speed: 400,
