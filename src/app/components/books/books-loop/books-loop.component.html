@@ -111,6 +111,11 @@
 
   </div>
 
+  <div *ngIf="showLoaderMoreBooks" class="bottom-loader">
+    Cargando más libros...
+    <app-loader [mode]="loader.mode"></app-loader>
+  </div>
+
   <pagination-controls class="books-pagination"
                         (pageChange)="p = $event; pageChanged($event)"
                         previousLabel="Anterior"

@@ -17,6 +17,8 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
 
   aCountry: any;
   sub: any;
+  totalBooks: Number;
+  showLoaderMoreBooks: Boolean = false;
 
   ngOnChanges(changes: SimpleChanges) {
 
@@ -33,7 +35,7 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
           this.error.show = true;
         }
       } else {
-        this.initGetBooks();
+        //this.initGetBooks();
       }
     });
 
@@ -66,18 +68,21 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
     //If specialty is diffetent to "undefined"
     if(this.specialty !== undefined && this.specialty !== null) {
       
-      this._getBookService.getBooksBySpecialty(this.specialty, this.orderBy, this.order, this.maxShowItems)
+      this._getBookService.getBooksBySpecialty(this.specialty, this.orderBy, this.order, this.maxShowItems, 0)
         .map(resp => resp.json())
         .subscribe(
           data => {
-            if(data.length > 0) {
-              this.setBooksInfo(data)
+            if(data.books.length > 0) {
+              this.setBooksInfo(data.books)
+              this.totalBooks = data.count;
             } else {
               let err = { status: 404 }
               this.mapErrors(err, 'especialidad')
             }
           },
-          err => this.mapErrors(err, 'especialidad')
+          err => {
+            this.mapErrors(err, 'especialidad')
+          }
         );
 
     } else if(this.author !== undefined && this.author !== null) {
@@ -115,6 +120,33 @@ export class BooksLoopComponent extends BooksGlobalLoopComponent {
 
   pageChanged(e: any) {
     window.scrollTo(0,0)
+    let skip = e * this.itemsPerPage;
+
+    if(skip == this.maxShowItems && skip <= this.totalBooks) {
+      this.showLoaderMoreBooks = true;
+
+      this._getBookService.getBooksBySpecialty(this.specialty, this.orderBy, this.order, this.maxShowItems, skip)
+        .map(resp => resp.json())
+        .subscribe(
+          data => {
+            if(data.books.length > 0) {
+              data.books.forEach(el => {
+                this.books.push(el);
+              });
+              this.maxShowItems = this.books.length
+              this.totalBooks = data.count;
+            } else {
+              let err = { status: 404 }
+              this.mapErrors(err, 'especialidad')
+            }
+            this.showLoaderMoreBooks = false;
+          },
+          err => {
+            this.mapErrors(err, 'especialidad')
+            this.showLoaderMoreBooks = false;
+          }
+        );
+    }
   }
 
 }
