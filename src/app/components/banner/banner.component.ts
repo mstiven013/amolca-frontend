@@ -16,6 +16,7 @@ export class BannerComponent implements OnInit {
 
   //Declare banner var
   slides: any;
+  active: any = 0;
 
   //Expample vars
   pathImg = '/assets/img/banner/';
@@ -52,7 +53,7 @@ export class BannerComponent implements OnInit {
       grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
       slide: 1,
       interval: {
-        timing: 3000,
+        timing: 4000,
         initialDelay: 1000
       },
       speed: 400,
@@ -67,7 +68,8 @@ export class BannerComponent implements OnInit {
   }
 
   myfunc(event: Event) {
-    //
+    this.active = event;
+    console.log(event)
   }
 
 }
