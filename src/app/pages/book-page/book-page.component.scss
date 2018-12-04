@@ -236,6 +236,9 @@
 }
 
 .related-products {
+    background-color: $white-color;
+    position: relative;
+    
     .page-container {
         margin-bottom: 40px;
     }
@@ -250,6 +253,14 @@
         margin-bottom: 40px;
         padding-left: 0px;
         padding-right: 0px;
+    }
+    .image-container {
+        bottom: 0px !important;
+        left: 0px !important;
+        max-height: none !important;
+        max-width: none !important;
+        position: relative !important;
+        top: 0px !important;
     }
         .image-container.scroll-waiting,
         .image-container.scroll-fixed {

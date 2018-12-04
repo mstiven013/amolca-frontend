@@ -149,52 +149,50 @@ export class BookPageComponent implements OnInit {
     });
   }
   
-  ScrollInteractionFunction() {  
-    //Variables de distancias
-    let DistanciaScroll = jQuery(window).scrollTop();
-    let ContenedorPrincipal = jQuery('.single-book').offset().top;
-    let LibrosRelacionados = jQuery('.related-products').offset().top;
-  
-    //Variables de altura
-    let AlturaImagenFija = jQuery('.image-container.visible-img').height();
-    let AlturaCabezote = jQuery('.header').height() + jQuery('.top-bar').height();
-    let AlturaContenidoFijo = AlturaImagenFija + AlturaCabezote;
-    let MaximoDeScroll = LibrosRelacionados - AlturaContenidoFijo - 40;
-  
-    if(DistanciaScroll < ContenedorPrincipal) {
+  ScrollInteractionFunction() {
+    if(jQuery('.single-book').length > 0) {
+      //Variables de distancias
+      let DistanciaScroll = jQuery(window).scrollTop();
+      let ContenedorPrincipal = jQuery('.single-book').offset().top;
+      let LibrosRelacionados = jQuery('.related-products').offset().top;
+    
+      //Variables de altura
+      let AlturaImagenFija = jQuery('.image-container.visible-img').height();
+      let AlturaCabezote = jQuery('.header').height() + jQuery('.top-bar').height();
+      let AlturaContenidoFijo = AlturaImagenFija + AlturaCabezote;
+      let MaximoDeScroll = LibrosRelacionados - AlturaContenidoFijo - 40;
+    
+      if(DistanciaScroll < ContenedorPrincipal) {
 
-      jQuery('.image-container.absolute-img').css({
-        opacity: 0
-      })
-      jQuery('.image-container.visible-img').css({
-        opacity: 1,
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        bottom: 'auto'
-      }).removeClass('scroll-fixed')
-  
-    } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll < MaximoDeScroll) {
+        jQuery('.image-container.visible-img').css({
+          opacity: 1,
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 'auto'
+        }).removeClass('scroll-fixed')
+    
+      } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll < MaximoDeScroll) {
 
-      jQuery('.image-container.absolute-img').css({
-        opacity: 0
-      })
-      jQuery('.image-container.visible-img').css({
-        opacity: 1,
-        position: 'fixed',
-        left: '5%',
-        top: '160px',
-        bottom: '0px'
-      }).addClass('scroll-fixed')
-  
-    } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll > MaximoDeScroll) {
+        jQuery('.image-container.visible-img').css({
+          opacity: 1,
+          position: 'fixed',
+          left: '5%',
+          top: '160px',
+          bottom: '0px'
+        }).addClass('scroll-fixed')
+    
+      } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll > MaximoDeScroll) {
 
-      jQuery('.image-container.visible-img').css({
-        opacity: 0
-      }).removeClass('scroll-fixed')
-      jQuery('.image-container.absolute-img').css({
-        opacity: 1
-      })
+        jQuery('.image-container.visible-img').css({
+          opacity: 1,
+          position: 'absolute',
+          left: 0,
+          top: 'auto',
+          bottom: 0
+        }).removeClass('scroll-fixed')
+
+      }
       
     }
   }
