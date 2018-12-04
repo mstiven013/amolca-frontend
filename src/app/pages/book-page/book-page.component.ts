@@ -30,6 +30,8 @@ export class BookPageComponent implements OnInit {
   exists = true;
   aCountry: any;
 
+  related = { specialty: '', show: false };
+
   dummy: Boolean = false;
   globalPage: Boolean = true;
 
@@ -72,14 +74,14 @@ export class BookPageComponent implements OnInit {
       this.getCountry();
 
       this.getBookInfo(this.bookActive);
-      this.scrollInteraction();
+      this.ScrollInteraction();
     })
 
-    this.scrollInteraction();
+    this.ScrollInteraction();
   }
 
   ngAfterViewInit() {
-    this.scrollInteraction();
+    this.ScrollInteraction();
     jQuery(document).ready(function() {
       jQuery('.materialboxed').materialbox();
     });
@@ -105,6 +107,8 @@ export class BookPageComponent implements OnInit {
     this.book = b;
     this.loader.show = false;
     this.showPageLoader = false;
+    this.related.specialty = this.book.specialty[1]._id;
+    this.related.show = true;
 
     //Set meta Title
     if(this.book.metaTitle && this.book.metaTitle !== '') {
@@ -121,53 +125,72 @@ export class BookPageComponent implements OnInit {
     }
   }
 
-  changeFooterOffsetTop() {
-    let me = this;
-    this.footerOffset = jQuery('.footer').offset().top;
-    if(jQuery('.main').height() > (me.footerOffset - 180 - jQuery('#image-container').height() - jQuery('.related-products').height()) ) {
-      me.mainHigher = true;
-    }
+  collapsibleClosed() {
+    this.ScrollInteractionFunction();
   }
 
-  scrollInteraction() {
+  changeFooterOffsetTop() {
     let me = this;
-    jQuery(document).ready(function(){
+    /*this.footerOffset = jQuery('.footer').offset().top;
+    
+    if(jQuery('.main').height() > (jQuery('.related-products').height() + jQuery('.image-container').height() + 40) ) {
+      me.mainHigher = true;
+    }*/
 
-      let imgCont = jQuery('#image-container');
-      let relBooks = jQuery('.related-products');
-
-      if(jQuery('.main').height() > (me.footerOffset - 180 - imgCont.height()) ) {
-        me.mainHigher = true;
-      }
-
-      jQuery(window).scroll(function(){
-        let scroll = jQuery(window).scrollTop();
-
-        if(me.mainHigher) {
-          //If show full image
-          if(scroll < 100) {
-            jQuery('#image-container').removeClass('scroll-waiting');
-            jQuery('#image-container').removeClass('scroll-fixed');
-            jQuery('#image-container .scroll-info').fadeOut();
-          }
-
-          //Position fixed 
-          if(scroll >= 100) {
-            jQuery('#image-container .scroll-info').fadeIn();
-            jQuery('#image-container').removeClass('scroll-waiting');
-            jQuery('#image-container').addClass('scroll-fixed');
-          }
-
-          //Waiting scroll while looking footer
-          if(scroll > 100 && scroll >= (me.footerOffset - 180 - jQuery('#image-container').height() - relBooks.height()) ) {
-            jQuery('#image-container').removeClass('scroll-fixed');
-            jQuery('#image-container').addClass('scroll-waiting');
-          }
-        }
-
-      });
-
+    this.ScrollInteractionFunction();
+  }
+  
+  ScrollInteraction() {
+    let me = this;
+    //Function al hacer scroll
+    $(window).scroll(function() {
+      me.ScrollInteractionFunction();
     });
+  }
+  
+  ScrollInteractionFunction() {  
+    //Variables de distancias
+    let DistanciaScroll = $(window).scrollTop();
+    let ContenedorPrincipal = $('.single-book').offset().top;
+    let LibrosRelacionados = $('.related-products').offset().top;
+  
+    //Variables de altura
+    let AlturaImagenFija = $('.image-container').height();
+    let AlturaCabezote = $('.header').height() + $('.top-bar').height();
+    let AlturaContenidoFijo = AlturaImagenFija + AlturaCabezote;
+    let MaximoDeScroll = LibrosRelacionados - AlturaContenidoFijo - 40;
+  
+    if(DistanciaScroll < ContenedorPrincipal) {
+  
+      //Si el contenedor tiene la clase "waiting" removerla
+      if($('.image-container').hasClass('scroll-waiting'))
+        $('.image-container').removeClass('scroll-waiting');
+  
+      //Si el contenedor tiene la clase "fixed" removerla
+      if($('.image-container').hasClass('scroll-fixed'))
+        $('.image-container').removeClass('scroll-fixed');
+  
+    } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll < MaximoDeScroll) {
+  
+      //Si el contenedor tiene la clase "waiting" removerla
+      if($('.image-container').hasClass('scroll-waiting'))
+        $('.image-container').removeClass('scroll-waiting');
+  
+      //Si el contenedor no tiene la clase "fixed" agregarla
+      if(!$('.image-container').hasClass('scroll-fixed'))
+        $('.image-container').addClass('scroll-fixed');
+  
+    } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll > MaximoDeScroll) {
+
+      //Si el contenedor tiene la clase "fixed" removerla
+      if($('.image-container').hasClass('scroll-fixed'))
+        $('.image-container').removeClass('scroll-fixed');
+  
+      //Si el contenedor no tiene la clase "waiting" agregarla
+      if(!$('.image-container').hasClass('scroll-waiting'))
+        $('.image-container').addClass('scroll-waiting');
+  
+    }
   }
 
   //Add to cart function

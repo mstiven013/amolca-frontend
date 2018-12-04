@@ -11,7 +11,7 @@
 
     <!--Images Book column-->
     <div class="col s12 l5 image-book">
-      <div id="image-container">
+      <div class="image-container">
         <!--Show if book images exists-->
         <img *ngIf="book.image !== undefined" class="materialboxed" src="{{book.image}}" alt="">
         
@@ -129,7 +129,7 @@
       <mat-accordion class="book-accordion">
 
         <!--Description Panel-->
-        <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''" [expanded]="changeFooterOffsetTop()">
+        <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''" (opened)="changeFooterOffsetTop()" (closed)="collapsibleClosed()">
           <!--Header-->
           <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
             <mat-panel-title>
@@ -141,7 +141,7 @@
         </mat-expansion-panel>
 
         <!--Data sheet Panel-->
-        <mat-expansion-panel *ngIf="(book.isbn !== undefined && book.isbn != '') || (book.attributes !== undefined && book.attributes.length > 0)">
+        <mat-expansion-panel *ngIf="(book.isbn !== undefined && book.isbn != '') || (book.attributes !== undefined && book.attributes.length > 0)" (opened)="changeFooterOffsetTop()" (closed)="collapsibleClosed()">
           <!--Header-->
           <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
             <mat-panel-title>
@@ -175,7 +175,7 @@
         </mat-expansion-panel>
 
         <!--Index Panel-->
-        <mat-expansion-panel *ngIf="book.index !== undefined && book.index != ''">
+        <mat-expansion-panel *ngIf="book.index !== undefined && book.index != ''" (opened)="changeFooterOffsetTop()" (closed)="collapsibleClosed()">
           <!--Header-->
           <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
             <mat-panel-title>
@@ -187,7 +187,7 @@
         </mat-expansion-panel>
 
         <!--Key Points Panel-->
-        <mat-expansion-panel *ngIf="book.keyPoints !== undefined && book.keyPoints != ''">
+        <mat-expansion-panel *ngIf="book.keyPoints !== undefined && book.keyPoints != ''" (opened)="changeFooterOffsetTop()" (closed)="collapsibleClosed()">
           <!--Header-->
           <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
             <mat-panel-title>
@@ -199,7 +199,7 @@
         </mat-expansion-panel>
 
         <!--Author Panel-->
-        <mat-expansion-panel *ngIf="book.author !== undefined && book.author.length > 0">
+        <mat-expansion-panel *ngIf="book.author !== undefined && book.author.length > 0" (opened)="changeFooterOffsetTop()" (closed)="collapsibleClosed()">
           <!--Header-->
           <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
             <mat-panel-title>
@@ -236,7 +236,7 @@
   </div>
   <div class="page-container">
     <!--If specialty exists-->
-    <books-carousel [specialty]="book.specialty[1]._id" [itemsPerRow]="4" [orderBy]="'title'" [order]="1" [maxShowItems]="12"></books-carousel>
+    <books-carousel *ngIf="related.show" [specialty]="related.specialty" [itemsPerRow]="4" [orderBy]="'title'" [order]="1" [maxShowItems]="12"></books-carousel>
   </div>
 </div>
 
