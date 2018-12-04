@@ -14,40 +14,56 @@
 }
 
 /*COLUMN IMAGE*/
-.image-book img {
-    display: block;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    width: auto;
-}
-    .image-book img.active {
-        max-height: none;
-        max-width: none;
+.image-book {
+    img {
+        display: block;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        width: auto;
+
+        &.active {
+            max-height: none;
+            max-width: none;
+        }
     }
+}
 
 .image-container {
-    overflow: hidden;
-    position: relative;
+    top: 0px;
+    left: 0;
+    @include calc(max-height, '100vh - 180px');
+    @include calc(max-width, '41.6666666667% - 0.75rem');
+    position: absolute;
+    @include transition('all 0.3s ease');
     width: 100%;
-    z-index: 100;
+
+    img {
+        margin: auto;
+    }
 }
 
-.image-container.scroll-waiting {
+.image-container.absolute-img {
+    opacity: 0;
+    top: auto;
     bottom: 0px;
     left: 0;
     @include calc(max-height, '100vh - 180px');
     @include calc(max-width, '41.6666666667% - 0.75rem');
     position: absolute;
+    width: 100%;
+
+    img {
+        margin: auto;
+    }
 }
 
 .image-container.scroll-fixed {
-    left: 5%;
-    @include calc(max-height, '100vh - 180px');
-    @include calc(max-width, '41.6666666667% - 3.75rem');
-    position: fixed;
-    top: 160px;
+    //left: 5%;
+    @include calc(max-width, '37.5% - 0.75rem');
+    //position: fixed;
+    //top: 160px;
 }
     .image-container.scroll-fixed img,
     .image-container.scroll-waiting img {

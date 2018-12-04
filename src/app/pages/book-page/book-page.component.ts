@@ -7,6 +7,7 @@ import { Meta } from '../../../../node_modules/@angular/platform-browser';
 import { GetCartService } from '../../services/cart/get-cart.service';
 import { CartService } from '../../services/cart/cart.service';
 import { FormControl } from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 declare var jQuery: any;
 
@@ -126,70 +127,75 @@ export class BookPageComponent implements OnInit {
   }
 
   collapsibleClosed() {
-    this.ScrollInteractionFunction();
+    let me = this;
+    setTimeout(function(){
+      me.ScrollInteractionFunction();
+    }, 250)
   }
 
   changeFooterOffsetTop() {
     let me = this;
-    /*this.footerOffset = jQuery('.footer').offset().top;
-    
-    if(jQuery('.main').height() > (jQuery('.related-products').height() + jQuery('.image-container').height() + 40) ) {
-      me.mainHigher = true;
-    }*/
-
-    this.ScrollInteractionFunction();
+    setTimeout(function(){
+      me.ScrollInteractionFunction();
+    }, 250)
   }
   
   ScrollInteraction() {
+
     let me = this;
     //Function al hacer scroll
-    $(window).scroll(function() {
+    jQuery(window).scroll(function() {
       me.ScrollInteractionFunction();
     });
   }
   
   ScrollInteractionFunction() {  
     //Variables de distancias
-    let DistanciaScroll = $(window).scrollTop();
-    let ContenedorPrincipal = $('.single-book').offset().top;
-    let LibrosRelacionados = $('.related-products').offset().top;
+    let DistanciaScroll = jQuery(window).scrollTop();
+    let ContenedorPrincipal = jQuery('.single-book').offset().top;
+    let LibrosRelacionados = jQuery('.related-products').offset().top;
   
     //Variables de altura
-    let AlturaImagenFija = $('.image-container').height();
-    let AlturaCabezote = $('.header').height() + $('.top-bar').height();
+    let AlturaImagenFija = jQuery('.image-container.visible-img').height();
+    let AlturaCabezote = jQuery('.header').height() + jQuery('.top-bar').height();
     let AlturaContenidoFijo = AlturaImagenFija + AlturaCabezote;
     let MaximoDeScroll = LibrosRelacionados - AlturaContenidoFijo - 40;
   
     if(DistanciaScroll < ContenedorPrincipal) {
-  
-      //Si el contenedor tiene la clase "waiting" removerla
-      if($('.image-container').hasClass('scroll-waiting'))
-        $('.image-container').removeClass('scroll-waiting');
-  
-      //Si el contenedor tiene la clase "fixed" removerla
-      if($('.image-container').hasClass('scroll-fixed'))
-        $('.image-container').removeClass('scroll-fixed');
+
+      jQuery('.image-container.absolute-img').css({
+        opacity: 0
+      })
+      jQuery('.image-container.visible-img').css({
+        opacity: 1,
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        bottom: 'auto'
+      }).removeClass('scroll-fixed')
   
     } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll < MaximoDeScroll) {
-  
-      //Si el contenedor tiene la clase "waiting" removerla
-      if($('.image-container').hasClass('scroll-waiting'))
-        $('.image-container').removeClass('scroll-waiting');
-  
-      //Si el contenedor no tiene la clase "fixed" agregarla
-      if(!$('.image-container').hasClass('scroll-fixed'))
-        $('.image-container').addClass('scroll-fixed');
+
+      jQuery('.image-container.absolute-img').css({
+        opacity: 0
+      })
+      jQuery('.image-container.visible-img').css({
+        opacity: 1,
+        position: 'fixed',
+        left: '5%',
+        top: '160px',
+        bottom: '0px'
+      }).addClass('scroll-fixed')
   
     } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll > MaximoDeScroll) {
 
-      //Si el contenedor tiene la clase "fixed" removerla
-      if($('.image-container').hasClass('scroll-fixed'))
-        $('.image-container').removeClass('scroll-fixed');
-  
-      //Si el contenedor no tiene la clase "waiting" agregarla
-      if(!$('.image-container').hasClass('scroll-waiting'))
-        $('.image-container').addClass('scroll-waiting');
-  
+      jQuery('.image-container.visible-img').css({
+        opacity: 0
+      }).removeClass('scroll-fixed')
+      jQuery('.image-container.absolute-img').css({
+        opacity: 1
+      })
+      
     }
   }
 
