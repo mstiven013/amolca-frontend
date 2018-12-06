@@ -38,7 +38,7 @@ export class NavMenuComponent implements OnInit {
           { id: 64380, name: 'Cirugía plástica', link: '/cirugia-plastica', image: 'cirugia-plastica.png', state: true, target: '_self' },
           { id: 7942, name: 'Cirugía vascular', link: '/cirugia-vascular', image: 'cirugia-vascular.png', state: true, target: '_self' },
           { id: 92738, name: 'Dermatología', link: '/dermatologia', image: 'dermatologia.png', state: true, target: '_self' },
-          { id: 7363, name: 'Emergencias', link: '/emergencias', image: 'emergencias.png', state: true, target: '_self' },
+          //{ id: 7363, name: 'Emergencias', link: '/emergencias', image: 'emergencias.png', state: true, target: '_self' },
           { id: 323, name: 'Enfermería', link: '/enfermeria', image: 'enfermeria.png', state: true, target: '_self' },
           { id: 282, name: 'Fisioterapia', link: '/fisioterapia', image: 'fisioterapia.png', state: true, target: '_self' },
           { id: 3246, name: 'Gastroenterología', link: '/gastroenterologia', image: 'gastroenterologia.png', state: true, target: '_self' },
