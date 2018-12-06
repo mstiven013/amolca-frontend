@@ -68,7 +68,6 @@ export class BannerComponent implements OnInit {
 
   myfunc(event: Event) {
     this.active = event;
-    console.log(event)
   }
 
 }
