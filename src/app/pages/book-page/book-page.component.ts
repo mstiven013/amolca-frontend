@@ -7,6 +7,7 @@ import { Meta } from '../../../../node_modules/@angular/platform-browser';
 import { GetCartService } from '../../services/cart/get-cart.service';
 import { CartService } from '../../services/cart/cart.service';
 import { FormControl } from '@angular/forms';
+import { Location } from '@angular/common';
 
 declare var jQuery: any;
 
@@ -46,6 +47,10 @@ export class BookPageComponent implements OnInit {
   footerOffset: any = jQuery('.footer').offset().top - 40;
   mainHigher: Boolean = false;
 
+  shared = {
+    wpp: { msg: '' }
+  }
+
   constructor(
     //Meta info for this book
     private _appComponent: AppComponent,
@@ -60,7 +65,8 @@ export class BookPageComponent implements OnInit {
 
     //Router services
     private _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _location: Location
   ) { }
 
   ngOnInit() {
@@ -69,6 +75,8 @@ export class BookPageComponent implements OnInit {
       window.scrollTo(0,0)
       this.loader.show = true;
       this.showPageLoader = true;
+
+      this.shared.wpp.msg = '¡Hola!, echale un vistazo a este libro: ' + window.location.href;
 
       this.getCountry();
 
