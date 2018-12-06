@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
+import { GetSlidersService } from 'src/app/services/sliders/get-sliders.service';
 
 declare var jQuery: any;
 
@@ -13,38 +14,36 @@ export class BannerComponent implements OnInit {
 
   //Ngx Carousel vars
   banner: NguCarouselConfig;
+  loadBanner: Boolean = false;
 
   //Declare banner var
   slides: any;
   active: any = 0;
 
   //Expample vars
-  pathImg = '/assets/img/banner/';
-  slider = [
-    { 
-      image: "slide-web-01.png",
-      bgAttach: "initial",
-      text: ``,
-      state: true
-    },
-    { 
-      image: "slide-web-2-02.png",
-      bgAttach: "initial",
-      text: ``,
-      state: true
-    },
-    { 
-      image: "slide-web-03.png",
-      bgAttach: "initial",
-      text: ``,
-      state: true
-    }
-  ]
+  slider = []
 
-  constructor() { }
+  constructor(
+    private _getSlidersService: GetSlidersService
+  ) { }
 
   ngOnInit() {
-    this.generateCarousel()
+    this.getSliderInfo()
+  }
+
+  getSliderInfo() {
+    this._getSlidersService.getAllSliders()
+      .map(resp => resp.json())
+      .subscribe(
+        data => {
+          this.slider = data[0].items;
+          this.generateCarousel()
+          this.loadBanner = true;
+        },
+        err => {
+          console.log(err)
+        }
+      )
   }
 
   generateCarousel() {
@@ -60,7 +59,7 @@ export class BannerComponent implements OnInit {
       point: {
         visible: false,
       },
-      load: 2,
+      load: 6,
       touch: true,
       loop: true,
       custom: 'banner'
@@ -69,6 +68,7 @@ export class BannerComponent implements OnInit {
 
   myfunc(event: Event) {
     this.active = event;
+    console.log(event)
   }
 
 }
