@@ -37,14 +37,6 @@
             <label for="email"><span class="required">*</span> Correo electrónico:</label>
             <input type="email" name="email" id="email" formControlName="email" #email placeholder="Escribe tu correo electrónico...">
           </div>
-
-          <!--Country column-->
-          <div class="col s12 m6 l6">
-            <label for="country"><span class="required">*</span> País:</label>
-
-            <select2 *ngIf="loadCountries" [data]="countries" [cssImport]="true" (valueChanged)="countrySelected = ($event.value); onChange($event)" ng-model="countrySelected"></select2>
-            <input type="hidden" formControlName="country" [(ngModel)]="countrySelected" id="country" name="country" #country>
-          </div>
       
           <!--City column-->
           <div class="col s12 m6 l6">
@@ -53,19 +45,19 @@
           </div>
 
           <!--Address column-->
-          <div class="col s12 m4 l4">
+          <div class="col s12 m6 l6">
             <label for="address"><span class="required">*</span> Dirección:</label>
             <input type="text" name="address" id="address" formControlName="address" #address placeholder="Escribe tu dirección...">
           </div>
 
           <!--Aditionals column-->
-          <div class="col s12 m4 l4">
+          <div class="col s12 m6 l6">
             <label for="aditionals">Extra (oficina, interior, etc):</label>
             <input type="text" name="aditionals" id="aditionals" formControlName="aditionals" #aditionals placeholder="Extra (oficina, interior, etc)...">
           </div>
 
           <!--Postal code column-->
-          <div class="col s12 m4 l4">
+          <div class="col s12 m6 l6">
             <label for="postalCode">Código postal:</label>
             <input type="text" name="postalCode" id="postalCode" formControlName="postalCode" #postalCode placeholder="Escribe tu código postal...">
           </div>
