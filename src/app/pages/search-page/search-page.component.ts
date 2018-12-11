@@ -30,7 +30,11 @@ export class SearchPageComponent implements OnInit {
     this.sub = this._activatedRoute.queryParams.subscribe(params => {
       if(params['s'] !== undefined && params['s'] !== '') {
         window.scrollTo(0,0);
+        
+        this.loader.show = true;
+        this.showInfo = false;
         this.search = params['s'];
+
         this._searcherService.getResults(this.search)
           .map(resp => resp.json())
           .subscribe(
