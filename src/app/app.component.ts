@@ -24,7 +24,7 @@ export class AppComponent {
   }
 
   getGeolocalization() {
-    jQuery.getJSON('https://ip-api.com/json?callback', function(data) {
+    jQuery.getJSON('http://ip-api.com/json?callback', function(data) {
       localStorage.setItem('C0uN7r1', data.country.toUpperCase());
       let c = localStorage.getItem('C0uN7r1');
       
