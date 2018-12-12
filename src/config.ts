@@ -5,6 +5,7 @@ export const config = {
     client_id: 'myclientid',
     secret: 'mysecretclient',
     email: {
+        me: 'ventas@amolca.com.co',
         from: 'Amolca Colombia <ventas@amolca.com.co>',
         cc: 'gerencia@amolca.com.co, asistentepresidencia@amolca.us',
         subject: 'Registro de nuevo pedido - Amolca Colombia',

@@ -124,6 +124,7 @@ import { ResponsePageComponent } from './pages/response-page/response-page.compo
 import { BannersComponent } from './components/common/banners/banners.component';
 import { TermsConditionsPageComponent } from './pages/terms-conditions-page/terms-conditions-page.component';
 import { GoBackBtnComponent } from './components/common/go-back-btn/go-back-btn.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -215,6 +216,7 @@ const appRoutes: Routes = [
     BannersComponent,
     TermsConditionsPageComponent,
     GoBackBtnComponent,
+    ContactPageComponent,
   ],
   imports: [
     //Angular libraries

@@ -15,6 +15,7 @@ import { CheckoutPageComponent } from '../pages/checkout-page/checkout-page.comp
 import { SearchPageComponent } from '../pages/search-page/search-page.component';
 import { ResponsePageComponent } from '../pages/response-page/response-page.component';
 import { TermsConditionsPageComponent } from '../pages/terms-conditions-page/terms-conditions-page.component';
+import { ContactPageComponent } from '../pages/contact-page/contact-page.component';
 
 export const PageRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -30,6 +31,7 @@ export const PageRoutes: Routes = [
     { path: 'buscar', component: SearchPageComponent },
     { path: 'respuesta', component: ResponsePageComponent },
     { path: 'terminos-y-condiciones', component: TermsConditionsPageComponent },
+    { path: 'contacto', component: ContactPageComponent },
 
     //Not found page
     { path: '**', redirectTo: '/' }
