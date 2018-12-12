@@ -69,6 +69,11 @@ html, body {
             &#login-btn {
                 background-color: $blue-opacity;
             }
+
+            &#contact {
+                background-color: $blue-opacity;
+                border-left: 1px solid $primary-color;
+            }
         }
     }
 }
@@ -776,6 +781,13 @@ form .button {
         color: $gray-dark;
         font-size: 16px;
     }
+
+/*Contact page*/
+.contact-form .terms-condition .mat-checkbox-layout .mat-checkbox-label {
+    line-height: 24px;
+    font-size: 16px;
+    font-family: 'Tahoma';
+}
 
 /*Footer styles*/
 .footer {

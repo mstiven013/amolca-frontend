@@ -123,6 +123,7 @@ import { LoopLoaderComponent } from './components/books/loop-loader/loop-loader.
 import { ResponsePageComponent } from './pages/response-page/response-page.component';
 import { BannersComponent } from './components/common/banners/banners.component';
 import { GoBackBtnComponent } from './components/common/go-back-btn/go-back-btn.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -213,6 +214,7 @@ const appRoutes: Routes = [
     ResponsePageComponent,
     BannersComponent,
     GoBackBtnComponent,
+    ContactPageComponent,
   ],
   imports: [
     //Angular libraries
