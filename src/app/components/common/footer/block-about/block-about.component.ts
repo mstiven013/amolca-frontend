@@ -14,11 +14,11 @@ export class BlockAboutComponent implements OnInit {
 
   //Test about vars
   about = [
-    { name: 'Amolca', link: 'amolca', state: true },
-    { name: 'Novedades', link: 'novedades', state: true },
-    { name: 'Eventos', link: 'eventos', state: true },
-    { name: 'Términos y condiciones', link: 'terminos-y-condiciones', state: true },
-    { name: 'Políticas de privacidad', link: 'politicas-de-privacidad', state: true }
+    { name: 'Amolca', link: 'amolca', state: 'disabled' },
+    { name: 'Novedades',/* link: '#',*/ state: 'active' },
+    { name: 'Eventos',/* link: '#',*/ state: 'active' },
+    { name: 'Términos y condiciones', link: 'terminos-y-condiciones', state: 'active' },
+    { name: 'Políticas de privacidad', link: 'terminos-y-condiciones', fragment: 'privacidad', state: 'active' }
   ]
 
 }

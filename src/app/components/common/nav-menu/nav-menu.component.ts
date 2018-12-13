@@ -91,9 +91,11 @@ export class NavMenuComponent implements OnInit {
     { 
       id: 47849, name: 'Vídeos', link: 'http://online.amolca.com', image: 'videos.png', state: true, target: '_blank', submenu: ''
     },
+    /*
     { 
       id: 27263, name: 'Biblioteca digital', link: '', image: 'biblioteca-digital.png', state: true, target: '_self', submenu: ''
     },
+    */
   ]
 
   //Mobile button function
