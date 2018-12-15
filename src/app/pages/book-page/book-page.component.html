@@ -81,6 +81,16 @@
   
         <!--Free Shipping text-->
         <p class="shipping">¡Envío gratis a cualquier ciudad de Colombia!</p>
+
+        <!--Specialties icons-->
+        <div class="cont-specialties">
+            Especialidades:
+            <ng-template ngFor let-specialty [ngForOf]="book.specialty">
+              <p *ngIf="specialty.slug !== 'medicina' && specialty.slug !== 'odontologia'">
+                <img class="specialty-icon" src="{{ specialty.icon }}" alt=""> {{specialty.title}}
+              </p>
+            </ng-template>
+        </div>
   
         <!--Book versions-->
         <div class="cont-versions">
