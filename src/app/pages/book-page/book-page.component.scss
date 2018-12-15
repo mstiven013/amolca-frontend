@@ -36,7 +36,7 @@
     @include calc(max-height, '100vh - 180px');
     @include calc(max-width, '41.6666666667% - 0.75rem');
     position: absolute;
-    @include transition('all 0.3s ease');
+    //@include transition('all 0.3s ease');
     width: 100%;
 
     img {
@@ -286,7 +286,7 @@
     z-index: 100;
     
     .page-container {
-        margin-bottom: 40px;
+        padding-bottom: 40px;
     }
 }
 

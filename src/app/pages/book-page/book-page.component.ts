@@ -180,7 +180,7 @@ export class BookPageComponent implements OnInit {
 
         jQuery('.scroll-info').fadeOut();
     
-      } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll < MaximoDeScroll) {
+      } else if(DistanciaScroll > ContenedorPrincipal) {
 
         jQuery('.image-container.visible-img').css({
           opacity: 1,
@@ -192,16 +192,6 @@ export class BookPageComponent implements OnInit {
 
         jQuery('.scroll-info').fadeIn();
     
-      } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll > MaximoDeScroll) {
-
-        jQuery('.image-container.visible-img').css({
-          opacity: 1,
-          position: 'absolute',
-          left: 0,
-          top: 'auto',
-          bottom: 0
-        }).removeClass('scroll-fixed').addClass('scroll-waiting')
-
       }
       
     }
