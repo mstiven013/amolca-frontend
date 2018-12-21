@@ -41,6 +41,20 @@ ngu-item.item-1 {
         }
     }
 }
+ngu-item.item-3 {
+    img.visible-img {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(2);
+        @include transition('all 1s ease');
+    }
+     &.show {
+        z-index: 3;
+         img.visible-img {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+}
 
 .leftRs, .rightRs {
     background-color: transparent;
