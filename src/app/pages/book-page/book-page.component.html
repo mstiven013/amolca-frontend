@@ -2,31 +2,72 @@
   <app-loader *ngIf="loader.show" [mode]="loader.mode"></app-loader>
   <book-page-loader *ngIf="showPageLoader"></book-page-loader>
   
-  <div *ngIf="!showPageLoader" class="row">
+  <div *ngIf="!showPageLoader">
 
     <custom-banner [type]="'book'" [id]="book._id" [message]="'Este y muchos más libros encuentralos en Amolca'"></custom-banner>
 
     <!--Notification-->
     <app-notification [message]="notification.msg" [class]="notification.class"></app-notification>
 
-    <!--Images Book column-->
-    <div class="col s12 l5 image-book">
-      <div id="image-container">
-        <!--Show if book images exists-->
-        <img *ngIf="book.image !== undefined" class="materialboxed" src="{{book.image}}" alt="">
-        
-        <img *ngIf="book.image === undefined || book.image == ''" class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
-
-        <!--Add to cart and price-->
-        <ng-template ngFor let-country [ngForOf]="book.countries">
-          <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == currentCountry && !dummy">
-            <div class="scroll-info">
+    <div class="row">
+      <!--Images Book column-->
+      <div class="col s12 l5 image-book">
+        <div class="visible-img image-container">
+          <!--Show if book images exists-->
+          <img *ngIf="book.image !== undefined" class="materialboxed" src="{{book.image}}" alt="">
+                    
+          <img *ngIf="book.image === undefined || book.image == ''" class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
+      
+          <!--Add to cart and price-->
+          <ng-template ngFor let-country [ngForOf]="book.countries">
+            <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == currentCountry && !dummy">
+              <div class="scroll-info">
               <p class="price" *ngIf="book.price !== 0">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
               <div class="add-to-cart">
                 <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
                 <a class="button danger waves-effect waves-light" (click)="addToCart(book, country.price, qtyInput)">Añadir al carrito</a>
               </div>
-            </div>
+              </div>
+            </ng-template>
+          </ng-template>
+
+          <!--Test interface-->
+          <div *ngIf="dummy">
+            <ng-template ngFor let-country [ngForOf]="book.countries">
+              <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == 'DOMINICAN REPUBLIC'">
+                <div class="scroll-info">
+                  <p class="price" *ngIf="book.price !== 0">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
+                  <div class="add-to-cart">
+                    <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
+                    <a class="button danger waves-effect waves-light" (click)="addToCart(book, country.price, qtyInput)">Añadir al carrito</a>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-template>
+          </div>
+          
+        </div>
+      </div>
+
+      <!--Summary Book column-->
+      <div class="col s12 l7 summary-book">
+        <!--Book name-->
+        <h1 class="name">{{book.title}}</h1>
+
+        <!--Book author-->
+        <h3 class="author" *ngIf="book.author !== undefined && book.author.length > 0">
+          <span *ngFor="let author of book.author; let i = index;">
+            <a routerLink="/autor/{{author.slug}}">
+              {{author.name}}
+            </a>
+            <span *ngIf="i < book.author.length - 1"> - </span>
+          </span>
+        </h3>
+
+        <!--Book price-->
+        <ng-template ngFor let-country [ngForOf]="book.countries">
+          <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == currentCountry && !dummy">
+            <p class="price">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
           </ng-template>
         </ng-template>
 
@@ -34,195 +75,175 @@
         <div *ngIf="dummy">
           <ng-template ngFor let-country [ngForOf]="book.countries">
             <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == 'DOMINICAN REPUBLIC'">
-              <div class="scroll-info">
-                <p class="price" *ngIf="book.price !== 0">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
-                <div class="add-to-cart">
-                  <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
-                  <a class="button danger waves-effect waves-light" (click)="addToCart(book, country.price, qtyInput)">Añadir al carrito</a>
-                </div>
-              </div>
+              <p class="price">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
             </ng-template>
           </ng-template>
         </div>
-        
-      </div>
-    </div>
 
-    <!--Summary Book column-->
-    <div class="col s12 l7 summary-book">
-      <!--Book name-->
-      <h1 class="name">{{book.title}}</h1>
+        <!--Specialties icons-->
+        <div class="cont-specialties">
+          Especialidades:
+          <ng-template ngFor let-specialty [ngForOf]="book.specialty">
+            <p *ngIf="specialty.slug !== 'medicina' && specialty.slug !== 'odontologia'">
+              <img class="specialty-icon" src="{{ specialty.icon }}" alt=""> {{specialty.title}}
+            </p>
+          </ng-template>
+        </div>
 
-      <!--Book author-->
-      <h3 class="author" *ngIf="book.author !== undefined && book.author.length > 0">
-        <span *ngFor="let author of book.author; let i = index;">
-          <a routerLink="/autor/{{author.slug}}">
-            {{author.name}}
-          </a>
-          <span *ngIf="i < book.author.length - 1"> - </span>
-        </span>
-      </h3>
+        <!--Book versions-->
+        <div class="cont-versions">
+          <p *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
+            Disponible en: 
+            <ng-template ngFor let-v [ngForOf]="book.version">
 
-      <!--Book price-->
-      <ng-template ngFor let-country [ngForOf]="book.countries">
-        <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == currentCountry && !dummy">
-          <p class="price">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
-        </ng-template>
-      </ng-template>
+              <!--If version is PAPER-->
+              <a *ngIf="v == 'PAPER'" matTooltip="Papel" [matTooltipPosition]="tooltipPosition" class="version-btn">
+                <span class="icon-book"></span> Papel
+              </a>
 
-      <!--Test interface-->
-      <div *ngIf="dummy">
+              <!--If version is EBOOK-->
+              <a *ngIf="v == 'EBOOK'" matTooltip="Ebook" [matTooltipPosition]="tooltipPosition" class="version-btn">
+                <span class="icon-document-text"></span> Ebook
+              </a>
+
+              <!--If version is VIDEO-->
+              <a *ngIf="v == 'VIDEO'" matTooltip="Vídeo" [matTooltipPosition]="tooltipPosition" class="version-btn">
+                <span class="icon-media-play"></span> Vídeo
+              </a>
+
+            </ng-template>
+          </p>
+          <p class="shared">
+            <a href="https://wa.me/?text={{ shared.wpp.msg }}" target="_blank">
+              <img src="https://amolca.webussines.com/uploads/images/whatsapp-logo.png" alt="">
+            </a>
+            <a>Compartir</a>
+          </p>
+        </div>
+
+        <!--Cart button-->
         <ng-template ngFor let-country [ngForOf]="book.countries">
-          <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == 'DOMINICAN REPUBLIC'">
-            <p class="price">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
+          <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK'">
+            <div class="add-to-cart" *ngIf="country.name == currentCountry && !dummy">
+              <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
+              <a class="button danger waves-effect waves-light" (click)="addToCart(book, country.price, qtyInput)">Añadir al carrito</a>
+            </div>
           </ng-template>
         </ng-template>
-      </div>
 
-      <!--Book versions-->
-      <p *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
-        Disponible en: 
-        <ng-template ngFor let-v [ngForOf]="book.version">
+        <!--Test interface-->
+        <div *ngIf="dummy" class="add-to-cart">
+          <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
+          <a class="button danger waves-effect waves-light" (click)="addToCart(book, 250000, qtyInput)">Añadir al carrito</a>
+        </div>
 
-          <!--If version is PAPER-->
-          <a *ngIf="v == 'PAPER'" matTooltip="Papel" [matTooltipPosition]="tooltipPosition" class="version-btn">
-            <span class="icon-book"></span> Papel
-          </a>
+        <div *ngIf="notification.show" class="card-panel notification" [style.background-color]="notification.bg">
+          <p>{{notification.msg}}</p>
+        </div>
 
-          <!--If version is EBOOK-->
-          <a *ngIf="v == 'EBOOK'" matTooltip="Ebook" [matTooltipPosition]="tooltipPosition" class="version-btn">
-            <span class="icon-document-text"></span> Ebook
-          </a>
+        <!--Material Accordion-->
+        <mat-accordion class="book-accordion">
 
-          <!--If version is VIDEO-->
-          <a *ngIf="v == 'VIDEO'" matTooltip="Vídeo" [matTooltipPosition]="tooltipPosition" class="version-btn">
-            <span class="icon-media-play"></span> Vídeo
-          </a>
+          <!--Description Panel-->
+          <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''" [expanded]="changeFooterOffsetTop()">
+            <!--Header-->
+            <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
+              <mat-panel-title>
+                <span class="icon-plus"></span> Descripción
+              </mat-panel-title>
+            </mat-expansion-panel-header>
 
-        </ng-template>
-      </p>
+            <div [innerHTML]="book.description"></div>
+          </mat-expansion-panel>
 
-      <!--Cart button-->
-      <ng-template ngFor let-country [ngForOf]="book.countries">
-        <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK'">
-          <div class="add-to-cart" *ngIf="country.name == currentCountry && !dummy">
-            <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
-            <a class="button danger waves-effect waves-light" (click)="addToCart(book, country.price, qtyInput)">Añadir al carrito</a>
-          </div>
-        </ng-template>
-      </ng-template>
+          <!--Data sheet Panel-->
+          <mat-expansion-panel *ngIf="(book.isbn !== undefined && book.isbn != '') || (book.attributes !== undefined && book.attributes.length > 0)">
+            <!--Header-->
+            <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
+              <mat-panel-title>
+                <span class="icon-plus"></span> Ficha técnica
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+    
+            <table class="table">
+              <tbody>
+                <tr *ngIf="book.isbn !== undefined && book.isbn != ''">
+                  <th>ISBN:</th>
+                  <td>{{book.isbn}}</td>
+                </tr>
 
-      <!--Test interface-->
-      <div *ngIf="dummy" class="add-to-cart">
-        <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
-        <a class="button danger waves-effect waves-light" (click)="addToCart(book, 250000, qtyInput)">Añadir al carrito</a>
-      </div>
+                <tr *ngIf="book.publicationYear !== undefined && book.publicationYear != ''">
+                  <th>Año de publicación:</th>
+                  <td>{{book.publicationYear}}</td>
+                </tr>
 
-      <div *ngIf="notification.show" class="card-panel notification" [style.background-color]="notification.bg">
-        <p>{{notification.msg}}</p>
-      </div>
+                <tr *ngIf="book.numberPages !== undefined && book.numberPages != ''">
+                  <th>Páginas:</th>
+                  <td>{{book.numberPages}}</td>
+                </tr>
 
-      <!--Material Accordion-->
-      <mat-accordion class="book-accordion">
+                <tr *ngFor="let attr of book.attributes">
+                  <th>{{attr.name}}</th>
+                  <td>{{attr.value}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-expansion-panel>
 
-        <!--Description Panel-->
-        <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''" [expanded]="changeFooterOffsetTop()">
-          <!--Header-->
-          <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
-            <mat-panel-title>
-              <span class="icon-plus"></span> Descripción
-            </mat-panel-title>
-          </mat-expansion-panel-header>
+          <!--Index Panel-->
+          <mat-expansion-panel *ngIf="book.index !== undefined && book.index != ''">
+            <!--Header-->
+            <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
+              <mat-panel-title>
+                <span class="icon-plus"></span> Índice
+              </mat-panel-title>
+            </mat-expansion-panel-header>
 
-          <div [innerHTML]="book.description"></div>
-        </mat-expansion-panel>
+            <div [innerHTML]="book.index"></div>
+          </mat-expansion-panel>
 
-        <!--Data sheet Panel-->
-        <mat-expansion-panel *ngIf="(book.isbn !== undefined && book.isbn != '') || (book.attributes !== undefined && book.attributes.length > 0)">
-          <!--Header-->
-          <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
-            <mat-panel-title>
-              <span class="icon-plus"></span> Ficha técnica
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-  
-          <table class="table">
-            <tbody>
-              <tr *ngIf="book.isbn !== undefined && book.isbn != ''">
-                <th>ISBN:</th>
-                <td>{{book.isbn}}</td>
-              </tr>
+          <!--Key Points Panel-->
+          <mat-expansion-panel *ngIf="book.keyPoints !== undefined && book.keyPoints != ''">
+            <!--Header-->
+            <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
+              <mat-panel-title>
+                <span class="icon-plus"></span> Puntos clave
+              </mat-panel-title>
+            </mat-expansion-panel-header>
 
-              <tr *ngIf="book.publicationYear !== undefined && book.publicationYear != ''">
-                <th>Año de publicación:</th>
-                <td>{{book.publicationYear}}</td>
-              </tr>
+            <div [innerHTML]="book.keyPoints"></div>
+          </mat-expansion-panel>
 
-              <tr *ngIf="book.numberPages !== undefined && book.numberPages != ''">
-                <th>Páginas:</th>
-                <td>{{book.numberPages}}</td>
-              </tr>
+          <!--Author Panel-->
+          <mat-expansion-panel *ngIf="book.author !== undefined && book.author.length > 0">
+            <!--Header-->
+            <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
+              <mat-panel-title>
+                <span class="icon-plus"></span> Autor
+              </mat-panel-title>
+            </mat-expansion-panel-header>
 
-              <tr *ngFor="let attr of book.attributes">
-                <th>{{attr.name}}</th>
-                <td>{{attr.value}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </mat-expansion-panel>
-
-        <!--Index Panel-->
-        <mat-expansion-panel *ngIf="book.index !== undefined && book.index != ''">
-          <!--Header-->
-          <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
-            <mat-panel-title>
-              <span class="icon-plus"></span> Índice
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-
-          <div [innerHTML]="book.index"></div>
-        </mat-expansion-panel>
-
-        <!--Key Points Panel-->
-        <mat-expansion-panel *ngIf="book.keyPoints !== undefined && book.keyPoints != ''">
-          <!--Header-->
-          <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
-            <mat-panel-title>
-              <span class="icon-plus"></span> Puntos clave
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-
-          <div [innerHTML]="book.keyPoints"></div>
-        </mat-expansion-panel>
-
-        <!--Author Panel-->
-        <mat-expansion-panel *ngIf="book.author !== undefined && book.author.length > 0">
-          <!--Header-->
-          <mat-expansion-panel-header expandedHeight="53px" collapsedHeight="53px">
-            <mat-panel-title>
-              <span class="icon-plus"></span> Autor
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-
-          <div class="row author-item" *ngFor="let author of book.author">
-            <!--Image-->
-            <div class="col s12 m3 l3 image">
-              <a routerLink="/autor/{{author.slug}}">
-                <img *ngIf="author.image !== undefined && author.image != ''" src="{{author.image}}" />
-              </a>
+            <div class="row author-item" *ngFor="let author of book.author">
+              <!--Image-->
+              <div class="col s12 m3 l3 image">
+                <a routerLink="/autor/{{author.slug}}">
+                  <img *ngIf="author.image !== undefined && author.image != ''" src="{{author.image}}" />
+                </a>
+              </div>
+              <!--Information-->
+              <div class="col s12 m9 l9 info">
+                <h3 class="name">{{author.name}}</h3>
+                <p class="description" [innerHTML]="author.description"></p>
+                <p><a routerLink="/autor/{{author.slug}}" class="button primary">Ver libros de este autor</a></p>
+              </div>
             </div>
-            <!--Information-->
-            <div class="col s12 m9 l9 info">
-              <h3 class="name">{{author.name}}</h3>
-              <p class="description" [innerHTML]="author.description"></p>
-              <p><a routerLink="/autor/{{author.slug}}" class="button primary">Ver libros de este autor</a></p>
-            </div>
-          </div>
-        </mat-expansion-panel>
+          </mat-expansion-panel>
 
 
-      </mat-accordion>
+        </mat-accordion>
+      </div>
     </div>
+    
   </div>
   
 </div>
@@ -233,7 +254,7 @@
   </div>
   <div class="page-container">
     <!--If specialty exists-->
-    <books-carousel [specialty]="book.specialty[1]._id" [itemsPerRow]="4" [orderBy]="'title'" [order]="1" [maxShowItems]="12"></books-carousel>
+    <books-carousel *ngIf="related.show" [specialty]="related.specialty" [itemsPerRow]="4" [orderBy]="'title'" [order]="1" [maxShowItems]="12"></books-carousel>
   </div>
 </div>
 
