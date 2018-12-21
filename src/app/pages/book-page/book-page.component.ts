@@ -105,7 +105,7 @@ export class BookPageComponent implements OnInit {
       .map(resp => resp.json())
       .subscribe(
         data => this.setBookInfoPage(data),
-        err => this.exists = false
+        err => this._router.navigate(['/'])
       )
   }
 

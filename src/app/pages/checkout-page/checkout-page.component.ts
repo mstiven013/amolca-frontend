@@ -124,7 +124,7 @@ export class CheckoutPageComponent implements OnInit {
         lastname: frm.value.lastname,
         email: frm.value.email,
         address: frm.value.address,
-        country: frm.value.country,
+        country: this.countrySelected,
         state: frm.value.city,
         phone: frm.value.mobile,
         aditional: frm.value.aditionals
@@ -134,7 +134,7 @@ export class CheckoutPageComponent implements OnInit {
         lastname: frm.value.lastname,
         email: frm.value.email,
         address: frm.value.address,
-        country: frm.value.country,
+        country: this.countrySelected,
         state: frm.value.city,
         phone: frm.value.mobile,
         aditional: frm.value.aditionals
