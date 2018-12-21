@@ -36,7 +36,7 @@
     @include calc(max-height, '100vh - 180px');
     @include calc(max-width, '41.6666666667% - 0.75rem');
     position: absolute;
-    @include transition('all 0.3s ease');
+    //@include transition('all 0.3s ease');
     width: 100%;
 
     img {
@@ -141,6 +141,31 @@
     margin: 20px 0px;
 }
 
+.cont-specialties {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 16px;
+    font-weight: bold;
+    justify-content: flex-start;
+}
+    .cont-specialties p {
+        display: inline-block;
+        margin: 0px 7px;
+    }
+        .cont-specialties p img {
+            display: inline-block;
+            max-width: 43px;
+            vertical-align: middle;
+        }
+
+.cont-versions {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .versions {
     font-size: 16px;
     font-weight: bold;
@@ -173,6 +198,26 @@
             background-color: $primary-color;
             border-color: $primary-color;
             color: $white-color;
+        }
+
+.shared {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 16px;
+    margin: 0px 0px 0px 20px;
+}
+    .shared a {
+        display: inline-block;
+        color: $gray-dark;
+        line-height: 47px;
+        margin: 0px 5px;
+    }
+        .shared img {
+            cursor: pointer;
+            display: block;
+            max-height: 37px;
+            margin: 0px;
         }
 
 .add-to-cart {
@@ -241,7 +286,7 @@
     z-index: 100;
     
     .page-container {
-        margin-bottom: 40px;
+        padding-bottom: 40px;
     }
 }
 

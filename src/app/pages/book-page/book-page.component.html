@@ -78,29 +78,47 @@
             </ng-template>
           </ng-template>
         </div>
+
+        <!--Specialties icons-->
+        <div class="cont-specialties">
+          Especialidades:
+          <ng-template ngFor let-specialty [ngForOf]="book.specialty">
+            <p *ngIf="specialty.slug !== 'medicina' && specialty.slug !== 'odontologia'">
+              <img class="specialty-icon" src="{{ specialty.icon }}" alt=""> {{specialty.title}}
+            </p>
+          </ng-template>
+        </div>
   
         <!--Book versions-->
-        <p *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
-          Disponible en: 
-          <ng-template ngFor let-v [ngForOf]="book.version">
-  
-            <!--If version is PAPER-->
-            <a *ngIf="v == 'PAPER'" matTooltip="Papel" [matTooltipPosition]="tooltipPosition" class="version-btn">
-              <span class="icon-book"></span> Papel
+        <div class="cont-versions">
+          <p *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
+            Disponible en: 
+            <ng-template ngFor let-v [ngForOf]="book.version">
+
+              <!--If version is PAPER-->
+              <a *ngIf="v == 'PAPER'" matTooltip="Papel" [matTooltipPosition]="tooltipPosition" class="version-btn">
+                <span class="icon-book"></span> Papel
+              </a>
+
+              <!--If version is EBOOK-->
+              <a *ngIf="v == 'EBOOK'" matTooltip="Ebook" [matTooltipPosition]="tooltipPosition" class="version-btn">
+                <span class="icon-document-text"></span> Ebook
+              </a>
+
+              <!--If version is VIDEO-->
+              <a *ngIf="v == 'VIDEO'" matTooltip="Vídeo" [matTooltipPosition]="tooltipPosition" class="version-btn">
+                <span class="icon-media-play"></span> Vídeo
+              </a>
+
+            </ng-template>
+          </p>
+          <p class="shared">
+            <a href="https://wa.me/?text={{ shared.wpp.msg }}" target="_blank">
+              <img src="https://amolca.webussines.com/uploads/images/whatsapp-logo.png" alt="">
             </a>
-  
-            <!--If version is EBOOK-->
-            <a *ngIf="v == 'EBOOK'" matTooltip="Ebook" [matTooltipPosition]="tooltipPosition" class="version-btn">
-              <span class="icon-document-text"></span> Ebook
-            </a>
-  
-            <!--If version is VIDEO-->
-            <a *ngIf="v == 'VIDEO'" matTooltip="Vídeo" [matTooltipPosition]="tooltipPosition" class="version-btn">
-              <span class="icon-media-play"></span> Vídeo
-            </a>
-  
-          </ng-template>
-        </p>
+            <a>Compartir</a>
+          </p>
+      </div>
   
         <!--Cart button-->
         <ng-template ngFor let-country [ngForOf]="book.countries">
