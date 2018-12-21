@@ -88,7 +88,7 @@ export class BookPageComponent implements OnInit {
 
   getCountry() {
     let c = localStorage.getItem('C0uN7r1');
-    //this.currentCountry = c;
+    this.currentCountry = 'PERU';
   }
 
   //Get Book info by SLUG
