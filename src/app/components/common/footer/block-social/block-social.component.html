@@ -1,6 +1,8 @@
 <div *ngIf="showInfo || dummy">
     <p class="title">Amolca Perú</p>
     <p *ngFor="let item of contact">
-        <span *ngIf="item.state === true" id="{{item.name}}">{{item.data}}</span>
+        <a href="{{item.link}}" target="{{item.target}}">
+            <span *ngIf="item.state === true" id="{{item.name}}" [innerHTML]="item.data"></span>
+        </a>
     </p>
 </div>
