@@ -26,20 +26,22 @@ export class HeaderComponent implements OnInit {
     if(c === null || c === undefined) {
       jQuery.getJSON('http://ip-api.com/json?callback', function(data) {
         localStorage.setItem('C0uN7r1', data.country.toUpperCase());
+
+        c = localStorage.getItem('C0uN7r1')
+
+        /*Casa matriz redirecciones*/
+        if(c == 'COLOMBIA' && window.location.href.indexOf("amolca.com.co") < 1) {
+          window.location.href = 'http://www.amolca.com.co';
+        } else if(c == 'ARGENTINA' && window.location.href.indexOf("amolca.com.ar") < 1) {
+          window.location.href = 'http://www.amolca.com.ar';
+        } else  if(c == 'PERU' && window.location.href.indexOf("amolca.com.pe") < 1) {
+          window.location.href = 'http://www.amolca.com.pe';
+        } else if(c == 'DOMINICAN REPUBLIC' && window.location.href.indexOf("amolca.com.do") < 1) {
+          window.location.href = 'http://www.amolca.com.do';
+        }
       });
     }
-    
-    /*Casa matriz redirecciones*/
-    if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.co") < 1) {
-      window.location.href = 'http://www.amolca.com.co';
-    } else if(c === 'ARGENTINA' && window.location.href.indexOf("amolca.com.ar") < 1) {
-      window.location.href = 'http://www.amolca.com.ar';
-    } else  if(c === 'PERU' && window.location.href.indexOf("amolca.com.pe") < 1) {
-      window.location.href = 'http://www.amolca.com.pe';
-    } else if(c === 'DOMINICAN REPUBLIC' && window.location.href.indexOf("amolca.com.do") < 1) {
-      window.location.href = 'http://www.amolca.com.do';
-    }
-    
+
   }
 
   //Use this function when the API "ip-api.com" not works
