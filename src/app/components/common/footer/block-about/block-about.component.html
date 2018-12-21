@@ -1,4 +1,8 @@
 <p class="title">Acerca de</p>
 <div *ngFor="let item of about;">
-    <p *ngIf="item.state === true"><a routerLink="/{{item.link}}">{{item.name}}</a></p>
+    <p *ngIf="item.state === 'active'">
+        <a *ngIf="item.link && item.fragment" href="{{item.link}}#{{item.fragment}}">{{item.name}}</a>
+        <a *ngIf="item.link && !item.fragment" [routerLink]="[item.link]">{{item.name}}</a>
+        <a *ngIf="!item.link">{{item.name}}</a>
+    </p>
 </div>
