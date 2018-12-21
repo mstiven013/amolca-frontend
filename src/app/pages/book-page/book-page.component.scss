@@ -36,7 +36,7 @@
     @include calc(max-height, '100vh - 180px');
     @include calc(max-width, '41.6666666667% - 0.75rem');
     position: absolute;
-    @include transition('all 0.3s ease');
+    //@include transition('all 0.3s ease');
     width: 100%;
 
     img {
@@ -140,6 +140,24 @@
     font-weight: bold;
     margin: 20px 0px;
 }
+
+.cont-specialties {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 16px;
+    font-weight: bold;
+    justify-content: flex-start;
+}
+    .cont-specialties p {
+        display: inline-block;
+        margin: 0px 7px;
+    }
+        .cont-specialties p img {
+            display: inline-block;
+            max-width: 43px;
+            vertical-align: middle;
+        }
 
 .cont-versions {
     display: flex;
@@ -267,7 +285,7 @@
     position: relative;
     
     .page-container {
-        margin-bottom: 40px;
+        padding-bottom: 40px;
     }
 }
 

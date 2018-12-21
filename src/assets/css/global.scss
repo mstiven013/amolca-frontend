@@ -799,6 +799,8 @@ form .button {
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 60px;
+    position: relative;
+    z-index: 1000;
 }
 
     /*Footer row's*/
@@ -876,6 +878,8 @@ form .button {
     justify-content: flex-start;
     padding-left: 5%;
     padding-right: 5%;
+    position: relative;
+    z-index: 1000;
 }
     #bottom-bar .item {
         padding: 17px 25px;

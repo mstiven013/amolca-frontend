@@ -13,7 +13,11 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.getGeolocalization();
+    localStorage.removeItem('C0uN7r1');
+    let me = this;
+    setTimeout(function() {
+      me.getGeolocalization();
+    }, 200);
   }
 
   getGeolocalization() {
@@ -24,6 +28,18 @@ export class HeaderComponent implements OnInit {
         localStorage.setItem('C0uN7r1', data.country.toUpperCase());
       });
     }
+    
+    /*Casa matriz redirecciones*/
+    if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.co") < 1) {
+      window.location.href = 'http://www.amolca.com.co';
+    } else if(c === 'ARGENTINA' && window.location.href.indexOf("amolca.com.ar") < 1) {
+      window.location.href = 'http://www.amolca.com.ar';
+    } else  if(c === 'PERU' && window.location.href.indexOf("amolca.com.pe") < 1) {
+      window.location.href = 'http://www.amolca.com.pe';
+    } else if(c === 'DOMINICAN REPUBLIC' && window.location.href.indexOf("amolca.com.do") < 1) {
+      window.location.href = 'http://www.amolca.com.do';
+    }
+    
   }
 
   //Use this function when the API "ip-api.com" not works
