@@ -1,10 +1,13 @@
-<ngu-carousel [inputs]="banner" (carouselLoad)="myfunc($event)" [dataSource]="slider" class="banner-slides">
+<ngu-carousel *ngIf="loadBanner" [inputs]="banner" (carouselLoad)="myfunc($event)" [dataSource]="slider" class="banner-slides">
 
-  <ngu-item *nguCarouselDef="let slide">
+  <ngu-item *nguCarouselDef="let slide; let j = index" class="item-{{j}}" [class.show]="active == j">
 
-    <div class="slide" [style.background-image]="'url(' + pathImg + slide.image + ')'" [style.background-attachment]="slide.bgAttach">
+    <div class="slide">
+      <div class="bg-item" [style.background-image]="'url(' + slide.image + ')'" [style.background-attachment]="slide.bgAttach"></div>
       <div class="content" [innerHTML]="slide.text | safeHtml"></div>
-      <img src="{{pathImg + slide.image}}" class="only-mobile" alt="">
+
+      <img src="{{slide.image}}" class="hidden-img" alt="">
+      <img src="{{slide.image}}" class="visible-img" alt="">
     </div>
 
   </ngu-item>
