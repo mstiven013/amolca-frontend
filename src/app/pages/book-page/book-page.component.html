@@ -15,7 +15,7 @@
         <div class="visible-img image-container">
           <!--Show if book images exists-->
           <img *ngIf="book.image !== undefined" class="materialboxed" src="{{book.image}}" alt="">
-                  
+                    
           <img *ngIf="book.image === undefined || book.image == ''" class="materialboxed" src="assets/img/common/no-image.jpg" alt="">
       
           <!--Add to cart and price-->
@@ -30,11 +30,11 @@
               </div>
             </ng-template>
           </ng-template>
-      
+
           <!--Test interface-->
           <div *ngIf="dummy">
             <ng-template ngFor let-country [ngForOf]="book.countries">
-              <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == 'COLOMBIA'">
+              <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == 'ARGENTINA'">
                 <div class="scroll-info">
                   <p class="price" *ngIf="book.price !== 0">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
                   <div class="add-to-cart">
@@ -45,14 +45,15 @@
               </ng-template>
             </ng-template>
           </div>
+          
         </div>
       </div>
-  
+
       <!--Summary Book column-->
       <div class="col s12 l7 summary-book">
         <!--Book name-->
         <h1 class="name">{{book.title}}</h1>
-  
+
         <!--Book author-->
         <h3 class="author" *ngIf="book.author !== undefined && book.author.length > 0">
           <span *ngFor="let author of book.author; let i = index;">
@@ -62,46 +63,64 @@
             <span *ngIf="i < book.author.length - 1"> - </span>
           </span>
         </h3>
-  
+
         <!--Book price-->
         <ng-template ngFor let-country [ngForOf]="book.countries">
           <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == currentCountry && !dummy">
             <p class="price">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
           </ng-template>
         </ng-template>
-  
+
         <!--Test interface-->
         <div *ngIf="dummy">
           <ng-template ngFor let-country [ngForOf]="book.countries">
-            <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == 'COLOMBIA'">
+            <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK' && country.name == 'ARGENTINA'">
               <p class="price">{{country.price | currency:'COP':'symbol-narrow':'4.0-1' | replaceCurrencySeparator:',':'.'}}</p>
             </ng-template>
           </ng-template>
         </div>
-  
-        <!--Book versions-->
-        <p *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
-          Disponible en: 
-          <ng-template ngFor let-v [ngForOf]="book.version">
-  
-            <!--If version is PAPER-->
-            <a *ngIf="v == 'PAPER'" matTooltip="Papel" [matTooltipPosition]="tooltipPosition" class="version-btn">
-              <span class="icon-book"></span> Papel
-            </a>
-  
-            <!--If version is EBOOK-->
-            <a *ngIf="v == 'EBOOK'" matTooltip="Ebook" [matTooltipPosition]="tooltipPosition" class="version-btn">
-              <span class="icon-document-text"></span> Ebook
-            </a>
-  
-            <!--If version is VIDEO-->
-            <a *ngIf="v == 'VIDEO'" matTooltip="Vídeo" [matTooltipPosition]="tooltipPosition" class="version-btn">
-              <span class="icon-media-play"></span> Vídeo
-            </a>
-  
+
+        <!--Specialties icons-->
+        <div class="cont-specialties">
+          Especialidades:
+          <ng-template ngFor let-specialty [ngForOf]="book.specialty">
+            <p *ngIf="specialty.slug !== 'medicina' && specialty.slug !== 'odontologia'">
+              <img class="specialty-icon" src="{{ specialty.icon }}" alt=""> {{specialty.title}}
+            </p>
           </ng-template>
-        </p>
-  
+        </div>
+
+        <!--Book versions-->
+        <div class="cont-versions">
+          <p *ngIf="book.version !== undefined && book.version.length > 0" class="versions">
+            Disponible en: 
+            <ng-template ngFor let-v [ngForOf]="book.version">
+
+              <!--If version is PAPER-->
+              <a *ngIf="v == 'PAPER'" matTooltip="Papel" [matTooltipPosition]="tooltipPosition" class="version-btn">
+                <span class="icon-book"></span> Papel
+              </a>
+
+              <!--If version is EBOOK-->
+              <a *ngIf="v == 'EBOOK'" matTooltip="Ebook" [matTooltipPosition]="tooltipPosition" class="version-btn">
+                <span class="icon-document-text"></span> Ebook
+              </a>
+
+              <!--If version is VIDEO-->
+              <a *ngIf="v == 'VIDEO'" matTooltip="Vídeo" [matTooltipPosition]="tooltipPosition" class="version-btn">
+                <span class="icon-media-play"></span> Vídeo
+              </a>
+
+            </ng-template>
+          </p>
+          <p class="shared">
+            <a href="https://wa.me/?text={{ shared.wpp.msg }}" target="_blank">
+              <img src="https://amolca.webussines.com/uploads/images/whatsapp-logo.png" alt="">
+            </a>
+            <a>Compartir</a>
+          </p>
+        </div>
+
         <!--Cart button-->
         <ng-template ngFor let-country [ngForOf]="book.countries">
           <ng-template [ngIf]="country.price > 0 && country.state == 'STOCK'">
@@ -111,20 +130,20 @@
             </div>
           </ng-template>
         </ng-template>
-  
+
         <!--Test interface-->
         <div *ngIf="dummy" class="add-to-cart">
           <input type="number" [(ngModel)]="qtyInput" placeholder="Cantidad...">
           <a class="button danger waves-effect waves-light" (click)="addToCart(book, 250000, qtyInput)">Añadir al carrito</a>
         </div>
-  
+
         <div *ngIf="notification.show" class="card-panel notification" [style.background-color]="notification.bg">
           <p>{{notification.msg}}</p>
         </div>
-  
+
         <!--Material Accordion-->
         <mat-accordion class="book-accordion">
-  
+
           <!--Description Panel-->
           <mat-expansion-panel *ngIf="book.description !== undefined && book.description != ''" [expanded]="changeFooterOffsetTop()">
             <!--Header-->
@@ -133,10 +152,10 @@
                 <span class="icon-plus"></span> Descripción
               </mat-panel-title>
             </mat-expansion-panel-header>
-  
+
             <div [innerHTML]="book.description"></div>
           </mat-expansion-panel>
-  
+
           <!--Data sheet Panel-->
           <mat-expansion-panel *ngIf="(book.isbn !== undefined && book.isbn != '') || (book.attributes !== undefined && book.attributes.length > 0)">
             <!--Header-->
@@ -152,17 +171,17 @@
                   <th>ISBN:</th>
                   <td>{{book.isbn}}</td>
                 </tr>
-  
+
                 <tr *ngIf="book.publicationYear !== undefined && book.publicationYear != ''">
                   <th>Año de publicación:</th>
                   <td>{{book.publicationYear}}</td>
                 </tr>
-  
+
                 <tr *ngIf="book.numberPages !== undefined && book.numberPages != ''">
                   <th>Páginas:</th>
                   <td>{{book.numberPages}}</td>
                 </tr>
-  
+
                 <tr *ngFor="let attr of book.attributes">
                   <th>{{attr.name}}</th>
                   <td>{{attr.value}}</td>
@@ -170,7 +189,7 @@
               </tbody>
             </table>
           </mat-expansion-panel>
-  
+
           <!--Index Panel-->
           <mat-expansion-panel *ngIf="book.index !== undefined && book.index != ''">
             <!--Header-->
@@ -179,10 +198,10 @@
                 <span class="icon-plus"></span> Índice
               </mat-panel-title>
             </mat-expansion-panel-header>
-  
+
             <div [innerHTML]="book.index"></div>
           </mat-expansion-panel>
-  
+
           <!--Key Points Panel-->
           <mat-expansion-panel *ngIf="book.keyPoints !== undefined && book.keyPoints != ''">
             <!--Header-->
@@ -191,10 +210,10 @@
                 <span class="icon-plus"></span> Puntos clave
               </mat-panel-title>
             </mat-expansion-panel-header>
-  
+
             <div [innerHTML]="book.keyPoints"></div>
           </mat-expansion-panel>
-  
+
           <!--Author Panel-->
           <mat-expansion-panel *ngIf="book.author !== undefined && book.author.length > 0">
             <!--Header-->
@@ -203,7 +222,7 @@
                 <span class="icon-plus"></span> Autor
               </mat-panel-title>
             </mat-expansion-panel-header>
-  
+
             <div class="row author-item" *ngFor="let author of book.author">
               <!--Image-->
               <div class="col s12 m3 l3 image">
@@ -219,8 +238,8 @@
               </div>
             </div>
           </mat-expansion-panel>
-  
-  
+
+
         </mat-accordion>
       </div>
     </div>

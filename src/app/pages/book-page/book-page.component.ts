@@ -7,6 +7,7 @@ import { Meta } from '../../../../node_modules/@angular/platform-browser';
 import { GetCartService } from '../../services/cart/get-cart.service';
 import { CartService } from '../../services/cart/cart.service';
 import { FormControl } from '@angular/forms';
+import { Location } from '@angular/common';
 
 declare var jQuery: any;
 
@@ -46,6 +47,10 @@ export class BookPageComponent implements OnInit {
   footerOffset: any = jQuery('.footer').offset().top - 40;
   mainHigher: Boolean = false;
 
+  shared = {
+    wpp: { msg: '' }
+  }
+
   constructor(
     //Meta info for this book
     private _appComponent: AppComponent,
@@ -60,7 +65,8 @@ export class BookPageComponent implements OnInit {
 
     //Router services
     private _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _location: Location
   ) { }
 
   ngOnInit() {
@@ -88,7 +94,7 @@ export class BookPageComponent implements OnInit {
 
   getCountry() {
     let c = localStorage.getItem('C0uN7r1');
-    //this.currentCountry = c;
+    this.currentCountry = 'ARGENTINA';
   }
 
   //Get Book info by SLUG
@@ -97,7 +103,7 @@ export class BookPageComponent implements OnInit {
       .map(resp => resp.json())
       .subscribe(
         data => this.setBookInfoPage(data),
-        err => this.exists = false
+        err => this._router.navigate(['/'])
       )
   }
 
@@ -153,13 +159,13 @@ export class BookPageComponent implements OnInit {
       let DistanciaScroll = jQuery(window).scrollTop();
       let ContenedorPrincipal = jQuery('.single-book').offset().top;
       let LibrosRelacionados = jQuery('.related-products').offset().top;
-    
+
       //Variables de altura
       let AlturaImagenFija = jQuery('.image-container.visible-img').height();
       let AlturaCabezote = jQuery('.header').height() + jQuery('.top-bar').height();
       let AlturaContenidoFijo = AlturaImagenFija + AlturaCabezote;
       let MaximoDeScroll = LibrosRelacionados - AlturaContenidoFijo - 40;
-    
+
       if(DistanciaScroll < ContenedorPrincipal) {
 
         jQuery('.image-container.visible-img').css({
@@ -172,7 +178,7 @@ export class BookPageComponent implements OnInit {
 
         jQuery('.scroll-info').fadeOut();
     
-      } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll < MaximoDeScroll) {
+      } else if(DistanciaScroll > ContenedorPrincipal) {
 
         jQuery('.image-container.visible-img').css({
           opacity: 1,
@@ -184,16 +190,6 @@ export class BookPageComponent implements OnInit {
 
         jQuery('.scroll-info').fadeIn();
     
-      } else if(DistanciaScroll > ContenedorPrincipal && DistanciaScroll > MaximoDeScroll) {
-
-        jQuery('.image-container.visible-img').css({
-          opacity: 1,
-          position: 'absolute',
-          left: 0,
-          top: 'auto',
-          bottom: 0
-        }).removeClass('scroll-fixed').addClass('scroll-waiting')
-
       }
       
     }
