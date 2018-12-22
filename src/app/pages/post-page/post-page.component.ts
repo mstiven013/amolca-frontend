@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetPostService } from '../../services/post/get-post.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 
 @Component({
@@ -19,7 +19,8 @@ export class PostPageComponent implements OnInit {
   constructor(
     private _appComponent: AppComponent,
     private _getPostService: GetPostService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
   ) { }
 
   ngOnInit() {
@@ -35,7 +36,7 @@ export class PostPageComponent implements OnInit {
       .map(resp => resp.json())
       .subscribe(
         data => this.setPostInfo(data),
-        err => this.exists = false
+        err => this._router.navigate(['/'])
       )
   }
 
