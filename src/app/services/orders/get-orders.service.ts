@@ -30,7 +30,17 @@ export class GetOrdersService {
     let headers = new Headers({'Content-type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this._http.post(`${config.API_URL}/orders`, order, options);
+    let body = {
+      order: order,
+      country: {
+        cc: config.email.cc,
+        from: config.email.from,
+        subject: config.email.subject,
+        domain: config.email.domain
+      }
+    }
+
+    return this._http.post(`${config.API_URL}/orders`, body, options);
   }
 
 }
