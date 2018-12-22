@@ -122,6 +122,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { LoopLoaderComponent } from './components/books/loop-loader/loop-loader.component';
 import { ResponsePageComponent } from './pages/response-page/response-page.component';
 import { BannersComponent } from './components/common/banners/banners.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 
 //Routes var
 const appRoutes: Routes = [
@@ -211,6 +212,7 @@ const appRoutes: Routes = [
     LoopLoaderComponent,
     ResponsePageComponent,
     BannersComponent,
+    ContactPageComponent,
   ],
   imports: [
     //Angular libraries

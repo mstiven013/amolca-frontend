@@ -12,5 +12,10 @@
       <login-btn *ngIf="!userIsLogged" [view]="this.loginBtnView"></login-btn>
       <user-btn *ngIf="userIsLogged" [user]="userInfo" [view]="'full'"></user-btn>
     </li>
+
+    <li>
+      <a id="contact" routerLink="contacto">
+        <i class="material-icons">email</i> Contacto</a>
+    </li>
   </ul>
 </div>
