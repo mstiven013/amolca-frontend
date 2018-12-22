@@ -14,10 +14,10 @@ export class BlockHelpComponent implements OnInit {
 
   //Test help vars
   help = [
-    { name: '¿Cómo comprar?', link: 'como-comprar', state: 'active' },
-    { name: 'Preguntas frecuentes', link: 'preguntas-frecuentes', state: 'active' },
-    { name: 'Información de envío', link: 'terminos-y-condiciones/#envios', state: 'active' },
-    { name: 'Medios de pago', link: 'terminos-y-condiciones/#pagos', state: 'active' },
+    { name: '¿Cómo comprar?', /*link: 'como-comprar',*/ state: 'active' },
+    { name: 'Preguntas frecuentes', /*link: 'preguntas-frecuentes',*/ state: 'active' },
+    { name: 'Información de envío',/* link: 'terminos-y-condiciones', fragment: 'envios',*/ state: 'active' },
+    { name: 'Medios de pago', /*link: 'terminos-y-condiciones', fragment: 'pagos',*/ state: 'active' },
     { name: 'Contacto', link: 'contacto', state: 'active' }
   ]
 

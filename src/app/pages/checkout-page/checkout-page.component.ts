@@ -18,7 +18,7 @@ export class CheckoutPageComponent implements OnInit {
   checkoutform: FormGroup;
   user = { _id: '', name: '', lastname: '', phone: '', mobile: '', email: '', country: '' }
   loadCountries: Boolean = false;
-  countrySelected: any = 'Colombia';
+  countrySelected: any = 'Panamá';
   countries: any = [];
 
   //Declare shipping variable
@@ -67,7 +67,6 @@ export class CheckoutPageComponent implements OnInit {
       'phone': new FormControl(this.user.phone),
       'mobile': new FormControl(this.user.mobile, [ Validators.required ]),
       'email': new FormControl(this.user.email, [ Validators.required ]),
-      'country': new FormControl(this.countrySelected, [ Validators.required ]),
       'city': new FormControl('', [ Validators.required ]),
       'address': new FormControl('', [ Validators.required ]),
       'aditionals': new FormControl('', []),
@@ -124,7 +123,7 @@ export class CheckoutPageComponent implements OnInit {
         lastname: frm.value.lastname,
         email: frm.value.email,
         address: frm.value.address,
-        country: frm.value.country,
+        country: this.countrySelected,
         state: frm.value.city,
         phone: frm.value.mobile,
         aditional: frm.value.aditionals
@@ -134,7 +133,7 @@ export class CheckoutPageComponent implements OnInit {
         lastname: frm.value.lastname,
         email: frm.value.email,
         address: frm.value.address,
-        country: frm.value.country,
+        country: this.countrySelected,
         state: frm.value.city,
         phone: frm.value.mobile,
         aditional: frm.value.aditionals
@@ -151,7 +150,7 @@ export class CheckoutPageComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data)
-          this.tucomprapayment(data);
+          //this.tucomprapayment(data);
         },
         err => {
           console.log('error')

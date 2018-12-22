@@ -2,8 +2,58 @@
 @import 'mixins.scss';
 
 ngu-item, ngu-item.item {
-    height: 400px;
     width: 100% !important;
+    z-index: 1;
+}
+ ngu-item.item-0 {
+    img.visible-img {
+        top: 100%;
+        @include transition('all 1s ease');
+    }
+     &.show {
+        z-index: 3;
+        img.visible-img {
+            top: 0%;
+        }
+    }
+}
+ngu-item.item-1 {
+    img.visible-img {
+        left: 100%;
+        @include transition('all 1s ease');
+    }
+     &.show {
+        z-index: 3;
+         img.visible-img {
+            left: 0%;
+        }
+    }
+}
+ ngu-item.item-2 {
+    img.visible-img {
+        top: -100%;
+        @include transition('all 1s ease');
+    }
+     &.show {
+        z-index: 3;
+         img.visible-img {
+            top: 0px;
+        }
+    }
+}
+ngu-item.item-3 {
+    img.visible-img {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(2);
+        @include transition('all 1s ease');
+    }
+     &.show {
+        z-index: 3;
+         img.visible-img {
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
 }
 
 .leftRs, .rightRs {
@@ -19,6 +69,7 @@ ngu-item, ngu-item.item {
     @include calc(top, '50% - 35px');
     @include transition('all 0.4s ease');
     width: 54px;
+    z-index: 100;
 }
     .leftRs {
         background-image: url('/assets/img/common/left-carousel-btn.png');
@@ -33,26 +84,55 @@ ngu-item, ngu-item.item {
     }
 
 .slide {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     height: 100%;
+    position: relative;
+
+    .bg-item {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        bottom: 0px;
+        -webkit-filter: blur(8px);
+        filter: blur(8px);
+        left: 0px;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        z-index: 1;
+    }
+     img.visible-img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        z-index: 2;
+    }
+     img.hidden-img {
+        visibility: hidden;
+        opacity: 0;
+        width: 100%;
+    }
 }
-    .content {
-        margin-top: -59px;
+
+@media screen and (max-width: 980px) {
+    ngu-item, ngu-item.item {
+        background-image: none;
+        height: auto;
     }
 
-@media screen and (max-width: 768px) {
-    ngu-item, ngu-item.item {
-        height: 400px;
+    .slide {
+        img.only-mobile {
+            visibility: visible;
+            opacity: 1;
+        }
     }
 
     .leftRs, .rightRs {
         height: 40px;
-        @include calc(top, '50% - 60px');
+        @include calc(top, '50% - 20px');
         width: 32px;
     }
         .leftRs {
@@ -61,10 +141,4 @@ ngu-item, ngu-item.item {
         .rightRs {
             right: 5px;
         }
-}
-
-@media screen and (max-width: 576px) {
-    ngu-item, ngu-item.item {
-        height: 350px;
-    }
 }

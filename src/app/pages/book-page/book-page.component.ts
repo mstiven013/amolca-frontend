@@ -7,6 +7,7 @@ import { Meta } from '../../../../node_modules/@angular/platform-browser';
 import { GetCartService } from '../../services/cart/get-cart.service';
 import { CartService } from '../../services/cart/cart.service';
 import { FormControl } from '@angular/forms';
+import { Location } from '@angular/common';
 
 declare var jQuery: any;
 
@@ -30,6 +31,8 @@ export class BookPageComponent implements OnInit {
   exists = true;
   aCountry: any;
 
+  related = { specialty: '', show: false };
+
   dummy: Boolean = false;
 
   //Cart btn vars
@@ -43,6 +46,10 @@ export class BookPageComponent implements OnInit {
 
   footerOffset: any = jQuery('.footer').offset().top - 40;
   mainHigher: Boolean = false;
+
+  shared = {
+    wpp: { msg: '' }
+  }
 
   constructor(
     //Meta info for this book
@@ -58,7 +65,8 @@ export class BookPageComponent implements OnInit {
 
     //Router services
     private _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _location: Location
   ) { }
 
   ngOnInit() {
@@ -68,17 +76,19 @@ export class BookPageComponent implements OnInit {
       this.loader.show = true;
       this.showPageLoader = true;
 
+      this.shared.wpp.msg = '¡Hola!, echale un vistazo a este libro: ' + window.location.href;
+
       this.getCountry();
 
       this.getBookInfo(this.bookActive);
-      this.scrollInteraction();
+      this.ScrollInteraction();
     })
 
-    this.scrollInteraction();
+    this.ScrollInteraction();
   }
 
   ngAfterViewInit() {
-    this.scrollInteraction();
+    this.ScrollInteraction();
     jQuery(document).ready(function() {
       jQuery('.materialboxed').materialbox();
     });
@@ -86,7 +96,7 @@ export class BookPageComponent implements OnInit {
 
   getCountry() {
     let c = localStorage.getItem('C0uN7r1');
-    this.currentCountry = c;
+    this.currentCountry = 'PANAMA';
   }
 
   //Get Book info by SLUG
@@ -95,7 +105,7 @@ export class BookPageComponent implements OnInit {
       .map(resp => resp.json())
       .subscribe(
         data => this.setBookInfoPage(data),
-        err => this.exists = false
+        err => this._router.navigate(['/'])
       )
   }
 
@@ -104,6 +114,8 @@ export class BookPageComponent implements OnInit {
     this.book = b;
     this.loader.show = false;
     this.showPageLoader = false;
+    this.related.specialty = this.book.specialty[1]._id;
+    this.related.show = true;
 
     //Set meta Title
     if(this.book.metaTitle && this.book.metaTitle !== '') {
@@ -120,53 +132,69 @@ export class BookPageComponent implements OnInit {
     }
   }
 
-  changeFooterOffsetTop() {
+  collapsibleClosed() {
     let me = this;
-    this.footerOffset = jQuery('.footer').offset().top;
-    if(jQuery('.main').height() > (me.footerOffset - 180 - jQuery('#image-container').height() - jQuery('.related-products').height()) ) {
-      me.mainHigher = true;
-    }
+    setTimeout(function(){
+      me.ScrollInteractionFunction();
+    }, 250)
   }
 
-  scrollInteraction() {
+  changeFooterOffsetTop() {
     let me = this;
-    jQuery(document).ready(function(){
+    setTimeout(function(){
+      me.ScrollInteractionFunction();
+    }, 250)
+  }
+  
+  ScrollInteraction() {
 
-      let imgCont = jQuery('#image-container');
-      let relBooks = jQuery('.related-products');
-
-      if(jQuery('.main').height() > (me.footerOffset - 180 - imgCont.height()) ) {
-        me.mainHigher = true;
-      }
-
-      jQuery(window).scroll(function(){
-        let scroll = jQuery(window).scrollTop();
-
-        if(me.mainHigher) {
-          //If show full image
-          if(scroll < 100) {
-            jQuery('#image-container').removeClass('scroll-waiting');
-            jQuery('#image-container').removeClass('scroll-fixed');
-            jQuery('#image-container .scroll-info').fadeOut();
-          }
-
-          //Position fixed 
-          if(scroll >= 100) {
-            jQuery('#image-container .scroll-info').fadeIn();
-            jQuery('#image-container').removeClass('scroll-waiting');
-            jQuery('#image-container').addClass('scroll-fixed');
-          }
-
-          //Waiting scroll while looking footer
-          if(scroll > 100 && scroll >= (me.footerOffset - 180 - jQuery('#image-container').height() - relBooks.height()) ) {
-            jQuery('#image-container').removeClass('scroll-fixed');
-            jQuery('#image-container').addClass('scroll-waiting');
-          }
-        }
-
-      });
-
+    let me = this;
+    //Function al hacer scroll
+    jQuery(window).scroll(function() {
+      me.ScrollInteractionFunction();
     });
+  }
+  
+  ScrollInteractionFunction() {
+    if(jQuery('.single-book').length > 0) {
+      //Variables de distancias
+      let DistanciaScroll = jQuery(window).scrollTop();
+      let ContenedorPrincipal = jQuery('.single-book').offset().top;
+      let LibrosRelacionados = jQuery('.related-products').offset().top;
+    
+      //Variables de altura
+      let AlturaImagenFija = jQuery('.image-container.visible-img').height();
+      let AlturaCabezote = jQuery('.header').height() + jQuery('.top-bar').height();
+      let AlturaContenidoFijo = AlturaImagenFija + AlturaCabezote;
+      let MaximoDeScroll = LibrosRelacionados - AlturaContenidoFijo - 40;
+    
+      if(DistanciaScroll < ContenedorPrincipal) {
+
+        jQuery('.image-container.visible-img').css({
+          opacity: 1,
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 'auto'
+        }).removeClass('scroll-fixed').removeClass('scroll-waiting')
+
+        jQuery('.scroll-info').fadeOut();
+    
+      } else if(DistanciaScroll > ContenedorPrincipal) {
+
+        jQuery('.image-container.visible-img').css({
+          opacity: 1,
+          position: 'fixed',
+          left: '5%',
+          top: '160px',
+          bottom: '0px'
+        }).removeClass('scroll-waiting').addClass('scroll-fixed')
+
+        jQuery('.scroll-info').fadeIn();
+    
+      }
+      
+    }
   }
 
   //Add to cart function

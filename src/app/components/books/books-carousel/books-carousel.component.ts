@@ -14,7 +14,7 @@ import { BooksGlobalLoopComponent } from '../global-books-loop.component';
 export class BooksCarouselComponent extends BooksGlobalLoopComponent {
 
   public carouselOne: NguCarouselConfig;
-  aCountry: any = 'COLOMBIA';
+  aCountry: any = 'PANAMA';
 
   ngOnChanges(changes: SimpleChanges) {
     this.getCountry();
@@ -23,14 +23,8 @@ export class BooksCarouselComponent extends BooksGlobalLoopComponent {
 
   ngOnInit() {
     let c = localStorage.getItem('C0uN7r1');
-
-    if(c === null || c === undefined) {
-      jQuery.getJSON('http://ip-api.com/json?callback', function(data) {
-        localStorage.setItem('C0uN7r1', data.country.toUpperCase());
-      });
-    }
-
     this.currentCountry = c;
+
     this.getCountry();
     this.initGetBooks();
     this.validateCarousel();
@@ -44,15 +38,15 @@ export class BooksCarouselComponent extends BooksGlobalLoopComponent {
     //If specialty is diffetent to "undefined"
     if(this.specialty !== undefined && this.specialty !== null) {
       
-      this._getBookService.getBooksBySpecialty(this.specialty, this.orderBy, this.order, this.maxShowItems)
+      this._getBookService.getBooksBySpecialty(this.specialty, this.orderBy, this.order, this.maxShowItems, 0)
         .map(resp => resp.json())
         .subscribe(
           data => {
-            if(data.length < 1) {
+            if(data.books.length < 1) {
               let err = { status: 404 }
               this.mapErrors(err, 'especialidad')
             } else {
-              this.setBooksInfo(data)
+              this.setBooksInfo(data.books)
             }
           },
           err => this.mapErrors(err, 'especialidad')

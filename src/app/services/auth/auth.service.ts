@@ -43,10 +43,22 @@ export class AuthService {
       "password": user.password
     }
 
+    let body = { 
+      user: data,
+      mailer: {
+        //to: 'mstiven013@gmail.com',
+        //cc: 'mstiven013@gmail.com',
+        to: user.email,
+        cc: config.email.cc,
+        from: config.email.from,
+        domain: config.email.domain
+      }
+    }
+
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({ headers: headers });
 
-    return this._Http.post(config.API_URL + '/register', data, options);
+    return this._Http.post(config.API_URL + '/register', body, options);
     
   }
 

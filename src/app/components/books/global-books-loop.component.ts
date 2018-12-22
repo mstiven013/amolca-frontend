@@ -14,7 +14,7 @@ declare var Materialize: any;
     styleUrls: ['./books-loop.component.scss']
 })
 export class BooksGlobalLoopComponent {
-  currentCountry: any = 'COLOMBIA';
+  currentCountry: any = 'PANAMA';
 
   dummy: Boolean = false;
 
@@ -33,7 +33,7 @@ export class BooksGlobalLoopComponent {
   @Input() specialty: any;
   @Input() author: any;
   @Input() carousel: Boolean = false;
-  @Input() maxShowItems: any = 10000;
+  @Input() maxShowItems: any = 160;
   @Input() itemsPerRow: any = 4;
   @Input() itemsPerPage: any = 16;
   @Input() orderBy: any = 'title';
@@ -53,7 +53,7 @@ export class BooksGlobalLoopComponent {
 
   getCountry() {
     let c = localStorage.getItem('C0uN7r1');
-    this.currentCountry = c;
+    this.currentCountry = 'PANAMA';
   }
 
   //Function to set books info in all services

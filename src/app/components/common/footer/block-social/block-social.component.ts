@@ -7,26 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlockSocialComponent implements OnInit {
 
-  showInfo: Boolean = false;
+  showInfo: Boolean = true;
   dummy: Boolean = false;
 
   constructor() { }
 
   ngOnInit() {
-    let me = this;
-    setTimeout(function() {
-      if(localStorage.getItem('C0uN7r1') == 'COLOMBIA') {
-        me.showInfo = true;
-      }
-    }, 1000)
   }
   
   //Test info vars
   contact = [
-    {name: 'direction', data: 'Calle 47 A # 81 - 58, Medellín, Antioquia, Colombia', state: true},
-    {name: 'phone', data: '', state: false},
-    {name: 'mobile', data: '+57 317 504 98 44', state: true},
-    {name: 'email', data: 'gcomercial@amolca.com.co', state: true}
+    {name: 'direction', link: 'https://goo.gl/maps/v9MY5HiSin82', target: '_blank', data: 'El Cangrejo, Ave, Manuel E. Batista, Edificio Inca Local # 2, Ciudad de Panamá', state: true},
+    {name: 'phone', link: '', target: '_self', data: '', state: false},
+    {name: 'mobile', link: 'tel:5073966585', target: '_self', data: '(507) 3966585', state: true},
+    {name: 'email', link: 'mailto:ventas@amolca.com.pa', target: '_self', data: 'ventas@amolca.com.pa', state: true}
   ]
 
 }

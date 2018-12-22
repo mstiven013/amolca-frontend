@@ -69,6 +69,11 @@ html, body {
             &#login-btn {
                 background-color: $blue-opacity;
             }
+
+            &#contact {
+                background-color: #a1b3c7;
+                border-left: 1px solid #00396f;
+            }
         }
     }
 }
@@ -777,16 +782,25 @@ form .button {
         font-size: 16px;
     }
 
+/*Contact page*/
+.contact-form .terms-condition .mat-checkbox-layout .mat-checkbox-label {
+    line-height: 24px;
+    font-size: 16px;
+    font-family: 'Tahoma';
+}
+
 /*Footer styles*/
 .footer {
     background-color: $white-dark;
     color: $gray-light;
     font-family: $primary-font;
     line-height: normal;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
     padding-left: 5%;
     padding-right: 5%;
-    padding-top: 60px;
+    padding-top: 30px;
+    position: relative;
+    z-index: 1000;
 }
 
     /*Footer row's*/
@@ -807,14 +821,14 @@ form .button {
 
     .footer .title {
         color: $gray-dark;
-        font-size: 25px;
+        font-size: 20px;
         font-weight: bold;
         margin-bottom: 20px;
         margin-top: 0px;
     }
 
     .footer p {
-        font-size: 16px;
+        font-size: 15px;
         margin-bottom: 7px;
         margin-top: 7px;
     }
@@ -830,17 +844,17 @@ form .button {
 
     /*Contact block*/
     .footer .block-contact {
-        font-size: 25px;
+        font-size: 20px;
         font-weight: bold;
     }
         .footer .block-contact #direction {
             display: block;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         .footer .block-contact #phone,
         .footer .block-contact #mobile {
             color: $gray-dark;
-            font-size: 25px;
+            font-size: 20px;
         }
 
     /*Social block*/
@@ -864,6 +878,8 @@ form .button {
     justify-content: flex-start;
     padding-left: 5%;
     padding-right: 5%;
+    position: relative;
+    z-index: 1000;
 }
     #bottom-bar .item {
         padding: 17px 25px;

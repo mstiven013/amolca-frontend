@@ -88,7 +88,7 @@
 
           <ng-template ngFor let-country [ngForOf]="book.countries">
             <!--book actions-->
-            <div *ngIf="country.name === 'COLOMBIA' && country.price !== 0 && country.state == 'STOCK'" class="actions">
+            <div *ngIf="country.name === 'PANAMA' && country.price !== 0 && country.state == 'STOCK'" class="actions">
     
               <!--book Price-->
               <p class="price">{{ country.price | currency:'COP':'symbol-narrow':'4.0-0' | replaceCurrencySeparator:',':'.' }}</p>
@@ -109,6 +109,11 @@
       </div>
     </div>
 
+  </div>
+
+  <div *ngIf="showLoaderMoreBooks" class="bottom-loader">
+    Cargando más libros...
+    <app-loader [mode]="loader.mode"></app-loader>
   </div>
 
   <pagination-controls class="books-pagination"
