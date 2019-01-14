@@ -23,28 +23,34 @@ export class HeaderComponent implements OnInit {
   getGeolocalization() {
     let c = localStorage.getItem('C0uN7r1');
 
-    if(c === null || c === undefined) {
-      jQuery.getJSON('http://ip-api.com/json?callback', function(data) {
-        localStorage.setItem('C0uN7r1', data.country.toUpperCase());
+    $.get("https://ipinfo.io", function(response) {
+      //console.log(response);
 
-        c = localStorage.getItem('C0uN7r1');
+      let search = country.filter(c => c.code == response.country);
+      let active = search[0].name.toUpperCase();
 
-        if(c !== null) {
-          //Redirecciones REPUBLICA DOMINICANA
-          if(c === 'ARGENTINA' && window.location.href.indexOf("amolca.com.pe") > 0) {
-            window.location.href = 'http://www.amolca.com.ar';
-          } else if(c === 'PERU' && window.location.href.indexOf("amolca.com.pe") > 0) {
-            window.location.href = 'http://www.amolca.com.pe';
-          } else if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.pe") > 0) {
-            window.location.href = 'http://www.amolca.com.co';
-          } else if(c === 'DOMINICAN REPUBLIC' && window.location.href.indexOf("amolca.com.do") > 0) {
-            return true;
-          } else {
-            window.location.href = 'http://www.amolca.com';
-          }
+      localStorage.setItem('C0uN7r1', active.toUpperCase());
+
+      c = localStorage.getItem('C0uN7r1')
+
+      if(c !== null) {
+        //Redirecciones REPUBLICA DOMINICANA
+        if(c === 'ARGENTINA' && window.location.href.indexOf("amolca.com.pe") > 0) {
+          window.location.href = 'https://www.amolca.com.ar';
+        } else if(c === 'PERU' && window.location.href.indexOf("amolca.com.pe") > 0) {
+          window.location.href = 'https://www.amolca.com.pe';
+        } else if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.pe") > 0) {
+          window.location.href = 'https://www.amolca.com.co';
+        } else if(c === 'PANAMA' && window.location.href.indexOf("amolca.com.pa") > 0) {
+          window.location.href = 'https://www.amolca.com.pa';
+        } else if(c === 'DOMINICAN REPUBLIC' && window.location.href.indexOf("amolca.com.do") > 0) {
+          return true;
+        } else {
+          window.location.href = 'https://www.amolca.com';
         }
-      });
-    }
+      }
+    }, "jsonp")
+
   }
 
   //Use this function when the API "ip-api.com" not works
