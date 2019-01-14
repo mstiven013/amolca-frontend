@@ -36,20 +36,20 @@ export class HeaderComponent implements OnInit {
       if(c !== null) {
         //Redirecciones PERU
         if(c === 'ARGENTINA' && window.location.href.indexOf("amolca.com.pe") > 0) {
-          window.location.href = 'http://www.amolca.com.ar';
+          window.location.href = 'https://www.amolca.com.ar';
         } else if(c === 'PERU' && window.location.href.indexOf("amolca.com.pe") > 0) {
-          window.location.href = 'http://www.amolca.com.pe';
+          window.location.href = 'https://www.amolca.com.pe';
         } else if(c === 'DOMINICAN REPUBLIC' && window.location.href.indexOf("amolca.com.pe") > 0) {
-          window.location.href = 'http://www.amolca.com.do';
+          window.location.href = 'https://www.amolca.com.do';
         } else if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.pe") > 0) {
-          window.location.href = 'http://www.amolca.com.co';
+          window.location.href = 'https://www.amolca.com.co';
         } else if(c === 'PERU' && window.location.href.indexOf("amolca.com.pe") > 0) {
           return true;
         } else {
-          window.location.href = 'http://www.amolca.com';
+          window.location.href = 'https://www.amolca.com';
         }
       }
-      
+
     }, "jsonp")
 
   }
