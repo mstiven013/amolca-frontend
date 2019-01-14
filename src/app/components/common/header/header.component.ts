@@ -23,28 +23,33 @@ export class HeaderComponent implements OnInit {
   getGeolocalization() {
     let c = localStorage.getItem('C0uN7r1');
 
-    if(c === null || c === undefined) {
-      jQuery.getJSON('http://ip-api.com/json?callback', function(data) {
-        localStorage.setItem('C0uN7r1', data.country.toUpperCase());
+    $.get("https://ipinfo.io", function(response) {
+      //console.log(response);
 
-        c = localStorage.getItem('C0uN7r1');
+      let search = country.filter(c => c.code == response.country);
+      let active = search[0].name.toUpperCase();
+
+      localStorage.setItem('C0uN7r1', active.toUpperCase());
+
+      c = localStorage.getItem('C0uN7r1')
 
         if(c !== null) {
           //Redirecciones ARGENTINA
           if(c === 'PERU' && window.location.href.indexOf("amolca.com.ar") > 0) {
-            window.location.href = 'http://www.amolca.com.pe';
+            window.location.href = 'https://www.amolca.com.pe';
           } else if(c === 'DOMINICAN REPUBLIC' && window.location.href.indexOf("amolca.com.ar") > 0) {
-            window.location.href = 'http://www.amolca.com.do';
+            window.location.href = 'https://www.amolca.com.do';
           } else if(c === 'COLOMBIA' && window.location.href.indexOf("amolca.com.ar") > 0) {
-            window.location.href = 'http://www.amolca.com.co';
+            window.location.href = 'https://www.amolca.com.co';
+          } else if(c === 'PANAMA' && window.location.href.indexOf("amolca.com.ar") > 0) {
+            window.location.href = 'https://www.amolca.com.pa';
           } else if(c === 'ARGENTINA' && window.location.href.indexOf("amolca.com.ar") > 0) {
             return true;
           } else {
-            window.location.href = 'http://www.amolca.com';
+            window.location.href = 'https://www.amolca.com';
           }
         }
-      });
-    }
+      }, "jsonp")
     
   }
 
